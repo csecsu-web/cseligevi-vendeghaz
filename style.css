@@ -1,215 +1,60 @@
-/* ---------------------------
-   Alap beállítások
---------------------------- */
-body {
-  font-family: 'Arial', sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  color: #000000; /* alap szöveg */
-  background-color: #ece7e3; /* alap háttér */
-}
-
-.wrap {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* ---------------------------
-   Fejléc
---------------------------- */
-header {
-  background-color: #1b4235; /* sötétzöld */
-  color: #edd3c5; /* világos bézs szöveg */
-  padding: 20px 0;
-}
-
-header h1 {
-  margin: 0;
-  text-align: center;
-  font-size: 2em;
-}
-
-nav ul {
-  list-style: none;
+.hero-section {
   display: flex;
   justify-content: center;
-  padding: 10px 0 0 0;
-  margin: 0;
-}
-
-nav ul li {
-  margin: 0 15px;
-}
-
-nav ul li a {
+  align-items: center;
+  padding: 60px 20px;
+  background-color: #1b4235; /* sötétzöld háttér */
   color: #edd3c5;
-  text-decoration: none;
-  font-weight: bold;
 }
 
-nav ul li a:hover {
-  color: #b88364; /* világos barna hover */
+.hero-content {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  gap: 40px;
 }
 
-/* ---------------------------
-   Hero szakasz
---------------------------- */
-.hero {
-  background-color: #1b4235; /* sötétzöld */
-  color: #edd3c5; /* világos bézs szöveg */
-  text-align: center;
-  padding: 120px 20px;
+.hero-content img {
+  max-width: 500px;
+  width: 100%;
+  border-radius: 10px;
 }
 
-.hero h2 {
-  font-size: 2.5em;
-  margin-bottom: 20px;
+.hero-text {
+  flex: 1;
 }
 
-.hero p {
-  font-size: 1.2em;
-  margin-bottom: 30px;
-}
-
-.hero .button {
-  display: inline-block;
-  background-color: #1b4235;
-  color: #edd3c5;
-  padding: 12px 30px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  border: 2px solid #edd3c5;
-}
-
-.hero .button:hover {
-  background-color: #b88364;
-  border-color: #1b4235;
-  color: #ffffff;
-}
-
-/* ---------------------------
-   Szakaszok
---------------------------- */
-section {
-  padding: 60px 0;
-}
-
-section:nth-child(even) {
-  background-color: #ece7e3; /* világos háttér */
-  color: #1b4235; /* sötét zöld szöveg */
-}
-
-section:nth-child(odd) {
-  background-color: #edd3c5; /* világos bézs */
-  color: #391b0b; /* sötét barna szöveg */
-}
-
-section h2 {
-  text-align: center;
+.hero-text h2 {
   font-size: 2em;
   margin-bottom: 20px;
 }
 
-section p, section ul {
-  max-width: 800px;
-  margin: 0 auto 20px auto;
+.hero-text p {
+  font-size: 1.1em;
+  margin-bottom: 20px;
 }
 
-ul li {
-  margin-bottom: 10px;
-}
-
-/* ---------------------------
-   Galéria
---------------------------- */
-.gallery .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
-}
-
-.gallery img {
-  width: 100%;
-  border-radius: 10px;
-  object-fit: cover;
-}
-
-/* ---------------------------
-   Lábléc
---------------------------- */
-footer {
-  background-color: #1b4235; /* sötétzöld */
-  color: #edd3c5; /* világos bézs */
-  padding: 40px 0;
-}
-
-footer a {
-  color: #edd3c5;
-  text-decoration: none;
-}
-
-footer a:hover {
-  color: #b88364;
-}
-
-.footer-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.footer-content .social a img {
-  width: 35px;
-  margin-right: 10px;
-}
-
-.contact-info p {
-  margin: 5px 0;
-}
-
-.contact-info .map iframe {
-  width: 100%;
-  height: 250px;
-  border: 0;
-  margin-top: 10px;
-}
-
-/* ---------------------------
-   Gombok általában
---------------------------- */
-.button {
-  display: inline-block;
-  background-color: #1b4235;
-  color: #edd3c5;
-  padding: 10px 25px;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  border: 2px solid #edd3c5;
-}
-
-.button:hover {
+.hero-text .button {
   background-color: #b88364;
   color: #ffffff;
-  border-color: #1b4235;
+  padding: 12px 30px;
+  text-decoration: none;
+  border-radius: 5px;
 }
 
-/* ---------------------------
-   Mobilbarát
---------------------------- */
+.hero-text .button:hover {
+  background-color: #edd3c5;
+  color: #1b4235;
+}
+
+/* Mobilra */
 @media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    text-align: center;
-  }
-  .footer-content {
+  .hero-content {
     flex-direction: column;
     align-items: center;
   }
-  .gallery .grid {
-    grid-template-columns: 1fr;
+
+  .hero-content img {
+    max-width: 100%;
   }
 }
