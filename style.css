@@ -115,16 +115,6 @@ footer {
   margin: 5px 0;
 }
 
-.hero-image-footer {
-  flex: 1 1 200px;
-  text-align: right;
-}
-
-.hero-image-footer img {
-  max-width: 150px;
-  border-radius: 5px;
-}
-
 /* Map */
 .map iframe {
   width: 100%;
@@ -135,12 +125,19 @@ footer {
 }
 
 /* Mobilbarát */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .hero-content {
     flex-direction: column;
     align-items: center;
   }
 
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
   nav ul {
     flex-direction: column;
     align-items: center;
@@ -148,15 +145,5 @@ footer {
 
   nav ul li {
     margin: 10px 0;
-  }
-
-  .footer-content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero-image-footer {
-    text-align: center;
-    margin-top: 20px;
   }
 }
