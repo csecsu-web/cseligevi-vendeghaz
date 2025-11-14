@@ -1,11 +1,13 @@
-/* Alap beállítások */
+/* ---------------------------
+   Alap beállítások
+--------------------------- */
 body {
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  color: #333;
-  background-color: #f9f9f9;
+  color: #000000; /* alap szöveg */
+  background-color: #ece7e3; /* alap háttér */
 }
 
 .wrap {
@@ -14,10 +16,12 @@ body {
   margin: 0 auto;
 }
 
-/* Fejléc */
+/* ---------------------------
+   Fejléc
+--------------------------- */
 header {
-  background-color: #4CAF50;
-  color: white;
+  background-color: #1b4235; /* sötétzöld */
+  color: #edd3c5; /* világos bézs szöveg */
   padding: 20px 0;
 }
 
@@ -31,8 +35,8 @@ nav ul {
   list-style: none;
   display: flex;
   justify-content: center;
-  padding: 0;
-  margin: 10px 0 0 0;
+  padding: 10px 0 0 0;
+  margin: 0;
 }
 
 nav ul li {
@@ -40,21 +44,21 @@ nav ul li {
 }
 
 nav ul li a {
-  color: white;
+  color: #edd3c5;
   text-decoration: none;
   font-weight: bold;
 }
 
 nav ul li a:hover {
-  text-decoration: underline;
+  color: #b88364; /* világos barna hover */
 }
 
-/* Hero szakasz */
+/* ---------------------------
+   Hero szakasz
+--------------------------- */
 .hero {
-  background-image: url('images/hero.jpg');
-  background-size: cover;
-  background-position: center;
-  color: white;
+  background-color: #1b4235; /* sötétzöld */
+  color: #edd3c5; /* világos bézs szöveg */
   text-align: center;
   padding: 120px 20px;
 }
@@ -71,21 +75,36 @@ nav ul li a:hover {
 
 .hero .button {
   display: inline-block;
-  background-color: #ff9800;
-  color: white;
+  background-color: #1b4235;
+  color: #edd3c5;
   padding: 12px 30px;
   text-decoration: none;
   font-weight: bold;
   border-radius: 5px;
+  border: 2px solid #edd3c5;
 }
 
 .hero .button:hover {
-  background-color: #e68a00;
+  background-color: #b88364;
+  border-color: #1b4235;
+  color: #ffffff;
 }
 
-/* Szakaszok */
+/* ---------------------------
+   Szakaszok
+--------------------------- */
 section {
   padding: 60px 0;
+}
+
+section:nth-child(even) {
+  background-color: #ece7e3; /* világos háttér */
+  color: #1b4235; /* sötét zöld szöveg */
+}
+
+section:nth-child(odd) {
+  background-color: #edd3c5; /* világos bézs */
+  color: #391b0b; /* sötét barna szöveg */
 }
 
 section h2 {
@@ -103,7 +122,9 @@ ul li {
   margin-bottom: 10px;
 }
 
-/* Galéria */
+/* ---------------------------
+   Galéria
+--------------------------- */
 .gallery .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -116,20 +137,22 @@ ul li {
   object-fit: cover;
 }
 
-/* Lábléc */
+/* ---------------------------
+   Lábléc
+--------------------------- */
 footer {
-  background-color: #333;
-  color: white;
+  background-color: #1b4235; /* sötétzöld */
+  color: #edd3c5; /* világos bézs */
   padding: 40px 0;
 }
 
 footer a {
-  color: white;
+  color: #edd3c5;
   text-decoration: none;
 }
 
 footer a:hover {
-  text-decoration: underline;
+  color: #b88364;
 }
 
 .footer-content {
@@ -154,22 +177,29 @@ footer a:hover {
   margin-top: 10px;
 }
 
-/* Gomb stílus mindenhol */
+/* ---------------------------
+   Gombok általában
+--------------------------- */
 .button {
   display: inline-block;
-  background-color: #4CAF50;
-  color: white;
+  background-color: #1b4235;
+  color: #edd3c5;
   padding: 10px 25px;
   text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
+  border: 2px solid #edd3c5;
 }
 
 .button:hover {
-  background-color: #45a049;
+  background-color: #b88364;
+  color: #ffffff;
+  border-color: #1b4235;
 }
 
-/* Mobilbarát */
+/* ---------------------------
+   Mobilbarát
+--------------------------- */
 @media (max-width: 768px) {
   nav ul {
     flex-direction: column;
