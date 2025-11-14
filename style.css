@@ -1,17 +1,53 @@
-.hero-section {
+/* Alap stílusok */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ece7e3;
+  color: #000000;
+}
+
+/* Navigációs sáv */
+header {
+  background-color: #1b4235;
+}
+
+nav ul {
+  list-style: none;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 60px 20px;
-  background-color: #1b4235; /* sötétzöld háttér */
+  margin: 0;
+  padding: 15px 0;
+}
+
+nav ul li {
+  margin: 0 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
   color: #edd3c5;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+nav ul li a:hover {
+  color: #b88364;
+}
+
+/* Hero szakasz */
+.hero-section {
+  background-color: #1b4235;
+  color: #edd3c5;
+  padding: 60px 20px;
 }
 
 .hero-content {
   display: flex;
   flex-wrap: wrap;
-  max-width: 1200px;
   gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
 }
 
 .hero-content img {
@@ -26,7 +62,7 @@
 
 .hero-text h2 {
   font-size: 2em;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .hero-text p {
@@ -40,6 +76,8 @@
   padding: 12px 30px;
   text-decoration: none;
   border-radius: 5px;
+  display: inline-block;
+  margin-bottom: 20px;
 }
 
 .hero-text .button:hover {
@@ -47,14 +85,78 @@
   color: #1b4235;
 }
 
-/* Mobilra */
+.hero-text .extra-text {
+  font-size: 1em;
+  color: #ffffff;
+}
+
+/* Footer */
+footer {
+  background-color: #1b4235;
+  color: #edd3c5;
+  padding: 40px 20px;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.contact-info {
+  flex: 1 1 400px;
+  margin-bottom: 20px;
+}
+
+.contact-info p {
+  margin: 5px 0;
+}
+
+.hero-image-footer {
+  flex: 1 1 200px;
+  text-align: right;
+}
+
+.hero-image-footer img {
+  max-width: 150px;
+  border-radius: 5px;
+}
+
+/* Map */
+.map iframe {
+  width: 100%;
+  max-width: 600px;
+  height: 300px;
+  border: 0;
+  border-radius: 10px;
+}
+
+/* Mobilbarát */
 @media (max-width: 768px) {
   .hero-content {
     flex-direction: column;
     align-items: center;
   }
 
-  .hero-content img {
-    max-width: 100%;
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-image-footer {
+    text-align: center;
+    margin-top: 20px;
   }
 }
