@@ -1,14 +1,19 @@
-// FADE-IN
-document.addEventListener("DOMContentLoaded", () => {
-    const fadeElements = document.querySelectorAll(".fade-slide");
-    fadeElements.forEach(el => el.classList.add("active"));
-});
+// Fade in/out minden fade-slide elemre
+const faders = document.querySelectorAll('.fade-slide');
 
-// SCROLL FOOTER
-window.addEventListener("scroll", () => {
-    const footer = document.querySelector("footer");
-    const rect = footer.getBoundingClientRect();
-    if(rect.top < window.innerHeight){
-        footer.classList.add("active");
-    }
+const appearOptions = { threshold:0.1 };
+
+const appearOnScroll = new IntersectionObserver(function(entries, observer){
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add('active');
+        } else {
+            entry.target.classList.remove('active');
+        }
+    });
+}, appearOptions);
+
+// alkalmazzuk
+faders.forEach(fader => {
+    appearOnScroll.observe(fader);
 });
