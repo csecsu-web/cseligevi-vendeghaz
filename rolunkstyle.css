@@ -1,0 +1,154 @@
+/* ===== ÁLTALÁNOS ===== */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #edd3c5;
+}
+
+/* ===== NAVIGÁCIÓ ===== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1b4235;
+    color: #ffffff;
+    padding: 10px 20px;
+}
+
+.nav-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.nav-right a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.nav-right a:hover {
+    color: #b88364;
+}
+
+.hamburger {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* ===== RÓLUNK ===== */
+.rolunk {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.rolunk-text {
+    margin-bottom: 40px;
+    color: #391b0b;
+    line-height: 1.7;
+}
+
+.rolunk-text h1 {
+    color: #1b4235;
+    margin-bottom: 20px;
+}
+
+/* ===== GALÉRIA / CAROUSEL ===== */
+.rolunk-carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-slide {
+    display: none;
+    gap: 20px;
+    justify-content: center;
+}
+
+.carousel-slide img {
+    width: 45%;
+    border-radius: 10px;
+}
+
+/* Nyilak */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 10px;
+    margin-top: -22px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 24px;
+    background-color: rgba(27,66,53,0.8);
+    border-radius: 50%;
+    user-select: none;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.prev:hover, .next:hover { background-color: #b88364; }
+
+/* ===== FOOTER ===== */
+footer {
+    background-color: #1b4235;
+    color: #ffffff;
+    padding: 20px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-left, .footer-middle, .footer-right {
+    margin: 10px;
+}
+
+/* ===== SOCIAL ICONS ===== */
+.social-icons img {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+}
+
+/* ===== MOBIL ===== */
+@media (max-width: 900px) {
+    .carousel-slide {
+        flex-direction: column;
+    }
+
+    .carousel-slide img {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-right {
+        display: none;
+        flex-direction: column;
+        background-color: #1b4235;
+        width: 100%;
+    }
+
+    .nav-right.active {
+        display: flex;
+    }
+
+    .nav-right a {
+        margin: 10px 0;
+    }
+
+    .footer-container {
+        flex-direction: column;
+    }
+}
