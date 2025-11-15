@@ -92,6 +92,20 @@ header {
     font-size: 18px;
     color: #391b0b;
 }
+.foglalj-gomb {
+    background: #1b4235;      /* sötétzöld háttér */
+    color: #edd3c5;           /* világos szöveg */
+    padding: 12px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.foglalj-gomb:hover {
+    background: #b88364;      /* aranysárga hover */
+    color: #ffffff;            /* fehér szöveg hover közben */
+}
 
 /* ===== FOOTER ===== */
 footer {
