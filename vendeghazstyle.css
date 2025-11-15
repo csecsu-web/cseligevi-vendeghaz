@@ -1,218 +1,80 @@
-/* ===== ALAPOK ===== */
+/* ALAPOK */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
     font-family: Arial, sans-serif;
 }
 
 body {
-    background: #ffffff;
-    color: #000000;
+    background:#ffffff;
+    color:#000000;
 }
 
-/* ===== NAVIGÁCIÓ ===== */
+/* NAV */
 header {
-    background: #1b4235;
-    width: 100%;
-    padding: 10px 0;
+    background:#1b4235;
+    width:100%;
+    padding:10px 0;
 }
-
 .navbar {
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 20px;
+}
+.nav-left { display:flex; align-items:center; gap:10px; }
+.nav-logo { height:40px; }
+.nav-title { color:#ffffff; font-size:20px; font-weight:bold; }
+.nav-right a { color:#ffffff; text-decoration:none; margin-left:20px; transition:0.3s; }
+.nav-right a:hover { color:#b88364; }
+.hamburger { display:none; color:#fff; font-size:30px; cursor:pointer; }
+
+/* SECTION ALAP */
+.section { padding:50px 20px; max-width:1200px; margin:auto; }
+.section-text { max-width:600px; }
+.section-text h2 { margin-bottom:15px; }
+.section.light { background:#f7f3f0; }
+.section.dark { background:#b88364; color:#fff; }
+.section.light h2, .section.dark h2 { color:#1b4235; }
+.section-text.left { text-align:left; margin-right:auto; }
+.section-text.right { text-align:left; margin-left:auto; }
+
+/* GALÉRIA */
+.gallery-section { background:#b88364; padding:50px 0; overflow:hidden; position:relative; }
+.gallery-container { display:flex; flex-direction:column; gap:20px; }
+.gallery-row { display:flex; gap:20px; }
+.row1 { animation: moveRight 30s linear infinite; }
+.row2 { animation: moveLeft 30s linear infinite; }
+.gallery-row img { width:200px; border-radius:10px; }
+
+/* KEYFRAMES */
+@keyframes moveRight {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+@keyframes moveLeft {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
 }
 
-.nav-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+/* FOOTER */
+footer { background:#1b4235; color:#fff; padding:30px 20px; opacity:0; transition:1s; }
+.footer-container { display:grid; grid-template-columns:repeat(3,1fr); gap:40px; max-width:1200px; margin:auto; }
+.social-icons img { width:40px; margin-right:10px; }
+
+/* MOBIL */
+@media(max-width:900px){
+    .section-text { max-width:100%; }
+    .gallery-row { flex-wrap:nowrap; overflow-x:auto; }
+    .nav-right { display:none; flex-direction:column; background:#1b4235; padding:20px; position:absolute; width:100%; left:0; top:70px; }
+    .nav-right.active { display:flex; }
+    .nav-right a { margin:10px 0; font-size:18px; }
+    .hamburger { display:block; }
 }
 
-.nav-logo {
-    height: 40px;
-}
-
-.nav-title {
-    color: #ffffff;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.nav-right a {
-    color: #ffffff;
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 16px;
-    transition: color 0.3s;
-}
-
-.nav-right a:hover {
-    color: #b88364;
-}
-
-/* Hamburger */
-.hamburger {
-    display: none;
-    color: #ffffff;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-/* ===== FÖLDSZINT + KÜLTÉRI ===== */
-.ground-floor {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 20px;
-}
-
-.ground-floor .text-container {
-    line-height: 1.6;
-}
-
-/* ===== EMELET + KÉPGALÉRIA ===== */
-.first-floor {
-    display: flex;
-    flex-direction: column;
-    background-color: #b88364;
-    padding: 40px 20px;
-    overflow: hidden;
-}
-
-.first-floor .text-container {
-    text-align: right;
-    margin-bottom: 20px;
-    color: #fff;
-}
-
-.gallery-container {
-    position: relative;
-    overflow: hidden;
-    height: 180px;
-}
-
-.gallery-row {
-    display: flex;
-    gap: 10px;
-    position: absolute;
-    width: max-content;
-}
-
-.row1 {
-    animation: scroll-left 20s linear infinite;
-}
-
-.row2 {
-    animation: scroll-right 20s linear infinite;
-}
-
-.gallery-row img {
-    height: 160px;
-    border-radius: 10px;
-}
-
-/* ===== FOOTER ===== */
-footer {
-    background: #1b4235;
-    color: #ffffff;
-    padding: 30px 20px;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-
-footer.show {
-    opacity: 1;
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-}
-
-.social-icons img {
-    width: 40px;
-    margin-right: 10px;
-}
-
-/* ===== SCROLL ANIMÁCIÓ ===== */
-.fade-slide {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s ease-out;
-}
-
-.fade-slide.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ===== GALÉRIA ANIMÁCIÓ ===== */
-@keyframes scroll-left {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-@keyframes scroll-right {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
-}
-
-/* ===== MOBIL ===== */
-@media (max-width: 900px) {
-    .first-floor {
-        text-align: center;
-    }
-
-    .first-floor .text-container {
-        text-align: center;
-    }
-
-    .gallery-row {
-        justify-content: center;
-    }
-
-    .gallery-row img {
-        height: 120px;
-    }
-
-    .ground-floor, .first-floor {
-        padding: 20px;
-    }
-
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .hamburger {
-        display: block;
-    }
-
-    .nav-right {
-        display: none;
-        flex-direction: column;
-        background: #1b4235;
-        padding: 20px;
-        position: absolute;
-        width: 100%;
-        left: 0;
-        top: 70px;
-    }
-
-    .nav-right.active {
-        display: flex;
-    }
-
-    .nav-right a {
-        margin: 10px 0;
-        font-size: 18px;
-    }
-}
-
+/* FADE SLIDE */
+.fade-slide { opacity:0; transform:translateY(50px); transition: all 0.8s ease-out; }
+.fade-slide.active { opacity:1; transform:translateY(0); }
