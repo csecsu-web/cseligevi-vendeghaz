@@ -8,106 +8,114 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
-    <!-- NAVIGÁCIÓ -->
-    <header>
-        <nav class="navbar">
-            <div class="nav-left">
-                <img src="images/favicon.png" alt="Cseligevi logó" class="nav-logo">
-                <span class="nav-title">Cseligevi Vendégház</span>
-            </div>
-            <div class="nav-right" id="navLinks">
-                <a href="index.html">Főoldal</a>
-                <a href="rolunk.html">Rólunk</a>
-                <a href="vendeghaz.html">Vendégház</a>
-                <a href="arak.html">Árak & Foglalás</a>
-                <a href="programok.html">Programok</a>
-            </div>
-            <div class="hamburger" onclick="toggleMenu()">☰</div>
-        </nav>
-    </header>
 
-    <!-- FÖLDSZINT + KÜLTÉRI -->
-    <section class="ground-floor fade-slide">
-        <div class="text-container">
-            <h2>Földszint</h2>
-            <ul>
-                <li>Nappali + konyha + étkező</li>
-                <li>Fürdőszoba, zuhanyzó</li>
-                <li>Benti szauna, tökéletes a hideg napok ellazítására</li>
-                <li>Közvetlen kijárat a nagy teraszra, ahol a nap első fényeit és a madárcsicsergést élvezheted</li>
-            </ul>
-
-            <h2>Kültéri élmények</h2>
-            <ul>
-                <li>Gyerekcsúszda és játszóhely, hogy a kicsik szabadon szaladgálhassanak</li>
-                <li>Sütögetőhely, grillezéshez és közös piknikekhez</li>
-                <li>Tágas zöld telek, ahol a természet közelségét teljes mértékben átélheted</li>
-            </ul>
+<!-- NAV -->
+<header>
+    <nav class="navbar">
+        <div class="nav-left">
+            <img src="images/favicon.png" alt="Cseligevi logó" class="nav-logo">
+            <span class="nav-title">Cseligevi Vendégház</span>
         </div>
-    </section>
-
-    <!-- EMELET + KÉPGALÉRIA -->
-    <section class="first-floor fade-slide">
-        <div class="text-container">
-            <h2>Emelet</h2>
-            <ul>
-                <li>Francia ágy, kiúszatos kanapé, könyvespolcok, tároló szekrények</li>
-                <li>Fenti műfűves terasz, lélegzetelállító kilátással a hegygerincre és a borvidékre</li>
-            </ul>
+        <div class="nav-right" id="navLinks">
+            <a href="index.html">Főoldal</a>
+            <a href="rolunk.html">Rólunk</a>
+            <a href="vendeghaz.html">Vendégház</a>
+            <a href="arak.html">Árak & Foglalás</a>
+            <a href="programok.html">Programok</a>
         </div>
-        <div class="gallery-container">
-            <div class="gallery-row row1">
-                <img src="images/emelet1.jpg" alt="Emeleti kép 1">
-                <img src="images/emelet2.jpg" alt="Emeleti kép 2">
-                <img src="images/emelet3.jpg" alt="Emeleti kép 3">
-                <img src="images/emelet4.jpg" alt="Emeleti kép 4">
-                <img src="images/emelet5.jpg" alt="Emeleti kép 5">
-            </div>
-            <div class="gallery-row row2">
-                <img src="images/emelet6.jpg" alt="Emeleti kép 6">
-                <img src="images/emelet7.jpg" alt="Emeleti kép 7">
-                <img src="images/emelet8.jpg" alt="Emeleti kép 8">
-                <img src="images/emelet9.jpg" alt="Emeleti kép 9">
-                <img src="images/emelet10.jpg" alt="Emeleti kép 10">
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </nav>
+</header>
+
+<!-- FÖLDSZINT -->
+<section class="section light fade-slide">
+    <div class="section-text left">
+        <h2>Földszint</h2>
+        <ul>
+            <li>Nappali + konyha + étkező</li>
+            <li>Fürdőszoba, zuhanyzó</li>
+            <li>Benti szauna, tökéletes a hideg napok ellazítására</li>
+            <li>Közvetlen kijárat a nagy teraszra, ahol a nap első fényeit és a madárcsicserést élvezheted</li>
+        </ul>
+    </div>
+</section>
+
+<!-- EMELET -->
+<section class="section dark fade-slide">
+    <div class="section-text right">
+        <h2>Emelet</h2>
+        <ul>
+            <li>Francia ágy, kiúszatos kanapé, könyvespolcok, tároló szekrények</li>
+            <li>Fenti műfűves terasz, lélegzetelállító kilátással a hegygerincre és környező borvidékre</li>
+        </ul>
+    </div>
+</section>
+
+<!-- KÜLTÉRI ÉLMÉNYEK -->
+<section class="section light fade-slide">
+    <div class="section-text left">
+        <h2>Kültéri élmények</h2>
+        <ul>
+            <li>Gyerekcsúszda és játszóhely</li>
+            <li>Sütögetőhely, grillezéshez és közös piknikekhez</li>
+            <li>Tágas zöld telek a természet közelségével</li>
+        </ul>
+    </div>
+</section>
+
+<!-- KÉPGALÉRIA -->
+<section class="section gallery-section fade-slide">
+    <div class="gallery-container">
+        <div class="gallery-row row1">
+            <img src="images/kep1.jpg" alt="">
+            <img src="images/kep2.jpg" alt="">
+            <img src="images/kep3.jpg" alt="">
+            <img src="images/kep4.jpg" alt="">
+            <img src="images/kep5.jpg" alt="">
+        </div>
+        <div class="gallery-row row2">
+            <img src="images/kep6.jpg" alt="">
+            <img src="images/kep7.jpg" alt="">
+            <img src="images/kep8.jpg" alt="">
+            <img src="images/kep9.jpg" alt="">
+            <img src="images/kep10.jpg" alt="">
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="fade-slide">
+    <div class="footer-container">
+        <div class="footer-left">
+            <h3>Kapcsolat</h3>
+            <p>📍 8MRP+C4 Szekszárd, Cseligevi Vendégház</p>
+            <p>📞 +36 70 884 4779</p>
+            <p>📞 +36 70 334 6060</p>
+            <p>📧 cseligevi5@gmail.com</p>
+        </div>
+        <div class="footer-middle">
+            <h3>Kövess minket</h3>
+            <div class="social-icons">
+                <a href="#"><img src="images/facebook.jpg" alt="Facebook"></a>
+                <a href="#"><img src="images/instagram.jpg" alt="Instagram"></a>
+                <a href="#"><img src="images/tiktok.jpg" alt="TikTok"></a>
             </div>
         </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="fade-slide">
-        <div class="footer-container">
-            <div class="footer-left">
-                <h3>Kapcsolat</h3>
-                <p>📍 8MRP+C4 Szekszárd, Cseligevi Vendégház</p>
-                <p>📞 +36 70 884 4779</p>
-                <p>📞 +36 70 334 6060</p>
-                <p>📧 cseligevi5@gmail.com</p>
-            </div>
-
-            <div class="footer-middle">
-                <h3>Kövess minket</h3>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/people/Cseligevi-Vend%C3%A9gh%C3%A1z/61583771781727"><img src="images/facebook.jpg" alt="Facebook"></a>
-                    <a href="https://www.instagram.com/cseligevivendeghaz"><img src="images/instagram.jpg" alt="Instagram"></a>
-                    <a href="https://www.tiktok.com/@cseligevivendeghaz"><img src="images/tiktok.jpg" alt="TikTok"></a>
-                </div>
-            </div>
-
-            <div class="footer-right">
-                <h3>Hol találsz minket?</h3>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2754.427920749452!2d18.68525769999999!3d46.3410509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4742ed0025e367a3%3A0x671aa8f3d483466c!2zQ3NlbGlnZXZpIFZlbmTDqWdow6F6!5e0!3m2!1shu!2hu!4v1763162135436!5m2!1shu!2hu" 
+        <div class="footer-right">
+            <h3>Hol találsz minket?</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2754.427920749452!2d18.68525769999999!3d46.3410509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4742ed0025e367a3%3A0x671aa8f3d483466c!2zQ3NlbGlnZXZpIFZlbmTDqWdow6F6!5e0!3m2!1shu!2hu!4v1763162135436!5m2!1shu!2hu"
                     width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <!-- JS -->
-    <script src="animation.js"></script>
-    <script>
-        function toggleMenu() {
-            const nav = document.getElementById("navLinks");
-            nav.classList.toggle("active");
-        }
-    </script>
+<script src="animation.js"></script>
+<script>
+function toggleMenu() {
+    const nav = document.getElementById("navLinks");
+    nav.classList.toggle("active");
+}
+</script>
+
 </body>
 </html>
