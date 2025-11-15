@@ -154,6 +154,11 @@ footer {
     /* hamburger aktív */
     .hamburger {
         display: block;
+        color: #ffffff;      /* fehér ikon, hogy látszódjon a zöld háttéren */
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1000;       /* mindig a többi elem fölött legyen */
+    position: relative;  /* z-index működéséhez */
     }
 
     .nav-right {
