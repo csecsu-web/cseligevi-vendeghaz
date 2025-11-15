@@ -3,97 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cseligevi Vendégház – Szekszárd</title>
+    <title>Cseligevi Vendégház – Szekszárd szállás | Vendégház a természetben</title>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <!-- SEO -->
+    <meta name="description" content="Cseligevi Vendégház Szekszárdon – modern, természetközeli szállás szaunával, nagy kerttel és panorámával. Szekszárd vendégház, szállás Szekszárd, borvidék.">
+    <meta name="keywords" content="szekszárd vendégház, szekszárd szállás, vendégház szekszárd, cseligevi vendégház, borvidék szállás, apartman szekszárd">
 
-    <!-- SEO alap meta tag-ek -->
-    <meta name="description" content="Cseligevi Vendégház – nyugodt, modern és hangulatos vendégház Szekszárd panorámás tanyavidékén. Szaunával, terasszal, borvidéki programokkal, tökéletes pároknak és családoknak.">
-    <meta name="keywords" content="szekszárd vendégház, szekszárd szállás, vendégház szekszárd, cseligevi vendégház, szekszárd apartman, szállás szekszárd környéke, tanya szállás, borvidék szállás, modern vendégház szekszárd">
-    <meta name="author" content="Cseligevi Vendégház">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Cseligevi Vendégház – Szekszárd">
-    <meta property="og:description" content="Nyugalom, természet és modern kényelem Szekszárd panorámás tanyavidékén. Szauna, terasz, romantikus kikapcsolódás.">
-    <meta property="og:image" content="images/index.png">
-    <meta property="og:type" content="website">
-
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#1b4235">
-
-    <!-- Style -->
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
-
 <body>
 
-    <!-- NAVIGÁCIÓ -->
+<!-- NAVIGÁCIÓ -->
+<header>
     <nav class="navbar">
         <div class="nav-left">
-            <img src="images/index.png" alt="Cseligevi Logó" class="nav-logo">
+            <img src="images/favicon.png" alt="Cseligevi logó" class="nav-logo">
+            <span class="nav-title">Cseligevi Vendégház</span>
         </div>
 
-        <ul class="nav-links">
-            <li><a href="index.html" class="active">Főoldal</a></li>
-            <li><a href="rolunk.html">Rólunk</a></li>
-            <li><a href="vendeghaz.html">Vendégház</a></li>
-            <li><a href="arak.html">Árak és foglalás</a></li>
-            <li><a href="programok.html">Programok</a></li>
-        </ul>
+        <div class="nav-right" id="navLinks">
+            <a href="index.html">Főoldal</a>
+            <a href="rolunk.html">Rólunk</a>
+            <a href="vendeghaz.html">Vendégház</a>
+            <a href="arak.html">Árak és foglalás</a>
+            <a href="programok.html">Programok</a>
+        </div>
+
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
     </nav>
+</header>
 
-
-    <!-- HERO SZAKASZ -->
-    <header class="hero">
-        <div class="hero-text">
-            <h1>Cseligevi Vendégház</h1>
-            <p>A nyugalom, a természet és a romantika ölelésében.</p>
-            <a href="arak.html" class="btn">Foglalj most</a>
-        </div>
-    </header>
-
-
-    <!-- FŐ SZÖVEG BLOKK (zöld háttér) -->
-    <section class="intro-section">
-        <h2>Rejtett gyöngyszem Szekszárd tanyavidékén</h2>
+<!-- HERO RÉSZ: SZÖVEG + KÉP -->
+<section class="hero">
+    <div class="hero-text">
+        <h1>Cseligevi Vendégház</h1>
         <p>
-            A Cseligevi Vendégház a borvidék lankái és a Bati Kereszt kilátó panorámája között helyezkedik el.
-            Modern kényelem, természetközeli hangulat és teljes nyugalom vár.
+            A nyugalom, a természet és a modern kényelem találkozása Szekszárd csendes, 
+            tanyás dombvidékén. Ébredj madárcsicsergésre, élvezd a panorámát és töltődj fel.
         </p>
-        <p>
-            Ébredj madárcsicsergésre, élvezd a napfelkeltét a teraszon, vagy csodáld a naplementét a hegygerincről.
+
+        <a href="arak.html" class="foglalj-gomb">Foglalj most</a>
+
+        <p class="hero-extra">
+            A Szekszárdi borvidék szívében várunk – szaunával, nagy kerttel és lenyűgöző kilátással.
+            Pihenj, töltődj, élvezd a természetet.
         </p>
-    </section>
+    </div>
 
+    <div class="hero-image">
+        <img src="images/hero.png" alt="Cseligevi Vendégház">
+    </div>
+</section>
 
-    <!-- FOOTER -->
-    <footer>
+<!-- FOOTER -->
+<footer>
+    <div class="footer-container">
+
         <div class="footer-left">
             <h3>Kapcsolat</h3>
-            <p>Telefon: +36 70 884 4779</p>
-            <p>Telefon: +36 70 334 6060</p>
-            <p>Email: cseligevi5@gmail.com</p>
-            <p>Cím: 8MRP+C4 Szekszárd, Cseligevi vendégház</p>
+            <p>📍 8MRP+C4 Szekszárd, Cseligevi Vendégház</p>
+            <p>📞 +36 70 884 4779</p>
+            <p>📞 +36 70 334 6060</p>
+            <p>📧 cseligevi5@gmail.com</p>
+        </div>
 
-            <div class="footer-icons">
-                <a href="https://www.facebook.com/people/Cseligevi-Vend%C3%A9gh%C3%A1z/61583771781727/">
-                    <img src="images/facebook.jpg" alt="Facebook">
-                </a>
-                <a href="https://www.instagram.com/cseligevivendeghaz">
-                    <img src="images/instagram.jpg" alt="Instagram">
-                </a>
-                <a href="https://www.tiktok.com/@cseligevivendeghaz">
-                    <img src="images/tiktok.jpg" alt="TikTok">
-                </a>
+        <div class="footer-middle">
+            <h3>Kövess minket</h3>
+            <div class="social-icons">
+                <a href="#"><img src="images/facebook.jpg" alt="Facebook"></a>
+                <a href="#"><img src="images/instagram.jpg" alt="Instagram"></a>
+                <a href="#"><img src="images/tiktok.jpg" alt="TikTok"></a>
             </div>
         </div>
 
-        <div class="footer-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2754.427920749452!2d18.68525769999999!3d46.3410509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4742ed0025e367a3%3A0x671aa8f3d483466c!2zQ3NlbGlnZXZpIFZlbmTDqWdow6F6!5e0!3m2!1shu!2hu!4v1763162135436!5m2!1hu!2hu"
-                width="350" height="250" style="border:0;" loading="lazy"></iframe>
+        <div class="footer-right">
+            <h3>Hol találsz minket?</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2754.427920749452!2d18.68525769999999!3d46.3410509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4742ed0025e367a3%3A0x671aa8f3d483466c!2zQ3NlbGlnZXZpIFZlbmTDqWdow6F6!5e0!3m2!1shu!2hu!4v1763162135436!5m2!1shu!2hu"
+                    width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
-    </footer>
+
+    </div>
+</footer>
+
+<script>
+function toggleMenu() {
+    const nav = document.getElementById("navLinks");
+    nav.classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
