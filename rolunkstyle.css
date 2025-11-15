@@ -11,10 +11,12 @@ body {
     color: #000000;
 }
 
-/* ===== NAVIGÁCIÓ ===== */
 header {
     background: #1b4235;
     width: 100%;
+    padding: 10px 0;
+    position: relative;
+    z-index: 100;
 }
 
 .navbar {
@@ -23,7 +25,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 0 20px;
 }
 
 .nav-left {
@@ -42,27 +44,31 @@ header {
     font-weight: bold;
 }
 
+.nav-right {
+    display: flex; /* Desktopon látszik */
+    gap: 20px;
+}
+
 .nav-right a {
     color: #ffffff;
     text-decoration: none;
-    margin-left: 20px;
     font-size: 16px;
     transition: color 0.3s;
 }
 
-.nav-right a:hover,
-.nav-right a.active {
+.nav-right a:hover {
     color: #b88364;
 }
 
 /* Hamburger */
 .hamburger {
-    display: none;
-    color: #ffffff;
+    display: none; /* Desktopon rejtve */
     font-size: 30px;
+    color: #ffffff;
     cursor: pointer;
+    z-index: 1100;
+    position: relative;
 }
-
 /* ===== HERO ===== */
 .hero {
     display: flex;
