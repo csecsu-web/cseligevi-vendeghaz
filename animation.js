@@ -23,6 +23,21 @@ document.addEventListener("DOMContentLoaded", function() {
     }, {
         threshold: 0.2 // amikor 20%-a látszik
     });
+window.addEventListener('scroll', () => {
+    const fadeEls = document.querySelectorAll('.fade-slide');
+    fadeEls.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+            el.classList.add('active');
+        }
+    });
+});
+
+// Az oldal betöltésekor az első sor fade-in
+window.addEventListener('load', () => {
+    const firstFade = document.querySelector('.fade-slide');
+    if (firstFade) firstFade.classList.add('active');
+});
 
     faders.forEach(fader => {
         appearOnScroll.observe(fader);
