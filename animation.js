@@ -44,3 +44,33 @@ window.addEventListener('load', () => {
     });
 });
 
+// Fade-in scroll animáció
+const faders = document.querySelectorAll('.fade-slide');
+const footer = document.querySelector('footer');
+
+const appearOptions = {
+    threshold: 0.2
+};
+
+const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('active');
+        appearOnScroll.unobserve(entry.target);
+    });
+}, appearOptions);
+
+faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+});
+
+// Footer külön: csak amikor látható
+const footerObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            footer.classList.add('show');
+        }
+    });
+}, { threshold: 0.1 });
+
+footerObserver.observe(footer);
