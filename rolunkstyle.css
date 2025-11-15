@@ -1,4 +1,4 @@
-/* ALAPOK */
+/* ===== ALAPOK ===== */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -15,18 +15,126 @@ body {
     background-color: #1b4235;
     padding: 10px 20px;
 }
-.nav-logo img {
-    height: 50px;
-}
-.nav-links {
-    list-style: none;
+.nav-left {
     display: flex;
-    gap: 20px;
+    align-items: center;
+    gap: 10px;
 }
-.nav-links li a {
+.nav-logo {
+    height: 40px;
+}
+.nav-title {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 20px;
+}
+.nav-right a {
     text-decoration: none;
     color: #ffffff;
     font-weight: bold;
+    margin-left: 20px;
+    transition: color 0.3s;
 }
-.nav-links li a:hover {
+.nav-right a:hover, .nav-right a.active {
     color: #b88364;
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* RÓLUNK SZEKCIÓ */
+.rolunk {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.rolunk-row {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.rolunk-text {
+    flex: 1;
+    font-size: 1.15rem;
+    line-height: 1.7;
+}
+
+.rolunk-image {
+    flex: 1;
+}
+.rolunk-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+/* FOOTER */
+footer {
+    background-color: #1b4235;
+    color: #fff;
+    padding: 30px 20px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.social-icons img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+/* MOBIL */
+@media (max-width: 900px) {
+    .rolunk-row {
+        flex-direction: column;
+    }
+    .rolunk-image img {
+        max-width: 80%;
+    }
+    .hamburger {
+        display: block;
+    }
+    .nav-right {
+        display: none;
+        flex-direction: column;
+        background: #1b4235;
+        padding: 20px;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 70px;
+    }
+    .nav-right.active {
+        display: flex;
+    }
+    .nav-right a {
+        margin: 10px 0;
+        font-size: 18px;
+    }
+}
+
+/* ===== SCROLL ANIMÁCIÓ ===== */
+.fade-slide {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+.fade-slide.active {
+    opacity: 1;
+    transform: translateY(0);
+}
