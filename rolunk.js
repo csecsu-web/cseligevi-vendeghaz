@@ -1,24 +1,42 @@
-// Fade-in animáció scrollra
-const faders = document.querySelectorAll('.fade-slide');
-const footer = document.querySelector('footer');
-
-const appearOptions = { threshold: 0.2, rootMargin:"0px 0px -50px 0px" };
-const appearOnScroll = new IntersectionObserver(function(entries){
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add('active');
+/* ===== FADE-IN / FADE-OUT ===== */
+window.addEventListener('scroll', () => {
+    const elements = document.querySelectorAll('.fade-slide');
+    elements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 100 && rect.bottom > 50){
+            el.classList.add('active');
+        } else {
+            el.classList.remove('active');
         }
     });
-}, appearOptions);
+});
 
-faders.forEach(fader => appearOnScroll.observe(fader));
+/* ===== HAMBURGER MENÜ ===== */
+function toggleMenu() {
+    const nav = document.getElementById("navLinks");
+    nav.classList.toggle("active");
+}
 
-// Footer fade-in
-const footerObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            footer.style.opacity = 1;
+/* ===== SZALAGOS KÉPGALÉRIA (OPCIONÁLIS) ===== */
+function initImageTicker() {
+    const tickers = document.querySelectorAll('.image-ticker-row');
+    tickers.forEach((row, index) => {
+        let pos = 0;
+        const speed = 1 + index; // soronként eltérő sebesség
+        function animate() {
+            pos -= speed;
+            if(Math.abs(pos) >= row.scrollWidth / 2){
+                pos = 0;
+            }
+            row.style.transform = `translateX(${pos}px)`;
+            requestAnimationFrame(animate);
         }
+        animate();
     });
-}, {threshold:0.1});
-footerObserver.observe(footer);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    if(document.querySelector('.image-ticker-row')){
+        initImageTicker();
+    }
+});
