@@ -1,108 +1,137 @@
-/* ===== ALAP ===== */
-:root{
-  --dark-green: #1b4235;
-  --accent: #b88364;
-  --light: #ece7e3;
-  --cream: #edd3c5;
-  --text: #391b0b;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family: Arial, Helvetica, sans-serif;
-  background:var(--light);
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
+/* ALAPOK */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ece7e3;
+    color: #391b0b;
 }
 
-/* ===== NAV ===== */
-.site-header{background:var(--dark-green)}
-.navbar{
-  max-width:1200px;
-  margin:0 auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:12px 20px;
+/* NAV */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1b4235;
+    padding: 10px 20px;
 }
-.nav-left{display:flex;align-items:center;gap:10px}
-.nav-logo{height:44px}
-.nav-title{color:#fff;font-weight:700;font-size:18px}
-.nav-right{display:flex;gap:18px;align-items:center}
-.nav-right a{color:#fff;text-decoration:none;font-weight:600}
-.nav-right a.active{text-decoration:underline}
-.hamburger{display:none;background:none;border:0;color:#fff;font-size:26px;cursor:pointer}
-
-/* ===== RÓLUNK SZAKASZ ===== */
-.rolunk-section{padding:40px 20px}
-.rolunk-wrap{
-  max-width:1200px;
-  margin:0 auto;
-  display:flex;
-  gap:40px;
-  align-items:center; /* ez középre igazítja a képet a szöveg magasságához */
-  justify-content:space-between;
+.nav-logo img {
+    height: 50px;
+}
+.nav-title {
+    color: #fff;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.nav-right a {
+    text-decoration: none;
+    color: #ffffff;
+    margin-left: 20px;
+    font-weight: bold;
+}
+.nav-right a:hover {
+    color: #b88364;
 }
 
-/* SZÖVEG (felülről animál) */
-.rolunk-text{flex:1;font-size:1.12rem;line-height:1.7}
-.rolunk-text h1{color:var(--dark-green);margin-bottom:12px;font-size:28px}
-
-/* GALÉRIA (alulról animál) */
-.rolunk-gallery{flex:1;display:flex;align-items:center;justify-content:center}
-.carousel{width:100%}
-.slide{display:none;gap:14px;justify-content:center;align-items:center}
-.slide img{width:100%;max-width:260px;border-radius:10px;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,0.12)}
-
-/* carousel gombok */
-.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:var(--dark-green);color:#fff;border:0;width:44px;height:44px;border-radius:50%;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,0.12)}
-.prev{left:18px}.next{right:18px}
-.carousel-btn:hover{background:var(--accent)}
-
-/* ===== FOOTER ===== */
-.site-footer{background:var(--dark-green);color:#fff;padding:18px 20px}
-.footer-inner{max-width:1200px;margin:0 auto;display:flex;gap:20px;align-items:center;justify-content:space-between}
-.footer-inner .contact{line-height:1.4}
-.footer-inner .social img{width:34px;height:34px;border-radius:6px}
-
-/* ===== ANIMÁCIÓK (B - látványos) ===== */
-/* alap rejtés */
-.reveal-top, .reveal-bottom{opacity:0;transform-origin:center;transition: all 900ms cubic-bezier(.2,.9,.2,1);will-change:transform,opacity}
-
-/* felülről érkező szöveg */
-.reveal-top{transform: translateY(-40px) scale(.98)}
-
-/* alulról érkező galéria */
-.reveal-bottom{transform: translateY(40px) scale(.98)}
-
-/* amikor látszik */
-.in-view.reveal-top{opacity:1;transform: translateY(0) scale(1)}
-.in-view.reveal-bottom{opacity:1;transform: translateY(0) scale(1)}
-
-/* finom delay lehetőség (ha szeretnéd). Példa: nagyobb késleltetés a hosszabb bekezdésre */
-.rolunk-text p:nth-of-type(1){transition-delay:0ms}
-.rolunk-text p:nth-of-type(2){transition-delay:80ms}
-.rolunk-text p:nth-of-type(3){transition-delay:160ms}
-.rolunk-text p:nth-of-type(4){transition-delay:240ms}
-
-/* ===== RESZPONZÍV ===== */
-@media (max-width: 1000px){
-  .rolunk-wrap{gap:26px}
-  .slide img{max-width:220px}
-}
-@media (max-width: 900px){
-  .nav-right{display:none}
-  .hamburger{display:block}
-  .rolunk-wrap{flex-direction:column;align-items:center;text-align:center;padding-bottom:10px}
-  .rolunk-text{order:1}
-  .rolunk-gallery{order:2;width:100%}
-  .slide img{max-width:80%}
-  .footer-inner{flex-direction:column;gap:12px;text-align:center}
-  .carousel-btn{display:none} /* mobilon a képeket simán lapozzuk érintéssel, gombok elrejthetőek */
+/* RÓLUNK SZAKASZ */
+.rolunk {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
-/* kisebb képernyőkre finomítás */
-@media (max-width:500px){
-  .rolunk-text{font-size:1.03rem}
-  .nav-title{font-size:16px}
+.rolunk-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    gap: 30px;
+}
+
+.rolunk-block.reverse {
+    flex-direction: row-reverse;
+}
+
+.rolunk-text {
+    flex: 1;
+    font-size: 1.15rem;
+    line-height: 1.7;
+}
+
+.rolunk-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.rolunk-image img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 10px;
+}
+
+/* FOOTER */
+footer {
+    background-color: #1b4235;
+    color: #ffffff;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+    text-align: left;
+}
+footer .footer-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    width: 100%;
+}
+footer .social-icons img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+/* ANIMÁCIÓ */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+.animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MOBIL */
+@media (max-width: 900px) {
+    .rolunk-block {
+        flex-direction: column !important;
+        text-align: center;
+    }
+
+    .rolunk-image img {
+        max-width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    .nav-right {
+        display: none;
+        flex-direction: column;
+        background-color: #1b4235;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .nav-right.active {
+        display: flex;
+    }
+
+    .nav-right a {
+        margin: 10px 0;
+    }
 }
