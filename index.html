@@ -1,70 +1,99 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cseligevi Vendégház</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="images/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cseligevi Vendégház – Szekszárd</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- SEO alap meta tag-ek -->
+    <meta name="description" content="Cseligevi Vendégház – nyugodt, modern és hangulatos vendégház Szekszárd panorámás tanyavidékén. Szaunával, terasszal, borvidéki programokkal, tökéletes pároknak és családoknak.">
+    <meta name="keywords" content="szekszárd vendégház, szekszárd szállás, vendégház szekszárd, cseligevi vendégház, szekszárd apartman, szállás szekszárd környéke, tanya szállás, borvidék szállás, modern vendégház szekszárd">
+    <meta name="author" content="Cseligevi Vendégház">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Cseligevi Vendégház – Szekszárd">
+    <meta property="og:description" content="Nyugalom, természet és modern kényelem Szekszárd panorámás tanyavidékén. Szauna, terasz, romantikus kikapcsolódás.">
+    <meta property="og:image" content="images/index.png">
+    <meta property="og:type" content="website">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#1b4235">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header>
-  <nav>
-    <ul>
-      <img src="images/favicon.png">
-      <li><a href="index.html">Főoldal</a></li>
-      <li><a href="rolunk.html">Rólunk</a></li>
-      <li><a href="vendeghaz.html">Vendégház</a></li>
-      <li><a href="arak.html">Árak & Foglalás</a></li>
-      <li><a href="programok.html">Programok</a></li>
-    </ul>
-  </nav>
-</header>
+    <!-- NAVIGÁCIÓ -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <img src="images/index.png" alt="Cseligevi Logó" class="nav-logo">
+        </div>
 
-<main>
-  <!-- Hero szakasz -->
-  <section class="hero-section">
-    <div class="hero-content">
-      <div class="hero-text">
-        <h2>Cseligevi Vendégház – A nyugalom, a természet és a romantika ölelésében</h2>
-        <p>Rejtett gyöngyszem Szekszárd tanyavidékén, a borvidék lankái és a Bati Kereszt kilátó panorámája között.</p>
-        <a href="arak.html" class="button">Foglalj most</a>
-        <p class="extra-text">Ébredj a madárcsicserére, kávézz a teraszon, vagy figyeld a naplementét a fenti műfűves teraszról.</p>
-      </div>
-      <img src="images/hero.png" alt="Cseligevi Vendégház">
-    </div>
-  </section>
-</main>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Főoldal</a></li>
+            <li><a href="rolunk.html">Rólunk</a></li>
+            <li><a href="vendeghaz.html">Vendégház</a></li>
+            <li><a href="arak.html">Árak és foglalás</a></li>
+            <li><a href="programok.html">Programok</a></li>
+        </ul>
+    </nav>
 
-<!-- Footer -->
-<footer>
-  <div class="wrap footer-content">
-    <div class="contact-info">
-      <p>Telefon: +36708844779, +36703346060</p>
-      <p>Email: cseligevi5@gmail.com</p>
-      <p>Cím: 8MRP+C4 Szekszárd, Cseligevi vendégház</p>
 
-      <!-- Social ikonok JPG -->
-      <div class="social-icons">
-        <a href="https://www.facebook.com/people/Cseligevi-Vend%C3%A9gh%C3%A1z/61583771781727" target="_blank">
-          <img src="icons/facebook.jpg" alt="Facebook">
-        </a>
-        <a href="https://www.instagram.com/cseligevivendeghaz" target="_blank">
-          <img src="icons/instagram.jpg" alt="Instagram">
-        </a>
-        <a href="https://www.tiktok.com/@cseligevivendeghaz" target="_blank">
-          <img src="icons/tiktok.jpg" alt="TikTok">
-        </a>
-      </div>
+    <!-- HERO SZAKASZ -->
+    <header class="hero">
+        <div class="hero-text">
+            <h1>Cseligevi Vendégház</h1>
+            <p>A nyugalom, a természet és a romantika ölelésében.</p>
+            <a href="arak.html" class="btn">Foglalj most</a>
+        </div>
+    </header>
 
-      <!-- Térkép -->
-      <div class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2754.427920749452!2d18.68525769999999!3d46.3410509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4742ed0025e367a3%3A0x671aa8f3d483466c!2zQ3NlbGlnZXZpIFZlbmTDqWdow6F6!5e0!3m2!1shu!2shu!4v1763162135436!5m2!1shu!2shu" width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </div>
-  </div>
-</footer>
+
+    <!-- FŐ SZÖVEG BLOKK (zöld háttér) -->
+    <section class="intro-section">
+        <h2>Rejtett gyöngyszem Szekszárd tanyavidékén</h2>
+        <p>
+            A Cseligevi Vendégház a borvidék lankái és a Bati Kereszt kilátó panorámája között helyezkedik el.
+            Modern kényelem, természetközeli hangulat és teljes nyugalom vár.
+        </p>
+        <p>
+            Ébredj madárcsicsergésre, élvezd a napfelkeltét a teraszon, vagy csodáld a naplementét a hegygerincről.
+        </p>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-left">
+            <h3>Kapcsolat</h3>
+            <p>Telefon: +36 70 884 4779</p>
+            <p>Telefon: +36 70 334 6060</p>
+            <p>Email: cseligevi5@gmail.com</p>
+            <p>Cím: 8MRP+C4 Szekszárd, Cseligevi vendégház</p>
+
+            <div class="footer-icons">
+                <a href="https://www.facebook.com/people/Cseligevi-Vend%C3%A9gh%C3%A1z/61583771781727/">
+                    <img src="images/facebook.jpg" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com/cseligevivendeghaz">
+                    <img src="images/instagram.jpg" alt="Instagram">
+                </a>
+                <a href="https://www.tiktok.com/@cseligevivendeghaz">
+                    <img src="images/tiktok.jpg" alt="TikTok">
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2754.427920749452!2d18.68525769999999!3d46.3410509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4742ed0025e367a3%3A0x671aa8f3d483466c!2zQ3NlbGlnZXZpIFZlbmTDqWdow6F6!5e0!3m2!1shu!2hu!4v1763162135436!5m2!1hu!2hu"
+                width="350" height="250" style="border:0;" loading="lazy"></iframe>
+        </div>
+    </footer>
 
 </body>
 </html>
