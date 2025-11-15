@@ -1,19 +1,30 @@
-// Fade in/out minden fade-slide elemre
-const faders = document.querySelectorAll('.fade-slide');
+function toggleMenu(){
+    const nav=document.getElementById("navLinks");
+    nav.classList.toggle("active");
+}
 
-const appearOptions = { threshold:0.1 };
-
-const appearOnScroll = new IntersectionObserver(function(entries, observer){
+// Scroll animáció
+const faders=document.querySelectorAll(".fade-slide");
+const observer=new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
         if(entry.isIntersecting){
-            entry.target.classList.add('active');
-        } else {
-            entry.target.classList.remove('active');
+            entry.target.classList.add("active");
         }
     });
-}, appearOptions);
+},{threshold:0.2});
 
-// alkalmazzuk
-faders.forEach(fader => {
-    appearOnScroll.observe(fader);
-});
+// Marquee képek folyamatos
+const marquees=document.querySelectorAll(".marquee-row");
+marquees.forEach(marquee=>{observer.observe(marquee);});
+faders.forEach(fader=>observer.observe(fader));
+
+// Footer fade-in scroll
+const footer=document.querySelector("footer");
+const footerObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            footer.style.opacity="1";
+        }
+    });
+},{threshold:0.2});
+footerObserver.observe(footer);
