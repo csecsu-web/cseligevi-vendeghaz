@@ -1,87 +1,62 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cseligevi Vendégház – Szekszárd</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cseligevi Vendégház – Szekszárd szállás | Vendégház a természetben</title>
 
-  <!-- SEO -->
-  <meta name="description" content="Cseligevi Vendégház Szekszárdon – természetközeli szállás szaunával, panorámával, pároknak és családoknak.">
-  <meta name="keywords" content="szekszárd vendégház, szállás szekszárd, borvidék szállás, cseligevi">
+<meta name="description" content="Cseligevi Vendégház Szekszárdon – modern, természetközeli szállás szaunával, nagy kerttel és panorámával. Szekszárd vendégház, szállás Szekszárd, borvidék.">
+<meta name="keywords" content="szekszárd vendégház, szekszárd szállás, vendégház szekszárd, cseligevi vendégház, borvidék szállás, apartman szekszárd">
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
 
-  <!-- NAV -->
-  <header class="site-header">
-    <nav class="navbar">
-      <div class="nav-left">
-        <img src="images/favicon.png" class="nav-logo">
-        <span class="nav-title">Cseligevi Vendégház</span>
-      </div>
+<!-- NAVIGÁCIÓ -->
+<header>
+    <nav class="navbar animate-on-scroll">
+        <div class="nav-left">
+            <img src="images/favicon.png" alt="Cseligevi logó" class="nav-logo">
+            <span class="nav-title">Cseligevi Vendégház</span>
+        </div>
 
-      <div id="navLinks" class="nav-right">
-        <a href="index.html" class="active">Főoldal</a>
-        <a href="rolunk.html">Rólunk</a>
-        <a href="vendeghaz.html">Vendégház</a>
-        <a href="arak.html">Árak & Foglalás</a>
-        <a href="programok.html">Programok</a>
-      </div>
+        <div class="nav-right" id="navLinks">
+            <a href="index.html">Főoldal</a>
+            <a href="rolunk.html">Rólunk</a>
+            <a href="vendeghaz.html">Vendégház</a>
+            <a href="arak.html">Árak és foglalás</a>
+            <a href="programok.html">Programok</a>
+        </div>
 
-      <button class="hamburger" id="hamburger">☰</button>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
     </nav>
-  </header>
+</header>
 
-  <!-- HERO -->
-  <section class="hero-section">
-    <div class="hero-wrap">
-
-      <div class="hero-text reveal-top">
-        <h1>Üdvözlünk a Cseligevi Vendégházban</h1>
+<!-- HERO RÉSZ: SZÖVEG + KÉP -->
+<section class="hero animate-on-scroll">
+    <div class="hero-text">
+        <h1>Cseligevi Vendégház</h1>
         <p>
-          A Szekszárdi borvidék szívében, csendben, nyugalomban, gyönyörű panorámával
-          várunk mindenkit, aki kikapcsolódásra, feltöltődésre vágyik.
+            A nyugalom, a természet és a modern kényelem találkozása Szekszárd csendes, 
+            tanyás dombvidékén. Ébredj madárcsicsergésre, élvezd a panorámát és töltődj fel.
         </p>
-        <a href="arak.html" class="hero-btn">Foglalás</a>
-      </div>
 
-      <div class="hero-img reveal-bottom">
-        <img src="images/hero.jpg" >
-      </div>
+        <a href="arak.html" class="foglalj-gomb">Foglalj most</a>
 
-    </div>
-  </section>
-
-  <!-- SZEKCIÓK -->
-  <section class="info-section reveal-bottom">
-    <h2>Miért minket válassz?</h2>
-    <p>
-      Tágas kert, szauna, természetközeli környezet, csillagos égbolt,
-      szőlősorok és teljes nyugalom – ideális pároknak és családoknak.
-    </p>
-  </section>
-
-  <section class="features reveal-top">
-    <div class="feature-card">
-      <img src="images/szauna.jpg" alt="Szauna">
-      <h3>Szauna</h3>
+        <p class="hero-extra">
+            A Szekszárdi borvidék szívében várunk – szaunával, nagy kerttel és lenyűgöző kilátással.
+            Pihenj, töltődj, élvezd a természetet.
+        </p>
     </div>
 
-    <div class="feature-card">
-      <img src="images/panorama.jpg" alt="Panoráma">
-      <h3>Gyönyörű kilátás</h3>
+    <div class="hero-image animate-on-scroll">
+        <img src="images/hero.png" alt="Cseligevi Vendégház">
     </div>
+</section>
 
-    <div class="feature-card">
-      <img src="images/kert.jpg" alt="Tágas kert">
-      <h3>Tágas kert</h3>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-<footer>
+<!-- FOOTER -->
+<footer class="animate-on-scroll">
     <div class="footer-container">
 
         <div class="footer-left">
@@ -95,12 +70,13 @@
         <div class="footer-middle">
             <h3>Kövess minket</h3>
             <div class="social-icons">
-                <a href="#"><img src="images/facebook.jpg" alt="Facebook"></a>
-                <a href="#"><img src="images/instagram.jpg" alt="Instagram"></a>
-                <a href="#"><img src="images/tiktok.jpg" alt="TikTok"></a>
+                <a href="https://www.facebook.com/people/Cseligevi-Vend%C3%A9gh%C3%A1z/61583771781727"><img src="images/facebook.jpg" alt="Facebook"></a>
+                <a href="https://www.instagram.com/cseligevivendeghaz"><img src="images/instagram.jpg" alt="Instagram"></a>
+                <a href="https://www.tiktok.com/@cseligevivendeghaz"><img src="images/tiktok.jpg" alt="TikTok"></a>
             </div>
         </div>
-      <div class="footer-right">
+
+        <div class="footer-right">
             <h3>Hol találsz minket?</h3>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2754.427920749452!2d18.68525769999999!3d46.3410509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4742ed0025e367a3%3A0x671aa8f3d483466c!2zQ3NlbGlnZXZpIFZlbmTDqWdow6F6!5e0!3m2!1shu!2hu!4v1763162135436!5m2!1shu!2hu"
                     width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
@@ -108,26 +84,15 @@
 
     </div>
 </footer>
-  <!-- JS: Menü + animáció -->
-  <script>
-    // NAV
-    const hamburger = document.getElementById("hamburger");
-    const navLinks = document.getElementById("navLinks");
 
-    hamburger.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-    });
+<script>
+function toggleMenu() {
+    const nav = document.getElementById("navLinks");
+    nav.classList.toggle("active");
+}
+</script>
 
-    // ANIMÁCIÓK
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("in-view");
-      });
-    }, { threshold: 0.18 });
-
-    document.querySelectorAll(".reveal-top, .reveal-bottom")
-      .forEach(el => observer.observe(el));
-  </script>
+<script src="animation.js"></script>
 
 </body>
 </html>
