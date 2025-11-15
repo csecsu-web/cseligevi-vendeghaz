@@ -1,30 +1,25 @@
-function toggleMenu(){
-    const nav=document.getElementById("navLinks");
-    nav.classList.toggle("active");
-}
-
 // Scroll animáció
-const faders=document.querySelectorAll(".fade-slide");
-const observer=new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
+const faders = document.querySelectorAll('.fade-slide');
+const footer = document.querySelector('footer');
+
+const appearOptions = { threshold: 0.2, rootMargin:"0px 0px -50px 0px" };
+const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll){
+    entries.forEach(entry => {
         if(entry.isIntersecting){
-            entry.target.classList.add("active");
+            entry.target.classList.add('active');
         }
     });
-},{threshold:0.2});
+}, appearOptions);
 
-// Marquee képek folyamatos
-const marquees=document.querySelectorAll(".marquee-row");
-marquees.forEach(marquee=>{observer.observe(marquee);});
-faders.forEach(fader=>observer.observe(fader));
+faders.forEach(fader => appearOnScroll.observe(fader));
 
-// Footer fade-in scroll
-const footer=document.querySelector("footer");
-const footerObserver=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
+// Footer fade-in
+const footerObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
         if(entry.isIntersecting){
-            footer.style.opacity="1";
+            footer.style.opacity = 1;
         }
     });
-},{threshold:0.2});
+}, {threshold:0.1});
+
 footerObserver.observe(footer);
