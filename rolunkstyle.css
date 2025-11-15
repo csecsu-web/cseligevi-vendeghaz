@@ -18,120 +18,15 @@ body {
 .nav-logo img {
     height: 50px;
 }
-.nav-title {
-    color: #fff;
-    font-weight: bold;
-    margin-left: 10px;
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
 }
-.nav-right a {
+.nav-links li a {
     text-decoration: none;
     color: #ffffff;
-    margin-left: 20px;
     font-weight: bold;
 }
-.nav-right a:hover {
+.nav-links li a:hover {
     color: #b88364;
-}
-
-/* RÓLUNK SZAKASZ */
-.rolunk {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-.rolunk-block {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 60px;
-    gap: 30px;
-}
-
-.rolunk-block.reverse {
-    flex-direction: row-reverse;
-}
-
-.rolunk-text {
-    flex: 1;
-    font-size: 1.15rem;
-    line-height: 1.7;
-}
-
-.rolunk-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.rolunk-image img {
-    width: 100%;
-    max-width: 350px;
-    border-radius: 10px;
-}
-
-/* FOOTER */
-footer {
-    background-color: #1b4235;
-    color: #ffffff;
-    padding: 30px 20px;
-    display: flex;
-    justify-content: center;
-    text-align: left;
-}
-footer .footer-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    max-width: 1200px;
-    width: 100%;
-}
-footer .social-icons img {
-    width: 40px;
-    margin-right: 10px;
-}
-
-/* ANIMÁCIÓ */
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease-out;
-}
-
-.animate-on-scroll.animated {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* MOBIL */
-@media (max-width: 900px) {
-    .rolunk-block {
-        flex-direction: column !important;
-        text-align: center;
-    }
-
-    .rolunk-image img {
-        max-width: 80%;
-        margin-bottom: 20px;
-    }
-
-    .navbar {
-        flex-direction: column;
-    }
-
-    .nav-right {
-        display: none;
-        flex-direction: column;
-        background-color: #1b4235;
-        width: 100%;
-        padding: 10px 0;
-    }
-
-    .nav-right.active {
-        display: flex;
-    }
-
-    .nav-right a {
-        margin: 10px 0;
-    }
-}
