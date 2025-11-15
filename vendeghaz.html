@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cseligevi Vendégház – Szekszárd</title>
-    <link rel="stylesheet" href="vendéghazstyle.css">
-    <link rel="icon" type="image/png" href="images/favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cseligevi Vendégház – Vendégház</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="vendeghazstyle.css">
+<link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
 
@@ -19,90 +20,73 @@
         <div class="nav-right" id="navLinks">
             <a href="index.html">Főoldal</a>
             <a href="rolunk.html">Rólunk</a>
-            <a href="vendéghaz.html">Vendégház</a>
-            <a href="arak.html">Árak & Foglalás</a>
+            <a href="vendeghaz.html">Vendégház</a>
+            <a href="arak.html">Árak és foglalás</a>
             <a href="programok.html">Programok</a>
         </div>
         <div class="hamburger" onclick="toggleMenu()">☰</div>
     </nav>
 </header>
 
-<!-- HERO -->
-<section class="hero fade-slide">
-    <div class="hero-text">
-        <h1>Cseligevi – A természet ritmusában, a nyugalom otthona</h1>
-        <p>A hétköznapok zaját hátrahagyva megállhatsz, lelassulhatsz, és újra kapcsolódhatsz szeretteidhez és a természethez.</p>
-    </div>
-    <div class="hero-image">
-        <img src="images/hero.png" alt="Cseligevi Vendégház">
-    </div>
-</section>
+<!-- VENDÉGHÁZ SZAKASZ -->
+<main class="vendeghaz">
+    <!-- Földszint -->
+    <section class="card-section fade-slide">
+        <div class="card left-card">
+            <h2>Földszint</h2>
+            <ul>
+                <li>Nappali + Konyha + Étkező</li>
+                <li>Fürdőszoba, zuhanyzó</li>
+                <li>Benti szauna, tökéletes a hideg napok ellazítására</li>
+                <li>Közvetlen kijárat a nagy teraszra</li>
+            </ul>
+        </div>
+    </section>
 
-<!-- FÖLDSZINT -->
-<section class="szakasz foldszint fade-slide">
-    <div class="szoveg">
-        <h2>Földszint</h2>
-        <ul>
-            <li>Nappali + konyha + étkező</li>
-            <li>Fürdőszoba, zuhanyzó</li>
-            <li>Benti szauna</li>
-            <li>Kijárat a teraszra, madárcsicsergés</li>
-        </ul>
-    </div>
-    <div class="kep">
-        <img src="images/foldszint.jpg" alt="Földszint">
-    </div>
-</section>
+    <!-- Emelet -->
+    <section class="card-section fade-slide emelethatter">
+        <div class="card right-card">
+            <h2>Emelet</h2>
+            <ul>
+                <li>Francia ágy, kiúszatos kanapé, könyvespolcok, tároló szekrények</li>
+                <li>Fenti műfűves terasz lélegzetelállító kilátással</li>
+            </ul>
+        </div>
+    </section>
 
-<!-- EMELET -->
-<section class="szakasz emelet fade-slide">
-    <div class="kep">
-        <img src="images/emelet.jpg" alt="Emelet">
-    </div>
-    <div class="szoveg">
-        <h2>Emelet</h2>
-        <ul>
-            <li>Francia ágy, kanapé, könyvespolcok</li>
-            <li>Fenti terasz lélegzetelállító kilátással</li>
-        </ul>
-    </div>
-</section>
+    <!-- Kültéri élmények -->
+    <section class="card-section fade-slide">
+        <div class="card left-card">
+            <h2>Kültéri élmények</h2>
+            <ul>
+                <li>Gyerekcsúszda és játszóhely</li>
+                <li>Sütögetőhely, grillezéshez és piknikhez</li>
+                <li>Tágas zöld telek, a természet közelsége</li>
+            </ul>
+        </div>
+    </section>
 
-<!-- KÜLTÉRI ÉLMÉNYEK -->
-<section class="szakasz kulteri fade-slide">
-    <div class="szoveg">
-        <h2>Kültéri élmények</h2>
-        <ul>
-            <li>Gyerekcsúszda, játszóhely</li>
-            <li>Sütögetőhely, grillezés</li>
-            <li>Tágas zöld telek, természetközeliség</li>
-        </ul>
-    </div>
-    <div class="kep">
-        <img src="images/kulteri.jpg" alt="Kültéri élmények">
-    </div>
-</section>
-
-<!-- KÉPGALÉRIA – SZALAG -->
-<section class="kepgaleria">
-    <div class="galeria-row top-row">
-        <img src="images/galeria1.jpg" alt="">
-        <img src="images/galeria2.jpg" alt="">
-        <img src="images/galeria3.jpg" alt="">
-        <img src="images/galeria4.jpg" alt="">
-        <img src="images/galeria5.jpg" alt="">
-    </div>
-    <div class="galeria-row bottom-row">
-        <img src="images/galeria6.jpg" alt="">
-        <img src="images/galeria7.jpg" alt="">
-        <img src="images/galeria8.jpg" alt="">
-        <img src="images/galeria9.jpg" alt="">
-        <img src="images/galeria10.jpg" alt="">
-    </div>
-</section>
+    <!-- Szalagos képgaléria -->
+    <section class="image-marquee emelethatter">
+        <div class="marquee-row marquee-left">
+            <img src="images/kert.jpg" alt="Kert">
+            <img src="images/haz_kivul.jpg" alt="Ház kívülről">
+            <img src="images/terasz.jpg" alt="Terasz">
+            <img src="images/panorama.jpg" alt="Panoráma">
+            <img src="images/nappali.jpg" alt="Nappali">
+        </div>
+        <div class="marquee-row marquee-right">
+            <img src="images/szauna.jpg" alt="Szauna">
+            <img src="images/haz_kivul2.jpg" alt="Ház kívülről 2">
+            <img src="images/kert2.jpg" alt="Kert 2">
+            <img src="images/panorama2.jpg" alt="Panoráma 2">
+            <img src="images/terasz2.jpg" alt="Terasz 2">
+        </div>
+    </section>
+</main>
 
 <!-- FOOTER -->
-<footer>
+<footer class="fade-slide">
     <div class="footer-container">
         <div class="footer-left">
             <h3>Kapcsolat</h3>
@@ -114,14 +98,15 @@
         <div class="footer-middle">
             <h3>Kövess minket</h3>
             <div class="social-icons">
-                <a href="#"><img src="images/facebook.jpg" alt="Facebook"></a>
-                <a href="#"><img src="images/instagram.jpg" alt="Instagram"></a>
-                <a href="#"><img src="images/tiktok.jpg" alt="TikTok"></a>
+                <a href="https://www.facebook.com"><img src="images/facebook.jpg" alt="Facebook"></a>
+                <a href="https://www.instagram.com"><img src="images/instagram.jpg" alt="Instagram"></a>
+                <a href="https://www.tiktok.com"><img src="images/tiktok.jpg" alt="TikTok"></a>
             </div>
         </div>
         <div class="footer-right">
             <h3>Hol találsz minket?</h3>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2754.427920749452!2d18.68525769999999!3d46.3410509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4742ed0025e367a3%3A0x671aa8f3d483466c!2zQ3NlbGlnZXZpIFZlbmTDqWdow6F6!5e0!3m2!1shu!2hu!4v1763162135436!5m2!1shu!2hu" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2754.427920749452!2d18.68525769999999!3d46.3410509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4742ed0025e367a3%3A0x671aa8f3d483466c!2zQ3NlbGlnZXZpIFZlbmTDqWdow6F6!5e0!3m2!1shu!2hu!4v1763162135436!5m2!1shu!2hu"
+            width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </div>
 </footer>
