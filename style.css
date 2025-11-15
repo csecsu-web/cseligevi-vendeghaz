@@ -100,7 +100,7 @@ footer {
 .footer-content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   max-width: 1200px;
   margin: 0 auto;
   align-items: flex-start;
@@ -113,6 +113,21 @@ footer {
 
 .contact-info p {
   margin: 5px 0;
+}
+
+.social-icons {
+  margin: 15px 0;
+}
+
+.social-icons img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.social-icons a:hover img {
+  opacity: 0.8;
 }
 
 /* Map */
