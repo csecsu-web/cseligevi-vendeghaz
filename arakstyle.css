@@ -123,12 +123,47 @@ footer {
 .social-icons img { width: 40px; margin-right: 10px; }
 
 /* MOBIL */
-@media(max-width:900px){
-    .nav-right { display: none; flex-direction: column; background:#1b4235; position:absolute; width:100%; top:70px; padding:20px;}
-    .nav-right.active{ display:flex; }
-    .nav-right a { margin:10px 0; font-size:18px; }
-    .hamburger { display:block; }
-    .arak-cards { flex-direction: column; align-items: center; }
+@media (max-width: 900px) {
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-right {
+        display: none; /* alapban elrejtve mobilon */
+        flex-direction: column;
+        background: #1b4235;
+        padding: 20px;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 70px;
+        z-index: 1050;
+    }
+
+    .nav-right.active {
+        display: flex;
+    }
+
+    .nav-right a {
+        margin: 10px 0;
+        font-size: 18px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-image img {
+        width: 80%;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
 }
 
 /* SCROLL ANIMÁCIÓK */
