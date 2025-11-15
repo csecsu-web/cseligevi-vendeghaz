@@ -1,97 +1,91 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cseligevi Vendégház – Rólunk</title>
-
-  <!-- SEO -->
-  <meta name="description" content="Cseligevi Vendégház Szekszárdon – nyugalom, természetközeli szállás, szauna, panoráma, családbarát.">
-  <meta name="keywords" content="szekszárd vendégház, szállás szekszárd, Cseligevi Vendégház, borvidék szállás">
-
-  <link rel="stylesheet" href="rolunkstyle.css" />
-  <link rel="icon" type="image/png" href="images/favicon.png" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cseligevi Vendégház – Rólunk</title>
+<link rel="stylesheet" href="rolunkstyle.css">
+<link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
 
-  <!-- NAV -->
-  <header class="site-header">
-    <nav class="navbar">
-      <div class="nav-left">
-        <img src="images/favicon.png" class="nav-logo">
-        <span class="nav-title">Cseligevi Vendégház</span>
-      </div>
+<!-- NAVIGÁCIÓ -->
+<header>
+    <nav class="navbar animate-on-scroll">
+        <div class="nav-left">
+            <img src="images/favicon.png" alt="Cseligevi logó" class="nav-logo">
+            <span class="nav-title">Cseligevi Vendégház</span>
+        </div>
 
-      <div id="navLinks" class="nav-right">
-        <a href="index.html">Főoldal</a>
-        <a href="rolunk.html" class="active">Rólunk</a>
-        <a href="vendeghaz.html">Vendégház</a>
-        <a href="arak.html">Árak &amp; Foglalás</a>
-        <a href="programok.html">Programok</a>
-      </div>
+        <div class="nav-right" id="navLinks">
+            <a href="index.html">Főoldal</a>
+            <a href="rolunk.html">Rólunk</a>
+            <a href="vendeghaz.html">Vendégház</a>
+            <a href="arak_foglalas.html">Árak & Foglalás</a>
+            <a href="programok.html">Programok</a>
+        </div>
 
-      <button class="hamburger" id="hamburger" aria-label="Menü" aria-expanded="false">☰</button>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
     </nav>
-  </header>
+</header>
 
-  <!-- RÓLUNK: SZÖVEG + GALÉRIA (középre igazítva) -->
-  <main>
-    <section class="rolunk-section">
-      <div class="rolunk-wrap">
-
-        <!-- Szöveg (felülről animál) -->
-        <div class="rolunk-text reveal-top">
-          <h1>Cseligevi – A természet ritmusában, a nyugalom otthona</h1>
-
-          <p>
-            A Cseligevi Vendégházat úgy álmodtuk meg, hogy legyen egy hely, ahol a hétköznapok zaját hátrahagyva
-            megállhatsz, lelassulhatsz, és újra kapcsolódhatsz szeretteidhez és a természethez.
-          </p>
-
-          <p>
-            Vendégházunk a Szekszárdi borvidék tanyás, hegygerincen fekvő részén található, csupán 3 km-re a híres
-            Bati Kereszt kilátótól és közel a Heimann borászathoz. Ha hosszabb túrára vágysz, Sötétvölgy és környéke is
-            könnyen elérhető (Haramia-forrás ~8,2 km, a tó ~7,9 km). A dombok és szőlősorok látványa minden pillanatban elbűvöl.
-          </p>
-
-          <p>
-            A ház ideális pároknak és családoknak: romantikus pillanatok, naplementék, játékos gyerekek a tágas kertben,
-            és közös sütögetések a szabadban. A benti szauna gondoskodik a teljes feltöltődésről.
-          </p>
-
-          <p>
-            Cseligevi nem csupán egy szállás – egy hely, ahol a természet lassú ritmusa újra tanít élvezni minden pillanatot.
-          </p>
+<!-- RÓLUNK SZAKASZ -->
+<section class="rolunk">
+    <!-- Első blokk: szöveg balra, kép jobbra -->
+    <div class="rolunk-block animate-on-scroll">
+        <div class="rolunk-text">
+            <h1>Cseligevi – A természet ritmusában, a nyugalom otthona</h1>
+            <p>
+                A Cseligevi Vendégházat úgy álmodtuk meg, hogy legyen egy hely, ahol a hétköznapok zaját hátrahagyva megállhatsz,
+                lelassulhatsz, és újra kapcsolódhatsz szeretteidhez és a természethez.
+            </p>
         </div>
-
-        <!-- Galéria (alulról animál), KÖZÉPRE igazítva a szöveg magasságához -->
-        <div class="rolunk-gallery reveal-bottom" aria-hidden="false">
-          <!-- A carousel-ban minden slide két képet mutat; desktopon egymás mellett, mobilon egymás alatt -->
-          <div class="carousel" id="carousel">
-            <div class="slide">
-              <img src="images/kert.jpg" alt="Cseligevi Vendégház kertje">
-              <img src="images/haz_kivul.jpg" alt="Cseligevi Vendégház kívülről">
-            </div>
-            <div class="slide">
-              <img src="images/szauna.jpg" alt="Benti szauna a Cseligevi Vendégházban">
-              <img src="images/terasz.jpg" alt="Terasz kilátással a borvidékre">
-            </div>
-            <div class="slide">
-              <img src="images/panorama.jpg" alt="Panoráma a Cseligevi Vendégházból">
-              <img src="images/nappali.jpg" alt="Nappali és étkező a vendégházban">
-            </div>
-          </div>
-
-          <!-- Carousel vezérlők -->
-          <button class="carousel-btn prev" id="prevBtn" aria-label="Előző kép">❮</button>
-          <button class="carousel-btn next" id="nextBtn" aria-label="Következő kép">❯</button>
+        <div class="rolunk-image">
+            <img src="images/kert.jpg" alt="Cseligevi Vendégház kertje">
         </div>
-      </div>
-    </section>
-  </main>
+    </div>
 
- <!-- FOOTER -->
-<footer>
+    <!-- Második blokk: kép balra, szöveg jobbra -->
+    <div class="rolunk-block animate-on-scroll reverse">
+        <div class="rolunk-image">
+            <img src="images/haz_kivul.jpg" alt="Cseligevi Vendégház kívülről">
+        </div>
+        <div class="rolunk-text">
+            <p>
+                Vendégházunk a Szekszárdi borvidék tanyás, hegygerincen fekvő részén található, csupán 3 km-re a híres Bati Kereszt kilátótól
+                és közel a Heimann borászathoz. A természet, a dombok és a szőlősorok látványa minden pillanatban elbűvöl.
+            </p>
+        </div>
+    </div>
+
+    <!-- Harmadik blokk: szöveg balra, kép jobbra -->
+    <div class="rolunk-block animate-on-scroll">
+        <div class="rolunk-text">
+            <p>
+                A ház ideális pároknak és családoknak: romantikus pillanatok, naplementék, játékos gyerekek a tágas kertben,
+                és közös sütögetések a szabadban. A benti szauna gondoskodik a teljes feltöltődésről.
+            </p>
+        </div>
+        <div class="rolunk-image">
+            <img src="images/szauna.jpg" alt="Benti szauna a Cseligevi Vendégházban">
+        </div>
+    </div>
+
+    <!-- Negyedik blokk: kép balra, szöveg jobbra -->
+    <div class="rolunk-block animate-on-scroll reverse">
+        <div class="rolunk-image">
+            <img src="images/terasz.jpg" alt="Terasz kilátással a borvidékre">
+        </div>
+        <div class="rolunk-text">
+            <p>
+                Cseligevi nem csak egy szállás – egy hely, ahol a természet lassú ritmusa újra tanít élvezni minden pillanatot.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="animate-on-scroll">
     <div class="footer-container">
 
         <div class="footer-left">
@@ -105,12 +99,13 @@
         <div class="footer-middle">
             <h3>Kövess minket</h3>
             <div class="social-icons">
-                <a href="#"><img src="images/facebook.jpg" alt="Facebook"></a>
-                <a href="#"><img src="images/instagram.jpg" alt="Instagram"></a>
-                <a href="#"><img src="images/tiktok.jpg" alt="TikTok"></a>
+                <a href="https://www.facebook.com/people/Cseligevi-Vend%C3%A9gh%C3%A1z/61583771781727"><img src="images/facebook.jpg" alt="Facebook"></a>
+                <a href="https://www.instagram.com/cseligevivendeghaz"><img src="images/instagram.jpg" alt="Instagram"></a>
+                <a href="https://www.tiktok.com/@cseligevivendeghaz"><img src="images/tiktok.jpg" alt="TikTok"></a>
             </div>
         </div>
-      <div class="footer-right">
+
+        <div class="footer-right">
             <h3>Hol találsz minket?</h3>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2754.427920749452!2d18.68525769999999!3d46.3410509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4742ed0025e367a3%3A0x671aa8f3d483466c!2zQ3NlbGlnZXZpIFZlbmTDqWdow6F6!5e0!3m2!1shu!2hu!4v1763162135436!5m2!1shu!2hu"
                     width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
@@ -118,60 +113,14 @@
 
     </div>
 </footer>
-  <!-- JS: hamburger, carousel, és scroll-animáció (IntersectionObserver) -->
-  <script>
-    // HAMBURGER
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    hamburger && hamburger.addEventListener('click', () => {
-      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-      hamburger.setAttribute('aria-expanded', !expanded);
-      navLinks.classList.toggle('active');
-    });
 
-    // CAROUSEL egyszerű vezérlés
-    (function() {
-      const slides = document.querySelectorAll('#carousel .slide');
-      const prev = document.getElementById('prevBtn');
-      const next = document.getElementById('nextBtn');
-      let idx = 0;
+<script>
+function toggleMenu() {
+    const nav = document.getElementById("navLinks");
+    nav.classList.toggle("active");
+}
+</script>
 
-      function show(i) {
-        slides.forEach((s, j) => s.style.display = (j === i ? 'flex' : 'none'));
-      }
-      if (slides.length === 0) return;
-      show(idx);
-
-      prev.addEventListener('click', () => {
-        idx = (idx - 1 + slides.length) % slides.length;
-        show(idx);
-      });
-      next.addEventListener('click', () => {
-        idx = (idx + 1) % slides.length;
-        show(idx);
-      });
-
-      // automatikus csúsztatás (opcionális, 6s)
-      let auto = setInterval(() => { idx = (idx + 1) % slides.length; show(idx); }, 6000);
-      // stop auto on hover
-      const carouselEl = document.getElementById('carousel');
-      carouselEl.addEventListener('mouseenter', () => clearInterval(auto));
-      carouselEl.addEventListener('mouseleave', () => auto = setInterval(() => { idx = (idx + 1) % slides.length; show(idx); }, 6000));
-    })();
-
-    // SCROLL-ANIM (B stílus: szöveg felülről, képek alulról)
-    (function() {
-      const options = { threshold: 0.18 };
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-          }
-        });
-      }, options);
-
-      document.querySelectorAll('.reveal-top, .reveal-bottom').forEach(el => observer.observe(el));
-    })();
-  </script>
+<script src="animation.js"></script>
 </body>
 </html>
