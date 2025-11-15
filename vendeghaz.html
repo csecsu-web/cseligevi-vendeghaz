@@ -1,85 +1,94 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cseligevi Vendégház – Vendégház</title>
-    <link rel="stylesheet" href="vendeghazstyle.css">
-    <link rel="icon" type="image/png" href="images/favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cseligevi Vendégház – Szekszárd</title>
+<link rel="stylesheet" href="vendéghazstyle.css">
+<link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
 
 <!-- NAV -->
 <header>
-    <nav class="navbar">
-        <div class="nav-left">
-            <img src="images/favicon.png" alt="Cseligevi logó" class="nav-logo">
-            <span class="nav-title">Cseligevi Vendégház</span>
-        </div>
-        <div class="nav-right" id="navLinks">
-            <a href="index.html">Főoldal</a>
-            <a href="rolunk.html">Rólunk</a>
-            <a href="vendeghaz.html">Vendégház</a>
-            <a href="arak.html">Árak & Foglalás</a>
-            <a href="programok.html">Programok</a>
-        </div>
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
-    </nav>
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="images/favicon.png" alt="Cseligevi logó" class="nav-logo">
+        <span class="nav-title">Cseligevi Vendégház</span>
+    </div>
+    <div class="nav-right" id="navLinks">
+        <a href="index.html">Főoldal</a>
+        <a href="rolunk.html">Rólunk</a>
+        <a href="vendeghaz.html">Vendégház</a>
+        <a href="arak.html">Árak & Foglalás</a>
+        <a href="programok.html">Programok</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+</nav>
 </header>
 
-<!-- FÖLDSZINT -->
-<section class="section light fade-slide">
-    <div class="section-text left">
-        <h2>Földszint</h2>
+<!-- HERO -->
+<section class="hero fade-slide">
+    <div class="hero-text">
+        <h1 class="neon-text">Cseligevi – A természet ritmusában</h1>
+        <p>A Cseligevi Vendégházat úgy álmodtuk meg, hogy a hétköznapok zaját hátrahagyva megállhass, lelassulhass és újra kapcsolódhass szeretteidhez és a természethez.</p>
+    </div>
+    <div class="hero-image">
+        <img src="images/hero.png" alt="Cseligevi Vendégház">
+    </div>
+</section>
+
+<!-- Földszint -->
+<section class="floor-section fade-slide" style="background:#fdf6e3;">
+    <div class="text-left">
+        <h2 class="neon-title">Földszint</h2>
         <ul>
             <li>Nappali + konyha + étkező</li>
             <li>Fürdőszoba, zuhanyzó</li>
             <li>Benti szauna, tökéletes a hideg napok ellazítására</li>
-            <li>Közvetlen kijárat a nagy teraszra, ahol a nap első fényeit és a madárcsicserést élvezheted</li>
+            <li>Közvetlen kijárat a nagy teraszra, napfény és madárcsicsergés</li>
         </ul>
     </div>
 </section>
 
-<!-- EMELET -->
-<section class="section dark fade-slide">
-    <div class="section-text right">
-        <h2>Emelet</h2>
+<!-- Emelet -->
+<section class="floor-section fade-slide" style="background:#b88364;">
+    <div class="text-right">
+        <h2 class="neon-title">Emelet</h2>
         <ul>
-            <li>Francia ágy, kiúszatos kanapé, könyvespolcok, tároló szekrények</li>
-            <li>Fenti műfűves terasz, lélegzetelállító kilátással a hegygerincre és környező borvidékre</li>
+            <li>Francia ágy, kiúszatos kanapé, könyvespolcok, tárolók</li>
+            <li>Műfűves terasz kilátással a hegygerincre és borvidékre</li>
         </ul>
     </div>
 </section>
 
-<!-- KÜLTÉRI ÉLMÉNYEK -->
-<section class="section light fade-slide">
-    <div class="section-text left">
-        <h2>Kültéri élmények</h2>
+<!-- Kültéri élmények -->
+<section class="floor-section fade-slide" style="background:#fdf6e3;">
+    <div class="text-left">
+        <h2 class="neon-title">Kültéri élmények</h2>
         <ul>
             <li>Gyerekcsúszda és játszóhely</li>
-            <li>Sütögetőhely, grillezéshez és közös piknikekhez</li>
-            <li>Tágas zöld telek a természet közelségével</li>
+            <li>Sütögetőhely, grillezés, közös piknik</li>
+            <li>Tágas zöld telek a természet közelségéhez</li>
         </ul>
     </div>
 </section>
 
-<!-- KÉPGALÉRIA -->
-<section class="section gallery-section fade-slide">
-    <div class="gallery-container">
-        <div class="gallery-row row1">
-            <img src="images/kep1.jpg" alt="">
-            <img src="images/kep2.jpg" alt="">
-            <img src="images/kep3.jpg" alt="">
-            <img src="images/kep4.jpg" alt="">
-            <img src="images/kep5.jpg" alt="">
-        </div>
-        <div class="gallery-row row2">
-            <img src="images/kep6.jpg" alt="">
-            <img src="images/kep7.jpg" alt="">
-            <img src="images/kep8.jpg" alt="">
-            <img src="images/kep9.jpg" alt="">
-            <img src="images/kep10.jpg" alt="">
-        </div>
+<!-- Képgaléria szalag -->
+<section class="image-marquee" style="background:#b88364;">
+    <div class="marquee-row row1">
+        <img src="images/kep1.jpg" alt="Kép1">
+        <img src="images/kep2.jpg" alt="Kép2">
+        <img src="images/kep3.jpg" alt="Kép3">
+        <img src="images/kep4.jpg" alt="Kép4">
+        <img src="images/kep5.jpg" alt="Kép5">
+    </div>
+    <div class="marquee-row row2">
+        <img src="images/kep6.jpg" alt="Kép6">
+        <img src="images/kep7.jpg" alt="Kép7">
+        <img src="images/kep8.jpg" alt="Kép8">
+        <img src="images/kep9.jpg" alt="Kép9">
+        <img src="images/kep10.jpg" alt="Kép10">
     </div>
 </section>
 
@@ -96,26 +105,18 @@
         <div class="footer-middle">
             <h3>Kövess minket</h3>
             <div class="social-icons">
-                <a href="#"><img src="images/facebook.jpg" alt="Facebook"></a>
-                <a href="#"><img src="images/instagram.jpg" alt="Instagram"></a>
-                <a href="#"><img src="images/tiktok.jpg" alt="TikTok"></a>
+                <a href="https://www.facebook.com/"><img src="images/facebook.jpg" alt="Facebook"></a>
+                <a href="https://www.instagram.com/"><img src="images/instagram.jpg" alt="Instagram"></a>
+                <a href="https://www.tiktok.com/"><img src="images/tiktok.jpg" alt="TikTok"></a>
             </div>
         </div>
         <div class="footer-right">
             <h3>Hol találsz minket?</h3>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2754.427920749452!2d18.68525769999999!3d46.3410509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4742ed0025e367a3%3A0x671aa8f3d483466c!2zQ3NlbGlnZXZpIFZlbmTDqWdow6F6!5e0!3m2!1shu!2hu!4v1763162135436!5m2!1shu!2hu"
-                    width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!..." width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </div>
 </footer>
 
-<script src="animation.js"></script>
-<script>
-function toggleMenu() {
-    const nav = document.getElementById("navLinks");
-    nav.classList.toggle("active");
-}
-</script>
-
+<script src="vendéghaz.js"></script>
 </body>
 </html>
