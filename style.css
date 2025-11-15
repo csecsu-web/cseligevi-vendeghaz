@@ -43,13 +43,18 @@ header {
     font-weight: bold;
 }
 
-.nav-right a {
-    color: #ffffff;
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 16px;
-    transition: color 0.3s;
+.nav-right {
+    display: none;
+    flex-direction: column;
+    background: #1b4235;  /* sötét zöld */
+    padding: 20px;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 70px;
+    z-index: 999;         /* hamburger alatt, de minden más fölött */
 }
+
 
 .nav-right a:hover {
     color: #b88364;
