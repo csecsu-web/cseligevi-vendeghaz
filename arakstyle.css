@@ -10,7 +10,10 @@ body {
 /* NAVIGÁCIÓ */
 header {
     background: #1b4235;
+    width: 100%;
     padding: 10px 0;
+    position: relative;
+    z-index: 100;
 }
 
 .navbar {
@@ -28,19 +31,41 @@ header {
     gap: 10px;
 }
 
-.nav-logo { height: 40px; }
-.nav-title { color: #ffffff; font-size: 20px; font-weight: bold; }
+.nav-logo {
+    height: 40px;
+}
+
+.nav-title {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-right {
+    display: flex; /* Desktopon látszik */
+    gap: 20px;
+}
+
 .nav-right a {
     color: #ffffff;
     text-decoration: none;
-    margin-left: 20px;
     font-size: 16px;
     transition: color 0.3s;
 }
-.nav-right a:hover { color: #b88364; }
+
+.nav-right a:hover {
+    color: #b88364;
+}
 
 /* Hamburger */
-.hamburger { display: none; font-size: 30px; color: #fff; cursor: pointer; }
+.hamburger {
+    display: none; /* Desktopon rejtve */
+    font-size: 30px;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 1100;
+    position: relative;
+}
 
 /* ÁRAK SZEKCIÓ */
 .arak { max-width: 1200px; margin: 40px auto; padding: 20px; }
