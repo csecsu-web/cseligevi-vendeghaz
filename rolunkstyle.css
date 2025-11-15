@@ -1,63 +1,57 @@
-/* ===== ÁLTALÁNOS ===== */
+/* ALAPOK */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #edd3c5;
+    background-color: #ece7e3;
+    color: #391b0b;
 }
 
-/* ===== NAVIGÁCIÓ ===== */
+/* NAV */
 .navbar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     background-color: #1b4235;
-    color: #ffffff;
     padding: 10px 20px;
 }
-
-.nav-logo {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
+.nav-logo img {
+    height: 50px;
 }
-
-.nav-right a {
-    color: #ffffff;
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+.nav-links li a {
     text-decoration: none;
-    margin-left: 20px;
+    color: #ffffff;
+    font-weight: bold;
 }
-
-.nav-right a:hover {
+.nav-links li a:hover {
     color: #b88364;
 }
 
-.hamburger {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-}
-
-/* ===== RÓLUNK ===== */
-.rolunk {
+/* RÓLUNK KONTAINER */
+.rolunk-container {
+    display: flex;
+    gap: 40px;
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
+    align-items: flex-start;
 }
 
+/* SZÖVEG */
 .rolunk-text {
-    margin-bottom: 40px;
-    color: #391b0b;
+    flex: 1;
+    font-size: 1.15rem; /* kicsit nagyobb */
     line-height: 1.7;
 }
 
-.rolunk-text h1 {
-    color: #1b4235;
-    margin-bottom: 20px;
-}
-
-/* ===== GALÉRIA / CAROUSEL ===== */
+/* CAROUSEL */
 .rolunk-carousel {
+    flex: 1;
     position: relative;
     overflow: hidden;
 }
@@ -69,11 +63,12 @@ body {
 }
 
 .carousel-slide img {
-    width: 45%;
+    width: 100%;
+    max-width: 250px;
     border-radius: 10px;
 }
 
-/* Nyilak */
+/* NYILAK */
 .prev, .next {
     cursor: pointer;
     position: absolute;
@@ -89,66 +84,31 @@ body {
     user-select: none;
 }
 
-.prev { left: 10px; }
-.next { right: 10px; }
+.prev { left: 0; }
+.next { right: 0; }
 
 .prev:hover, .next:hover { background-color: #b88364; }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer {
     background-color: #1b4235;
     color: #ffffff;
+    text-align: center;
     padding: 20px;
 }
-
-.footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+footer .social-icons img {
+    width: 30px;
+    margin: 0 5px;
 }
 
-.footer-left, .footer-middle, .footer-right {
-    margin: 10px;
-}
-
-/* ===== SOCIAL ICONS ===== */
-.social-icons img {
-    width: 32px;
-    height: 32px;
-    margin-right: 10px;
-}
-
-/* ===== MOBIL ===== */
+/* MOBIL */
 @media (max-width: 900px) {
-    .carousel-slide {
+    .rolunk-container {
         flex-direction: column;
     }
 
     .carousel-slide img {
-        width: 80%;
+        max-width: 80%;
         margin-bottom: 20px;
-    }
-
-    .hamburger {
-        display: block;
-    }
-
-    .nav-right {
-        display: none;
-        flex-direction: column;
-        background-color: #1b4235;
-        width: 100%;
-    }
-
-    .nav-right.active {
-        display: flex;
-    }
-
-    .nav-right a {
-        margin: 10px 0;
-    }
-
-    .footer-container {
-        flex-direction: column;
     }
 }
