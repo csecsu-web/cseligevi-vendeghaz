@@ -1,7 +1,6 @@
 /* ===== FADE-IN / FADE-OUT ===== */
 window.addEventListener('scroll', () => {
-    const elements = document.querySelectorAll('.fade-slide');
-    elements.forEach(el => {
+   
         const rect = el.getBoundingClientRect();
         if(rect.top < window.innerHeight - 100 && rect.bottom > 50){
             el.classList.add('active');
