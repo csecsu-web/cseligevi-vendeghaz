@@ -1,158 +1,47 @@
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cseligevi Vendégház – Programok</title>
-    <link rel="stylesheet" href="programokstyle.css">
-    <link rel="icon" type="image/png" href="images/favicon.png">
-</head>
-<body>
-
-<!-- NAV -->
-<header>
-    <nav class="navbar">
-        <div class="nav-left">
-            <img src="images/favicon.png" alt="Cseligevi logó" class="nav-logo">
-            <span class="nav-title">Cseligevi Vendégház</span>
-        </div>
-        <div class="nav-right" id="navLinks">
-            <a href="index.html">Főoldal</a>
-            <a href="rolunk.html">Rólunk</a>
-            <a href="vendeghaz.html">Vendégház</a>
-            <a href="arak.html">Árak & Foglalás</a>
-            <a href="programok.html">Programok</a>
-        </div>
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
-    </nav>
-</header>
-
-<!-- HERO -->
-<section class="hero fade-slide">
-    <div class="hero-text">
-        <h1>Programok és környék</h1>
-        <p>Szekszárdon számos állandóan elérhető, nem borral kapcsolatos program és látnivaló várja a látogatókat – múzeumok, kilátók, tanösvények, fürdők és aktív kikapcsolódási lehetőségek.</p>
-    </div>
+<!doctype html><html lang="hu"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Programok és környék – Cseligevi Vendégház</title>
+<meta name="description" content="Szekszárd látnivalói: múzeumok, kilátók, tanösvények, fürdők és aktív programok.">
+<link rel="stylesheet" href="style.css"><link rel="icon" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="20" fill="%230b0f14"/><text x="50" y="64" font-size="56" text-anchor="middle" fill="%2376d39b">C</text></svg>'>
+</head><body>
+<div data-include="navbar.html"></div>
+<section class="hero"><div class="hero-overlay">
+  <h1>Programok és környék</h1><p>Kulturális élmények, természet és aktív kikapcsolódás</p>
+  <a class="btn" href="vendeghaz.html">Vissza a vendégházhoz</a>
+</div></section>
+<section class="container glass fade-in">
+  <h2>Kulturális és történelmi látnivalók</h2>
+  <ul class="list">
+    <li>Babits Mihály Emlékház</li>
+    <li>Mézeskalács Múzeum</li>
+    <li>BeSweet Csokoládémanufaktúra</li>
+    <li>Bogár-Tanya Néprajzi Magángyűjtemény</li>
+  </ul>
+  <h2>Természet és kilátók</h2>
+  <ul class="list">
+    <li>Kálvária Kilátó</li>
+    <li>Bati-kereszt Kilátó</li>
+    <li>Lösz-szurdik tanösvények</li>
+  </ul>
+  <h2>Aktív kikapcsolódás</h2>
+  <ul class="list">
+    <li>Szekszárdi Családbarát Strand- és Élményfürdő</li>
+    <li>Összkeréken E-BIKE kölcsönzés</li>
+    <li>Vidékjáró Terepjáró túrák</li>
+    <li>Szekszárdi Műjégpálya</li>
+    <li>Airsoft Szekszárd – MilitaryAirsoft</li>
+  </ul>
+  <h2>Városi séták és terek</h2>
+  <ul class="list">
+    <li>Garay tér – Szekszárd főtere, szobrokkal, kávézókkal, rendezvényhelyszínekkel Szallas.hu.</li>
+    <li>Béla király tér – Szabadtéri programok, séták, pihenőhelyek Szallas.hu.</li>
+    <li>Szentháromság szobor – Barokk emlékmű a belvárosban, történelmi jelentőséggel Szallas.hu.</li>
+  </ul>
+  <div class="actions">
+    <a class="btn" href="kepek.html">Képek</a>
+    <a class="btn btn-outline" href="arak.html">Árak és foglalás</a>
+  </div>
 </section>
-
-<!-- PROGRAM SZEKCIÓK -->
-<section class="programs-container fade-slide">
-
-    <!-- Kulturális -->
-    <div class="program-section">
-        <h2>🏛️ Kulturális és történelmi látnivalók</h2>
-        <div class="program-card">
-            <h3>Babits Mihály Emlékház</h3>
-            <p>A híres költő szülőháza, eredeti állapotban megőrizve, irodalmi kiállítással.</p>
-        </div>
-        <div class="program-card">
-            <h3>Mézeskalács Múzeum</h3>
-            <p>Interaktív kiállítás a mézeskalács-készítésről, családbarát program.</p>
-        </div>
-        <div class="program-card">
-            <h3>BeSweet Csokoládémanufaktúra</h3>
-            <p>Látogatóközpont, betekintéssel a kézműves csokoládék világába.</p>
-        </div>
-        <div class="program-card">
-            <h3>Bogár-Tanya Néprajzi Gyűjtemény</h3>
-            <p>Ritka néprajzi tárgyak és helytörténeti emlékek.</p>
-        </div>
-    </div>
-
-    <!-- Természet -->
-    <div class="program-section">
-        <h2>🌄 Természet és kilátók</h2>
-        <div class="program-card">
-            <h3>Kálvária Kilátó</h3>
-            <p>Gyönyörű panoráma Szekszárdra.</p>
-        </div>
-        <div class="program-card">
-            <h3>Bati-kereszt Kilátó</h3>
-            <p>280 méteres domb, tűzrakóhellyel és pihenővel.</p>
-        </div>
-        <div class="program-card">
-            <h3>Lösz-szurdik tanösvények</h3>
-            <p>Természetvédelmi séták madármegfigyeléssel.</p>
-        </div>
-    </div>
-
-    <!-- Aktív kikapcsolódás -->
-    <div class="program-section">
-        <h2>🏊 Aktív kikapcsolódás</h2>
-        <div class="program-card">
-            <h3>Szekszárdi Strand- és Élményfürdő</h3>
-            <p>7 medence, óriáscsúszdák, termálvíz.</p>
-        </div>
-        <div class="program-card">
-            <h3>Összkeréken E-BIKE kölcsönzés</h3>
-            <p>Elektromos kerékpárok túrázáshoz.</p>
-        </div>
-        <div class="program-card">
-            <h3>Vidékjáró Terepjáró túrák</h3>
-            <p>Off-road élményprogramok a dombokon.</p>
-        </div>
-        <div class="program-card">
-            <h3>Szekszárdi Műjégpálya</h3>
-            <p>Téli időszakban nyitva, korcsolyázási lehetőség.</p>
-        </div>
-        <div class="program-card">
-            <h3>Airsoft Szekszárd</h3>
-            <p>Csapatjáték és taktikai sport élményprogram.</p>
-        </div>
-    </div>
-
-    <!-- Városi séták -->
-    <div class="program-section">
-        <h2>🏙️ Városi séták és terek</h2>
-        <div class="program-card">
-            <h3>Garay tér</h3>
-            <p>Főtér, szobrokkal, kávézókkal és rendezvényekkel.</p>
-        </div>
-        <div class="program-card">
-            <h3>Béla király tér</h3>
-            <p>Szabadtéri programok, séták, pihenőhelyek.</p>
-        </div>
-        <div class="program-card">
-            <h3>Szentháromság szobor</h3>
-            <p>Barokk emlékmű a belvárosban, történelmi jelentőséggel.</p>
-        </div>
-    </div>
-
-</section>
-
-<!-- FOOTER -->
-<footer class="fade-slide">
-    <div class="footer-container">
-        <div class="footer-left">
-            <h3>Kapcsolat</h3>
-            <p>📍 8MRP+C4 Szekszárd, Cseligevi Vendégház</p>
-            <p>📞 +36 70 884 4779</p>
-            <p>📞 +36 70 334 6060</p>
-            <p>📧 cseligevi5@gmail.com</p>
-        </div>
-        <div class="footer-middle">
-            <h3>Kövess minket</h3>
-            <div class="social-icons">
-                <a href="#"><img src="images/facebook.jpg" alt="Facebook"></a>
-                <a href="#"><img src="images/instagram.jpg" alt="Instagram"></a>
-                <a href="#"><img src="images/tiktok.jpg" alt="TikTok"></a>
-            </div>
-        </div>
-        <div class="footer-right">
-            <h3>Hol találsz minket?</h3>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2754.427920749452!2d18.68525769999999!3d46.3410509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4742ed0025e367a3%3A0x671aa8f3d483466c!2zQ3NlbGlnZXZpIFZlbmTDqWdow6F6!5e0!3m2!1shu!2hu!4v1763162135436!5m2!1shu!2hu"
-                    width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-    </div>
-</footer>
-
-<script src="programok.js"></script>
-<script>
-function toggleMenu() {
-    const nav = document.getElementById("navLinks");
-    nav.classList.toggle("active");
-}
-</script>
-
-</body>
-</html>
+<div data-include="footer.html"></div>
+<script src="animation.js"></script><script src="include.js"></script>
+</body></html>
