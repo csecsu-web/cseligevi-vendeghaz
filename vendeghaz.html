@@ -1,123 +1,30 @@
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cseligevi Vendégház – Vendégház</title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="vendeghazstyle.css">
-<link rel="icon" type="image/png" href="images/favicon.png">
-</head>
-<body>
-
-<!-- NAVIGÁCIÓ -->
-<header>
-    <nav class="navbar">
-        <div class="nav-left">
-            <img src="images/favicon.png" alt="Cseligevi logó" class="nav-logo">
-            <span class="nav-title">Cseligevi Vendégház</span>
-        </div>
-        <div class="nav-right" id="navLinks">
-            <a href="index.html">Főoldal</a>
-            <a href="rolunk.html">Rólunk</a>
-            <a href="vendeghaz.html">Vendégház</a>
-            <a href="arak.html">Árak és foglalás</a>
-            <a href="programok.html">Programok</a>
-        </div>
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
-    </nav>
-</header>
-
-<!-- VENDÉGHÁZ SZAKASZ -->
-<main class="vendeghaz">
-    <!-- Földszint -->
-    <section class="card-section fade-slide">
-        <div class="card left-card">
-            <h2>Földszint</h2>
-            <ul>
-                <li>Nappali + Konyha + Étkező</li>
-                <li>Fürdőszoba, zuhanyzó</li>
-                <li>Benti szauna, tökéletes a hideg napok ellazítására</li>
-                <li>Közvetlen kijárat a nagy teraszra</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Emelet -->
-    <section class="card-section fade-slide emelethatter">
-        <div class="card right-card">
-            <h2>Emelet</h2>
-            <ul>
-                <li>Francia ágy, kiúszatos kanapé, könyvespolcok, tároló szekrények</li>
-                <li>Fenti műfűves terasz lélegzetelállító kilátással</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Kültéri élmények -->
-    <section class="card-section fade-slide">
-        <div class="card left-card">
-            <h2>Kültéri élmények</h2>
-            <ul>
-                <li>Gyerekcsúszda és játszóhely</li>
-                <li>Sütögetőhely, grillezéshez és piknikhez</li>
-                <li>Tágas zöld telek, a természet közelsége</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Szalagos képgaléria -->
-    <section class="image-marquee emelethatter">
-        <div class="marquee-row marquee-left">
-            <img src="images/kert.jpg" alt="Kert">
-            <img src="images/haz_kivul.jpg" alt="Ház kívülről">
-            <img src="images/terasz.jpg" alt="Terasz">
-            <img src="images/panorama.jpg" alt="Panoráma">
-            <img src="images/nappali.jpg" alt="Nappali">
-        </div>
-        <div class="marquee-row marquee-right">
-            <img src="images/szauna.jpg" alt="Szauna">
-            <img src="images/haz_kivul2.jpg" alt="Ház kívülről 2">
-            <img src="images/kert2.jpg" alt="Kert 2">
-            <img src="images/panorama2.jpg" alt="Panoráma 2">
-            <img src="images/terasz2.jpg" alt="Terasz 2">
-        </div>
-    </section>
-</main>
-
-<!-- FOOTER -->
-<footer class="fade-slide">
-    <div class="footer-container">
-        <div class="footer-left">
-            <h3>Kapcsolat</h3>
-            <p>📍 8MRP+C4 Szekszárd, Cseligevi Vendégház</p>
-            <p>📞 +36 70 884 4779</p>
-            <p>📞 +36 70 334 6060</p>
-            <p>📧 cseligevi5@gmail.com</p>
-        </div>
-        <div class="footer-middle">
-            <h3>Kövess minket</h3>
-            <div class="social-icons">
-                <a href="https://www.facebook.com"><img src="images/facebook.jpg" alt="Facebook"></a>
-                <a href="https://www.instagram.com"><img src="images/instagram.jpg" alt="Instagram"></a>
-                <a href="https://www.tiktok.com"><img src="images/tiktok.jpg" alt="TikTok"></a>
-            </div>
-        </div>
-        <div class="footer-right">
-            <h3>Hol találsz minket?</h3>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2754.427920749452!2d18.68525769999999!3d46.3410509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4742ed0025e367a3%3A0x671aa8f3d483466c!2zQ3NlbGlnZXZpIFZlbmTDqWdow6F6!5e0!3m2!1shu!2hu!4v1763162135436!5m2!1shu!2hu"
-            width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-    </div>
-</footer>
-
-<script src="vendeghaz.js"></script>
-<script>
-function toggleMenu() {
-    const nav = document.getElementById("navLinks");
-    nav.classList.toggle("active");
-}
-</script>
-
-</body>
-</html>
+<!doctype html><html lang="hu"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Árak és foglalás – Cseligevi Vendégház | Szekszárd vendégházak</title>
+<meta name="description" content="Átlátható árak 2 fő részére, minden adóval. Foglalás legfeljebb 1 hétre, rugalmas egyeztetéssel.">
+<link rel="stylesheet" href="style.css"><link rel="icon" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="20" fill="%230b0f14"/><text x="50" y="64" font-size="56" text-anchor="middle" fill="%2376d39b">C</text></svg>'>
+</head><body>
+<div data-include="navbar.html"></div>
+<section class="hero"><div class="hero-overlay">
+  <h1>Árak és foglalás</h1><p>Egyszerű, átlátható, rugalmas</p>
+  <a class="btn" href="mailto:cseligevi5@gmail.com">Foglalás emailben</a>
+</div></section>
+<section class="container fade-in">
+  <div class="grid cards">
+    <div class="card glass"><h3>1 éjszaka</h3><p>50 000 Ft</p></div>
+    <div class="card glass"><h3>2 éjszaka</h3><p>85 000 Ft</p></div>
+    <div class="card glass"><h3>3 éjszaka</h3><p>115 000 Ft</p></div>
+  </div>
+  <div class="glass" style="padding:18px;margin-top:16px">
+    <p>Szállásaink 2 fő részére ideálisak, gyerekekkel is igénybe vehetők (max. 1–2 fő), előzetes egyeztetéssel.</p>
+    <p>Az árak 2 fő részére értendők és tartalmazzák az adót. Foglalás legfeljebb 1 hét időtartamra lehetséges.</p>
+    <p>Kérjük, különleges igényeket előre jelezzen, hogy biztosítani tudjuk a kényelmes és zavartalan pihenést.</p>
+  </div>
+  <div class="actions" style="margin-top:14px">
+    <a class="btn" href="mailto:cseligevi5@gmail.com">Foglalás emailben</a>
+    <a class="btn btn-outline" href="programok.html">Programok és környék</a>
+  </div>
+</section>
+<div data-include="footer.html"></div>
+<script src="animation.js"></script><script src="include.js"></script>
+</body></html>
