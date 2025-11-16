@@ -1,138 +1,53 @@
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cseligevi Vendégház – Főoldal</title>
-
+<!doctype html><html lang="hu"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cseligevi Vendégház – Szekszárd vendégházak | természet, nyugalom</title>
+<meta name="description" content="Szekszárdi vendégház pároknak és családoknak. Panoráma, szauna, természetközeli élmény. Foglalj most: +36 70 884 4779.">
+<meta name="keywords" content="Szekszárd vendégházak, vendégház Szekszárd, szállás Szekszárd, borvidék szállás">
 <link rel="stylesheet" href="style.css">
-<link rel="icon" type="image/png" href="images/favicon.png">
-</head>
-<body>
-
-<!-- NAV -->
-<header>
-    <nav class="navbar">
-        <div class="nav-left">
-            <img src="images/favicon.png" class="nav-logo" alt="logó">
-            <span class="nav-title">Cseligevi Vendégház</span>
-        </div>
-
-        <div class="nav-right" id="navLinks">
-            <a href="index.html">Főoldal</a>
-            <a href="rolunk.html">Rólunk</a>
-            <a href="vendeghaz.html">Vendégház</a>
-            <a href="arak.html">Árak</a>
-            <a href="programok.html">Programok</a>
-        </div>
-
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
-    </nav>
-</header>
-
-
-
-<!-- HERO -->
+<link rel="icon" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="20" fill="%230b0f14"/><text x="50" y="64" font-size="56" text-anchor="middle" fill="%2376d39b">C</text></svg>'>
+<meta property="og:title" content="Cseligevi Vendégház – Szekszárd vendégházak"><meta property="og:description" content="Természetközeli kikapcsolódás a Szekszárdi borvidéken. Foglalj most!"><meta property="og:type" content="website">
+<meta property="og:image" content="https://images.unsplash.com/photo-1506806732259-39c2d0268443?q=80&w=1200&auto=format&fit=crop">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LodgingBusiness","name":"Cseligevi Vendégház","address":{"@type":"PostalAddress","addressLocality":"Szekszárd","addressCountry":"HU"},"telephone":"+36 70 884 4779","priceRange":"Ft","sameAs":["https://www.facebook.com/people/Cseligevi-Vend%C3%A9gh%C3%A1z/61583771781727/","https://www.instagram.com/cseligevivendeghaz","https://www.tiktok.com/@cseligevivendeghaz?is_from_webapp=1&sender_device=pc"]}</script>
+</head><body>
+<div data-include="navbar.html"></div>
 <section class="hero">
-    <div class="hero-text fade-slide">
-        <h1>Üdvözlünk a Cseligevi Vendégházban</h1>
-        <p>Ahol a természet és a nyugalom találkozik.</p>
-        <a href="arak.html" class="foglalj-btn">Foglalj most</a>
-    </div>
-
-    <div class="hero-image fade-slide">
-        <img src="images/hero.png" alt="Vendégház">
-    </div>
+  <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1506806732259-39c2d0268443?q=80&w=1600&auto=format&fit=crop">
+    <source src="https://videos.pexels.com/video-files/857195/857195-hd_1280_720_24fps.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay">
+    <h1>Üdvözlünk a Cseligevi Vendégházban</h1><p>Ahol a természet és a nyugalom találkozik.</p>
+    <a class="btn" href="arak.html">Foglalj most</a>
+  </div>
 </section>
-
-
-
-<!-- INTRO -->
-<section class="intro-section fade-slide">
-    <h2>Nyugalom a dombok között</h2>
-    <p>
-        Vendégházunk Szekszárd egyik legszebb pontján várja vendégeinket.
-        Tökéletes választás pároknak és családoknak, akik nyugodt környezetben szeretnének pihenni.
-    </p>
+<section class="container glass fade-in">
+  <h2>Nyugalom a dombok között</h2>
+  <p>Vendégházunk Szekszárd egyik legszebb pontján várja vendégeinket, panorámás kilátással és teljes kikapcsolódással.</p>
 </section>
-
-
-
-<!-- 3 AJÁNLÓ KÁRTYA -->
-<section class="features-container fade-slide">
-
-    <div class="feature-card">
-        <img src="images/haz_kivul.jpg" alt="Vendégház">
-        <h3>Vendégház</h3>
-        <p>Modern, kényelmes, panorámás szálláshely.</p>
-        <a href="vendeghaz.html" class="card-btn">Megnézem</a>
-    </div>
-
-    <div class="feature-card">
-        <img src="images/arak.jpg" alt="Árak">
-        <h3>Árak és foglalás</h3>
-        <p>Kedvező árak, egyszerű online foglalás.</p>
-        <a href="arak.html" class="card-btn">Részletek</a>
-    </div>
-
-    <div class="feature-card">
-        <img src="images/programok.jpg" alt="Programok">
-        <h3>Programok</h3>
-        <p>Túrák, szurdikok, kilátók és családi élmények.</p>
-        <a href="programok.html" class="card-btn">Felfedezem</a>
-    </div>
-
+<section class="container grid cards fade-in">
+  <article class="card glass">
+    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=800&auto=format&fit=crop" alt="Vendégház">
+    <h3>Vendégház</h3><p>Kétszintes harmónia: modern kényelem, vidéki báj.</p>
+    <a class="btn btn-outline" href="vendeghaz.html">Felfedezem</a>
+  </article>
+  <article class="card glass">
+    <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?q=80&w=800&auto=format&fit=crop" alt="Árak és foglalás">
+    <h3>Árak és foglalás</h3><p>Egyszerű, átlátható, rugalmas.</p>
+    <a class="btn btn-outline" href="arak.html">Megnézem</a>
+  </article>
+  <article class="card glass">
+    <img src="https://images.unsplash.com/photo-1479056273584-5f28071f1b44?q=80&w=800&auto=format&fit=crop" alt="Programok">
+    <h3>Programok</h3><p>Múzeumok, kilátók, túrák és élményprogramok.</p>
+    <a class="btn btn-outline" href="programok.html">Ötletek</a>
+  </article>
 </section>
-
-
-
-<!-- PARALLAX -->
-<section class="parallax"></section>
-
-
-
-<!-- MAP -->
-<section class="location fade-slide">
-    <h2>Hol találsz minket?</h2>
-    <p>A Szekszárdi-dombság egyik legszebb részén.</p>
-
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2754.427920749452!2d18.68525769999999!3d46.3410509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4742ed0025e367a3%3A0x671aa8f3d483466c!2zQ3NlbGlnZXZpIFZlbmTDqWdow6F6!5e0!3m2!1shu!2hu!4v1763162135436!5m2!1shu!2hu" 
-                width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+<section class="container parallax fade-in" aria-label="Panoráma"></section>
+<section class="container fade-in">
+  <div id="lazy-map" class="map-placeholder glass">
+    <div class="overlay"><div>
+      <p>Helyszín megnyitása térképen</p><button class="btn">Térkép betöltése</button>
+    </div></div>
+  </div>
 </section>
-
-
-
-<!-- FOOTER -->
-<footer>
-    <div class="footer-container">
-
-        <div class="footer-left">
-            <h3>Kapcsolat</h3>
-            <p>📍 Cseligevi Vendégház</p>
-            <p>📞 +36 70 884 4779</p>
-            <p>📞 +36 70 334 6060</p>
-            <p>📧 cseligevi5@gmail.com</p>
-        </div>
-
-        <div class="footer-middle">
-            <h3>Kövess minket</h3>
-            <div class="social-icons">
-                <a href="#"><img src="images/facebook.jpg"></a>
-                <a href="#"><img src="images/instagram.jpg"></a>
-                <a href="#"><img src="images/tiktok.jpg"></a>
-            </div>
-        </div>
-
-        <div class="footer-right">
-            <h3>Helyszín</h3>
-            <p>Szekszárd, Tartsay dűlő</p>
-        </div>
-
-    </div>
-</footer>
-
-
-<script src="animation.js"></script>
-
-</body>
-</html>
+<div data-include="footer.html"></div>
+<script src="animation.js"></script><script src="include.js"></script>
+</body></html>
