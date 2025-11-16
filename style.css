@@ -72,39 +72,47 @@ header {
 }
 
 /* ===== HERO ===== */
+
+/* ===== HERO ===== */
 .hero {
     display: flex;
+    flex-direction: column; /* mindig oszlopba */
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     max-width: 1200px;
     margin: 40px auto;
-    padding: 20px;
-    gap: 40px;
+    padding: 40px 20px; /* nagyobb padding, hogy legyen hely */
+    gap: 20px; /* szöveg és gomb között */
+    text-align: center;
 }
 
 .hero-text h1 {
     font-size: 40px;
     color: #1b4235;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .hero-text p {
     font-size: 18px;
     color: #391b0b;
+    margin-bottom: 20px;
 }
+
+/* Foglalj gomb */
 .foglalj-gomb {
-    background: #1b4235;      /* sötétzöld háttér */
-    color: #edd3c5;           /* világos szöveg */
-    padding: 12px 28px;
-    border-radius: 4px;
+    background: #1b4235;
+    color: #edd3c5;
+    padding: 14px 32px;
+    border-radius: 6px;
     text-decoration: none;
     font-weight: bold;
+    display: inline-block; /* külön sorba kerül */
     transition: all 0.3s ease;
 }
 
 .foglalj-gomb:hover {
-    background: #b88364;      /* aranysárga hover */
-    color: #ffffff;            /* fehér szöveg hover közben */
+    background: #b88364;
+    color: #ffffff;
 }
 
 /* ===== FOOTER ===== */
