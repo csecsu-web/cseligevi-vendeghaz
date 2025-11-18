@@ -1,51 +1,181 @@
-<!doctype html><html lang="hu"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cseligevi Vendégház – Szekszárd vendégházak | természet, nyugalom</title>
-<link rel="stylesheet" href="style.css">
-<link rel="icon" href="favicon.png">
-</head><body>
-<div data-include="navbar.html"></div>
-<section class="hero">
-  <video autoplay muted loop playsinline poster="videos/promo1.mp4">
-    <source src="videos/promo1.mp4" type="video/mp4">
-  </video>
-  <div class="hero-overlay">
-    <h1>Üdvözlünk a Cseligevi Vendégházban</h1>
-    <p>Ahol a természet és a nyugalom találkozik.</p>
-    <a class="btn" href="arak.html">Foglalj most</a>
-  </div>
-</section>
-<section class="container glass fade-in">
-  <h2>Nyugalom a dombok között</h2>
-  <p>Vendégházunk Szekszárd egyik legszebb pontján várja vendégeinket, panorámás kilátással és teljes kikapcsolódással.</p>
-</section>
-<section class="container fade-in">
-  <h2>Panoráma</h2>
-  <div class="parallax" aria-label="Panoráma"></div>
-</section>
-<section class="container fade-in">
-  <h2>Fotóválogatás</h2>
-  <div class="carousel glass">
-    <div class="strip">
-      <div class="track">
-        <div class="item"><img loading="lazy" src="images/nappali1.HEIC " alt="Nappali 1"></div>
-        <div class="item"><img loading="lazy" src="images/konyha1.HEIC " alt="Konyha 1"></div>
-        <div class="item"><img loading="lazy" src="images/terasz1.HEIC " alt="Terasz 1"></div>
-        <div class="item"><img loading="lazy" src="images/kilato1.HEIC " alt="Kilátó 1"></div>
-        <div class="item"><video autoplay muted loop playsinline src="videos/promo2.mp4"></video></div>
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cseligevi Vendégház – Szekszárd vendégházak | természet, nyugalom</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.png">
+
+  <!-- Locomotive Scroll CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.css">
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <!-- Lottie-web -->
+  <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js"></script>
+
+  <style>
+    .hero-brand { display:flex; align-items:center; gap:14px; justify-content:center; }
+    .brand-icon { width:44px; height:44px; border-radius:10px; background:#edd3c5; color:#1b4235; font-weight:800; display:grid; place-items:center; }
+    /* Locomotive wrapper */
+    #smooth-container[data-scroll-container]{ min-height:100vh; }
+    /* Scroll-triggerelt elemek */
+    .feature { display:grid; grid-template-columns:1.2fr .8fr; gap:18px; align-items:center }
+    .feature.reverse { grid-template-columns:.8fr 1.2fr }
+    .feature img { width:100%; height:clamp(200px,30vw,360px); object-fit:cover }
+    @media (max-width:900px){ .feature, .feature.reverse { grid-template-columns:1fr } }
+    /* Lottie blokk */
+    .lottie-wrap { display:grid; place-items:center; padding:24px }
+    .lottie-canvas { width:clamp(220px,40vw,360px); height:clamp(220px,40vw,360px) }
+    /* GSAP animációk kiemelés */
+    .reveal { opacity:0; transform:translateY(20px) }
+  </style>
+</head>
+<body>
+  <div id="smooth-container" data-scroll-container>
+    <div data-include="navbar.html"></div>
+
+    <!-- HERO: video + overlay + brand -->
+    <section class="hero" data-scroll-section>
+      <video autoplay muted loop playsinline poster="images/hero.png">
+        <source src="videos/promo1.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay">
+        <div class="hero-brand reveal">
+          <div class="brand-icon">C</div>
+          <h1>Cseligevi Vendégház</h1>
+        </div>
+        <p class="reveal">Ahol a természet és a nyugalom találkozik.</p>
+        <a class="btn reveal" href="arak.html">Foglalj most</a>
       </div>
-    </div>
-    <div class="strip strip--reverse">
-      <div class="track">
-        <div class="item"><img loading="lazy" src="images/kert1.HEIC " alt="Kert 1"></div>
-        <div class="item"><img loading="lazy" src="images/szurdik1.HEIC " alt="Szurdik 1"></div>
-        <div class="item"><img loading="lazy" src="images/panorama1.HEIC " alt="Panoráma 1"></div>
-        <div class="item"><video autoplay muted loop playsinline src="videos/promo3.mp4"></video></div>
-        <div class="item"><img loading="lazy" src="images/halo1.HEIC " alt="Hálószoba 1"></div>
+    </section>
+
+    <!-- Intro -->
+    <section class="container glass reveal" data-scroll-section>
+      <h2>Nyugalom a dombok között</h2>
+      <p>Vendégházunk Szekszárd egyik legszebb pontján várja vendégeinket, panorámás kilátással és teljes kikapcsolódással.</p>
+    </section>
+
+    <!-- Parallax panoráma a hero.png-vel -->
+    <section class="container reveal" data-scroll-section>
+      <h2>Panoráma</h2>
+      <div class="parallax" aria-label="Panoráma" data-scroll data-scroll-speed="-1"></div>
+    </section>
+
+    <!-- Képes szekciók: GSAP + ScrollTrigger + Locomotive parallax -->
+    <section class="container feature reveal" data-scroll-section>
+      <div>
+        <h2>Vendégház</h2>
+        <p>Kétszintes harmónia: modern kényelem, vidéki báj.</p>
+        <a class="btn" href="vendeghaz.html">Felfedezem</a>
       </div>
-    </div>
+      <img src="images/nappali1.jpg" alt="Vendégház enteriőr" data-scroll data-scroll-speed="1">
+    </section>
+
+    <section class="container feature reverse reveal" data-scroll-section>
+      <img src="images/terasz1.jpg" alt="Terasz és kilátás" data-scroll data-scroll-speed="-1">
+      <div>
+        <h2>Árak és foglalás</h2>
+        <p>Egyszerű, átlátható, rugalmas — 1–3 éjszakás csomagok.</p>
+        <a class="btn" href="arak.html">Megnézem az árakat</a>
+      </div>
+    </section>
+
+    <section class="container feature reveal" data-scroll-section>
+      <div>
+        <h2>Programok</h2>
+        <p>Múzeumok, kilátók, tanösvények, fürdők és aktív élmények.</p>
+        <a class="btn" href="programok.html">Ötletek a környéken</a>
+      </div>
+      <img src="images/kilato1.jpg" alt="Kilátó a borvidéken" data-scroll data-scroll-speed="1.5">
+    </section>
+
+    <!-- Lottie díszítés -->
+    <section class="container glass lottie-wrap reveal" data-scroll-section>
+      <div id="lottie-hero" class="lottie-canvas" aria-label="Díszítő animáció"></div>
+    </section>
+
+    <!-- Kifutószalag válogatás -->
+    <section class="container reveal" data-scroll-section>
+      <h2>Fotóválogatás</h2>
+      <div class="carousel glass">
+        <div class="strip">
+          <div class="track">
+            <div class="item"><img loading="lazy" src="images/konyha1.jpg" alt="Konyha"></div>
+            <div class="item"><img loading="lazy" src="images/halo1.jpg" alt="Hálószoba"></div>
+            <div class="item"><img loading="lazy" src="images/kert1.jpg" alt="Kert"></div>
+            <div class="item"><img loading="lazy" src="images/szauna1.jpg" alt="Szauna"></div>
+            <div class="item"><video autoplay muted loop playsinline src="videos/promo2.mp4"></video></div>
+          </div>
+        </div>
+        <div class="strip strip--reverse">
+          <div class="track">
+            <div class="item"><img loading="lazy" src="images/terasz2.jpg" alt="Terasz 2"></div>
+            <div class="item"><img loading="lazy" src="images/panorama1.jpg" alt="Panoráma 1"></div>
+            <div class="item"><img loading="lazy" src="images/nappali2.jpg" alt="Nappali 2"></div>
+            <div class="item"><video autoplay muted loop playsinline src="videos/promo3.mp4"></video></div>
+            <div class="item"><img loading="lazy" src="images/kilato1.jpg" alt="Kilátó 1"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div data-include="footer.html"></div>
   </div>
-</section>
-<div data-include="footer.html"></div>
-<script src="animation.js"></script><script src="include.js"></script>
-</body></html>
+
+  <!-- Alap animációk + GSAP/ScrollTrigger + Locomotive integráció + Lottie betöltés -->
+  <script>
+    (function(){
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Lottie díszítés (helyi JSON, ha van)
+      (function loadLottie(){
+        const el = document.getElementById('lottie-hero');
+        if (!el || typeof bodymovin === 'undefined') return;
+        fetch('animations/hero.json').then(r=>r.ok?r.json():null).then(json=>{
+          if(!json){ el.style.display='none'; return; }
+          bodymovin.loadAnimation({
+            container: el,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            animationData: json
+          });
+        }).catch(()=>{ el.style.display='none'; });
+      })();
+
+      // GSAP alapanimációk (fade-in)
+      gsap.utils.toArray('.reveal').forEach(el=>{
+        gsap.fromTo(el,{autoAlpha:0,y:20},{autoAlpha:1,y:0,duration:0.7,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 80%'}});
+      });
+
+      // Locomotive Scroll + ScrollTrigger proxy
+      if (!prefersReduced) {
+        const scroller = document.querySelector('#smooth-container');
+        const loco = new LocomotiveScroll({
+          el: scroller,
+          smooth: true,
+          multiplier: 0.9,
+          smartphone: { smooth: true },
+          tablet: { smooth: true }
+        });
+
+        ScrollTrigger.scrollerProxy(scroller, {
+          scrollTop(value) { return arguments.length ? loco.scrollTo(value, { duration: 0, disableLerp: true }) : loco.scroll.instance.scroll.y; },
+          getBoundingClientRect() { return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight }; },
+          pinType: scroller.style.transform ? 'transform' : 'fixed'
+        });
+
+        ScrollTrigger.addEventListener('refresh', () => loco.update());
+        ScrollTrigger.refresh();
+      }
+    })();
+  </script>
+
+  <script src="animation.js"></script>
+  <script src="include.js"></script>
+  <!-- Locomotive Scroll JS -->
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+</body>
+</html>
