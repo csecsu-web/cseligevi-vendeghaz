@@ -22,12 +22,27 @@ a{color:#0f4d8a;text-decoration:none}
 .menu .accent{background:var(--accent);color:#ffffff;font-weight:700}
 .hamburger{display:none;background:transparent;border:0;width:44px;height:44px;border-radius:10px}
 .hamburger span{display:block;height:2px;background:var(--nav-text);margin:6px 8px}
+/* css: style.css (mobil menü blokk csere) */
 @media (max-width:900px){
   .hamburger{display:block}
-  .menu{position:absolute;left:0;right:0;top:56px;background:var(--nav);flex-direction:column;gap:0;max-height:0;overflow:hidden;transition:max-height .3s ease}
-  .menu.open{max-height:60vh}
-  .menu a{padding:14px 24px}
+  .menu{
+    position:fixed;
+    top:56px; left:0; right:0; bottom:0;
+    background:var(--nav);
+    z-index:9998;
+    display:flex; flex-direction:column;
+    gap:0;
+    overflow:auto;
+    transform:translateY(-100%);
+    transition:transform .3s ease;
+  }
+  .menu.open{ transform:translateY(0); }
+  .menu a{ padding:14px 24px; border-bottom:1px solid #244c40 }
 }
+/* magasabb z-index a navnak */
+.navbar{ z-index:9999 }
+/* body scroll tiltása nyitott menü esetén */
+body.no-scroll{ overflow:hidden }
 .btn{display:inline-block;background:var(--accent);color:#ffffff;font-weight:700;padding:12px 18px;border-radius:12px;transition:transform .1s ease,box-shadow .2s ease,background .2s ease}
 .btn:hover{transform:translateY(-1px);box-shadow:0 6px 24px #1b423533;background:var(--accent-hover)}
 .btn-outline{background:transparent;color:var(--text);border:1px solid #334052}
