@@ -3,179 +3,165 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Cseligevi Vendégház – Szekszárd vendégházak | természet, nyugalom</title>
+  <title>Cseligevi Vendégház – természet és nyugalom</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.png">
 
-  <!-- Locomotive Scroll CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.css">
-  <!-- GSAP + ScrollTrigger -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-  <!-- Lottie-web -->
   <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 
   <style>
-    .hero-brand { display:flex; align-items:center; gap:14px; justify-content:center; }
-    .brand-icon { width:44px; height:44px; border-radius:10px; background:#edd3c5; color:#1b4235; font-weight:800; display:grid; place-items:center; }
-    /* Locomotive wrapper */
-    #smooth-container[data-scroll-container]{ min-height:100vh; }
-    /* Scroll-triggerelt elemek */
-    .feature { display:grid; grid-template-columns:1.2fr .8fr; gap:18px; align-items:center }
-    .feature.reverse { grid-template-columns:.8fr 1.2fr }
-    .feature img { width:100%; height:clamp(200px,30vw,360px); object-fit:cover }
-    @media (max-width:900px){ .feature, .feature.reverse { grid-template-columns:1fr } }
-    /* Lottie blokk */
-    .lottie-wrap { display:grid; place-items:center; padding:24px }
-    .lottie-canvas { width:clamp(220px,40vw,360px); height:clamp(220px,40vw,360px) }
-    /* GSAP animációk kiemelés */
-    .reveal { opacity:0; transform:translateY(20px) }
+    .clip{clip-path: inset(100% 0 0 0)}
+    .brand-svg{width:180px;height:60px;margin:8px auto}
+    .brand-svg path{stroke:#1b4235;stroke-width:2.4;fill:none}
+    .three-canvas{position:absolute;inset:0;pointer-events:none}
+    .feature{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center}
+    .feature.reverse{grid-template-columns:.8fr 1.2fr}
+    .feature img{width:100%;height:clamp(200px,30vw,360px);object-fit:cover;border-radius:12px}
+    @media (max-width:900px){.feature,.feature.reverse{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <div id="smooth-container" data-scroll-container>
     <div data-include="navbar.html"></div>
 
-    <!-- HERO: video + overlay + brand -->
     <section class="hero" data-scroll-section>
       <video autoplay muted loop playsinline poster="images/hero.png">
         <source src="videos/promo1.mp4" type="video/mp4">
       </video>
+      <canvas id="heroParticles" class="three-canvas"></canvas>
       <div class="hero-overlay">
-        <div class="hero-brand reveal">
-          <div class="brand-icon">C</div>
-          <h1>Cseligevi Vendégház</h1>
+        <div class="hero-brand">
+          <div class="brand-svg">
+            <svg viewBox="0 0 200 60">
+              <path id="brand-path" d="M10,30 C40,5 80,55 110,25 C130,10 160,20 190,30" />
+            </svg>
+          </div>
+          <h1 class="clip">Cseligevi – A természet ritmusában</h1>
         </div>
-        <p class="reveal">Ahol a természet és a nyugalom találkozik.</p>
-        <a class="btn reveal" href="arak.html">Foglalj most</a>
+        <p class="clip">A nyugalom otthona</p>
+        <a class="btn clip" href="arak.html">Foglalj most</a>
       </div>
     </section>
 
-    <!-- Intro -->
-    <section class="container glass reveal" data-scroll-section>
-      <h2>Nyugalom a dombok között</h2>
-      <p>Vendégházunk Szekszárd egyik legszebb pontján várja vendégeinket, panorámás kilátással és teljes kikapcsolódással.</p>
+    <section class="container glass clip" data-scroll-section>
+      <h2>Cseligevi – A természet ritmusában, a nyugalom otthona</h2>
+      <p>A Cseligevi Vendégházat azért álmodtuk meg, hogy legyen egy hely, ahol az ember végre megállhat. Ahol a hétköznapok rohanása, a zaj és a képernyők világa helyett újra a természet ritmusa veszi körül.</p>
+      <p>Vendégházunk a Szekszárdi borvidék egyik legszebb, tanyavilágban megbúvó gerincén található, ahonnan lélegzetelállító panoráma tárul eléd. A fenséges Bati-kereszt kilátó mindössze 3 km-re van, a környéken pedig olyan kedvelt úti célok várnak, mint a Heimann borászat, vagy Sötétvölgy (Haramia-forrás 8,2 km, a tó 7,9 km).</p>
     </section>
 
-    <!-- Parallax panoráma a hero.png-vel -->
-    <section class="container reveal" data-scroll-section>
-      <h2>Panoráma</h2>
-      <div class="parallax" aria-label="Panoráma" data-scroll data-scroll-speed="-1"></div>
-    </section>
-
-    <!-- Képes szekciók: GSAP + ScrollTrigger + Locomotive parallax -->
-    <section class="container feature reveal" data-scroll-section>
+    <section class="container feature clip" data-scroll-section>
       <div>
-        <h2>Vendégház</h2>
-        <p>Kétszintes harmónia: modern kényelem, vidéki báj.</p>
-        <a class="btn" href="vendeghaz.html">Felfedezem</a>
+        <h2>Itt minden pillanat számít</h2>
+        <p>Itt a dombok, a szőlősorok és a természet állandó jelenléte teszi különlegessé minden pillanatod. Reggel friss levegő és madárdal; napközben játék, pihenés; este a naplemente arany fényei.</p>
+        <a class="btn" href="arak.html">Foglalj most</a>
       </div>
-      <img src="images/nappali1.jpg" alt="Vendégház enteriőr" data-scroll data-scroll-speed="1">
+      <img src="images/kulteri.jpg" alt="Tágas zöld telek" data-scroll data-scroll-speed="1">
     </section>
 
-    <section class="container feature reverse reveal" data-scroll-section>
-      <img src="images/terasz1.jpg" alt="Terasz és kilátás" data-scroll data-scroll-speed="-1">
+    <section class="container feature reverse clip" data-scroll-section>
+      <img src="images/szauna1.jpg" alt="Benti szauna" data-scroll data-scroll-speed="-1">
       <div>
-        <h2>Árak és foglalás</h2>
-        <p>Egyszerű, átlátható, rugalmas — 1–3 éjszakás csomagok.</p>
-        <a class="btn" href="arak.html">Megnézem az árakat</a>
+        <h2>Pároknak és családoknak</h2>
+        <p>Ideális meghitt pihenéshez és családi kikapcsolódáshoz. A benti szauna gondoskodik a feltöltődésről, a gyerekek pedig szabadon játszhatnak a zöld udvaron.</p>
       </div>
     </section>
 
-    <section class="container feature reveal" data-scroll-section>
-      <div>
-        <h2>Programok</h2>
-        <p>Múzeumok, kilátók, tanösvények, fürdők és aktív élmények.</p>
-        <a class="btn" href="programok.html">Ötletek a környéken</a>
-      </div>
-      <img src="images/kilato1.jpg" alt="Kilátó a borvidéken" data-scroll data-scroll-speed="1.5">
-    </section>
-
-    <!-- Lottie díszítés -->
-    <section class="container glass lottie-wrap reveal" data-scroll-section>
+    <section class="container glass clip" data-scroll-section>
       <div id="lottie-hero" class="lottie-canvas" aria-label="Díszítő animáció"></div>
-    </section>
-
-    <!-- Kifutószalag válogatás -->
-    <section class="container reveal" data-scroll-section>
-      <h2>Fotóválogatás</h2>
-      <div class="carousel glass">
-        <div class="strip">
-          <div class="track">
-            <div class="item"><img loading="lazy" src="images/konyha1.jpg" alt="Konyha"></div>
-            <div class="item"><img loading="lazy" src="images/halo1.jpg" alt="Hálószoba"></div>
-            <div class="item"><img loading="lazy" src="images/kert1.jpg" alt="Kert"></div>
-            <div class="item"><img loading="lazy" src="images/szauna1.jpg" alt="Szauna"></div>
-            <div class="item"><video autoplay muted loop playsinline src="videos/promo2.mp4"></video></div>
-          </div>
-        </div>
-        <div class="strip strip--reverse">
-          <div class="track">
-            <div class="item"><img loading="lazy" src="images/terasz2.jpg" alt="Terasz 2"></div>
-            <div class="item"><img loading="lazy" src="images/panorama1.jpg" alt="Panoráma 1"></div>
-            <div class="item"><img loading="lazy" src="images/nappali2.jpg" alt="Nappali 2"></div>
-            <div class="item"><video autoplay muted loop playsinline src="videos/promo3.mp4"></video></div>
-            <div class="item"><img loading="lazy" src="images/kilato1.jpg" alt="Kilátó 1"></div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <div data-include="footer.html"></div>
   </div>
 
-  <!-- Alap animációk + GSAP/ScrollTrigger + Locomotive integráció + Lottie betöltés -->
   <script>
-    (function(){
-      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // Lottie díszítés (helyi JSON, ha van)
-      (function loadLottie(){
-        const el = document.getElementById('lottie-hero');
-        if (!el || typeof bodymovin === 'undefined') return;
-        fetch('animations/hero.json').then(r=>r.ok?r.json():null).then(json=>{
-          if(!json){ el.style.display='none'; return; }
-          bodymovin.loadAnimation({
-            container: el,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            animationData: json
-          });
-        }).catch(()=>{ el.style.display='none'; });
-      })();
+    // Lottie (opcionális)
+    (function loadLottie(){
+      const el = document.getElementById('lottie-hero');
+      if (!el || typeof bodymovin === 'undefined') return;
+      fetch('animations/hero.json').then(r=>r.ok?r.json():null).then(json=>{
+        if(!json){ el.style.display='none'; return; }
+        bodymovin.loadAnimation({ container: el, renderer: 'svg', loop: true, autoplay: true, animationData: json });
+      }).catch(()=>{ el.style.display='none'; });
+    })();
 
-      // GSAP alapanimációk (fade-in)
-      gsap.utils.toArray('.reveal').forEach(el=>{
-        gsap.fromTo(el,{autoAlpha:0,y:20},{autoAlpha:1,y:0,duration:0.7,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 80%'}});
-      });
+    // GSAP clip-path reveal + ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('.clip').forEach(el=>{
+      gsap.fromTo(el,{ clipPath:'inset(100% 0 0 0)', opacity:0 },{ clipPath:'inset(0 0 0 0)', opacity:1, duration:.8, ease:'power2.out', scrollTrigger:{ trigger:el, start:'top 85%' }});
+    });
 
-      // Locomotive Scroll + ScrollTrigger proxy
-      if (!prefersReduced) {
-        const scroller = document.querySelector('#smooth-container');
-        const loco = new LocomotiveScroll({
-          el: scroller,
-          smooth: true,
-          multiplier: 0.9,
-          smartphone: { smooth: true },
-          tablet: { smooth: true }
-        });
+    // SVG path draw
+    (function svgDraw(){
+      const path = document.getElementById('brand-path'); if(!path) return;
+      const len = path.getTotalLength();
+      path.style.strokeDasharray = len;
+      path.style.strokeDashoffset = len;
+      gsap.to(path,{ strokeDashoffset:0, duration:1.4, ease:'power2.out' });
+    })();
 
+    // Three.js particles on hero
+    (function particles(){
+      if(prefersReduced) return;
+      const canvas = document.getElementById('heroParticles'); if(!canvas) return;
+      const renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:true });
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
+      camera.position.z = 60;
+
+      const particles = new THREE.BufferGeometry();
+      const count = 400;
+      const positions = new Float32Array(count*3);
+      for(let i=0;i<count;i++){ positions[i*3]= (Math.random()-0.5)*160; positions[i*3+1]= (Math.random()-0.5)*90; positions[i*3+2]= (Math.random()-0.5)*40; }
+      particles.setAttribute('position', new THREE.BufferAttribute(positions,3));
+      const material = new THREE.PointsMaterial({ color:'#1b4235', size:1.6, transparent:true, opacity:.6 });
+      const points = new THREE.Points(particles, material);
+      scene.add(points);
+
+      function resize(){
+        const w = canvas.clientWidth || window.innerWidth;
+        const h = canvas.clientHeight || window.innerHeight*0.6;
+        renderer.setSize(w,h,false);
+        camera.aspect = w/h; camera.updateProjectionMatrix();
+      }
+      resize(); window.addEventListener('resize', resize);
+
+      function animate(){
+        requestAnimationFrame(animate);
+        points.rotation.y += 0.0008;
+        points.rotation.x += 0.0004;
+        renderer.render(scene,camera);
+      }
+      animate();
+    })();
+
+    // Locomotive Scroll + ScrollTrigger proxy
+    (function initLoco(){
+      if(prefersReduced) return;
+      const scroller = document.getElementById('smooth-container'); if(!scroller) return;
+      const init = ()=> {
+        const loco = new LocomotiveScroll({ el: scroller, smooth: true, multiplier: 0.9, smartphone:{smooth:true}, tablet:{smooth:true} });
         ScrollTrigger.scrollerProxy(scroller, {
-          scrollTop(value) { return arguments.length ? loco.scrollTo(value, { duration: 0, disableLerp: true }) : loco.scroll.instance.scroll.y; },
-          getBoundingClientRect() { return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight }; },
+          scrollTop(value){ return arguments.length ? loco.scrollTo(value,{duration:0,disableLerp:true}) : loco.scroll.instance.scroll.y; },
+          getBoundingClientRect(){ return { top:0, left:0, width:window.innerWidth, height:window.innerHeight }; },
           pinType: scroller.style.transform ? 'transform' : 'fixed'
         });
-
         ScrollTrigger.addEventListener('refresh', () => loco.update());
         ScrollTrigger.refresh();
-      }
+      };
+      // Locomotive JS from CDN loads at end; wait a tick
+      if(typeof LocomotiveScroll!=='undefined') init();
+      else window.addEventListener('load', ()=>{ if(typeof LocomotiveScroll!=='undefined') init(); });
     })();
   </script>
 
   <script src="animation.js"></script>
   <script src="include.js"></script>
-  <!-- Locomotive Scroll JS -->
   <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 </body>
 </html>
