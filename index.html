@@ -7,124 +7,127 @@
   <meta name="description" content="Cseligevi Vendégház a Szekszárdi borvidéken. Természet, nyugalom, benti szauna, családbarát környezet. Foglalj most.">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.png">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js"></script>
-  <style>
-    .clip{clip-path: inset(100% 0 0 0)}
-    .brand-svg{width:180px;height:60px;margin:8px auto}
-    .brand-svg path{stroke:#1b4235;stroke-width:2.4;fill:none}
-    .feature{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center}
-    .feature.reverse{grid-template-columns:.8fr 1.2fr}
-    .feature img{width:100%;height:clamp(200px,30vw,360px);object-fit:cover;border-radius:12px}
-    @media (max-width:900px){.feature,.feature.reverse{grid-template-columns:1fr}}
-    .values{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .value-card{background:#fff;border-radius:16px;box-shadow:0 8px 28px #00000014;padding:18px;transition:transform .3s ease,box-shadow .3s ease}
-    .value-card:hover{transform:translateY(-3px);box-shadow:0 16px 36px #00000022}
-    @media(max-width:900px){.values{grid-template-columns:1fr}}
-    .strip{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
-    .strip .tile{flex:0 0 auto;width:260px;height:180px;border-radius:16px;object-fit:cover;scroll-snap-align:center;box-shadow:0 8px 28px #00000014;transition:transform .3s ease}
-    .strip .tile:hover{transform:scale(1.03)}
-    @media(max-width:900px){.strip .tile{width:200px;height:140px}}
-    .collage-overlay{position:fixed;inset:0;display:none;place-items:center;background:#00000080;z-index:9990}
-    .collage-overlay.open{display:grid}
-    .collage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:900px;padding:16px}
-    .collage-grid img{width:100%;height:180px;object-fit:cover;border-radius:12px}
-    @media(max-width:900px){.collage-grid{grid-template-columns:repeat(2,1fr)}.collage-grid img{height:120px}}
-    .lottie-canvas{width:clamp(220px,40vw,360px);height:clamp(220px,40vw,360px);margin:0 auto}
-  </style>
 </head>
 <body>
-  <div id="smooth-container" data-scroll-container>
-    <div data-include="navbar.html"></div>
+  <nav class="navbar" role="navigation" aria-label="Fő">
+    <div class="nav-inner">
+      <a class="logo" href="index.html" aria-label="Cseligevi Vendégház">
+        <img src="favicon.png" alt="Cseligevi logó"> Cseligevi
+      </a>
+      <button class="hamburger" aria-label="Menü" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul id="nav-menu" class="menu">
+        <li><a href="index.html">Főoldal</a></li>
+        <li><a href="rolunk.html">Rólunk</a></li>
+        <li><a href="vendeghaz.html">Vendégház</a></li>
+        <li><a href="arak.html">Árak & Foglalás</a></li>
+        <li><a href="programok.html">Programok</a></li>
+        <li><a href="kepek.html">Képek</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <section class="hero" data-scroll-section>
-      <video autoplay muted loop playsinline poster="images/hero.png">
-        <source src="videos/promo1.mp4" type="video/mp4">
-      </video>
-      <div class="hero-overlay">
-        <div class="brand-svg">
-          <svg viewBox="0 0 200 60"><path id="brand-path" d="M10,30 C40,5 80,55 110,25 C130,10 160,20 190,30"/></svg>
+  <section class="hero">
+    <video autoplay muted loop playsinline preload="metadata" poster="images/hero.png">
+      <source src="videos/promo1.mp4" type="video/mp4">
+      <source src="videos/promo1.webm" type="video/webm">
+    </video>
+    <div class="hero-overlay">
+      <div class="brand-svg">
+        <svg viewBox="0 0 200 60"><path id="brand-path" d="M10,30 C40,5 80,55 110,25 C130,10 160,20 190,30"/></svg>
+      </div>
+      <h1 class="clip">Cseligevi – A természet ritmusában</h1>
+      <p class="clip">A nyugalom otthona</p>
+      <a class="btn clip" href="arak.html">Foglalj most</a>
+    </div>
+  </section>
+
+  <section class="container glass clip">
+    <h2>Cseligevi – A természet ritmusában, a nyugalom otthona</h2>
+    <p>A Cseligevi Vendégházat azért álmodtuk meg, hogy legyen egy hely, ahol az ember végre megállhat. Ahol a hétköznapok rohanása, a zaj és a képernyők világa helyett újra a természet ritmusa veszi körül.</p>
+    <p>Vendégházunk a Szekszárdi borvidék egyik legszebb, tanyavilágban megbúvó gerincén található, ahonnan lélegzetelállító panoráma tárul eléd. A fenséges Bati-kereszt kilátó mindössze 3 km-re van, a környéken pedig olyan kedvelt úti célok várnak, mint a Heimann borászat, vagy Sötétvölgy (Haramia-forrás 8,2 km, a tó 7,9 km).</p>
+  </section>
+
+  <section class="container feature clip">
+    <div>
+      <h2>Itt minden pillanat számít</h2>
+      <p>Itt a dombok, a szőlősorok és a természet állandó jelenléte teszi különlegessé minden pillanatod. Reggel friss levegő és madárdal; napközben játék, pihenés; este a naplemente arany fényei.</p>
+      <a class="btn" href="arak.html">Foglalj most</a>
+    </div>
+    <img src="images/kulteri.jpg" alt="Tágas zöld telek">
+  </section>
+
+  <section class="container feature reverse clip">
+    <img src="images/szauna1.jpg" alt="Benti szauna">
+    <div>
+      <h2>Pároknak és családoknak</h2>
+      <p>Ideális meghitt pihenéshez és családi kikapcsolódáshoz. A benti szauna gondoskodik a feltöltődésről, a gyerekek pedig szabadon játszhatnak a zöld udvaron.</p>
+    </div>
+  </section>
+
+  <section class="container values clip">
+    <div class="value-card">
+      <h3>Természet közelsége</h3>
+      <p>Dombok, szőlősorok és csend – minden pillanat különleges.</p>
+    </div>
+    <div class="value-card">
+      <h3>Benti szauna</h3>
+      <p>A hűvösebb napokon is feltöltődés és kényelem.</p>
+    </div>
+    <div class="value-card">
+      <h3>Családbarát</h3>
+      <p>Tágas zöld udvar játékhoz és közös élményekhez.</p>
+    </div>
+  </section>
+
+  <section class="container clip">
+    <h2>Hangulatképek</h2>
+    <div class="strip" aria-label="Képszalag">
+      <img class="tile" src="images/nappali1.jpg" alt="Nappali">
+      <img class="tile" src="images/konyha1.jpg" alt="Konyha">
+      <img class="tile" src="images/halo1.jpg" alt="Hálószoba">
+      <img class="tile" src="images/terasz1.jpg" alt="Terasz">
+      <img class="tile" src="images/kert1.jpg" alt="Kert">
+      <img class="tile" src="images/panorama1.jpg" alt="Panoráma">
+      <img class="tile" src="images/szauna1.jpg" alt="Szauna">
+    </div>
+  </section>
+
+  <footer class="footer glass">
+    <div class="container">
+      <h3>Foglalj Most!</h3>
+      <div class="actions">
+        <a class="btn" href="mailto:cseligevi5@gmail.com">Foglalás emailben</a>
+        <a class="btn btn-outline" href="tel:+36708844779">+36 70 884 4779</a>
+        <a class="btn btn-outline" href="tel:+36703346060">+36 70 334 6060</a>
+        <a class="btn btn-outline" href="arak.html">Árak</a>
+      </div>
+      <div class="social">
+        <a target="_blank" rel="noopener" href="https://www.facebook.com/people/Cseligevi-Vend%C3%A9gh%C3%A1z/61583771781727/">Facebook</a>
+        <a target="_blank" rel="noopener" href="https://www.instagram.com/cseligevivendeghaz">Instagram</a>
+        <a target="_blank" rel="noopener" href="https://www.tiktok.com/@cseligevivendeghaz?is_from_webapp=1&sender_device=pc">TikTok</a>
+      </div>
+      <div class="contact">
+        <p>Email: <a href="mailto:cseligevi5@gmail.com">cseligevi5@gmail.com</a></p>
+        <p>Cím: <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=8MRP%2BC4%20Szeksz%C3%A1rd%2C%20Cseligevi%20vend%C3%A9gh%C3%A1z">8MRP+C4 Szekszárd, Cseligevi vendégház</a></p>
+      </div>
+      <div class="map-placeholder glass" style="margin-top:16px">
+        <div class="overlay">
+          <div>
+            <p>Térkép megnyitása</p>
+            <button class="btn" onclick="(function(el){const iframe=document.createElement('iframe');iframe.src='https://www.google.com/maps?q=8MRP%2BC4%20Szeksz%C3%A1rd&output=embed';iframe.loading='lazy';iframe.referrerPolicy='no-referrer-when-downgrade';iframe.style='border:0;width:100%;height:100%';el.innerHTML='';el.appendChild(iframe);})(this.closest('.map-placeholder'))">Térkép betöltése</button>
+          </div>
         </div>
-        <h1 class="clip">Cseligevi – A természet ritmusában</h1>
-        <p class="clip">A nyugalom otthona</p>
-        <a class="btn clip" href="arak.html">Foglalj most</a>
-      </div>
-    </section>
-
-    <section class="container glass clip" data-scroll-section>
-      <h2>Cseligevi – A természet ritmusában, a nyugalom otthona</h2>
-      <p>A Cseligevi Vendégházat azért álmodtuk meg, hogy legyen egy hely, ahol az ember végre megállhat. Ahol a hétköznapok rohanása, a zaj és a képernyők világa helyett újra a természet ritmusa veszi körül.</p>
-      <p>Vendégházunk a Szekszárdi borvidék egyik legszebb, tanyavilágban megbúvó gerincén található, ahonnan lélegzetelállító panoráma tárul eléd. A fenséges Bati-kereszt kilátó mindössze 3 km-re van, a környéken pedig olyan kedvelt úti célok várnak, mint a Heimann borászat, vagy Sötétvölgy (Haramia-forrás 8,2 km, a tó 7,9 km).</p>
-    </section>
-
-    <section class="container feature clip" data-scroll-section>
-      <div>
-        <h2>Itt minden pillanat számít</h2>
-        <p>Itt a dombok, a szőlősorok és a természet állandó jelenléte teszi különlegessé minden pillanatod. Reggel friss levegő és madárdal; napközben játék, pihenés; este a naplemente arany fényei.</p>
-        <a class="btn" href="arak.html">Foglalj most</a>
-      </div>
-      <img src="images/kulteri.jpg" alt="Tágas zöld telek" data-scroll data-scroll-speed="1">
-    </section>
-
-    <section class="container feature reverse clip" data-scroll-section>
-      <img src="images/szauna1.jpg" alt="Benti szauna" data-scroll data-scroll-speed="-1">
-      <div>
-        <h2>Pároknak és családoknak</h2>
-        <p>Ideális meghitt pihenéshez és családi kikapcsolódáshoz. A benti szauna gondoskodik a feltöltődésről, a gyerekek pedig szabadon játszhatnak a zöld udvaron.</p>
-      </div>
-    </section>
-
-    <section class="container values clip" data-scroll-section>
-      <div class="value-card">
-        <h3>Természet közelsége</h3>
-        <p>Dombok, szőlősorok és csend – minden pillanat különleges.</p>
-      </div>
-      <div class="value-card">
-        <h3>Benti szauna</h3>
-        <p>A hűvösebb napokon is feltöltődés és kényelem.</p>
-      </div>
-      <div class="value-card">
-        <h3>Családbarát</h3>
-        <p>Tágas zöld udvar játékhoz és közös élményekhez.</p>
-      </div>
-    </section>
-
-    <section class="container clip" data-scroll-section>
-      <h2>Hangulatképek</h2>
-      <div class="strip" aria-label="Képszalag">
-        <img class="tile" src="images/nappali1.jpg" alt="Nappali">
-        <img class="tile" src="images/konyha1.jpg" alt="Konyha">
-        <img class="tile" src="images/halo1.jpg" alt="Hálószoba">
-        <img class="tile" src="images/terasz1.jpg" alt="Terasz">
-        <img class="tile" src="images/kert1.jpg" alt="Kert">
-        <img class="tile" src="images/panorama1.jpg" alt="Panoráma">
-        <img class="tile" src="images/szauna1.jpg" alt="Szauna">
-      </div>
-    </section>
-
-    <section class="container glass clip" data-scroll-section>
-      <div id="lottie-hero" class="lottie-canvas" aria-label="Díszítő animáció"></div>
-    </section>
-
-    <div id="collage" class="collage-overlay" aria-label="Képkollázs">
-      <div class="collage-grid">
-        <img src="images/nappali1.jpg" alt="Nappali">
-        <img src="images/konyha1.jpg" alt="Konyha">
-        <img src="images/halo1.jpg" alt="Hálószoba">
-        <img src="images/terasz1.jpg" alt="Terasz">
-        <img src="images/kert1.jpg" alt="Kert">
-        <img src="images/panorama1.jpg" alt="Panoráma">
       </div>
     </div>
-
-    <div data-include="footer.html"></div>
-  </div>
+  </footer>
 
   <script>
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     gsap.registerPlugin(ScrollTrigger);
 
     (function svgDraw(){
@@ -139,51 +142,22 @@
       gsap.fromTo(el,{ clipPath:'inset(100% 0 0 0)', opacity:0 },{ clipPath:'inset(0 0 0 0)', opacity:1, duration:.8, ease:'power2.out', scrollTrigger:{ trigger:el, start:'top 85%' }});
     });
 
-    gsap.from('.value-card',{ y:20, autoAlpha:0, duration:.6, ease:'power2.out', stagger:.12, scrollTrigger:{ trigger:'.values', start:'top 80%' }});
-
-    (function collage(){
-      const el = document.getElementById('collage'); if(!el) return;
-      el.addEventListener('click',()=>{ el.classList.remove('open'); });
-      ScrollTrigger.create({
-        trigger: document.querySelector('.feature.reverse') || document.body,
-        start: 'top center', once: true,
-        onEnter: ()=>{
-          el.classList.add('open');
-          gsap.to(el,{autoAlpha:1,duration:0.2});
-          gsap.to(el,{autoAlpha:0,duration:0.6,delay:2,onComplete:()=>el.classList.remove('open')});
-        }
-      });
-    })();
-
-    (function loadLottie(){
-      const el = document.getElementById('lottie-hero');
-      if (!el || typeof bodymovin === 'undefined') return;
-      fetch('animations/hero.json').then(r=>r.ok?r.json():null).then(json=>{
-        if(!json){ el.style.display='none'; return; }
-        bodymovin.loadAnimation({ container: el, renderer: 'svg', loop: true, autoplay: true, animationData: json });
-      }).catch(()=>{ el.style.display='none'; });
-    })();
-
-    (function initLoco(){
-      if(prefersReduced) return;
-      const scroller = document.getElementById('smooth-container'); if(!scroller) return;
-      const init = ()=> {
-        const loco = new LocomotiveScroll({ el: scroller, smooth: true, multiplier: 0.9, smartphone:{smooth:true}, tablet:{smooth:true} });
-        ScrollTrigger.scrollerProxy(scroller, {
-          scrollTop(value){ return arguments.length ? loco.scrollTo(value,{duration:0,disableLerp:true}) : loco.scroll.instance.scroll.y; },
-          getBoundingClientRect(){ return { top:0, left:0, width:window.innerWidth, height:window.innerHeight }; },
-          pinType: scroller.style.transform ? 'transform' : 'fixed'
-        });
-        ScrollTrigger.addEventListener('refresh', () => loco.update());
-        ScrollTrigger.refresh();
+    (function ensureHeroVideo(){
+      const v = document.querySelector('.hero video');
+      if(!v) return;
+      const fallback = () => {
+        const img = document.createElement('img');
+        img.src = 'images/hero.png';
+        img.alt = 'Cseligevi hero';
+        v.parentNode.insertBefore(img, v);
+        v.remove();
       };
-      if(typeof LocomotiveScroll!=='undefined') init();
-      else window.addEventListener('load', ()=>{ if(typeof LocomotiveScroll!=='undefined') init(); });
+      v.addEventListener('error', fallback, { once:true });
+      const t = setTimeout(()=>{ if(v.readyState < 2) fallback(); }, 5000);
+      v.addEventListener('loadeddata', ()=>clearTimeout(t), { once:true });
     })();
   </script>
 
   <script src="animation.js"></script>
-  <script src="include.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 </body>
 </html>
