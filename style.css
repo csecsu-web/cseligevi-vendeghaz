@@ -43,6 +43,11 @@ body.no-scroll{overflow:hidden}
 .feature img{width:100%;height:clamp(200px,30vw,360px);object-fit:cover;border-radius:12px;box-shadow:0 8px 28px #00000014}
 @media (max-width:900px){.feature,.feature.reverse{grid-template-columns:1fr}}
 
+/* About page media blocks */
+.media{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center}
+.media img{width:100%;height:clamp(200px,30vw,360px);object-fit:cover;border-radius:12px;box-shadow:0 8px 28px #00000014}
+@media (max-width:900px){.media{grid-template-columns:1fr}}
+
 /* Values */
 .values{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .value-card{background:#fff;border-radius:16px;box-shadow:0 8px 28px #00000014;padding:18px;transition:transform .3s ease,box-shadow .3s ease}
