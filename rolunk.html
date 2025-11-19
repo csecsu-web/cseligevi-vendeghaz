@@ -1,41 +1,148 @@
-<!doctype html><html lang="hu"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Rólunk – Cseligevi Vendégház</title>
-<link rel="stylesheet" href="style.css"><link rel="icon" href="favicon.png">
-</head><body>
-<div data-include="navbar.html"></div>
-<section class="hero"><div class="hero-overlay">
-  <h1>Cseligevi – A természet ritmusában</h1><p>A nyugalom otthona</p>
-  <a class="btn" href="arak.html">Foglalj most</a>
-</div></section>
-<section class="container fade-in media">
-  <div>
-    <h2>Kapcsolódás a természethez</h2>
-    <p>A Cseligevi Vendégházat úgy álmodtuk meg, hogy legyen egy hely, ahol a hétköznapok zaját hátrahagyva megállhatsz, lelassulhatsz, és újra kapcsolódhatsz szeretteidhez és a természethez.</p>
-  </div>
-  <img src="images/rolunk1.jpg" alt="Természet közelsége">
-</section>
-<section class="container fade-in media">
-  <img src="images/rolunk2.jpg" alt="Borvidék látvány">
-  <div>
-    <h2>Szekszárdi borvidék</h2>
-    <p>Vendégházunk a Szekszárdi borvidék tanyás, hegygerincen fekvő részén található, közel a Bati Kereszt kilátóhoz és a Heimann borászathoz.</p>
-  </div>
-</section>
-<section class="container fade-in media">
-  <div>
-    <h2>Családoknak és pároknak</h2>
-    <p>Romantikus pillanatok, naplementék, játékos gyerekek a kertben, és közös sütögetések a szabadban. A benti szauna gondoskodik a teljes feltöltődésről.</p>
-  </div>
-  <img src="images/rolunk3.jpg" alt="Családbarát környezet">
-</section>
-<section class="container fade-in media">
-  <img src="images/rolunk4.jpg" alt="Nyugalom és kikapcsolódás">
-  <div>
-    <h2>A lassú ritmus élménye</h2>
-    <p>Cseligevi nem csak egy szállás – egy hely, ahol a természet lassú ritmusa újra tanít élvezni minden pillanatot.</p>
-  </div>
-</section>
-<div data-include="footer.html"></div>
-<script src="animation.js"></script><script src="include.js"></script>
-</body></html>
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Rólunk – Cseligevi Vendégház</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <style>
+    body{font-family:Poppins,system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif}
+    .clip{clip-path: inset(100% 0 0 0); opacity:0}
+    .media{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center}
+    .media img{width:100%;height:clamp(180px,28vw,320px);object-fit:cover;border-radius:12px}
+    @media (max-width:900px){.media{grid-template-columns:1fr}}
+    .hero{position:relative;min-height:48vh;display:grid;place-items:center;background:url('images/hero_about.jpg') center/cover no-repeat}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#00000033,#00000066)}
+    .hero-overlay{position:relative;text-align:center;color:#fff;padding:28px}
+    .hero-overlay h1{font-size:clamp(26px,6vw,52px);margin:0 0 8px}
+    .hero-overlay p{opacity:.9;margin:0 0 12px}
+    .navbar{z-index:9999}
+    @media (max-width:900px){
+      .menu{position:fixed;top:56px;left:0;right:0;bottom:0;background:var(--nav);z-index:9998;display:flex;flex-direction:column;gap:0;overflow:auto;transform:translateY(-100%);transition:transform .3s ease}
+      .menu.open{transform:translateY(0)}
+      .menu a{padding:14px 24px;border-bottom:1px solid #244c40}
+      body.no-scroll{overflow:hidden}
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="Fő">
+    <div class="nav-inner">
+      <div class="logo-wrap">
+        <img class="favicon" src="favicon.png" alt="Cseligevi logó">
+        <a class="logo" href="index.html" aria-label="Cseligevi Vendégház">Cseligevi</a>
+      </div>
+      <button class="hamburger" aria-label="Menü" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul id="nav-menu" class="menu">
+        <li><a href="index.html">Főoldal</a></li>
+        <li><a href="rolunk.html" class="accent">Rólunk</a></li>
+        <li><a href="vendeghaz.html">Vendégház</a></li>
+        <li><a href="arak.html">Árak & Foglalás</a></li>
+        <li><a href="programok.html">Programok</a></li>
+        <li><a href="kepek.html">Képek</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-overlay">
+      <h1 class="clip">Cseligevi – A természet ritmusában</h1>
+      <p class="clip">A nyugalom otthona</p>
+      <a class="btn clip" href="arak.html">Foglalj most</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="container media clip">
+      <div>
+        <h2>Kapcsolódás a természethez</h2>
+        <p>A Cseligevi Vendégházat azért álmodtuk meg, hogy legyen egy hely, ahol az ember végre megállhat. Ahol a hétköznapok rohanása, a zaj és a képernyők világa helyett újra a természet ritmusa veszi körül.</p>
+        <p>Idő jut magadra, a szeretteidre, és arra, hogy újraélj minden apró, mégis fontos pillanatot.</p>
+      </div>
+      <img src="images/rolunk1.jpg" alt="Természet közelsége">
+    </section>
+
+    <section class="container media clip">
+      <img src="images/rolunk2.jpg" alt="Borvidék látvány">
+      <div>
+        <h2>Szekszárdi borvidék</h2>
+        <p>Vendégházunk a Szekszárdi borvidék egyik legszebb, tanyavilágban megbúvó gerincén található, ahonnan lélegzetelállító panoráma tárul eléd.</p>
+        <p>A Bati‑kereszt kilátó mindössze 3 km, közel a Heimann borászat és Sötétvölgy is.</p>
+      </div>
+    </section>
+
+    <section class="container media clip">
+      <div>
+        <h2>Élmények egész nap</h2>
+        <p>Reggel friss levegő és madárdal ébreszt; napközben a tágas zöld telek teret ad játékhoz, pihenéshez és romantikus sétákhoz; este a naplemente narancs‑arany fényei borítják be a hegygerincet.</p>
+      </div>
+      <img src="images/rolunk3.jpg" alt="Kert és pihenés">
+    </section>
+
+    <section class="container media clip">
+      <img src="images/rolunk4.jpg" alt="Nyugalom és kikapcsolódás">
+      <div>
+        <h2>Pároknak és családoknak</h2>
+        <p>A házat úgy alakítottuk ki, hogy ideális legyen pároknak és családoknak. A benti szauna a hűvösebb napokon is feltölt, a gyerekek pedig szabadon szaladgálhatnak, csúszdázhatnak és játszhatnak a zöld udvaron.</p>
+        <div class="actions" style="margin-top:10px">
+          <a class="btn" href="arak.html">Foglalj most</a>
+          <a class="btn btn-outline" href="kepek.html">Képek</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer glass">
+    <div class="container">
+      <h3>Foglalj Most!</h3>
+      <div class="actions">
+        <a class="btn" href="mailto:cseligevi5@gmail.com">Foglalás emailben</a>
+        <a class="btn btn-outline" href="tel:+36708844779">+36 70 884 4779</a>
+        <a class="btn btn-outline" href="tel:+36703346060">+36 70 334 6060</a>
+        <a class="btn btn-outline" href="arak.html">Árak</a>
+      </div>
+      <div class="social">
+        <a target="_blank" rel="noopener" href="https://www.facebook.com/people/Cseligevi-Vend%C3%A9gh%C3%A1z/61583771781727/">Facebook</a>
+        <a target="_blank" rel="noopener" href="https://www.instagram.com/cseligevivendeghaz">Instagram</a>
+        <a target="_blank" rel="noopener" href="https://www.tiktok.com/@cseligevivendeghaz?is_from_webapp=1&sender_device=pc">TikTok</a>
+      </div>
+      <div class="contact">
+        <p>Email: <a href="mailto:cseligevi5@gmail.com">cseligevi5@gmail.com</a></p>
+        <p>Cím: <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=8MRP%2BC4%20Szeksz%C3%A1rd%2C%20Cseligevi%20vend%C3%A9gh%C3%A1z">8MRP+C4 Szekszárd, Cseligevi vendégház</a></p>
+      </div>
+      <div class="map-placeholder glass" style="margin-top:16px">
+        <div class="overlay">
+          <div>
+            <p>Térkép megnyitása</p>
+            <button class="btn" onclick="(function(el){const iframe=document.createElement('iframe');iframe.src='https://www.google.com/maps?q=8MRP%2BC4%20Szeksz%C3%A1rd&output=embed';iframe.loading='lazy';iframe.referrerPolicy='no-referrer-when-downgrade';iframe.style='border:0;width:100%;height:100%';el.innerHTML='';el.appendChild(iframe);})(this.closest('.map-placeholder'))">Térkép betöltése</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('.clip').forEach(el=>{
+      gsap.fromTo(el,{clipPath:'inset(100% 0 0 0)',opacity:0},{clipPath:'inset(0 0 0 0)',opacity:1,duration:.8,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 85%'}});
+    });
+
+    const btn = document.querySelector('.hamburger');
+    const menu = document.getElementById('nav-menu');
+    if (btn && menu) {
+      const closeMenu = () => { menu.classList.remove('open'); btn.setAttribute('aria-expanded','false'); document.body.classList.remove('no-scroll'); };
+      const openMenu = () => { menu.classList.add('open'); btn.setAttribute('aria-expanded','true'); document.body.classList.add('no-scroll'); };
+      btn.addEventListener('click', () => { menu.classList.contains('open') ? closeMenu() : openMenu(); });
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+    }
+  </script>
+</body>
+</html>
