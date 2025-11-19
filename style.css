@@ -9,23 +9,26 @@ html,body{margin:0;padding:0}
 body{font-family:Poppins,system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;background:var(--bg);color:#1a1a1a;padding-top:56px}
 
 /* Navbar */
-.navbar{position:fixed;top:0;left:0;right:0;height:56px;background:var(--green);color:#f1bfbf;z-index:9999}
+<style>
+.navbar{position:fixed;top:0;left:0;right:0;height:56px;background:#1b4235;color:#fff;z-index:9999}
 .navbar .nav-inner{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between}
 .navbar .logo{display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font-weight:700}
 .navbar .logo img{width:28px;height:28px}
 .navbar .menu{display:flex;gap:16px;list-style:none;margin:0;padding:0}
 .navbar .menu a{color:#fff;text-decoration:none;padding:8px 10px;border-radius:8px}
-.navbar .menu a:hover{background:#e48585}
-.navbar .menu .favicon-item img{width:24px;height:24px;border-radius:6px;display:block}
+.navbar .menu a:hover{background:#ffffff22}
 .navbar .hamburger{display:none;align-items:center;justify-content:center;width:40px;height:40px;border:0;background:transparent;color:#fff}
 .navbar .hamburger span{display:block;width:22px;height:2px;background:#fff;margin:4px 0}
 @media (max-width:900px){
   .navbar .hamburger{display:inline-flex}
-  .navbar .menu{position:fixed;top:56px;left:0;right:0;bottom:0;background:var(--green);flex-direction:column;padding:12px 0;overflow:auto;z-index:9998;transform:translateY(-100%);transition:transform .3s ease}
+  .navbar .menu{position:fixed;top:56px;left:0;right:0;bottom:0;background:#1b4235;flex-direction:column;padding:12px 0;overflow:auto;z-index:9998;transform:translateY(-100%);transition:transform .3s ease}
   .navbar .menu.open{transform:translateY(0)}
   .navbar .menu a{padding:14px 24px;border-bottom:1px solid #244c40;color:#fff}
 }
+body{padding-top:56px}
 body.no-scroll{overflow:hidden}
+.navbar .menu .favicon-item img{width:24px;height:24px;border-radius:6px;display:block}
+</style>
 
 /* Hero */
 .hero{position:relative;min-height:64vh;display:grid;place-items:center;background:linear-gradient(135deg,#1b4235 0%,#0f2f25 40%,#1b4235 100%)}
