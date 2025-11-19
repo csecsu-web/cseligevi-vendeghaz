@@ -1,9 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-include]').forEach(async el => {
-    const src = el.getAttribute('data-include');
+  const includes = document.querySelectorAll('[data-include]');
+  includes.forEach(async (el) => {
+    const path = el.getAttribute('data-include');
+    if (!path) return;
     try {
-      const res = await fetch(src, {cache: 'no-cache'});
-      el.outerHTML = await res.text();
-    } catch {}
+      const res = await fetch(path, { cache: 'no-store' });
+      if (!res.ok) throw new Error('Failed to fetch ' + path);
+      const html = await res.text();
+      el.innerHTML = html;
+    } catch (e) {
+      console.error('Include error:', e);
+    }
   });
 });
