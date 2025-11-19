@@ -8,6 +8,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="canonical" href="https://cseligevivendeghaz.com/kepek.html">
+  <meta name="description" content="Képek – válogatás a Cseligevi Vendégház belső tereiből, kültéri élményekből és a benti szaunából.">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
@@ -43,6 +45,15 @@
           <img class="tile" src="images/szauna1.jpg" alt="Szauna">
         </div>
       </div>
+      <div class="grid-gallery" id="grid-gallery">
+        <img src="images/nappali1.jpg" alt="Nappali">
+        <img src="images/konyha1.jpg" alt="Konyha">
+        <img src="images/halo1.jpg" alt="Hálószoba">
+        <img src="images/terasz1.jpg" alt="Terasz">
+        <img src="images/kert1.jpg" alt="Kert">
+        <img src="images/panorama1.jpg" alt="Panoráma">
+        <img src="images/szauna1.jpg" alt="Szauna">
+      </div>
     </section>
   </main>
 
@@ -60,11 +71,15 @@
 
   <script>
     (function(){
-      const ring=document.getElementById('dome-ring'); if(!ring) return;
+      const isMobile=window.matchMedia('(max-width: 900px)').matches || 'ontouchstart' in window;
+      const ring=document.getElementById('dome-ring'); const grid=document.getElementById('grid-gallery');
+      if(grid){ grid.style.display = isMobile ? 'grid' : 'none'; }
+      if(!ring) return;
+      if(isMobile){ return; }
       const tiles=[...ring.querySelectorAll('.tile')];
       const n=tiles.length; const step=360/n;
       tiles.forEach((el,i)=>{ el.style.transform=`translateX(-50%) rotateY(${i*step}deg)`; });
-      let rot=0; const spin=()=>{ rot+=0.03; ring.style.transform=`rotateY(${rot}turn)`; requestAnimationFrame(spin); }; spin();
+      let rot=0; const spin=()=>{ rot+=0.002; ring.style.transform=`rotateY(${rot}turn)`; requestAnimationFrame(spin); }; spin();
     })();
   </script>
   <script src="animation.js"></script>
