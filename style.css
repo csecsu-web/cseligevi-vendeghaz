@@ -1,14 +1,14 @@
 :root{
-  --green:#1b4235;
-  --accent:#edd3c5;
-  --bg:#ece7e3;
-  --muted:#b88364;
+  --green:#1b4235;
+  --accent:#edd3c5;
+  --bg:#ece7e3;
+  --muted:#b88364;
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{font-family:Poppins,system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;background:var(--bg);color:#1a1a1a;padding-top:56px}
 
-/* Navbar */
+/* --- Navbar --- */
 .navbar{position:fixed;top:0;left:0;right:0;height:56px;background:var(--green);color:#fff;z-index:9999}
 .navbar .nav-inner{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between}
 .navbar .logo{display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font-weight:700}
@@ -20,78 +20,68 @@ body{font-family:Poppins,system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helve
 .navbar .hamburger{display:none;align-items:center;justify-content:center;width:40px;height:40px;border:0;background:transparent;color:#fff}
 .navbar .hamburger span{display:block;width:22px;height:2px;background:#fff;margin:4px 0}
 @media (max-width:900px){
-  .navbar .hamburger{display:inline-flex}
-  .navbar .menu{position:fixed;top:56px;left:0;right:0;bottom:0;background:var(--green);flex-direction:column;padding:12px 0;overflow:auto;z-index:9998;transform:translateY(-100%);transition:transform .3s ease}
-  .navbar .menu.open{transform:translateY(0)}
-  .navbar .menu a{padding:14px 24px;border-bottom:1px solid #244c40;color:#fff}
+  .navbar .hamburger{display:inline-flex}
+  .navbar .menu{position:fixed;top:56px;left:0;right:0;bottom:0;background:var(--green);flex-direction:column;padding:12px 0;overflow:auto;z-index:9998;transform:translateY(-100%);transition:transform .3s ease}
+  .navbar .menu.open{transform:translateY(0)}
+  .navbar .menu a{padding:14px 24px;border-bottom:1px solid #244c40;color:#fff}
 }
 body.no-scroll{overflow:hidden}
 
-/* Hero */
-/* Hero szekció új luxus stílusa */
+/* --- Hero (Luxus Stílus) --- */
 .hero {
-    position: relative;
-    min-height: 64vh;
-    display: grid;
-    place-items: center;
-    
-    /* 1. Alap háttér: a sötét zöld (forest green) */
-    background: var(--green);
-    overflow: hidden; /* Fontos a belső elemek elrejtéséhez */
+    position: relative;
+    min-height: 64vh;
+    display: grid;
+    place-items: center;
+    background: var(--green); 
+    overflow: hidden;
 }
 
-/* 2. Pseudo-elem az absztrakt 3D (dombok/hegyek) vonalakhoz */
 .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    
-    /* Luxus hatású, hullámzó minta az aktuális színekkel */
-    background-image: 
-        /* Felső, áttetsző hullám */
-        linear-gradient(110deg, rgba(237, 211, 197, 0.1) 50%, transparent 50%),
-        /* Alsó, sötétebb hullám */
-        linear-gradient(150deg, rgba(27, 66, 53, 0.8) 50%, transparent 50%);
-    
-    background-size: 300% 300%; /* Nagy méret a finomabb hatásért */
-    background-position: 50% 50%; /* Középre igazítás */
-    opacity: 0.9;
-    
-    /* Finom mozgás animáció a 3D-s látványért */
-    animation: luxuriousWave 20s ease-in-out infinite alternate;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(110deg, rgba(237, 211, 197, 0.1) 50%, transparent 50%),
+        linear-gradient(150deg, rgba(27, 66, 53, 0.8) 50%, transparent 50%);
+    background-size: 300% 300%;
+    background-position: 50% 50%;
+    opacity: 0.9;
+    animation: luxuriousWave 20s ease-in-out infinite alternate;
 }
 
-/* 3. Animáció definíciója */
 @keyframes luxuriousWave {
-    0% {
-        background-position: 0% 0%;
-        transform: scale(1);
-    }
-    100% {
-        background-position: 100% 100%;
-        transform: scale(1.1); /* Enyhe nagyítás a mélységért */
-    }
+    0% {
+        background-position: 0% 0%;
+        transform: scale(1);
+    }
+    100% {
+        background-position: 100% 100%;
+        transform: scale(1.1);
+    }
 }
 
-/* 4. Overlay finomítása (kiemeli a szöveget, de átengedi a hátteret) */
-/* Megtartva a glass class-t, de a konténerre vonatkozóan javítva van a CSS */
 .hero-overlay {
-    position: relative;
-    z-index: 1; /* Fontos, hogy a minta felett legyen */
-    text-align: center;
-    color: #fff;
-    padding: 28px;
-    
-    /* Háttér elmosása a luxus hatás érdekében */
-    background: rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #fff;
+    padding: 28px;
+    /* Üveg (glass) hatás a szöveg körül */
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
-/* A meglévő .glass stílust most már nem a .hero-overlay-re használjuk közvetlenül */
 
-/* Layout */
+/* --- Brand SVG (Logó stílusa) --- */
+.brand-svg{width:180px;height:60px;margin:8px auto}
+.brand-svg path{stroke:var(--green);stroke-width:2.4;fill:none}
+.clip{clip-path: inset(100% 0 0 0)} /* Animációhoz használt osztály */
+
+
+/* --- Layout --- */
 .container{max-width:1200px;margin:0 auto;padding:24px}
 .glass{background:#ffffffaa;border-radius:16px;backdrop-filter:saturate(150%) blur(6px);-webkit-backdrop-filter:saturate(150%) blur(6px)}
 .feature{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center}
