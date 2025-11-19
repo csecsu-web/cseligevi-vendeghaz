@@ -1,4 +1,3 @@
-// Navbar toggle and page animations
 (function(){
   function wire(){
     const btn=document.querySelector('.hamburger');
@@ -18,7 +17,6 @@
   }
 })();
 
-// GSAP clip-path reveal
 if (typeof gsap !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
   gsap.utils.toArray('.clip').forEach(el=>{
