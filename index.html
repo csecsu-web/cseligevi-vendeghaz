@@ -13,25 +13,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
-  <nav class="navbar" role="navigation" aria-label="Fő">
-    <div class="nav-inner">
-      <a class="logo" href="index.html" aria-label="Cseligevi Vendégház">
-        <img src="favicon.png" alt="Cseligevi logó"> Cseligevi
-      </a>
-      <button class="hamburger" aria-label="Menü" aria-expanded="false" aria-controls="nav-menu">
-        <span></span><span></span><span></span>
-      </button>
-      <ul id="nav-menu" class="menu">
-        <li class="favicon-item"><img src="favicon.png" alt="Cseligevi"></li>
-        <li><a href="index.html">Főoldal</a></li>
-        <li><a href="rolunk.html">Rólunk</a></li>
-        <li><a href="vendeghaz.html">Vendégház</a></li>
-        <li><a href="arak.html">Árak & Foglalás</a></li>
-        <li><a href="programok.html">Programok</a></li>
-        <li><a href="kepek.html">Képek</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div data-include="navbar.html"></div>
 
   <section class="hero">
     <video autoplay muted loop playsinline preload="metadata" poster="images/hero.png">
@@ -160,5 +142,6 @@
   </script>
 
   <script src="animation.js"></script>
+  <script src="include.js"></script>
 </body>
 </html>
