@@ -8,14 +8,30 @@
   <link rel="icon" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js"></script>
   <style>
     body{font-family:Poppins,system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif}
-    .hero-gallery{position:relative;min-height:48vh;background:url('images/hero_gallery.jpg') center/cover no-repeat;display:grid;place-items:center}
-    .hero-gallery::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#00000033,#00000077)}
-    .hero-overlay{position:relative;text-align:center;color:#fff;padding:28px}
-    .hero-overlay h1{font-size:clamp(26px,6vw,52px);margin:0 0 8px}
-    .hero-overlay p{opacity:.9;margin:0}
+    .hero-dome{position:relative;min-height:64vh;background:#060010;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .hero-dome .dome-overlay{position:absolute;inset:0;pointer-events:none;background:radial-gradient(closest-side,transparent 60%, rgba(6,0,16,.85) 100%)}
+    .hero-dome .dome-container{position:relative;width:min(1200px,92vw);height:min(700px,68vh);margin:auto;transform-style:preserve-3d}
+    .hero-dome .tile{position:absolute;will-change:transform;transition:transform .3s ease,box-shadow .3s ease,filter .3s ease;border-radius:30px;box-shadow:0 8px 28px #00000020;cursor:pointer}
+    .hero-dome .tile:hover{transform:translate3d(var(--tx),var(--ty),var(--tz)) scale(1.04);box-shadow:0 16px 36px #00000030;filter:grayscale(0)}
+    .hero-dome .tile img{width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block}
+    .hero-dome .caption{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);color:#fff;text-align:center}
+    .hero-dome .caption h1{margin:0 0 6px;font-size:clamp(26px,6vw,52px)}
+    .hero-dome .caption p{margin:0;opacity:.9}
+    .lightbox{position:fixed;inset:0;background:#000000cc;display:none;align-items:center;justify-content:center;z-index:9990;padding:16px}
+    .lightbox.open{display:flex}
+    .lightbox img{border-radius:30px;box-shadow:0 10px 40px #00000055}
+    .lightbox .close{position:absolute;top:12px;right:12px;background:#ffffff;color:#1b4235;border:none;border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer}
     .page{max-width:1200px;margin:0 auto;padding:24px}
+    .section-title{display:flex;align-items:center;justify-content:space-between;margin:18px 0}
+    .section-title h2{margin:0;font-size:clamp(20px,3.5vw,28px)}
     .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
     @media (max-width:1100px){.gallery-grid{grid-template-columns:repeat(3,1fr)}}
     @media (max-width:800px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
@@ -23,122 +39,259 @@
     .card{position:relative;border-radius:16px;overflow:hidden;background:#ffffff;box-shadow:0 8px 28px #00000014;transition:transform .3s ease,box-shadow .3s ease}
     .card:hover{transform:translateY(-3px);box-shadow:0 16px 36px #00000022}
     .thumb{width:100%;height:240px;object-fit:cover;display:block}
-    .card video.thumb{background:#000;}
     .info{position:absolute;left:12px;bottom:12px;background:#00000066;color:#fff;padding:6px 10px;border-radius:12px;font-size:13px}
-    .btn{border-radius:16px}
-    .section-title{display:flex;align-items:center;justify-content:space-between;margin:18px 0}
-    .section-title h2{margin:0;font-size:clamp(20px,3.5vw,28px)}
-    .fade{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
-    .fade.visible{opacity:1;transform:none}
-    .lightbox{position:fixed;inset:0;background:#000000cc;display:none;align-items:center;justify-content:center;z-index:9990;padding:16px}
-    .lightbox.open{display:flex}
-    .lightbox img,.lightbox video{max-width:92vw;max-height:82vh;border-radius:16px;box-shadow:0 10px 40px #00000055}
-    .lightbox .close{position:absolute;top:12px;right:12px;background:#ffffff;color:#1b4235;border:none;border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer}
   </style>
-  <!-- React + ReactDOM + Babel (CDN) -->
-  <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js" crossorigin></script>
-  <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js"></script>
 </head>
 <body>
   <div data-include="navbar.html"></div>
 
-  <header class="hero-gallery fade">
-    <div class="hero-overlay">
+  <section class="hero-dome">
+    <div id="dome-root" class="dome-container"></div>
+    <div class="dome-overlay" aria-hidden="true"></div>
+    <div class="caption">
       <h1>Képek</h1>
       <p>Válogatás a vendégházból és a környékről</p>
-      <div style="margin-top:14px">
-        <a class="btn" href="arak.html">Foglalj most</a>
-      </div>
     </div>
-  </header>
+  </section>
 
   <main class="page">
-    <div class="section-title fade">
+    <div class="section-title">
       <h2>Galéria</h2>
       <div><a class="btn btn-outline" href="vendeghaz.html">Vissza a vendégházhoz</a></div>
     </div>
-    <div id="gallery-root" class="fade"></div>
+    <div id="gallery-root"></div>
   </main>
 
   <div data-include="footer.html"></div>
 
   <script type="text/babel">
-    const { useEffect, useState } = React;
+    const DEFAULT_IMAGES = [
+      { src:'images/nappali1.jpg', alt:'Nappali' },
+      { src:'images/konyha1.jpg', alt:'Konyha' },
+      { src:'images/halo1.jpg', alt:'Hálószoba' },
+      { src:'images/terasz1.jpg', alt:'Terasz' },
+      { src:'images/kert1.jpg', alt:'Kert' },
+      { src:'images/panorama1.jpg', alt:'Panoráma' },
+      { src:'images/nappali2.jpg', alt:'Nappali 2' },
+      { src:'images/konyha2.jpg', alt:'Konyha 2' },
+      { src:'images/terasz2.jpg', alt:'Terasz 2' },
+      { src:'images/szauna1.jpg', alt:'Szauna' },
+      { src:'images/kilato1.jpg', alt:'Kilátó' },
+      { src:'images/szurdik1.jpg', alt:'Szurdik' }
+    ];
 
-    function Lightbox({ item, onClose }) {
-      if (!item) return null;
+    function Lightbox({ open, src, width='400px', height='400px', borderRadius='30px', onClose }) {
       return (
-        <div className="lightbox open" onClick={onClose}>
+        <div className={open ? 'lightbox open' : 'lightbox'} onClick={onClose}>
           <button className="close" onClick={onClose}>Bezár</button>
-          {item.type === 'image' ? (
-            <img src={item.src} alt={item.alt || 'Kép'} onClick={e=>e.stopPropagation()} />
-          ) : (
-            <video src={item.src} controls playsInline onClick={e=>e.stopPropagation()} />
-          )}
+          {open && <img src={src} alt="Nagy kép" style={{ width, height, borderRadius }} onClick={e=>e.stopPropagation()} />}
         </div>
       );
     }
 
-    function DomeGallery({ items }) {
-      const [lightboxItem, setLightboxItem] = useState(null);
+    function DomeHero({
+      images = DEFAULT_IMAGES,
+      fit = 0.5,
+      fitBasis = 'auto',
+      minRadius = 600,
+      maxRadius = Infinity,
+      padFactor = 0.25,
+      overlayBlurColor = '#060010',
+      maxVerticalRotationDeg = 5,
+      dragSensitivity = 20,
+      enlargeTransitionMs = 300,
+      segments = 35,
+      dragDampening = 2,
+      openedImageWidth = '400px',
+      openedImageHeight = '400px',
+      imageBorderRadius = '30px',
+      openedImageBorderRadius = '30px',
+      grayscale = true
+    }) {
+      const [opened, setOpened] = React.useState(null);
+      const containerRef = React.useRef(null);
+      const tilt = React.useRef({ x: 0, y: 0, vx: 0, vy: 0, dragging: false, lastX: 0, lastY: 0 });
 
-      useEffect(() => {
-        const els = document.querySelectorAll('.fade');
-        const io = new IntersectionObserver(entries=>{
-          entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
-        },{ threshold: .2 });
-        els.forEach(el=>io.observe(el));
-        return () => io.disconnect();
-      }, []);
+      React.useEffect(() => {
+        const el = containerRef.current;
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const basis = fitBasis === 'width' ? rect.width
+                    : fitBasis === 'height' ? rect.height
+                    : fitBasis === 'min' ? Math.min(rect.width, rect.height)
+                    : fitBasis === 'max' ? Math.max(rect.width, rect.height)
+                    : Math.min(rect.width, rect.height);
+        let radius = basis * fit;
+        radius = Math.max(minRadius, Math.min(radius, isFinite(maxRadius) ? maxRadius : radius));
+
+        const rings = 3;
+        const perRing = Math.ceil(images.length / rings);
+        const radii = [radius*0.35, radius*0.6, radius*0.8];
+        const centerX = rect.width/2, centerY = rect.height/2;
+        const pad = basis * padFactor;
+
+        const tiles = Array.from(el.querySelectorAll('.tile'));
+        tiles.forEach(t => t.remove());
+
+        let idx = 0;
+        for (let r = 0; r < rings; r++) {
+          const count = Math.min(perRing, images.length - idx);
+          for (let i = 0; i < count; i++) {
+            const item = images[idx];
+            const angle = (i / count) * Math.PI * 2;
+            const x = centerX + Math.cos(angle) * (radii[r] - pad) * 0.5;
+            const y = centerY + Math.sin(angle) * (radii[r] - pad) * 0.28;
+            const z = (r+1) * 30;
+
+            const w = 180 - r*20;
+            const h = 120 - r*10;
+
+            const tile = document.createElement('div');
+            tile.className = 'tile';
+            tile.style.width = w+'px';
+            tile.style.height = h+'px';
+            tile.style.borderRadius = imageBorderRadius;
+            tile.style.filter = grayscale ? 'grayscale(1)' : 'none';
+            tile.style.left = (x - w/2)+'px';
+            tile.style.top = (y - h/2)+'px';
+            tile.style.setProperty('--tx', (x - w/2)+'px');
+            tile.style.setProperty('--ty', (y - h/2)+'px');
+            tile.style.setProperty('--tz', z+'px');
+            tile.style.transform = `translate3d(${x - w/2}px,${y - h/2}px,${z}px)`;
+
+            const img = document.createElement('img');
+            img.src = typeof item === 'string' ? item : item.src;
+            img.alt = typeof item === 'string' ? 'Kép' : (item.alt || 'Kép');
+            tile.appendChild(img);
+
+            tile.addEventListener('click', () => {
+              setOpened(typeof item === 'string' ? item : item.src);
+            });
+
+            el.appendChild(tile);
+            idx++;
+            if (idx >= images.length) break;
+          }
+        }
+
+        const t = tilt.current;
+        const clamp = (v, min, max) => Math.max(min, Math.min(v, max));
+        const damp = Math.max(0, Math.min(dragDampening, 10));
+
+        const onDown = (e) => {
+          t.dragging = true;
+          t.lastX = e.clientX || e.touches?.[0]?.clientX || 0;
+          t.lastY = e.clientY || e.touches?.[0]?.clientY || 0;
+        };
+        const onMove = (e) => {
+          if (!t.dragging) return;
+          const x = e.clientX || e.touches?.[0]?.clientX || 0;
+          const y = e.clientY || e.touches?.[0]?.clientY || 0;
+          const dx = (x - t.lastX) / dragSensitivity;
+          const dy = (y - t.lastY) / dragSensitivity;
+          t.vx += dx; t.vy += dy;
+          t.lastX = x; t.lastY = y;
+        };
+        const onUp = () => { t.dragging = false; };
+
+        el.addEventListener('mousedown', onDown);
+        el.addEventListener('touchstart', onDown, { passive: true });
+        window.addEventListener('mousemove', onMove);
+        window.addEventListener('touchmove', onMove, { passive: true });
+        window.addEventListener('mouseup', onUp);
+        window.addEventListener('touchend', onUp);
+
+        let raf;
+        const loop = () => {
+          t.vx *= (1 - 0.06 * damp);
+          t.vy *= (1 - 0.06 * damp);
+          t.x = clamp((t.x || 0) + t.vx, -15, 15);
+          t.y = clamp((t.y || 0) + t.vy, -maxVerticalRotationDeg, maxVerticalRotationDeg);
+          el.style.transform = `rotateY(${t.x}deg) rotateX(${-t.y}deg)`;
+          raf = requestAnimationFrame(loop);
+        };
+        loop();
+
+        return () => {
+          cancelAnimationFrame(raf);
+          el.removeEventListener('mousedown', onDown);
+          el.removeEventListener('touchstart', onDown);
+          window.removeEventListener('mousemove', onMove);
+          window.removeEventListener('touchmove', onMove);
+          window.removeEventListener('mouseup', onUp);
+          window.removeEventListener('touchend', onUp);
+        };
+      }, [images, fit, fitBasis, minRadius, maxRadius, padFactor, maxVerticalRotationDeg, dragSensitivity, segments, dragDampening, imageBorderRadius, grayscale]);
 
       return (
         <>
-          <div className="gallery-grid">
-            {items.map((item, idx) => (
-              <figure key={idx} className="card" onClick={() => setLightboxItem(item)} title="Megnyitás">
-                {item.type === 'image' ? (
-                  <img className="thumb" loading="lazy" src={item.src} alt={item.alt || 'Kép'} />
-                ) : (
-                  <video className="thumb" muted playsInline loop src={item.src}></video>
-                )}
-                {item.label && <figcaption className="info">{item.label}</figcaption>}
-              </figure>
-            ))}
-          </div>
-          <Lightbox item={lightboxItem} onClose={() => setLightboxItem(null)} />
+          <div ref={containerRef}></div>
+          <Lightbox
+            open={!!opened}
+            src={opened || ''}
+            width={openedImageWidth}
+            height={openedImageHeight}
+            borderRadius={openedImageBorderRadius}
+            onClose={() => setOpened(null)}
+          />
         </>
       );
     }
 
-    const items = [
-      { type:'image', src:'images/nappali1.jpg', alt:'Nappali', label:'Nappali' },
-      { type:'image', src:'images/konyha1.jpg', alt:'Konyha', label:'Konyha' },
-      { type:'image', src:'images/halo1.jpg', alt:'Hálószoba', label:'Hálószoba' },
-      { type:'image', src:'images/terasz1.jpg', alt:'Terasz', label:'Terasz' },
-      { type:'image', src:'images/kert1.jpg', alt:'Kert', label:'Kert' },
-      { type:'image', src:'images/panorama1.jpg', alt:'Panoráma', label:'Panoráma' },
-      { type:'video', src:'videos/galeria1.mp4', label:'Hangulat' },
-      { type:'image', src:'images/nappali2.jpg', alt:'Nappali 2', label:'Nappali' },
-      { type:'image', src:'images/konyha2.jpg', alt:'Konyha 2', label:'Konyha' },
-      { type:'image', src:'images/terasz2.jpg', alt:'Terasz 2', label:'Terasz' },
-      { type:'video', src:'videos/galeria2.mp4', label:'Környék' },
-      { type:'image', src:'images/szauna1.jpg', alt:'Szauna', label:'Szauna' },
-      { type:'image', src:'images/kilato1.jpg', alt:'Kilátó', label:'Kilátó' },
-      { type:'image', src:'images/szurdik1.jpg', alt:'Szurdik', label:'Szurdik' },
-      { type:'video', src:'videos/galeria3.mp4', label:'Túra' }
-    ];
+    function LightboxGrid({ items }) {
+      const [open, setOpen] = React.useState(null);
+      return (
+        <>
+          <div className="gallery-grid">
+            {items.map((item, idx) => (
+              <figure key={idx} className="card" onClick={() => setOpen(item.src)} title="Megnyitás">
+                <img className="thumb" loading="lazy" src={item.src} alt={item.alt || 'Kép'} />
+                {item.alt && <figcaption className="info">{item.alt}</figcaption>}
+              </figure>
+            ))}
+          </div>
+          <Lightbox open={!!open} src={open || ''} onClose={() => setOpen(null)} />
+        </>
+      );
+    }
 
-    ReactDOM.createRoot(document.getElementById('gallery-root')).render(<DomeGallery items={items} />);
+    ReactDOM.createRoot(document.getElementById('dome-root')).render(
+      React.createElement(DomeHero, {
+        images: DEFAULT_IMAGES,
+        fit: 0.5,
+        fitBasis: 'auto',
+        minRadius: 600,
+        maxRadius: Infinity,
+        padFactor: 0.25,
+        overlayBlurColor: '#060010',
+        maxVerticalRotationDeg: 5,
+        dragSensitivity: 20,
+        enlargeTransitionMs: 300,
+        segments: 35,
+        dragDampening: 2,
+        openedImageWidth: '400px',
+        openedImageHeight: '400px',
+        imageBorderRadius: '30px',
+        openedImageBorderRadius: '30px',
+        grayscale: true
+      })
+    );
+
+    const GRID_IMAGES = DEFAULT_IMAGES.map(i => ({ src: typeof i === 'string' ? i : i.src, alt: typeof i === 'string' ? 'Kép' : i.alt }));
+    ReactDOM.createRoot(document.getElementById('gallery-root')).render(<LightboxGrid items={GRID_IMAGES} />);
   </script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.fade').forEach(el => el.classList.add('visible'));
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.create({
+      trigger: document.querySelector('.hero-dome'),
+      start: 'top top',
+      onEnter: () => gsap.to('.caption', { autoAlpha: 1, duration: .6 })
     });
   </script>
 
   <script src="animation.js"></script>
   <script src="include.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 </body>
 </html>
