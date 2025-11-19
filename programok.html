@@ -1,135 +1,51 @@
 <!doctype html>
 <html lang="hu">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Programok és környék – Cseligevi Vendégház</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
-  <link rel="apple-touch-icon" href="favicon.png">
-  <link rel="canonical" href="https://cseligevivendeghaz.com/programok.html">
-  <meta name="description" content="Kulturális élmények, természetjárás, kilátók és aktív kikapcsolódás Szekszárdon. Fedezze fel a Cseligevi Vendégház környékét.">
-  <meta name="keywords" content="Szekszárd programok, Szekszárd látnivalók, Babits Emlékház, Bati-kereszt, Élményfürdő, túrázás Szekszárd">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://cseligevivendeghaz.com/programok.html">
-  <meta property="og:title" content="Programok és környék – Cseligevi Vendégház | Szekszárd">
-  <meta property="og:description" content="Kulturális, természeti és aktív kikapcsolódási lehetőségek Szekszárdon és a környéken.">
-  <meta property="og:image" content="https://cseligevivendeghaz.com/images/hero_programok.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Programok – Cseligevi Vendégház</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
-  <div data-include="navbar.html"></div>
+  <div data-include="navbar.html"></div>
 
-  <header class="hero">
-    <div class="hero-overlay glass">
-            <div class="brand-svg">
-        <svg viewBox="0 0 200 60"><path id="brand-path" d="M10,30 C40,5 80,55 110,25 C130,10 160,20 190,30"/></svg>
-      </div>
-      <h1 class="clip">Programok és környék</h1>
-      <p class="clip">Kulturális élmények, természet és aktív kikapcsolódás</p>
-      <a class="btn clip" href="index.html">Vissza a főoldalra</a>
-    </div>
-  </header>
+  <header class="hero">
+    <div class="hero-overlay glass">
+      <h1 class="clip">Programok</h1>
+      <p class="clip">Szekszárd és a környék élményei</p>
+      <a class="btn clip" href="arak.html">Foglalj most</a>
+    </div>
+  </header>
 
-  <main>
-    <section class="container glass clip">
-      <h2>Fedezze fel Szekszárdot!</h2>
-      <p>Szekszárdon számos állandóan elérhető, nem borral kapcsolatos program és látnivaló várja a látogatókat – múzeumok, kilátók, tanösvények, fürdők és aktív kikapcsolódási lehetőségek. Minden korosztály talál kedvére valót!</p>
+  <main class="container glass clip">
+    <h2>Bor és gasztronómia</h2>
+    <p>Látogass meg helyi pincéket, fedezd fel a szekszárdi borvidék ízeit.</p>
+    <h2>Természet és kirándulás</h2>
+    <p>Erdei séták, kilátók, közeli tavak – friss levegő és feltöltődés.</p>
+    <h2>Kultúra és város</h2>
+    <p>Múzeumok, belvárosi séták, rendezvények – élmények a városban.</p>
+  </main>
 
-            <div class="program-grid">
+  <footer class="footer glass">
+    <div class="container">
+      <h3>Foglalj Most!</h3>
+      <div class="actions">
+        <a class="btn" href="mailto:cseligevi5@gmail.com">Foglalás emailben</a>
+        <a class="btn btn-outline" href="tel:+36708844779">+36 70 884 4779</a>
+        <a class="btn btn-outline" href="tel:+36703346060">+36 70 334 6060</a>
+        <a class="btn btn-outline" href="index.html">Vissza a főoldalra</a>
+      </div>
+    </div>
+  </footer>
 
-                <div class="program-card card-animate">
-          <h3>🏛️ Kulturális és történelmi látnivalók</h3>
-          <ul class="list">
-            <li>**Babits Mihály Emlékház** – A híres költő szülőháza, eredeti állapotban megőrizve, irodalmi kiállítással.</li>
-            <li>**Mézeskalács Múzeum** – Interaktív kiállítás a mézeskalács-készítésről, családbarát program.</li>
-            <li>**BeSweet Csokoládémanufaktúra** – Betekintés a kézműves csokoládék világába.</li>
-            <li>**Bogár-Tanya Néprajzi Magángyűjtemény** – Ritka néprajzi tárgyak és helytörténeti emlékek.</li>
-          </ul>
-        </div>
-
-                <div class="program-card card-animate">
-          <h3>🌄 Természet és kilátók</h3>
-          <ul class="list">
-            <li>**Kálvária Kilátó** – A Bartina hegyen, gyönyörű panoráma Szekszárdra.</li>
-            <li>**Bati-kereszt Kilátó** – 280 méter magas dombon, tűzrakóhellyel és pihenővel.</li>
-            <li>**Lösz-szurdik tanösvények** – Természetvédelmi sétautak a löszös dombokon, madármegfigyeléssel.</li>
-            <li>**Sötétvölgyi Vadaspark** – Könnyű túraútvonalak, kikapcsolódás a zöldben.</li>
-          </ul>
-        </div>
-
-                <div class="program-card card-animate">
-          <h3>🏊 Aktív kikapcsolódás</h3>
-          <ul class="list">
-            <li>**Családbarát Strand- és Élményfürdő** – 7 medence, óriáscsúszdák, termálvíz, egész évben nyitva.</li>
-            <li>**Összkeréken E‑BIKE kölcsönzés** – Elektromos kerékpárok túrázáshoz, felfedezéshez.</li>
-            <li>**Vidékjáró Terepjáró túrák** – Off-road élményprogramok a környék dombjain.</li>
-            <li>**Szekszárdi Műjégpálya** – Téli időszakban nyitva, korcsolyázási lehetőség.</li>
-          </ul>
-        </div>
-
-                <div class="program-card card-animate">
-          <h3>🏙️ Városi séták és terek</h3>
-          <ul class="list">
-            <li>**Garay tér** – Szekszárd főtere, szobrokkal, kávézókkal, rendezvényhelyszínekkel.</li>
-            <li>**Béla király tér** – Szabadtéri programok, séták, pihenőhelyek.</li>
-            <li>**Szentháromság szobor** – Barokk emlékmű a belvárosban, történelmi jelentőséggel.</li>
-          </ul>
-        </div>
-
-      </div>
-    </section>
-  </main>
-
-  <div data-include="footer.html"></div>
-
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
-
-    // 1. SVG rajzoló animáció
-    (function svgDraw(){
-      const path = document.getElementById('brand-path'); if(!path) return;
-      const len = path.getTotalLength();
-      path.style.strokeDasharray = len;
-      path.style.strokeDashoffset = len;
-      gsap.to(path,{ strokeDashoffset:0, duration:1.4, ease:'power2.out' });
-    })();
-
-    // 2. Fő címszöveg (clip) animáció
-    gsap.utils.toArray('.clip').forEach(el=>{
-      gsap.fromTo(el,{ clipPath:'inset(100% 0 0 0)', opacity:0 },{ clipPath:'inset(0 0 0 0)', opacity:1, duration:.8, ease:'power2.out', scrollTrigger:{ trigger:el, start:'top 85%' }});
-    });
-
-    // 3. ✨ PROFESSZIONÁLIS KÁRTYA ANIMÁCIÓ (3D FADE-UP)
-    // A kártyák lépcsőzetesen, enyhe elforgatással úsznak be
-    gsap.utils.toArray('.card-animate').forEach((card, i) => {
-        gsap.fromTo(card, 
-            {
-                opacity: 0,
-                y: 50,
-                rotationX: 10 // Enyhe 3D dőlés hatása
-            },
-            {
-                opacity: 1,
-                y: 0,
-                rotationX: 0,
-                duration: 1.2,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: card,
-                    start: 'top 90%', // Korábban indul
-                    toggleActions: 'play none none none'
-                }
-            }
-        );
-    });
-  </script>
-
-  <script src="animation.js"></script>
-  <script src="include.js"></script>
+  <script src="animation.js"></script>
+  <script src="include.js"></script>
 </body>
 </html>
