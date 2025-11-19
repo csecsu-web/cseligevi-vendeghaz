@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Cseligevi Vendégház – természet és nyugalom</title>
+  <title>Cseligevi Vendégház – természet és nyugalom | Szekszárd</title>
+  <meta name="description" content="Cseligevi Vendégház a Szekszárdi borvidéken. Természet, nyugalom, benti szauna, családbarát környezet. Foglalj most.">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.css">
@@ -18,6 +19,14 @@
     .feature.reverse{grid-template-columns:.8fr 1.2fr}
     .feature img{width:100%;height:clamp(200px,30vw,360px);object-fit:cover;border-radius:12px}
     @media (max-width:900px){.feature,.feature.reverse{grid-template-columns:1fr}}
+    .values{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .value-card{background:#fff;border-radius:16px;box-shadow:0 8px 28px #00000014;padding:18px;transition:transform .3s ease,box-shadow .3s ease}
+    .value-card:hover{transform:translateY(-3px);box-shadow:0 16px 36px #00000022}
+    @media(max-width:900px){.values{grid-template-columns:1fr}}
+    .strip{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+    .strip .tile{flex:0 0 auto;width:260px;height:180px;border-radius:16px;object-fit:cover;scroll-snap-align:center;box-shadow:0 8px 28px #00000014;transition:transform .3s ease}
+    .strip .tile:hover{transform:scale(1.03)}
+    @media(max-width:900px){.strip .tile{width:200px;height:140px}}
     .collage-overlay{position:fixed;inset:0;display:none;place-items:center;background:#00000080;z-index:9990}
     .collage-overlay.open{display:grid}
     .collage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:900px;padding:16px}
@@ -35,14 +44,10 @@
         <source src="videos/promo1.mp4" type="video/mp4">
       </video>
       <div class="hero-overlay">
-        <div class="hero-brand">
-          <div class="brand-svg">
-            <svg viewBox="0 0 200 60">
-              <path id="brand-path" d="M10,30 C40,5 80,55 110,25 C130,10 160,20 190,30" />
-            </svg>
-          </div>
-          <h1 class="clip">Cseligevi – A természet ritmusában</h1>
+        <div class="brand-svg">
+          <svg viewBox="0 0 200 60"><path id="brand-path" d="M10,30 C40,5 80,55 110,25 C130,10 160,20 190,30"/></svg>
         </div>
+        <h1 class="clip">Cseligevi – A természet ritmusában</h1>
         <p class="clip">A nyugalom otthona</p>
         <a class="btn clip" href="arak.html">Foglalj most</a>
       </div>
@@ -71,6 +76,34 @@
       </div>
     </section>
 
+    <section class="container values clip" data-scroll-section>
+      <div class="value-card">
+        <h3>Természet közelsége</h3>
+        <p>Dombok, szőlősorok és csend – minden pillanat különleges.</p>
+      </div>
+      <div class="value-card">
+        <h3>Benti szauna</h3>
+        <p>A hűvösebb napokon is feltöltődés és kényelem.</p>
+      </div>
+      <div class="value-card">
+        <h3>Családbarát</h3>
+        <p>Tágas zöld udvar játékhoz és közös élményekhez.</p>
+      </div>
+    </section>
+
+    <section class="container clip" data-scroll-section>
+      <h2>Hangulatképek</h2>
+      <div class="strip" aria-label="Képszalag">
+        <img class="tile" src="images/nappali1.jpg" alt="Nappali">
+        <img class="tile" src="images/konyha1.jpg" alt="Konyha">
+        <img class="tile" src="images/halo1.jpg" alt="Hálószoba">
+        <img class="tile" src="images/terasz1.jpg" alt="Terasz">
+        <img class="tile" src="images/kert1.jpg" alt="Kert">
+        <img class="tile" src="images/panorama1.jpg" alt="Panoráma">
+        <img class="tile" src="images/szauna1.jpg" alt="Szauna">
+      </div>
+    </section>
+
     <section class="container glass clip" data-scroll-section>
       <div id="lottie-hero" class="lottie-canvas" aria-label="Díszítő animáció"></div>
     </section>
@@ -92,19 +125,7 @@
   <script>
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    (function loadLottie(){
-      const el = document.getElementById('lottie-hero');
-      if (!el || typeof bodymovin === 'undefined') return;
-      fetch('animations/hero.json').then(r=>r.ok?r.json():null).then(json=>{
-        if(!json){ el.style.display='none'; return; }
-        bodymovin.loadAnimation({ container: el, renderer: 'svg', loop: true, autoplay: true, animationData: json });
-      }).catch(()=>{ el.style.display='none'; });
-    })();
-
     gsap.registerPlugin(ScrollTrigger);
-    gsap.utils.toArray('.clip').forEach(el=>{
-      gsap.fromTo(el,{ clipPath:'inset(100% 0 0 0)', opacity:0 },{ clipPath:'inset(0 0 0 0)', opacity:1, duration:.8, ease:'power2.out', scrollTrigger:{ trigger:el, start:'top 85%' }});
-    });
 
     (function svgDraw(){
       const path = document.getElementById('brand-path'); if(!path) return;
@@ -113,6 +134,12 @@
       path.style.strokeDashoffset = len;
       gsap.to(path,{ strokeDashoffset:0, duration:1.4, ease:'power2.out' });
     })();
+
+    gsap.utils.toArray('.clip').forEach(el=>{
+      gsap.fromTo(el,{ clipPath:'inset(100% 0 0 0)', opacity:0 },{ clipPath:'inset(0 0 0 0)', opacity:1, duration:.8, ease:'power2.out', scrollTrigger:{ trigger:el, start:'top 85%' }});
+    });
+
+    gsap.from('.value-card',{ y:20, autoAlpha:0, duration:.6, ease:'power2.out', stagger:.12, scrollTrigger:{ trigger:'.values', start:'top 80%' }});
 
     (function collage(){
       const el = document.getElementById('collage'); if(!el) return;
@@ -126,6 +153,15 @@
           gsap.to(el,{autoAlpha:0,duration:0.6,delay:2,onComplete:()=>el.classList.remove('open')});
         }
       });
+    })();
+
+    (function loadLottie(){
+      const el = document.getElementById('lottie-hero');
+      if (!el || typeof bodymovin === 'undefined') return;
+      fetch('animations/hero.json').then(r=>r.ok?r.json():null).then(json=>{
+        if(!json){ el.style.display='none'; return; }
+        bodymovin.loadAnimation({ container: el, renderer: 'svg', loop: true, autoplay: true, animationData: json });
+      }).catch(()=>{ el.style.display='none'; });
     })();
 
     (function initLoco(){
