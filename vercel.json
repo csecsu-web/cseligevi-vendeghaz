@@ -1,1 +1,9 @@
-{"rewrites":[{"source":"/(.*)","destination":"/index.html"}]}
+{
+  "rewrites": [
+    {
+      "source": "/((?!.*\\.(?:html|css|js|png|jpg|jpeg|svg|webp|ico|xml|mp4|webm)).*)",
+      "destination": "/index.html"
+    }
+  ],
+  "cleanUrls": true
+}
