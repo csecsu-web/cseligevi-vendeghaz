@@ -37,3 +37,16 @@ body.no-scroll{overflow:hidden}
     </ul>
   </div>
 </nav>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const ham = document.querySelector(".hamburger");
+  const menu = document.querySelector(".menu");
+  const body = document.body;
+
+  ham.addEventListener("click", () => {
+    const opened = menu.classList.toggle("open");
+    body.classList.toggle("no-scroll", opened);
+    ham.setAttribute("aria-expanded", opened ? "true" : "false");
+  });
+});
+</script>
