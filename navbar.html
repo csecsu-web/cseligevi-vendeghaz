@@ -1,47 +1,25 @@
 <nav class="navbar">
-  <div class="nav-inner">
-
-    <!-- Logo -->
-    <a class="logo" href="index.html">
-      <img src="favicon.png" alt="Logo">
-      <span>Cseligevi Vendégház</span>
+  <div class="nav-inner container">
+    <a href="index.html" class="logo">
+      <img src="favicon.png" alt="Cseligevi Vendégház">
+      Cseligevi
     </a>
-
-    <!-- Menü -->
-    <ul class="menu">
-      <li><a href="index.html">Főoldal</a></li>
-      <li><a href="rolunk.html">Rólunk</a></li>
-      <li><a href="kepek.html">Képek</a></li>
-      <li><a href="arak.html">Árak</a></li>
-      <li><a href="kapcsolat.html">Kapcsolat</a></li>
-    </ul>
-
-    <!-- Hamburger (mobil) -->
-    <button class="hamburger" aria-label="Menü">
+    <button class="hamburger" aria-label="Menu" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
     </button>
-
+    <ul class="menu">
+      <li><a href="index.html">Főoldal</a></li>
+      <li><a href="rolunk.html">Rólunk</a></li>
+      <li><a href="arak.html">Árak</a></li>
+      <li><a href="kepek.html">Képek</a></li>
+      <li><a href="kapcsolat.html">Kapcsolat</a></li>
+      <li class="social-links">
+        <a target="_blank" rel="noopener" href="https://www.facebook.com/people/Cseligevi-Vend%C3%A9gh%C3%A1z/61583771781727/">Facebook</a>
+        <a target="_blank" rel="noopener" href="https://www.instagram.com/cseligevivendeghaz">Instagram</a>
+        <a target="_blank" rel="noopener" href="https://www.tiktok.com/@cseligevivendeghaz?is_from_webapp=1&sender_device=pc">TikTok</a>
+      </li>
+    </ul>
   </div>
 </nav>
-
-<!-- Hamburger működés -->
-<script>
-document.addEventListener("click", e => {
-  const menu = document.querySelector(".menu");
-  const burger = document.querySelector(".hamburger");
-
-  // ha a hamburgerre kattint
-  if (e.target.closest(".hamburger")) {
-    menu.classList.toggle("open");
-    document.body.classList.toggle("no-scroll");
-  }
-
-  // ha a menün kívül kattint → csukja be
-  if (!e.target.closest(".hamburger") && !e.target.closest(".menu")) {
-    menu.classList.remove("open");
-    document.body.classList.remove("no-scroll");
-  }
-});
-</script>
