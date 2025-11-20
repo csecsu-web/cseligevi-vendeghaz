@@ -1,56 +1,47 @@
-<nav class="navbar" role="navigation" aria-label="Fő">
+<nav class="navbar">
   <div class="nav-inner">
-    <a class="logo" href="index.html" aria-label="Cseligevi Vendégház">
-      <!-- ha szeretnéd, ide tehetsz <img src="images/favicon.png"> -->
-      Cseligevi
+
+    <!-- Logo -->
+    <a class="logo" href="index.html">
+      <img src="favicon.png" alt="Logo">
+      <span>Cseligevi Vendégház</span>
     </a>
 
-    <button class="hamburger" id="hamburger" aria-label="Főmenü" aria-expanded="false" aria-controls="nav-menu">
-      <span></span><span></span><span></span>
+    <!-- Menü -->
+    <ul class="menu">
+      <li><a href="index.html">Főoldal</a></li>
+      <li><a href="rolunk.html">Rólunk</a></li>
+      <li><a href="kepek.html">Képek</a></li>
+      <li><a href="arak.html">Árak</a></li>
+      <li><a href="kapcsolat.html">Kapcsolat</a></li>
+    </ul>
+
+    <!-- Hamburger (mobil) -->
+    <button class="hamburger" aria-label="Menü">
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
 
-    <ul id="nav-menu" class="menu" role="menu" aria-hidden="true">
-      <li class="favicon-item" aria-hidden="true"><img src="images/favicon.png" alt="" width="28" height="28"></li>
-      <li role="none"><a role="menuitem" href="index.html">Főoldal</a></li>
-      <li role="none"><a role="menuitem" href="rolunk.html">Rólunk</a></li>
-      <li role="none"><a role="menuitem" href="vendeghaz.html">Vendégház</a></li>
-      <li role="none"><a role="menuitem" href="arak.html">Árak &amp; Foglalás</a></li>
-      <li role="none"><a role="menuitem" href="programok.html">Programok</a></li>
-      <li role="none"><a role="menuitem" href="kepek.html">Képek</a></li>
-    </ul>
   </div>
-
-  <!-- Kisebb helyi script: csak a menü nyitását/zárását kezeli -->
-  <script>
-    (function(){
-      const btn = document.getElementById('hamburger');
-      const menu = document.getElementById('nav-menu');
-      if(!btn || !menu) return;
-
-      btn.addEventListener('click', () => {
-        const open = menu.classList.toggle('open');
-        menu.setAttribute('aria-hidden', !open);
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        document.body.classList.toggle('no-scroll', open);
-      });
-
-      // bezár linkre kattintva
-      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-        menu.classList.remove('open');
-        menu.setAttribute('aria-hidden', 'true');
-        btn.setAttribute('aria-expanded', 'false');
-        document.body.classList.remove('no-scroll');
-      }));
-
-      // ESC bezár
-      document.addEventListener('keydown', e => {
-        if(e.key === 'Escape' && menu.classList.contains('open')){
-          menu.classList.remove('open');
-          menu.setAttribute('aria-hidden', 'true');
-          btn.setAttribute('aria-expanded', 'false');
-          document.body.classList.remove('no-scroll');
-        }
-      });
-    })();
-  </script>
 </nav>
+
+<!-- Hamburger működés -->
+<script>
+document.addEventListener("click", e => {
+  const menu = document.querySelector(".menu");
+  const burger = document.querySelector(".hamburger");
+
+  // ha a hamburgerre kattint
+  if (e.target.closest(".hamburger")) {
+    menu.classList.toggle("open");
+    document.body.classList.toggle("no-scroll");
+  }
+
+  // ha a menün kívül kattint → csukja be
+  if (!e.target.closest(".hamburger") && !e.target.closest(".menu")) {
+    menu.classList.remove("open");
+    document.body.classList.remove("no-scroll");
+  }
+});
+</script>
