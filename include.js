@@ -1,24 +1,37 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  // NAVBAR betöltése
-  const navContainer = document.getElementById('navbar-container');
-  if(navContainer) {
-    try {
-      const r = await fetch('navbar.html', {cache:'no-store'});
-      if(r.ok) navContainer.innerHTML = await r.text();
-      else console.error('Navbar fetch error', r.status);
-    } catch(e) { console.error('Navbar fetch failed', e); }
-  }
+    const includes = document.querySelectorAll('[data-include], #navbar-container');
 
-  // FOOTER betöltése
-  const footerContainer = document.getElementById('footer-container');
-  if(footerContainer) {
-    try {
-      const r2 = await fetch('footer.html', {cache:'no-store'});
-      if(r2.ok) footerContainer.innerHTML = await r2.text();
-      else console.error('Footer fetch error', r2.status);
-    } catch(e){ console.error('Footer fetch failed', e); }
-  }
+    const includePromises = Array.from(includes).map(async (el) => {
+        let path = el.dataset.include || 'navbar.html';
+        if (!path) return;
 
-  // Ha a navbar.html-ben van beágyazott menü-kezelő, akkor nem kell többet csinálni.
-  // Ha mégis szükséges további inicalizáció (pl. ha nincs helyi script), itt is futtathatunk egy setup függvényt.
+        try {
+            const res = await fetch(path, { cache: 'no-store' });
+            if (!res.ok) throw new Error('Failed to fetch ' + path);
+            const html = await res.text();
+            el.innerHTML = html;
+        } catch (e) {
+            console.error('Include error:', e);
+        }
+    });
+
+    await Promise.all(includePromises);
+
+    setupMobileMenu();
 });
+
+function setupMobileMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.navbar .menu');
+    const body = document.body;
+
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+            body.classList.toggle('no-scroll');
+
+            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', !isExpanded);
+        });
+    }
+}
