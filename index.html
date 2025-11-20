@@ -1,174 +1,149 @@
-</html>
 <!doctype html>
 <html lang="hu">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Cseligevi Vendégház – természet és nyugalom | Szekszárd</title>
-  <meta name="description" content="Cseligevi Vendégház a Szekszárdi borvidéken. Természet, nyugalom, benti szauna, családbarát környezet. Foglalj most.">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
-  <link rel="apple-touch-icon" href="favicon.png">
-  <link rel="canonical" href="https://cseligevivendeghaz.com/">
-  <meta name="keywords" content="Szekszárd vendégházak, Szekszárd szállás, vendégház Szekszárd, Cseligevi Vendégház">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://cseligevivendeghaz.com/">
-  <meta property="og:title" content="Cseligevi Vendégház – Szekszárd vendégházak | természet és nyugalom">
-  <meta property="og:description" content="Szekszárdi vendégház a természet ritmusában. Nyugalom, szauna, családbarát környezet.">
-  <meta property="og:image" content="https://cseligevivendeghaz.com/images/hero.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Cseligevi Vendégház – Szekszárd vendégházak">
-  <meta name="twitter:description" content="Nyugalom, természet, szauna. Foglalj most.">
-  <meta name="twitter:image" content="https://cseligevivendeghaz.com/images/hero.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cseligevi Vendégház – természet és nyugalom | Szekszárd</title>
+<meta name="description" content="Cseligevi Vendégház a Szekszárdi borvidéken. Természet, nyugalom, benti szauna, családbarát környezet. Foglalj most.">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="canonical" href="https://cseligevivendeghaz.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
-  <div id="navbar-container"></div>
+<!-- Navbar include -->
+<div id="navbar-container"></div>
 <script>
-  fetch("navbar.html")
-    .then(r => r.text())
-    .then(d => document.getElementById("navbar-container").innerHTML = d);
+fetch("navbar.html")
+  .then(r => r.text())
+  .then(d => document.getElementById("navbar-container").innerHTML = d)
+  .then(()=>{ 
+    // Hamburger menu setup
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.menu');
+    const body = document.body;
+    if(hamburger && navMenu){
+      hamburger.addEventListener('click', ()=>{
+        navMenu.classList.toggle('open');
+        body.classList.toggle('no-scroll');
+        const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', !isExpanded);
+      });
+    }
+  });
 </script>
 
-
-  <section class="hero">
-    <div class="hero-overlay glass">
-      <div class="brand-svg">
-        <svg viewBox="0 0 200 60"><path id="brand-path" d="M10,30 C40,5 80,55 110,25 C130,10 160,20 190,30"/></svg>
-      </div>
-      <h1 class="clip">Cseligevi – A természet ritmusában</h1>
-      <p class="clip">A nyugalom otthona</p>
-      <a class="btn clip" href="arak.html">Foglalj most</a>
+<section class="hero">
+  <div class="hero-overlay glass">
+    <div class="brand-svg">
+      <svg viewBox="0 0 200 60"><path id="brand-path" d="M10,30 C40,5 80,55 110,25 C130,10 160,20 190,30"/></svg>
     </div>
-  </section>
+    <h1 class="clip">Cseligevi – A természet ritmusában</h1>
+    <p class="clip">A nyugalom otthona</p>
+    <a class="btn clip" href="arak.html">Foglalj most</a>
+  </div>
+</section>
 
-  <section class="container glass clip">
-    <h2>Cseligevi – A természet ritmusában, a nyugalom otthona</h2>
-    <p>A Cseligevi Vendégházat azért álmodtuk meg, hogy legyen egy hely, ahol az ember végre megállhat. Ahol a hétköznapok rohanása, a zaj és a képernyők világa helyett újra a természet ritmusa veszi körül.</p>
-    <p>Vendégházunk a Szekszárdi borvidék egyik legszebb, tanyavilágban megbúvó gerincén található, ahonnan lélegzetelállító panoráma tárul eléd. A fenséges Bati-kereszt kilátó mindössze 3 km-re van, a környéken pedig olyan kedvelt úti célok várnak, mint a Heimann borászat, vagy Sötétvölgy (Haramia-forrás 8,2 km, a tó 7,9 km).</p>
-  </section>
+<section class="container glass clip">
+  <h2>Cseligevi – A természet ritmusában, a nyugalom otthona</h2>
+  <p>A Cseligevi Vendégházat azért álmodtuk meg, hogy legyen egy hely, ahol az ember végre megállhat. Ahol a hétköznapok rohanása, a zaj és a képernyők világa helyett újra a természet ritmusa veszi körül.</p>
+  <p>Vendégházunk a Szekszárdi borvidék egyik legszebb, tanyavilágban megbúvó gerincén található, ahonnan lélegzetelállító panoráma tárul eléd. A fenséges Bati-kereszt kilátó mindössze 3 km-re van, a környéken pedig olyan kedvelt úti célok várnak, mint a Heimann borászat, vagy Sötétvölgy (Haramia-forrás 8,2 km, a tó 7,9 km).</p>
+</section>
 
-  <section class="container feature clip">
-    <div>
-      <h2>Itt minden pillanat számít</h2>
-      <p>Itt a dombok, a szőlősorok és a természet állandó jelenléte teszi különlegessé minden pillanatod. Reggel friss levegő és madárdal; napközben játék, pihenés; este a naplemente arany fényei.</p>
-      <a class="btn" href="arak.html">Foglalj most</a>
-    </div>
-    <img src="images/kulteri.jpg" alt="Tágas zöld telek">
-  </section>
+<section class="container feature clip">
+  <div>
+    <h2>Itt minden pillanat számít</h2>
+    <p>Itt a dombok, a szőlősorok és a természet állandó jelenléte teszi különlegessé minden pillanatod. Reggel friss levegő és madárdal; napközben játék, pihenés; este a naplemente arany fényei.</p>
+    <a class="btn" href="arak.html">Foglalj most</a>
+  </div>
+  <img src="images/kulteri.jpg" alt="Tágas zöld telek">
+</section>
 
-  <section class="container feature reverse clip">
-    <img src="images/szauna1.jpg" alt="Benti szauna">
-    <div>
-      <h2>Pároknak és családoknak</h2>
-      <p>Ideális meghitt pihenéshez és családi kikapcsolódáshoz. A benti szauna gondoskodik a feltöltődésről, a gyerekek pedig szabadon játszhatnak a zöld udvaron.</p>
-    </div>
-  </section>
+<section class="container feature reverse clip">
+  <img src="images/szauna1.jpg" alt="Benti szauna">
+  <div>
+    <h2>Pároknak és családoknak</h2>
+    <p>Ideális meghitt pihenéshez és családi kikapcsolódáshoz. A benti szauna gondoskodik a feltöltődésről, a gyerekek pedig szabadon játszhatnak a zöld udvaron.</p>
+  </div>
+</section>
 
-  <section class="container values clip">
-    <div class="value-card">
-      <h3>Természet közelsége</h3>
-      <p>Dombok, szőlősorok és csend – minden pillanat különleges.</p>
-    </div>
-    <div class="value-card">
-      <h3>Benti szauna</h3>
-      <p>A hűvösebb napokon is feltöltődés és kényelem.</p>
-    </div>
-    <div class="value-card">
-      <h3>Családbarát</h3>
-      <p>Tágas zöld udvar játékhoz és közös élményekhez.</p>
-    </div>
-  </section>
+<section class="container values clip">
+  <div class="value-card">
+    <h3>Természet közelsége</h3>
+    <p>Dombok, szőlősorok és csend – minden pillanat különleges.</p>
+  </div>
+  <div class="value-card">
+    <h3>Benti szauna</h3>
+    <p>A hűvösebb napokon is feltöltődés és kényelem.</p>
+  </div>
+  <div class="value-card">
+    <h3>Családbarát</h3>
+    <p>Tágas zöld udvar játékhoz és közös élményekhez.</p>
+  </div>
+</section>
 
-  <section class="container clip">
-    <h2>Hangulatképek</h2>
-    <div class="strip" aria-label="Képszalag">
-      <img class="tile" src="images/nappali1.jpg" alt="Nappali">
-      <img class="tile" src="images/konyha1.jpg" alt="Konyha">
-      <img class="tile" src="images/halo1.jpg" alt="Hálószoba">
-      <img class="tile" src="images/terasz1.jpg" alt="Terasz">
-      <img class="tile" src="images/kert1.jpg" alt="Kert">
-      <img class="tile" src="images/panorama1.jpg" alt="Panoráma">
-      <img class="tile" src="images/szauna1.jpg" alt="Szauna">
-    </div>
-  </section>
+<section class="container clip">
+  <h2>Hangulatképek</h2>
+  <div class="strip" aria-label="Képszalag">
+    <img class="tile" src="images/nappali1.jpg" alt="Nappali">
+    <img class="tile" src="images/konyha1.jpg" alt="Konyha">
+    <img class="tile" src="images/halo1.jpg" alt="Hálószoba">
+    <img class="tile" src="images/terasz1.jpg" alt="Terasz">
+    <img class="tile" src="images/kert1.jpg" alt="Kert">
+    <img class="tile" src="images/panorama1.jpg" alt="Panoráma">
+    <img class="tile" src="images/szauna1.jpg" alt="Szauna">
+  </div>
+</section>
 
-  <footer class="footer glass">
-    <div class="container">
-      <h3>Foglalj Most!</h3>
-      <div class="actions">
-        <a class="btn" href="mailto:cseligevi5@gmail.com">Foglalás emailben</a>
-        <a class="btn btn-outline" href="tel:+36708844779">+36 70 884 4779</a>
-        <a class="btn btn-outline" href="tel:+36703346060">+36 70 334 6060</a>
-        <a class="btn btn-outline" href="arak.html">Árak</a>
-      </div>
-      <div class="social">
-        <a target="_blank" rel="noopener" href="https://www.facebook.com/people/Cseligevi-Vend%C3%A9gh%C3%A1z/61583771781727/">Facebook</a>
-        <a target="_blank" rel="noopener" href="https://www.instagram.com/cseligevivendeghaz">Instagram</a>
-        <a target="_blank" rel="noopener" href="https://www.tiktok.com/@cseligevivendeghaz?is_from_webapp=1&sender_device=pc">TikTok</a>
-      </div>
-      <div class="contact">
-        <p>Email: <a href="mailto:cseligevi5@gmail.com">cseligevi5@gmail.com</a></p>
-        <p>Cím: <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=8MRP%2BC4%20Szeksz%C3%A1rd%2C%20Cseligevi%20vend%C3%A9gh%C3%A1z">8MRP+C4 Szekszárd, Cseligevi vendégház</a></p>
-      </div>
-      <div class="map-placeholder glass" style="margin-top:16px">
-        <div class="overlay">
-          <div>
-            <p>Térkép megnyitása</p>
-            <button class="btn" onclick="(function(el){const iframe=document.createElement('iframe');iframe.src='https://www.google.com/maps?q=8MRP%2BC4%20Szeksz%C3%A1rd&output=embed';iframe.loading='lazy';iframe.referrerPolicy='no-referrer-when-downgrade';iframe.style='border:0;width:100%;height:100%';el.innerHTML='';el.appendChild(iframe);})(this.closest('.map-placeholder'))">Térkép betöltése</button>
-          </div>
+<footer class="footer glass">
+  <div class="container">
+    <h3>Foglalj Most!</h3>
+    <div class="actions">
+      <a class="btn" href="mailto:cseligevi5@gmail.com">Foglalás emailben</a>
+      <a class="btn btn-outline" href="tel:+36708844779">+36 70 884 4779</a>
+      <a class="btn btn-outline" href="tel:+36703346060">+36 70 334 6060</a>
+      <a class="btn btn-outline" href="arak.html">Árak</a>
+    </div>
+    <div class="social">
+      <a target="_blank" rel="noopener" href="https://www.facebook.com/people/Cseligevi-Vend%C3%A9gh%C3%A1z/61583771781727/">Facebook</a>
+      <a target="_blank" rel="noopener" href="https://www.instagram.com/cseligevivendeghaz">Instagram</a>
+      <a target="_blank" rel="noopener" href="https://www.tiktok.com/@cseligevivendeghaz?is_from_webapp=1&sender_device=pc">TikTok</a>
+    </div>
+    <div class="contact">
+      <p>Email: <a href="mailto:cseligevi5@gmail.com">cseligevi5@gmail.com</a></p>
+      <p>Cím: <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=8MRP%2BC4%20Szekszárd%2C%20Cseligevi%20vend%C3%A9gház">8MRP+C4 Szekszárd, Cseligevi vendégház</a></p>
+    </div>
+    <div class="map-placeholder glass" style="margin-top:16px">
+      <div class="overlay">
+        <div>
+          <p>Térkép megnyitása</p>
+          <button class="btn" onclick="(function(el){const iframe=document.createElement('iframe');iframe.src='https://www.google.com/maps?q=8MRP%2BC4%20Szeksz%C3%A1rd&output=embed';iframe.loading='lazy';iframe.referrerPolicy='no-referrer-when-downgrade';iframe.style='border:0;width:100%;height:100%';el.innerHTML='';el.appendChild(iframe);})(this.closest('.map-placeholder'))">Térkép betöltése</button>
         </div>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
-
-    (function svgDraw(){
-      const path = document.getElementById('brand-path'); if(!path) return;
-      const len = path.getTotalLength();
-      path.style.strokeDasharray = len;
-      path.style.strokeDashoffset = len;
-      gsap.to(path,{ strokeDashoffset:0, duration:1.4, ease:'power2.out' });
-    })();
-
-    gsap.utils.toArray('.clip').forEach(el=>{
-      gsap.fromTo(el,{ clipPath:'inset(100% 0 0 0)', opacity:0 },{ clipPath:'inset(0 0 0 0)', opacity:1, duration:.8, ease:'power2.out', scrollTrigger:{ trigger:el, start:'top 85%' }});
-    });
-  </script>
-
-  <script src="animation.js"></script>
-  <script src="include.js"></script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LodgingBusiness",
-    "name": "Cseligevi Vendégház",
-    "url": "https://cseligevivendeghaz.com/",
-    "image": [
-      "https://cseligevivendeghaz.com/images/hero.png",
-      "https://cseligevivendeghaz.com/images/kulteri.jpg",
-      "https://cseligevivendeghaz.com/images/szauna1.jpg"
-    ],
-    "description": "Szekszárdi vendégház a természet ritmusában. Nyugalom, benti szauna, családbarát környezet.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Szekszárd",
-      "addressRegion": "Tolna",
-      "addressCountry": "HU"
-    },
-    "telephone": "+36 70 884 4779",
-    "sameAs": [
-      "https://www.facebook.com/people/Cseligevi-Vend%C3%A9gh%C3%A1z/61583771781727/",
-      "https://www.instagram.com/cseligevivendeghaz",
-      "https://www.tiktok.com/@cseligevivendeghaz?is_from_webapp=1&sender_device=pc"
-    ]
-  }
-  </script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+(function svgDraw(){
+  const path = document.getElementById('brand-path'); if(!path) return;
+  const len = path.getTotalLength();
+  path.style.strokeDasharray = len;
+  path.style.strokeDashoffset = len;
+  gsap.to(path,{ strokeDashoffset:0, duration:1.4, ease:'power2.out' });
+})();
+gsap.utils.toArray('.clip').forEach(el=>{
+  gsap.fromTo(el,{ clipPath:'inset(100% 0 0 0)', opacity:0 },{ clipPath:'inset(0 0 0 0)', opacity:1, duration:.8, ease:'power2.out', scrollTrigger:{ trigger:el, start:'top 85%' }});
+});
+</script>
+<script src="animation.js"></script>
+<script src="include.js"></script>
 </body>
 </html>
