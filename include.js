@@ -1,28 +1,24 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  const includes = document.querySelectorAll('[data-include]');
-  await Promise.all(Array.from(includes).map(async el => {
-    const path = el.getAttribute('data-include');
-    if(!path) return;
-    const res = await fetch(path);
-    el.innerHTML = await res.text();
-  }));
-  setupMobileMenu();
-});
-
-function setupMobileMenu(){
-  const hamburger = document.querySelector('.hamburger');
-  const navMenu = document.getElementById('nav-menu');
-  const body = document.body;
-  if(hamburger && navMenu){
-    hamburger.addEventListener('click',()=>{
-      const opened = navMenu.classList.toggle('open');
-      body.classList.toggle('no-scroll', opened);
-      hamburger.setAttribute('aria-expanded', opened ? 'true':'false');
-    });
-    navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      navMenu.classList.remove('open');
-      body.classList.remove('no-scroll');
-      hamburger.setAttribute('aria-expanded','false');
-    }));
+  // NAVBAR betöltése
+  const navContainer = document.getElementById('navbar-container');
+  if(navContainer) {
+    try {
+      const r = await fetch('navbar.html', {cache:'no-store'});
+      if(r.ok) navContainer.innerHTML = await r.text();
+      else console.error('Navbar fetch error', r.status);
+    } catch(e) { console.error('Navbar fetch failed', e); }
   }
-}
+
+  // FOOTER betöltése
+  const footerContainer = document.getElementById('footer-container');
+  if(footerContainer) {
+    try {
+      const r2 = await fetch('footer.html', {cache:'no-store'});
+      if(r2.ok) footerContainer.innerHTML = await r2.text();
+      else console.error('Footer fetch error', r2.status);
+    } catch(e){ console.error('Footer fetch failed', e); }
+  }
+
+  // Ha a navbar.html-ben van beágyazott menü-kezelő, akkor nem kell többet csinálni.
+  // Ha mégis szükséges további inicalizáció (pl. ha nincs helyi script), itt is futtathatunk egy setup függvényt.
+});
