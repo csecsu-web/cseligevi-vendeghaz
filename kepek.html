@@ -38,30 +38,12 @@
       <div class="value-card"><h3>Wellness</h3><p>Benti szauna és pihenés</p></div>
     </section>
 
-    <section class="clip" aria-label="Galéria">
-      <div class="dome">
-        <div class="ring" id="dome-ring">
-          <img class="tile" src="images/nappali1.jpg" alt="Nappali">
-          <img class="tile" src="images/konyha1.jpg" alt="Konyha">
-          <img class="tile" src="images/halo1.jpg" alt="Hálószoba">
-          <img class="tile" src="images/terasz1.jpg" alt="Terasz">
-          <img class="tile" src="images/kert1.jpg" alt="Kert">
-          <img class="tile" src="images/panorama1.jpg" alt="Panoráma">
-          <img class="tile" src="images/szauna1.jpg" alt="Szauna">
-          <img class="tile" src="images/furdo1.jpg" alt="Fürdő">
-        </div>
-      </div>
-      <div class="grid-gallery" id="grid-gallery">
-        <img src="images/nappali1.jpg" alt="Nappali">
-        <img src="images/konyha1.jpg" alt="Konyha">
-        <img src="images/halo1.jpg" alt="Hálószoba">
-        <img src="images/terasz1.jpg" alt="Terasz">
-        <img src="images/kert1.jpg" alt="Kert">
-        <img src="images/panorama1.jpg" alt="Panoráma">
-        <img src="images/szauna1.jpg" alt="Szauna">
-        <img src="images/furdo1.jpg" alt="Fürdő">
-      </div>
-    </section>
+ <import CircularGallery.js 
+
+<div style={{ height: '600px', position: 'relative' }}>
+  <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02}/>
+</div>
+  </import>
   </main>
 
   <footer class="footer glass">
