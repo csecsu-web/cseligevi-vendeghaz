@@ -1,69 +1,79 @@
 <!doctype html>
 <html lang="hu">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>A vendégház – Cseligevi Vendégház</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
-  <link rel="apple-touch-icon" href="favicon.png">
-  <link rel="canonical" href="https://cseligevivendeghaz.com/vendeghaz.html">
-  <meta name="description" content="A vendégház – kétszintes harmónia Szekszárdon: tágas nappali, modern konyha, otthonos hálók és benti szauna.">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>A vendégház – Cseligevi Vendégház</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="canonical" href="https://cseligevivendeghaz.com/vendeghaz.html">
+  <meta name="description" content="Kétszintes vendégház: tágas nappali, modern konyha, otthonos hálók és szauna.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cseligevivendeghaz.com/vendeghaz.html">
+  <meta property="og:title" content="A vendégház – Cseligevi">
+  <meta property="og:description" content="Modern kényelem, vidéki báj">
+  <meta property="og:image" content="https://cseligevivendeghaz.com/images/nappali1.jpg">
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
 </head>
 <body>
 
 <div id="navbar-container"></div>
+
 <section class="hero">
   <div data-include="hero-background.html"></div> 
-
-  <div class="hero-overlay glass">
-    <h1 class="clip">A vendégház</h1>
-    <p class="clip">Kétszintes harmónia: modern kényelem, vidéki báj</p>
-    <a class="btn clip" href="arak.html">Foglalás és árak</a>
-  </div>
+  <div class="hero-overlay glass">
+    <h1 class="clip">A vendégház</h1>
+    <p class="clip">Modern kényelem, vidéki báj</p>
+    <a class="btn clip" href="foglalas.html">Foglalás</a>
+  </div>
 </section>
 
-  <main>
-    <section class="container feature clip">
-      <div>
-        <h2>Nappali</h2>
-        <p>Tágas, világos közösségi tér, ahol a családi és baráti pillanatok születnek.</p>
-      </div>
-      <img src="images/nappali1.jpg" alt="Nappali">
-    </section>
+<main>
+  <section class="container feature clip">
+    <div>
+      <h2>Nappali</h2>
+      <p>Tágas, világos közösségi tér, ahol a családi pillanatok születnek.</p>
+    </div>
+    <img src="images/nappali1.jpg" alt="Tágas nappali" loading="lazy" width="800" height="600">
+  </section>
 
-    <section class="container feature reverse clip">
-      <img src="images/konyha1.jpg" alt="Konyha">
-      <div>
-        <h2>Konyha</h2>
-        <p>Modern, jól felszerelt konyha, hogy az együtt főzés is élmény legyen.</p>
-      </div>
-    </section>
+  <section class="container feature reverse clip">
+    <img src="images/konyha1.jpg" alt="Modern konyha" loading="lazy" width="800" height="600">
+    <div>
+      <h2>Konyha</h2>
+      <p>Modern, jól felszerelt konyha, hogy az együtt főzés is élmény legyen.</p>
+    </div>
+  </section>
 
-    <section class="container feature clip">
-      <div>
-        <h2>Hálószobák</h2>
-        <p>Otthonos, nyugodt hálók a pihentető alváshoz, természetes anyagokkal.</p>
-      </div>
-      <img src="images/halo1.jpg" alt="Hálószoba">
-    </section>
+  <section class="container feature clip">
+    <div>
+      <h2>Hálószobák</h2>
+      <p>Otthonos, nyugodt hálók a pihentető alváshoz.</p>
+    </div>
+    <img src="images/halo1.jpg" alt="Hálószoba" loading="lazy" width="800" height="600">
+  </section>
 
-    <section class="container feature reverse clip">
-      <img src="images/szauna1.jpg" alt="Szauna">
-      <div>
-        <h2>Wellness</h2>
-        <p>Benti szauna, hogy a hűvös napok is a feltöltődésről szóljanak.</p>
-      </div>
-    </section>
-  </main>
+  <section class="container feature reverse clip">
+    <img src="images/szauna1.jpg" alt="Szauna" loading="lazy" width="800" height="600">
+    <div>
+      <h2>Wellness</h2>
+      <p>Benti szauna, hogy a hűvös napok is a feltöltődésről szóljanak.</p>
+    </div>
+  </section>
+</main>
 
 <div id="footer-container" data-include="footer.html"></div>
+
 <script src="include.js"></script>
 <script src="animation.js"></script>
+<script src="nav.js"></script>
+
 </body>
 </html>
