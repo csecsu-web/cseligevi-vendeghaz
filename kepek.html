@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="hu">
-  <head>
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Képek – Cseligevi Vendégház</title>
@@ -10,18 +10,19 @@
   <link rel="apple-touch-icon" href="favicon.png">
   <link rel="canonical" href="https://cseligevivendeghaz.com/kepek.html">
   <meta name="description" content="Képek – válogatás a Cseligevi Vendégház belső tereiből, kültéri élményekből és a benti szaunából.">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
-<div id="navbar-container"></div>
-<script>
-  fetch("navbar.html")
-    .then(r => r.text())
-    .then(d => document.getElementById("navbar-container").innerHTML = d);
-</script>
+  <div id="navbar-container"></div>
+  <script>
+    fetch("navbar.html")
+      .then(r => r.text())
+      .then(d => document.getElementById("navbar-container").innerHTML = d);
+  </script>
 
   <header class="hero">
     <div class="hero-overlay glass">
@@ -38,12 +39,10 @@
       <div class="value-card"><h3>Wellness</h3><p>Benti szauna és pihenés</p></div>
     </section>
 
- <import CircularGallery.js 
-
-<div style={{ height: '600px', position: 'relative' }}>
-  <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02}/>
-</div>
-  </import>
+    <!-- 3D Circular Gallery -->
+    <section class="circular-gallery-container" style="height:600px; position:relative;">
+      <div id="circular-gallery"></div>
+    </section>
   </main>
 
   <footer class="footer glass">
@@ -60,19 +59,35 @@
 
   <script>
     (function(){
-      const isMobile=window.matchMedia('(max-width: 900px)').matches || 'ontouchstart' in window;
-      const ring=document.getElementById('dome-ring'); const grid=document.getElementById('grid-gallery');
+      const isMobile = window.matchMedia('(max-width: 900px)').matches || 'ontouchstart' in window;
+      const ring = document.getElementById('dome-ring'); 
+      const grid = document.getElementById('grid-gallery');
       if(grid){ grid.style.display = isMobile ? 'grid' : 'none'; }
       if(!ring) return;
-      if(isMobile){ return; }
-      const tiles=[...ring.querySelectorAll('.tile')];
-      const n=tiles.length; const step=360/n;
+      if(isMobile) return;
+      const tiles = [...ring.querySelectorAll('.tile')];
+      const n = tiles.length; 
+      const step = 360 / n;
       tiles.forEach((el,i)=>{ el.style.transform=`translateX(-50%) rotateY(${i*step}deg)`; });
-      let rot=0; const spin=()=>{ rot+=0.002; ring.style.transform=`rotateY(${rot}turn)`; requestAnimationFrame(spin); }; spin();
+      let rot=0; 
+      const spin=()=>{ rot+=0.002; ring.style.transform=`rotateY(${rot}turn)`; requestAnimationFrame(spin); }; 
+      spin();
     })();
   </script>
+
   <script src="nav.js"></script>
-  <script src="CircularGallery.js"></script>
+  <script type="module">
+    import CircularGallery from './CircularGallery.js';
+
+    const galleryContainer = document.getElementById('circular-gallery');
+    new CircularGallery({
+      container: galleryContainer,
+      bend: 3,
+      textColor: '#ffffff',
+      borderRadius: 0.05,
+      scrollEase: 0.02
+    });
+  </script>
   <script src="animation.js"></script>
   <script src="include.js"></script>
 </body>
