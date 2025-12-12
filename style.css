@@ -1,294 +1,541 @@
+/* ========================================= */
+/* 1. ALAP STÍLUSOK, VÁLTOZÓK, RESET */
+/* ========================================= */
+
 :root {
-    --green: #1b4235;
-    --accent: #edd3c5;
-    --bg: #ece7e3;
-    --muted: #b88364;
-    --white: #fff;
-    --black: #1a1a1a;
+    /* Színek */
+    --color-primary: #f2f2f2;      /* Fehér/Világos szürke */
+    --color-secondary: #aaaaaa;    /* Másodlagos szürke */
+    --color-accent: #81b29a;       /* Akcentus szín (világos zöld) */
+    --color-dark-green: #3d4f40;   /* Sötét alap a kontraszt miatt */
+    --color-bg-base: #101810;      /* Majdnem fekete háttér */
+    --color-bg-glass: rgba(255, 255, 255, 0.05); /* Üvegfólia alap */
+    --color-bg-glass-light: rgba(255, 255, 255, 0.1);
+
+    /* Aurora színek (3D-s hatás) */
+    --color-blob-1: #3A29FF;     /* Lila/Kék (mélység) */
+    --color-blob-2: #FF94B4;     /* Rózsaszín/Mályva (középsík) */
+    --color-blob-3: #588157;     /* Sötétzöld/Sárga (előtér) */
+
+    /* Betűtípusok */
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Poppins', sans-serif;
 }
 
-/* ----------------------------------- */
-/* 1. Reset és Alapbeállítások          */
-/* ----------------------------------- */
-* {
+/* Általános reszetelés */
+*, *::before, *::after {
     box-sizing: border-box;
-}
-html, body {
     margin: 0;
     padding: 0;
 }
-body {
-    font-family: Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
-    background: var(--bg);
-    color: var(--black);
-    padding-top: 56px; 
+
+html {
+    scroll-behavior: smooth;
 }
 
-/* ----------------------------------- */
-/* 2. Navbar Alap (Laptop / Desktop)   */
-/* ----------------------------------- */
+body {
+    font-family: var(--font-body);
+    color: var(--color-primary);
+    background-color: var(--color-bg-base);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.2;
+    margin-bottom: 0.8em;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+    margin-bottom: 1em;
+    color: var(--color-secondary);
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #b3cbb8; /* Világosabb akcentus */
+}
+
+/* KÉPEK */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ========================================= */
+/* 2. ÁLTALÁNOS ELRENDEZÉS ÉS SEGÉDOSZTÁLYOK */
+/* ========================================= */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 24px;
+}
+
+section {
+    padding: 60px 0;
+}
+
+/* ÜVEGFÓLIA HATÁS (Glassmorphism) */
+.glass {
+    background: var(--color-bg-glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--color-bg-glass-light);
+    border-radius: 12px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* GÖRGŐS ANIMÁCIÓ HELYFOGLALÓ */
+.clip {
+    /* Kezdetben eltakarva a GSAP animációhoz */
+    clip-path: inset(100% 0 0 0); 
+    opacity: 0;
+}
+
+/* GOMBOK */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background-color: var(--color-accent);
+    color: var(--color-bg-base); 
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #9ac2a7; 
+    color: var(--color-bg-base); 
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-accent);
+    border: 2px solid var(--color-accent);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-accent);
+    color: var(--color-bg-base);
+}
+
+/* ========================================= */
+/* 3. NAVBAR STÍLUSOK (navbar.html-hez) */
+/* ========================================= */
+
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    height: 56px;
-    background: var(--green);
-    color: var(--white);
-    z-index: 9999;
+    width: 100%;
+    z-index: 100;
+    padding: 15px 24px;
+    transition: background-color 0.3s ease;
 }
-.navbar .nav-inner {
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
-.navbar .logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--white);
-    text-decoration: none;
+
+.logo {
+    font-size: 1.8rem;
     font-weight: 700;
-}
-.navbar .logo img {
-    width: 28px;
-    height: 28px;
+    color: var(--color-accent);
 }
 
-/* Desktop Menü */
-.navbar .menu {
+.menu {
     display: flex;
-    gap: 16px;
     list-style: none;
-    margin: 0;
-    padding: 0;
-}
-.navbar .menu a {
-    color: var(--white);
-    text-decoration: none;
-    padding: 8px 10px;
-    border-radius: 8px;
-    opacity: 0.8;
-    transition: background 0.2s ease, opacity 0.2s ease;
-}
-.navbar .menu a:hover,
-.navbar .menu a.active {
-    background: rgba(255, 255, 255, 0.13);
-    opacity: 1;
+    transition: transform 0.4s ease;
 }
 
-/* Hamburger */
-.navbar .hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-    z-index: 10000;
-    padding: 0;
+.menu li {
+    margin-left: 30px;
 }
-.navbar .hamburger span {
-    width: 22px;
+
+.menu a {
+    color: var(--color-primary);
+    font-weight: 600;
+    padding: 5px 0;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.menu a:after {
+    content: '';
+    position: absolute;
+    width: 0;
     height: 2px;
-    background: var(--white);
-    margin: 3px 0;
-    transition: .3s ease;
-    border-radius: 4px;
+    background: var(--color-accent);
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s;
 }
 
-/* X animáció */
-.navbar .hamburger.active span:nth-child(1) {
-    transform: translateY(5px) rotate(45deg);
-}
-.navbar .hamburger.active span:nth-child(2) {
-    opacity: 0;
-}
-.navbar .hamburger.active span:nth-child(3) {
-    transform: translateY(-5px) rotate(-45deg);
+.menu a:hover:after {
+    width: 100%;
 }
 
-/* ----------------------------------- */
-/* 3. Tablet Nézet (Max 900px)         */
-/* ----------------------------------- */
-@media (max-width: 900px) {
-    /* Hamburger megjelenítése */
-    .navbar .hamburger { 
-        display: flex; 
+/* Hamburger menü stílusok (alapértelmezetten rejtve) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    z-index: 101;
+    width: 30px;
+    height: 20px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--color-primary);
+    border-radius: 2px;
+    position: absolute;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.hamburger span:nth-child(3) { bottom: 0; }
+
+/* Hamburger aktív állapot - X */
+.hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+
+/* Mobil menü: reszponzivitás */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
     }
 
-    /* Mobil menü alapértelmezett (rejtett) állapota */
-    .navbar .menu {
+    .menu {
         position: fixed;
-        top: 56px;
-        left: 0;
+        top: 0;
         right: 0;
-        bottom: 0; 
-        background: var(--green);
-        flex-direction: column;
-        padding: 12px 0;
-        overflow-y: auto;
-        z-index: 9998;
-
-        /* Rejtett állapot */
-        transform: translateY(-100%);
-        opacity: 0;
-        transition: transform .35s ease, opacity .35s ease;
-    }
-    
-    /* Nyitott állapot */
-    .navbar .menu.open {
-        transform: translateY(0); 
-        opacity: 1;
-    }
-
-    .navbar .menu a {
-        padding: 14px 24px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         width: 100%;
-        text-align: center;
-        opacity: 1;
-    }
-    
-    .navbar .menu a:hover {
-        background: rgba(0, 0, 0, 0.15);
-    }
-    
-    /* Tartalmi elrendezések tableten */
-    .feature, .feature.reverse, .media { 
-        grid-template-columns: 1fr; /* 1 oszlopra vált tableten */
-    }
-    
-    /* Általános reszponzív finomhangolások */
-    .container{padding:16px;} 
-    .hero{min-height:52vh;} 
-    .hero-overlay{padding:20px;}
-    
-    /* Görgő tiltása, ha a menü nyitva van */
-    body.no-scroll { 
-        overflow: hidden; 
         height: 100vh;
+        background-color: var(--color-bg-base);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .menu.open {
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .menu li {
+        margin: 20px 0;
+    }
+
+    .menu a {
+        font-size: 2rem;
+    }
+
+    .no-scroll {
+        overflow: hidden;
     }
 }
 
-/* ----------------------------------- */
-/* 4. Mobil Nézet (Max 600px - Telefonok) */
-/* ----------------------------------- */
-@media(max-width: 600px){ 
-    /* Gombok teljes szélessége telefonon */
-    .btn{
-        display:block;
-        width:100%;
-        margin-top: 8px;
-    }
-    
-    /* Kisebb padding */
-    .container {
-        padding: 12px;
-    }
-    
-    /* Kártyák és rácsok 1 oszlopra váltása telefonon */
-    .values {
-        grid-template-columns: 1fr;
-    }
-}
+/* ========================================= */
+/* 4. HERO SZEKCIÓ ÉS 3D HÁTTÉR (Aurora) */
+/* ========================================= */
 
-/* ----------------------------------- */
-/* 5. Tartalmi Elemek                  */
-/* ----------------------------------- */
 .hero {
     position: relative;
-    min-height: 64vh;
-    display: grid;
-    place-items: center;
-    background: linear-gradient(135deg, #1b4235 0%, #0f2f25 40%, #1b4235 100%);
+    width: 100%;
+    height: 100vh;
+    overflow: hidden; 
+    background-color: var(--color-bg-base); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
 }
-.hero::before, .hero::after {
-    content: "";
+
+/* HÁTTÉR TÁROLÓ (a hero-background.html-ből) */
+.hero-background {
     position: absolute;
-    width: 60vmax;
-    height: 60vmax;
-    filter: blur(40px);
-    opacity: .7;
-    border-radius: 50%;
-}
-.hero::before {
-    left: -20vmax;
-    top: -10vmax;
-    background: radial-gradient(closest-side, rgba(237,211,197,0.35), rgba(237,211,197,0.12) 60%, transparent 70%);
-    animation: blobA 18s ease-in-out infinite alternate;
-}
-.hero::after {
-    right: -18vmax;
-    bottom: -12vmax;
-    background: radial-gradient(closest-side, rgba(184,131,100,0.28), rgba(184,131,100,0.1) 60%, transparent 70%);
-    filter: blur(36px);
-    opacity: .6;
-    animation: blobB 22s ease-in-out infinite alternate;
-}
-@keyframes blobA {0%{transform:translate3d(0,0,0) rotate(0deg)}100%{transform:translate3d(8vmax,4vmax,0) rotate(12deg)}}
-@keyframes blobB {0%{transform:translate3d(0,0,0) rotate(0deg)}100%{transform:translate3d(-6vmax,-3vmax,0) rotate(-10deg)}}
-.hero-overlay { position: relative; z-index: 1; pointer-events: auto; text-align: center; color: var(--white); padding: 28px; }
-.hero-overlay h1 { font-size: clamp(26px,6vw,52px); margin: 0 0 8px; text-shadow: 0 2px 18px rgba(0,0,0,.35); }
-.hero-overlay p { margin: 0 0 12px; opacity: .92; text-shadow: 0 1px 12px rgba(0,0,0,.3); }
-
-/* Layout */
-.container { max-width: 1200px; margin: 0 auto; padding: 24px; }
-.glass { background: rgba(255,255,255,0.66); border-radius: 16px; backdrop-filter: saturate(150%) blur(6px); -webkit-backdrop-filter: saturate(150%) blur(6px); }
-
-/* Feature / Media */
-.feature, .media { display: grid; grid-template-columns: 1.2fr .8fr; gap: 18px; align-items: center; }
-.feature.reverse { grid-template-columns: .8fr 1.2fr; }
-.feature img, .media img { width: 100%; height: 220px; object-fit: cover; border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.08); }
-/* A 900px-es média lekérdezés már kezeli a váltást tableten is */
-
-/* Values Cards */
-.values { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-.value-card { background: var(--white); border-radius: 16px; box-shadow: 0 8px 28px rgba(0,0,0,0.08); padding: 18px; transition: transform .3s ease, box-shadow .3s ease; }
-.value-card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(0,0,0,0.13); }
-
-/* Strip Gallery */
-.strip { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
-.strip .tile { flex: 0 0 auto; width: 260px; height: 180px; border-radius: 16px; object-fit: cover; scroll-snap-align: center; box-shadow: 0 8px 28px rgba(0,0,0,0.08); transition: transform .3s ease; }
-.strip .tile:hover { transform: scale(1.03); }
-@media(max-width:900px){ .strip .tile{width:200px;height:140px;} }
-
-/* Dome Gallery */
-.dome { perspective: 1000px; overflow: hidden; }
-.dome .ring { position: relative; width: 100%; height: 260px; transform-style: preserve-3d; }
-.dome .ring .tile { position: absolute; top: 0; left: 50%; transform-origin: center center -380px; border-radius: 16px; width: 260px; height: 180px; object-fit: cover; box-shadow: 0 8px 28px rgba(0,0,0,0.08); }
-@media(max-width:900px){ .dome .ring{height:200px;} .dome .ring .tile{width:200px;height:140px;transform-origin:center center -300px;} .dome{display:none;} .grid-gallery{display:grid;} }
-
-/* Grid Gallery for mobile */
-.grid-gallery{display:none; grid-template-columns:repeat(3,1fr); gap:12px;}
-.grid-gallery img{width:100%; height:140px; object-fit:cover; border-radius:12px; box-shadow:0 8px 28px rgba(0,0,0,0.08);}
-
-.circular-gallery {
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    z-index: 1; 
+    opacity: 0.85; 
+}
+
+/* A BLOBOk (3D-s hatást keltő foltok) */
+.aurora-blob {
+    position: absolute;
+    width: 60vh;
+    height: 60vh;
+    border-radius: 50%;
+    filter: blur(150px); 
+    mix-blend-mode: screen; 
+    opacity: 0.6; 
+}
+
+/* Színek és pozíciók a mélységhez */
+.blob-1 {
+    background-color: var(--color-blob-1);
+    top: 5%;
+    left: 10%;
+    transform: scale(0.8) translateZ(-50px); /* Kisebb és távolban */
+    animation: auroraMove 20s infinite alternate;
+}
+.blob-2 {
+    background-color: var(--color-blob-2);
+    top: 40%;
+    right: 5%;
+    width: 70vh;
+    height: 70vh;
+    transform: scale(1.1) translateZ(0); /* Közeli és nagyobb */
+    animation: auroraMove 25s infinite alternate reverse;
+}
+.blob-3 {
+    background-color: var(--color-blob-3);
+    bottom: 0%;
+    left: 50%;
+    transform: scale(0.9) translateZ(-20px); /* Hátsó közép */
+    animation: auroraMove 30s infinite alternate;
+}
+
+/* Mozgás (Folyamatos, lassú pulzálás) */
+@keyframes auroraMove {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(10vw, 5vh) scale(1.05); }
+    66% { transform: translate(-5vw, -10vh) scale(0.95); }
+}
+
+.hero-overlay {
+    z-index: 2; /* A blobok felett legyen */
+    text-align: center;
+    padding: 40px;
+    max-width: 800px;
+}
+
+/* SVG ÚTVONAL (Brand path) */
+.brand-svg {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 20px;
+}
+
+/* ========================================= */
+/* 5. TARTALOM SZEKCIÓK */
+/* ========================================= */
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 60px 24px;
+}
+
+.feature div {
+    flex: 1;
+}
+
+.feature img {
+    flex: 1;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    min-width: 300px; /* Alapértelmezett méret mobilra */
+}
+
+.feature.reverse {
+    flex-direction: row-reverse;
+}
+
+.values {
+    display: flex;
+    gap: 20px;
+    padding: 60px 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.value-card {
+    background: var(--color-bg-glass);
+    padding: 30px;
+    border-radius: 12px;
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    text-align: center;
+}
+
+.value-card h3 {
+    color: var(--color-accent);
+}
+
+/* Képszalag */
+.strip {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 10px 0;
+    scroll-snap-type: x mandatory;
+}
+
+.strip .tile {
+    flex: 0 0 300px; /* Fix szélesség */
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    scroll-snap-align: start;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ========================================= */
+/* 6. LÁBLÉC (FOOTER) */
+/* ========================================= */
+
+.footer {
+    background-color: var(--color-dark-green);
+    padding: 40px 24px;
+    margin-top: 40px;
+}
+
+.footer h3 {
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.footer .actions,
+.footer .social,
+.footer .contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.footer .contact p {
+    color: var(--color-secondary);
+}
+
+.footer .contact a {
+    color: var(--color-primary);
+}
+
+/* Térkép Placeholder */
+.map-placeholder {
+    height: 300px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-dark-green); /* Sötét háttér */
+    border-radius: 8px;
     overflow: hidden;
-    cursor: grab;
+    position: relative;
 }
 
-.circular-gallery:active {
-    cursor: grabbing;
+.map-placeholder .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 5;
 }
 
-/* Buttons */
-.btn { display: inline-block; background: var(--green); color: var(--white); border: 0; border-radius: 16px; padding: 10px 16px; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
-.btn:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(0,0,0,0.15); }
-.btn-outline { background: var(--white); color: var(--green); border: 2px solid var(--green); }
+.map-placeholder .overlay p {
+    color: var(--color-primary);
+    margin-bottom: 15px;
+}
 
-/* Footer */
-.footer { padding: 24px 0; background: var(--green); color: var(--white); }
-.footer .actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 12px 0; }
-.footer .social { display: flex; gap: 12px; margin: 10px 0; }
-.footer a { text-decoration: none; color: var(--white); }
-.footer .btn { background: var(--white); color: var(--green); }
-.footer .btn:hover { box-shadow: 0 10px 24px rgba(0,0,0,0.21); }
+.map-placeholder iframe {
+    /* A JS tölti be, de a stílus itt is legyen meg */
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* ========================================= */
+/* 7. MÉDIA LEKÉRDEZÉSEK (RESPONZIVITÁS) */
+/* ========================================= */
+
+@media (max-width: 900px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.8rem; }
+    
+    .feature {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .feature.reverse {
+        flex-direction: column; /* Ugyanaz, mint a normál sorrend */
+    }
+
+    .feature img {
+        margin-top: 20px;
+    }
+
+    .values {
+        gap: 15px;
+    }
+
+    .container {
+        padding: 40px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.6rem; }
+
+    .hero-overlay {
+        padding: 20px;
+    }
+
+    .footer .actions {
+        flex-direction: column;
+    }
+
+    .footer .actions a {
+        width: 100%;
+        text-align: center;
+    }
+}
