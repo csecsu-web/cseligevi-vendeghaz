@@ -1,7 +1,12 @@
+// include.js - Módosítás nélkül, mivel a [data-include] kezeli az új háttért is!
+// ... setupMobileMenu() és setupMapButton() funkciók ...
+
 document.addEventListener('DOMContentLoaded', async () => {
+    // includes keresése: [data-include] (pl. footer, hero-background) és a fix #navbar-container
     const includes = document.querySelectorAll('[data-include], #navbar-container');
 
     const includePromises = Array.from(includes).map(async (el) => {
+        // Meghatározza a betöltendő fájl útvonalát a data-include attribútumból
         let path = el.dataset.include || 'navbar.html';
         if (!path) return;
 
@@ -15,23 +20,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
-    await Promise.all(includePromises);
+    await Promise.all(includePromises); 
 
+    // Inicializálás:
     setupMobileMenu();
+    setupMapButton();
 });
-
-function setupMobileMenu() {
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.navbar .menu');
-    const body = document.body;
-
-    if (hamburger && navMenu) {
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('open');
-            body.classList.toggle('no-scroll');
-
-            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-            hamburger.setAttribute('aria-expanded', !isExpanded);
-        });
-    }
-}
+// ...
