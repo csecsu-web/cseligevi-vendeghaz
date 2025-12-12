@@ -143,16 +143,15 @@ section {
 /* ========================================= */
 
 .navbar {
-    position: fixed; /* Ez a kulcs a desktop nézet fixáláshoz */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 100;
     padding: 15px 24px;
-    /* A nav.js fogja módosítani a háttérszínt a görgetéskor */
     transition: background-color 0.3s ease, transform 0.3s ease; 
-    transform: translateY(0); /* Alapértelmezett állapot */
-    background-color: transparent; /* A Hero szekción áttetsző legyen */
+    transform: translateY(0);
+    background-color: transparent; /* Alapértelmezett: átlátszó a Hero szekción */
 }
 
 .nav-content {
@@ -167,6 +166,14 @@ section {
     font-size: 1.8rem;
     font-weight: 700;
     color: var(--color-accent);
+    /* Logo kép és szöveg igazítása */
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    margin-right: 10px;
+    height: 30px; /* Megfelelő méret beállítása */
 }
 
 .menu {
@@ -175,19 +182,18 @@ section {
     transition: transform 0.4s ease;
 }
 
-.menu li {
-    margin-left: 30px;
-}
-
 .menu a {
     color: var(--color-primary);
     font-weight: 600;
-    padding: 5px 0;
+    padding: 5px 10px;
+    margin-left: 20px;
     position: relative;
     text-transform: uppercase;
+    /* Gombként kiemelt link stílusa */
+    transition: all 0.3s ease; 
 }
 
-.menu a:after {
+.menu a:not(.btn):after { /* Csak a nem gomb linkek alá húzása */
     content: '';
     position: absolute;
     width: 0;
@@ -198,7 +204,7 @@ section {
     transition: width 0.3s;
 }
 
-.menu a:hover:after {
+.menu a:not(.btn):hover:after {
     width: 100%;
 }
 
@@ -211,6 +217,9 @@ section {
     height: 20px;
     position: relative;
     transition: all 0.3s ease;
+    background: none; /* A button alapértelmezett hátterét eltávolítjuk */
+    border: none;
+    padding: 0;
 }
 
 .hamburger span {
@@ -228,9 +237,9 @@ section {
 .hamburger span:nth-child(3) { bottom: 0; }
 
 /* Hamburger aktív állapot - X */
-.hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
 .hamburger.active span:nth-child(2) { opacity: 0; }
-.hamburger.active span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+.hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
 /* Mobil menü: reszponzivitás */
 @media (max-width: 768px) {
@@ -244,6 +253,7 @@ section {
     }
 
     .menu {
+        /* A .menu egy <nav> tag, de a stílus ismét listaként kezeli */
         position: fixed;
         top: 0;
         right: 0;
@@ -265,12 +275,9 @@ section {
         pointer-events: auto;
     }
 
-    .menu li {
-        margin: 20px 0;
-    }
-
     .menu a {
         font-size: 2rem;
+        margin: 20px 0; /* Vertikális margó hozzáadása mobilon */
     }
 
     .no-scroll {
