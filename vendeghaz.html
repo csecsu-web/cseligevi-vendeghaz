@@ -1,84 +1,69 @@
 <!doctype html>
 <html lang="hu">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>A vendégház – Cseligevi Vendégház</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
-  <link rel="apple-touch-icon" href="favicon.png">
-  <link rel="canonical" href="https://cseligevivendeghaz.com/vendeghaz.html">
-  <meta name="description" content="A vendégház – kétszintes harmónia Szekszárdon: tágas nappali, modern konyha, otthonos hálók és benti szauna.">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>A vendégház – Cseligevi Vendégház</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="canonical" href="https://cseligevivendeghaz.com/vendeghaz.html">
+  <meta name="description" content="A vendégház – kétszintes harmónia Szekszárdon: tágas nappali, modern konyha, otthonos hálók és benti szauna.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
+
 <div id="navbar-container"></div>
-<script>
-  fetch("navbar.html")
-    .then(r => r.text())
-    .then(d => document.getElementById("navbar-container").innerHTML = d);
-</script>
+<section class="hero">
+  <div data-include="hero-background.html"></div> 
 
-  <section class="hero">
-    <div class="hero-overlay glass">
-      <h1 class="clip">A vendégház</h1>
-      <p class="clip">Kétszintes harmónia: modern kényelem, vidéki báj</p>
-      <a class="btn clip" href="arak.html">Foglalás és árak</a>
-    </div>
-  </section>
+  <div class="hero-overlay glass">
+    <h1 class="clip">A vendégház</h1>
+    <p class="clip">Kétszintes harmónia: modern kényelem, vidéki báj</p>
+    <a class="btn clip" href="arak.html">Foglalás és árak</a>
+  </div>
+</section>
 
-  <main>
-    <section class="container media clip">
-      <div>
-        <h2>Nappali</h2>
-        <p>Tágas, világos közösségi tér, ahol a családi és baráti pillanatok születnek.</p>
-      </div>
-      <img src="images/nappali1.jpg" alt="Nappali">
-    </section>
+  <main>
+    <section class="container feature clip">
+      <div>
+        <h2>Nappali</h2>
+        <p>Tágas, világos közösségi tér, ahol a családi és baráti pillanatok születnek.</p>
+      </div>
+      <img src="images/nappali1.jpg" alt="Nappali">
+    </section>
 
-    <section class="container media clip">
-      <img src="images/konyha1.jpg" alt="Konyha">
-      <div>
-        <h2>Konyha</h2>
-        <p>Modern, jól felszerelt konyha, hogy az együtt főzés is élmény legyen.</p>
-      </div>
-    </section>
+    <section class="container feature reverse clip">
+      <img src="images/konyha1.jpg" alt="Konyha">
+      <div>
+        <h2>Konyha</h2>
+        <p>Modern, jól felszerelt konyha, hogy az együtt főzés is élmény legyen.</p>
+      </div>
+    </section>
 
-    <section class="container media clip">
-      <div>
-        <h2>Hálószobák</h2>
-        <p>Otthonos, nyugodt hálók a pihentető alváshoz, természetes anyagokkal.</p>
-      </div>
-      <img src="images/halo1.jpg" alt="Hálószoba">
-    </section>
+    <section class="container feature clip">
+      <div>
+        <h2>Hálószobák</h2>
+        <p>Otthonos, nyugodt hálók a pihentető alváshoz, természetes anyagokkal.</p>
+      </div>
+      <img src="images/halo1.jpg" alt="Hálószoba">
+    </section>
 
-    <section class="container media clip">
-      <img src="images/szauna1.jpg" alt="Szauna">
-      <div>
-        <h2>Wellness</h2>
-        <p>Benti szauna, hogy a hűvös napok is a feltöltődésről szóljanak.</p>
-      </div>
-    </section>
-  </main>
+    <section class="container feature reverse clip">
+      <img src="images/szauna1.jpg" alt="Szauna">
+      <div>
+        <h2>Wellness</h2>
+        <p>Benti szauna, hogy a hűvös napok is a feltöltődésről szóljanak.</p>
+      </div>
+    </section>
+  </main>
 
-  <footer class="footer glass">
-    <div class="container">
-      <h3>Foglalj Most!</h3>
-      <div class="actions">
-        <a class="btn" href="mailto:cseligevi5@gmail.com">Foglalás emailben</a>
-        <a class="btn btn-outline" href="tel:+36708844779">+36 70 884 4779</a>
-        <a class="btn btn-outline" href="tel:+36703346060">+36 70 334 6060</a>
-        <a class="btn btn-outline" href="index.html">Vissza a főoldalra</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="animation.js"></script>
-  <script src="include.js"></script>
-  <script src="nav.js"></script>
+<div id="footer-container" data-include="footer.html"></div>
+<script src="include.js"></script>
+<script src="animation.js"></script>
 </body>
 </html>
