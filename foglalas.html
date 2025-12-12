@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Foglalás – Cseligevi Vendégház</title>
-  <meta name="description" content="Foglalj most a Cseligevi Vendégházban. Egyszerű online foglalás, gyors visszajelzés, kedvező árak.">
+  <meta name="description" content="Foglalj most a Cseligevi Vendégházban. Egyszerű online foglalás, gyors visszajelzés.">
   
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="favicon.png">
@@ -13,6 +13,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cseligevivendeghaz.com/foglalas.html">
+  <meta property="og:title" content="Foglalás – Cseligevi Vendégház">
+  <meta property="og:description" content="Foglalj most egyszerűen és gyorsan!">
+  <meta property="og:image" content="https://cseligevivendeghaz.com/images/kulteri.jpg">
 </head>
 <body>
 
@@ -29,7 +35,7 @@
 <main class="container">
   <section class="booking-section glass clip">
     <h2>Foglalási igény küldése</h2>
-    <p>Töltsd ki az alábbi űrlapot, és hamarosan felvesszük veled a kapcsolatot a foglalás megerősítéséhez!</p>
+    <p>Töltsd ki az alábbi űrlapot, és hamarosan felvesszük veled a kapcsolatot!</p>
 
     <form name="booking" 
           method="POST" 
@@ -38,12 +44,10 @@
           action="/koszonjuk.html"
           class="booking-form">
       
-      <!-- Netlify form detection -->
       <input type="hidden" name="form-name" value="booking">
       
-      <!-- Honeypot for spam protection -->
       <p class="hidden">
-        <label>Ne töltsd ki, ha ember vagy: <input name="bot-field"></label>
+        <label>Ne töltsd ki: <input name="bot-field"></label>
       </p>
 
       <div class="form-row">
@@ -108,13 +112,13 @@
         <li><strong>2 éjszaka:</strong> 85 000 Ft</li>
         <li><strong>3 éjszaka:</strong> 115 000 Ft</li>
       </ul>
-      <p class="small">Az árak 2 fő részére értendők, tartalmazzák az adót. Gyerekek esetén egyedi egyeztetés.</p>
+      <p class="small">Az árak 2 fő részére értendők, tartalmazzák az adót.</p>
     </div>
   </section>
 
   <section class="contact-alternatives clip">
     <h2>Egyéb elérhetőségek</h2>
-    <p>Szívesebben telefonálnál vagy emaileznél? Azt is megteheted!</p>
+    <p>Szívesebben telefonálnál? Azt is megteheted!</p>
     <div class="actions">
       <a class="btn btn-outline" href="mailto:cseligevi5@gmail.com">
         📧 cseligevi5@gmail.com
