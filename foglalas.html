@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Foglalás – Cseligevi Vendégház</title>
+  <meta name="description" content="Foglalj most a Cseligevi Vendégházban. Egyszerű online foglalás, gyors visszajelzés, kedvező árak.">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="canonical" href="https://cseligevivendeghaz.com/foglalas.html">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="navbar-container"></div>
+
+<section class="hero">
+  <div data-include="hero-background.html"></div> 
+  <div class="hero-overlay glass">
+    <h1 class="clip">Foglalás</h1>
+    <p class="clip">Töltsd ki az űrlapot, hamarosan válaszolunk!</p>
+  </div>
+</section>
+
+<main class="container">
+  <section class="booking-section glass clip">
+    <h2>Foglalási igény küldése</h2>
+    <p>Töltsd ki az alábbi űrlapot, és hamarosan felvesszük veled a kapcsolatot a foglalás megerősítéséhez!</p>
+
+    <form name="booking" 
+          method="POST" 
+          data-netlify="true" 
+          netlify-honeypot="bot-field"
+          action="/koszonjuk.html"
+          class="booking-form">
+      
+      <!-- Netlify form detection -->
+      <input type="hidden" name="form-name" value="booking">
+      
+      <!-- Honeypot for spam protection -->
+      <p class="hidden">
+        <label>Ne töltsd ki, ha ember vagy: <input name="bot-field"></label>
+      </p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Név *</label>
+          <input type="text" id="name" name="name" required placeholder="Kovács János">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email cím *</label>
+          <input type="email" id="email" name="email" required placeholder="pelda@email.com">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phone">Telefonszám *</label>
+          <input type="tel" id="phone" name="phone" required placeholder="+36 30 123 4567">
+        </div>
+
+        <div class="form-group">
+          <label for="guests">Vendégek száma *</label>
+          <select id="guests" name="guests" required>
+            <option value="">Válassz...</option>
+            <option value="2">2 fő</option>
+            <option value="3">3 fő</option>
+            <option value="4">4 fő</option>
+            <option value="5">5 fő</option>
+            <option value="6+">6+ fő</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="checkin">Érkezés *</label>
+          <input type="date" id="checkin" name="checkin" required>
+        </div>
+
+        <div class="form-group">
+          <label for="checkout">Távozás *</label>
+          <input type="date" id="checkout" name="checkout" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Üzenet / Speciális kérések</label>
+        <textarea id="message" name="message" rows="5" placeholder="Például: gyerekágy szükséges, diétás igény, stb."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-large">Foglalási igény küldése</button>
+      
+      <p class="form-note">
+        * Kötelező mezők. A küldés után emailben visszaigazoljuk a foglalást és az árat.
+      </p>
+    </form>
+
+    <div class="pricing-info">
+      <h3>Áraink</h3>
+      <ul>
+        <li><strong>1 éjszaka:</strong> 45 000 Ft</li>
+        <li><strong>2 éjszaka:</strong> 85 000 Ft</li>
+        <li><strong>3 éjszaka:</strong> 115 000 Ft</li>
+      </ul>
+      <p class="small">Az árak 2 fő részére értendők, tartalmazzák az adót. Gyerekek esetén egyedi egyeztetés.</p>
+    </div>
+  </section>
+
+  <section class="contact-alternatives clip">
+    <h2>Egyéb elérhetőségek</h2>
+    <p>Szívesebben telefonálnál vagy emaileznél? Azt is megteheted!</p>
+    <div class="actions">
+      <a class="btn btn-outline" href="mailto:cseligevi5@gmail.com">
+        📧 cseligevi5@gmail.com
+      </a>
+      <a class="btn btn-outline" href="tel:+36708844779">
+        📞 +36 70 884 4779
+      </a>
+      <a class="btn btn-outline" href="tel:+36703346060">
+        📞 +36 70 334 6060
+      </a>
+    </div>
+  </section>
+</main>
+
+<div id="footer-container" data-include="footer.html"></div>
+
+<script src="include.js"></script>
+<script src="animation.js"></script>
+<script src="nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+
+</body>
+</html>
