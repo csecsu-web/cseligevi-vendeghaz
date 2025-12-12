@@ -143,13 +143,16 @@ section {
 /* ========================================= */
 
 .navbar {
-    position: fixed;
+    position: fixed; /* Ez a kulcs a desktop nézet fixáláshoz */
     top: 0;
     left: 0;
     width: 100%;
     z-index: 100;
     padding: 15px 24px;
-    transition: background-color 0.3s ease;
+    /* A nav.js fogja módosítani a háttérszínt a görgetéskor */
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+    transform: translateY(0); /* Alapértelmezett állapot */
+    background-color: transparent; /* A Hero szekción áttetsző legyen */
 }
 
 .nav-content {
@@ -231,6 +234,11 @@ section {
 
 /* Mobil menü: reszponzivitás */
 @media (max-width: 768px) {
+    /* A Navbart átlátszó háttér helyett fekete háttérrel kezdjük mobilon, hogy látszódjon a szöveg */
+    .navbar {
+        background-color: var(--color-bg-base);
+    }
+    
     .hamburger {
         display: block;
     }
