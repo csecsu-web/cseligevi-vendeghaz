@@ -17,40 +17,43 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
-<!-- Navbar include -->
 <div id="navbar-container"></div>
 <script>
+// Navbar aszinkron betöltése és a JS inicializálása
 fetch("navbar.html")
   .then(r => r.text())
-  .then(d => document.getElementById("navbar-container").innerHTML = d)
-  .then(()=>{ 
-    // Hamburger menu setup
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.menu');
-    const body = document.body;
-    if(hamburger && navMenu){
-      hamburger.addEventListener('click', ()=>{
-        navMenu.classList.toggle('open');
-        body.classList.toggle('no-scroll');
-        const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-        hamburger.setAttribute('aria-expanded', !isExpanded);
+  .then(d => {
+    // 1. Navbar HTML beillesztése
+    document.getElementById("navbar-container").innerHTML = d;
+    
+    // 2. Hamburger menü inicializálása a navbar betöltése UTÁN
+    // Feltételezzük, hogy a nav.js tartalmazza az initNavbar() funkciót.
+    if (typeof initNavbar === 'function') {
+      initNavbar();
+    }
+    
+    // 3. Térkép gomb funkcionalitásának hozzáadása (itt, hogy biztosan meglegyen)
+    const mapButton = document.querySelector('.map-button');
+    if (mapButton) {
+      mapButton.addEventListener('click', function() {
+        const placeholder = this.closest('.map-placeholder');
+        const iframe = document.createElement('iframe');
+        // Kérlek, cseréld le a placeholder URL-t a valós Google Maps beágyazási linkre
+        iframe.src = 'https://www.google.com/maps?q=8MRP%2BC4%20Szeksz%C3%A1rd&output=embed';iframe.loading='lazy';iframe.referrerPolicy='no-referrer-when-downgrade';iframe.style='border:0;width:100%;height:100%';el.innerHTML='';el.appendChild(iframe)'; 
+        iframe.style.width = '100%';
+        iframe.style.height = '300px';
+        iframe.style.border = '0';
+        placeholder.innerHTML = '';
+        placeholder.appendChild(iframe);
       });
     }
   });
 </script>
 
 <section class="hero">
-  import Aurora from 'herobackground.html ';
-  
-<Aurora
-  colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
-  blend={0.5}
-  amplitude={1.0}
-  speed={0.5}
-/>
   <div class="hero-overlay glass">
     <div class="brand-svg">
-      <svg viewBox="0 0 200 60"><path id="brand-path" d="M10,30 C40,5 80,55 110,25 C130,10 160,20 190,30"/></svg>
+      <svg viewBox="0 0 200 60"><path id="brand-path" d="M10,30 C40,5 80,55 110,25 C130,10 160,20 190,30" fill="transparent" stroke="var(--accent)" stroke-width="2"/></svg>
     </div>
     <h1 class="clip">Cseligevi – A természet ritmusában</h1>
     <p class="clip">A nyugalom otthona</p>
@@ -131,7 +134,7 @@ fetch("navbar.html")
       <div class="overlay">
         <div>
           <p>Térkép megnyitása</p>
-          <button class="btn" onclick="(function(el){const iframe=document.createElement('iframe');iframe.src='https://www.google.com/maps?q=8MRP%2BC4%20Szeksz%C3%A1rd&output=embed';iframe.loading='lazy';iframe.referrerPolicy='no-referrer-when-downgrade';iframe.style='border:0;width:100%;height:100%';el.innerHTML='';el.appendChild(iframe);})(this.closest('.map-placeholder'))">Térkép betöltése</button>
+          <button class="btn map-button" aria-label="Térkép betöltése">Térkép betöltése</button>
         </div>
       </div>
     </div>
@@ -141,18 +144,19 @@ fetch("navbar.html")
 <script>
 gsap.registerPlugin(ScrollTrigger);
 (function svgDraw(){
-  const path = document.getElementById('brand-path'); if(!path) return;
+  const path = document.getElementById('brand-path'); 
+  if(!path) return;
   const len = path.getTotalLength();
   path.style.strokeDasharray = len;
   path.style.strokeDashoffset = len;
+  // A GSAP használatához a stroke és stroke-width beállítását áttettem a HTML-be (inline vagy CSS-be is mehet)
   gsap.to(path,{ strokeDashoffset:0, duration:1.4, ease:'power2.out' });
 })();
 gsap.utils.toArray('.clip').forEach(el=>{
   gsap.fromTo(el,{ clipPath:'inset(100% 0 0 0)', opacity:0 },{ clipPath:'inset(0 0 0 0)', opacity:1, duration:.8, ease:'power2.out', scrollTrigger:{ trigger:el, start:'top 85%' }});
 });
 </script>
+
 <script src="nav.js"></script>
-<script src="animation.js"></script>
-<script src="include.js"></script>
 </body>
 </html>
