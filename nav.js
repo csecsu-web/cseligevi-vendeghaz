@@ -1,6 +1,5 @@
-// nav.js - Optimized version
+// nav.js - Optimized
 document.addEventListener("DOMContentLoaded", () => {
-    // Wait a bit for include.js to finish
     setTimeout(initNavbar, 100);
 });
 
@@ -15,10 +14,10 @@ function initNavbar() {
         return;
     }
 
-    // 1. HAMBURGER MENU
+    // Hamburger menu toggle
     hamburger.addEventListener('click', toggleMenu);
 
-    // Close menu when clicking on a link
+    // Close menu when clicking links
     menuLinks.forEach(link => {
         link.addEventListener('click', () => {
             if (menu.classList.contains('open')) {
@@ -27,7 +26,7 @@ function initNavbar() {
         });
     });
 
-    // Close menu on escape key
+    // Close on Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && menu.classList.contains('open')) {
             toggleMenu();
@@ -39,12 +38,11 @@ function initNavbar() {
         hamburger.classList.toggle('active');
         document.body.classList.toggle('no-scroll');
         
-        // Accessibility
         hamburger.setAttribute('aria-expanded', isOpen);
         hamburger.setAttribute('aria-label', isOpen ? 'Menü bezárása' : 'Menü megnyitása');
     }
 
-    // 2. SCROLL BEHAVIOR
+    // Scroll behavior
     let lastScrollTop = 0;
     let ticking = false;
 
@@ -61,23 +59,19 @@ function initNavbar() {
     function handleScroll() {
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-        // Desktop only
         if (window.innerWidth > 768) {
-            // Background color change
             if (currentScroll > 100) {
                 navbar.style.backgroundColor = 'var(--color-bg-base)';
             } else {
                 navbar.style.backgroundColor = 'transparent';
             }
 
-            // Hide/show navbar
             if (currentScroll > lastScrollTop && currentScroll > 200) {
                 navbar.style.transform = 'translateY(-100%)';
             } else {
                 navbar.style.transform = 'translateY(0)';
             }
         } else {
-            // Mobile: always visible with background
             navbar.style.backgroundColor = 'var(--color-bg-base)';
             navbar.style.transform = 'translateY(0)';
         }
