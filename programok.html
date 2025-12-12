@@ -1,86 +1,106 @@
 <!doctype html>
 <html lang="hu">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Programok – Cseligevi Vendégház</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
-  <link rel="apple-touch-icon" href="favicon.png">
-  <link rel="canonical" href="https://cseligevivendeghaz.com/programok.html">
-  <meta name="description" content="Programok Szekszárdon: borászatok, kirándulások, kilátók, tavak, városi kulturális élmények a Cseligevi Vendégház környékén.">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Programok – Cseligevi Vendégház</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="canonical" href="https://cseligevivendeghaz.com/programok.html">
+  <meta name="description" content="Programok Szekszárdon: borászatok, kirándulások, kilátók, tavak, városi kulturális élmények a Cseligevi Vendégház környékén.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
-<div id="navbar-container"></div>
-<script>
-  fetch("navbar.html")
-    .then(r => r.text())
-    .then(d => document.getElementById("navbar-container").innerHTML = d);
-</script>
+  
+    <div id="navbar-container"></div>
+    <section class="hero">
+    <div data-include="hero-background.html"></div> 
 
-  <header class="hero">
-    <div class="hero-overlay glass">
-      <h1 class="clip">Programok</h1>
-      <p class="clip">Szekszárd és a környék élményei</p>
-      <a class="btn clip" href="arak.html">Foglalj most</a>
-    </div>
-  </header>
+    <div class="hero-overlay glass">
+      <h1 class="clip">Programok</h1>
+      <p class="clip">Szekszárd és a környék élményei</p>
+      <a class="btn clip" href="arak.html">Foglalj most</a>
+    </div>
+  </section>
 
-  <main class="container glass clip">
-    <h2>Programok és környék</h2>
-    <p>Szekszárdon számos állandóan elérhető, nem borral kapcsolatos program és látnivaló várja a látogatókat – múzeumok, kilátók, tanösvények, fürdők és aktív kikapcsolódási lehetőségek.</p>
+  <main>
+    <section class="container glass clip">
+        <h2>Programok és környék</h2>
+        <p>Szekszárdon számos állandóan elérhető, nem borral kapcsolatos program és látnivaló várja a látogatókat – múzeumok, kilátók, tanösvények, fürdők és aktív kikapcsolódási lehetőségek. Fedezze fel a Szekszárdi dombság csodáit!</p>
+    </section>
 
-    <h3>Kulturális és történelmi látnivalók</h3>
-    <ul>
-      <li>Babits Mihály Emlékház – A híres költő szülőháza, irodalmi kiállítással.</li>
-      <li>Mézeskalács Múzeum – Interaktív kiállítás a mézeskalács‑készítésről.</li>
-      <li>BeSweet Csokoládémanufaktúra – Látogatóközpont kézműves csokoládékkal.</li>
-      <li>Bogár‑Tanya Néprajzi Magángyűjtemény – Ritka néprajzi tárgyak és helytörténet.</li>
-    </ul>
+    <section class="container clip">
+        <h2 style="margin-bottom: 25px;">Kulturális és történelmi látnivalók</h2>
+        <div class="program-cards">
+            <div class="card glass">
+                <h3>Babits Mihály Emlékház</h3>
+                <p>A híres költő szülőháza, irodalmi kiállítással. Remek célpont irodalomkedvelőknek.</p>
+            </div>
+            <div class="card glass">
+                <h3>Mézeskalács Múzeum</h3>
+                <p>Interaktív kiállítás a mézeskalács-készítésről és a hagyományos magyar mesterségekről.</p>
+            </div>
+            <div class="card glass">
+                <h3>BeSweet Csokoládémanufaktúra</h3>
+                <p>Látogatóközpont kézműves csokoládékkal. Kóstolók és workshopok is elérhetők.</p>
+            </div>
+            <div class="card glass">
+                <h3>Bogár-Tanya Néprajzi Magángyűjtemény</h3>
+                <p>Ritka néprajzi tárgyak és helytörténeti gyűjtemény. Betekintés a múltba.</p>
+            </div>
+        </div>
+    </section>
 
-    <h3>Természet és kilátók</h3>
-    <ul>
-      <li>Kálvária Kilátó – Panoráma a Bartina hegyről.</li>
-      <li>Bati‑kereszt Kilátó – 280 m magas dombon, pihenővel.</li>
-      <li>Lösz‑szurdik tanösvények – Természetvédelmi sétautak, madármegfigyelés.</li>
-    </ul>
+    <section class="container clip">
+        <h2 style="margin-bottom: 25px;">Természet és kilátók</h2>
+        <div class="program-cards">
+            <div class="card glass">
+                <h3>Bati-kereszt Kilátó</h3>
+                <p>280 m magas dombon található, fantasztikus panorámával a Szekszárdi dombságra.</p>
+            </div>
+            <div class="card glass">
+                <h3>Kálvária Kilátó</h3>
+                <p>Panoráma a Bartina hegyről, könnyen megközelíthető, remek fotózási pont.</p>
+            </div>
+            <div class="card glass">
+                <h3>Lösz-szurdik tanösvények</h3>
+                <p>Természetvédelmi sétautak, madármegfigyelés. Ideális könnyű, családi túrákhoz.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="container clip">
+        <h2 style="margin-bottom: 25px;">Aktív kikapcsolódás</h2>
+        <div class="program-cards">
+            <div class="card glass">
+                <h3>Szekszárdi Strand- és Élményfürdő</h3>
+                <p>Medencék, csúszdák és termálvíz. Egész éves kikapcsolódás hidegben és melegben is.</p>
+            </div>
+            <div class="card glass">
+                <h3>Összkeréken E-BIKE kölcsönzés</h3>
+                <p>Elektromos kerékpárok túrákhoz. Fedezze fel a vidéket fáradtság nélkül!</p>
+            </div>
+            <div class="card glass">
+                <h3>Vidékjáró terepjáró túrák</h3>
+                <p>Off-road élmények a dombokon. Izgalmas és felejthetetlen program.</p>
+            </div>
+            <div class="card glass">
+                <h3>Műjégpálya / Airsoft</h3>
+                <p>Télen korcsolyázás, melegebb időben airsoft csapatjáték. Szórakozás minden évszakban.</p>
+            </div>
+        </div>
+    </section>
 
-    <h3>Aktív kikapcsolódás</h3>
-    <ul>
-      <li>Szekszárdi Strand‑ és Élményfürdő – Medencék, csúszdák, termálvíz.</li>
-      <li>Összkeréken E‑BIKE kölcsönzés – Elektromos kerékpárok túrákhoz.</li>
-      <li>Vidékjáró terepjáró túrák – Off‑road élmények a dombokon.</li>
-      <li>Szekszárdi Műjégpálya – Téli korcsolyázás.</li>
-      <li>Airsoft Szekszárd – Csapatjáték és taktikai sport.</li>
-    </ul>
+  </main>
 
-    <h3>Városi séták és terek</h3>
-    <ul>
-      <li>Garay tér – Főtér szobrokkal, kávézókkal, rendezvényekkel.</li>
-      <li>Béla király tér – Szabadtéri programok és séták.</li>
-      <li>Szentháromság szobor – Barokk emlékmű történelmi jelentőséggel.</li>
-    </ul>
-  </main>
+    <div id="footer-container" data-include="footer.html"></div>
 
-  <footer class="footer glass">
-    <div class="container">
-      <h3>Foglalj Most!</h3>
-      <div class="actions">
-        <a class="btn" href="mailto:cseligevi5@gmail.com">Foglalás emailben</a>
-        <a class="btn btn-outline" href="tel:+36708844779">+36 70 884 4779</a>
-        <a class="btn btn-outline" href="tel:+36703346060">+36 70 334 6060</a>
-        <a class="btn btn-outline" href="index.html">Vissza a főoldalra</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="animation.js"></script>
-  <script src="include.js"></script>
-  <script src="nav.js"></script>
-</body>
+    <script src="include.js"></script>
+  <script src="animation.js"></script>
+  </body>
 </html>
