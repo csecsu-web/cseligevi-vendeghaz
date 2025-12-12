@@ -1,127 +1,188 @@
-<script type="module">
-import { Renderer, Camera, Transform, Plane, Program, Texture } from './ogl.module.js';
+import { Renderer, Camera, Transform, Plane, Mesh, Program, Texture } from 'ogl';
 
-const container = document.getElementById('circular-gallery');
-const renderer = new Renderer({ alpha:true, antialias:true });
-container.appendChild(renderer.gl.canvas);
-const gl = renderer.gl;
-gl.clearColor(0,0,0,0);
+// Lineáris interpoláció
+function lerp(a, b, t) { return a + (b - a) * t; }
 
-const camera = new Camera(gl, { fov:45 });
-camera.position.z = 20;
-
-const scene = new Transform();
-const planeGeometry = new Plane(gl);
-
-const items = [
-  { image:"images/1.jpg", text:"Belső terek" },
-  { image:"images/2.jpg", text:"Kültéri élmények" },
-  { image:"images/3.jpg", text:"Wellness" },
-  { image:"images/4.jpg", text:"Terasz" },
-  { image:"images/5.jpg", text:"Kert" },
-  { image:"images/6.jpg", text:"Panoráma" }
-];
-
-const planes = [];
-
-function createTextTexture(text,color='#ffffff',font='bold 30px sans-serif'){
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
-  ctx.font = font;
-  const width = Math.ceil(ctx.measureText(text).width)+20;
-  const height = Math.ceil(parseInt(font)*1.2)+20;
-  canvas.width = width;
-  canvas.height = height;
-  ctx.font = font;
-  ctx.fillStyle = color;
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.clearRect(0,0,width,height);
-  ctx.fillText(text,width/2,height/2);
-  const texture = new Texture(gl,{generateMipmaps:false});
-  texture.image = canvas;
-  return {texture,width,height};
+// Debounce függvény
+function debounce(func, wait) {
+  let timeout;
+  return function(...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
 }
 
-items.forEach((item,i)=>{
-  // Kép
-  const texture = new Texture(gl,{generateMipmaps:true});
-  const img = new Image();
-  img.src = item.image;
-  img.onload = ()=> texture.image = img;
+class Media {
+  constructor({ gl, scene, image, index, length, bend = 3, textColor = '#fff', borderRadius = 0.05, viewport }) {
+    this.gl = gl;
+    this.scene = scene;
+    this.image = image;
+    this.index = index;
+    this.length = length;
+    this.bend = bend;
+    this.textColor = textColor;
+    this.borderRadius = borderRadius;
+    this.viewport = viewport;
 
-  const program = new Program(gl,{
-    vertex:`
-      attribute vec3 position;
-      attribute vec2 uv;
-      uniform mat4 modelViewMatrix;
-      uniform mat4 projectionMatrix;
-      varying vec2 vUv;
-      void main() { vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}
-    `,
-    fragment:`
-      precision highp float;
-      uniform sampler2D tMap;
-      varying vec2 vUv;
-      void main(){ vec4 c = texture2D(tMap,vUv); if(c.a<0.1) discard; gl_FragColor=c;}
-    `,
-    uniforms:{ tMap:{value:texture} },
-    transparent:true
-  });
+    this.createTexture();
+    this.createPlane();
+  }
 
-  const mesh = new Plane(gl,{geometry: planeGeometry, program});
-  mesh.setParent(scene);
+  createTexture() {
+    this.texture = new Texture(this.gl, { generateMipmaps: true });
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.src = this.image;
+    img.onload = () => {
+      this.texture.image = img;
+      this.program.uniforms.uImageSizes.value = [img.naturalWidth, img.naturalHeight];
+    };
+  }
 
-  // Szöveg
-  const {texture:textTex,width:w,height:h} = createTextTexture(item.text,'#ffffff','bold 24px sans-serif');
-  const textProgram = new Program(gl,{
-    vertex:`
-      attribute vec3 position;
-      attribute vec2 uv;
-      uniform mat4 modelViewMatrix;
-      uniform mat4 projectionMatrix;
-      varying vec2 vUv;
-      void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}
-    `,
-    fragment:`
-      precision highp float;
-      uniform sampler2D tMap;
-      varying vec2 vUv;
-      void main(){ vec4 c=texture2D(tMap,vUv); if(c.a<0.1) discard; gl_FragColor=c;}
-    `,
-    uniforms:{ tMap:{value:textTex} },
-    transparent:true
-  });
-  const textMesh = new Plane(gl,{geometry:planeGeometry,program:textProgram});
-  textMesh.scale.set(w/200,h/200,1);
-  textMesh.position.y = -1.2; // a kép alá
-  textMesh.setParent(mesh);
+  createPlane() {
+    const geometry = new Plane(this.gl);
+    this.program = new Program(this.gl, {
+      vertex: `
+        precision highp float;
+        attribute vec3 position;
+        attribute vec2 uv;
+        uniform mat4 modelViewMatrix;
+        uniform mat4 projectionMatrix;
+        uniform float uTime;
+        uniform float uSpeed;
+        varying vec2 vUv;
+        void main() {
+          vUv = uv;
+          vec3 p = position;
+          p.z = sin(p.x * 4.0 + uTime) * 0.1;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(p,1.0);
+        }
+      `,
+      fragment: `
+        precision highp float;
+        uniform sampler2D tMap;
+        uniform float uBorderRadius;
+        varying vec2 vUv;
+        float roundedBoxSDF(vec2 p, vec2 b, float r){
+          vec2 d = abs(p)-b;
+          return length(max(d, vec2(0.0))) + min(max(d.x,d.y),0.0)-r;
+        }
+        void main(){
+          vec2 uv = vUv;
+          vec4 color = texture2D(tMap, uv);
+          float d = roundedBoxSDF(vUv-0.5, vec2(0.5-uBorderRadius), uBorderRadius);
+          float edgeSmooth = 0.002;
+          float alpha = 1.0 - smoothstep(-edgeSmooth, edgeSmooth, d);
+          gl_FragColor = vec4(color.rgb, alpha);
+        }
+      `,
+      uniforms: {
+        tMap: { value: this.texture },
+        uBorderRadius: { value: this.borderRadius },
+        uTime: { value: Math.random() * 1000 },
+        uSpeed: { value: 0 }
+      },
+      transparent: true
+    });
 
-  planes.push({mesh,textMesh});
-});
+    this.plane = new Mesh(this.gl, { geometry, program: this.program });
+    this.plane.setParent(this.scene);
+  }
 
-// Scroll & drag
-let scroll=0, isDown=false, startX=0, scrollPos=0;
-container.addEventListener('mousedown', e=>{isDown=true; startX=e.clientX; scrollPos=scroll;});
-container.addEventListener('mousemove', e=>{ if(!isDown) return; scroll = scrollPos + (e.clientX-startX)*0.02; });
-container.addEventListener('mouseup', ()=>{isDown=false;});
-container.addEventListener('mouseleave', ()=>{isDown=false;});
-container.addEventListener('wheel', e=>{ scroll += e.deltaY*0.002; });
+  update(scroll, direction) {
+    const x = this.index * 2 - scroll.current;
+    this.plane.position.x = x;
+    const H = this.viewport.width / 2;
+    const R = (H*H + this.bend*this.bend)/(2*this.bend);
+    const effectiveX = Math.min(Math.abs(x), H);
+    this.plane.position.y = -R + Math.sqrt(R*R - effectiveX*effectiveX);
+    this.program.uniforms.uTime.value += 0.04;
+    this.program.uniforms.uSpeed.value = scroll.current - scroll.last;
+  }
 
-// Animate loop
-function animate(){
-  scroll += 0.002;
-  planes.forEach((p,i)=>{
-    const angle = ((i/items.length)*Math.PI*2) + scroll;
-    p.mesh.position.x = Math.sin(angle)*10;
-    p.mesh.position.z = Math.cos(angle)*10;
-    p.mesh.rotation.y = angle;
-
-    // Szöveg mindig a kamera felé
-    p.textMesh.rotation.y = -angle;
-  });
-  renderer.render({scene,camera});
-  requestAnimationFrame(animate);
+  onResize(viewport) {
+    this.viewport = viewport;
+    const scale = viewport.height / 1500;
+    this.plane.scale.set(scale * 2, scale * 1.5, 1);
+  }
 }
-animate();
-</script>
+
+export default class CircularGallery {
+  constructor({ container, items = [], bend = 3, textColor = '#fff', borderRadius = 0.05, scrollEase = 0.05 }) {
+    this.container = container;
+    this.items = items.length ? items : [
+      { image: 'https://picsum.photos/seed/1/800/600?grayscale', text: 'Bridge' },
+      { image: 'https://picsum.photos/seed/2/800/600?grayscale', text: 'Desk' },
+      { image: 'https://picsum.photos/seed/3/800/600?grayscale', text: 'Waterfall' }
+    ];
+    this.scroll = { current: 0, target: 0, last: 0, ease: scrollEase };
+    this.bend = bend;
+    this.textColor = textColor;
+    this.borderRadius = borderRadius;
+
+    this.init();
+  }
+
+  init() {
+    this.renderer = new Renderer({ alpha: true, antialias: true });
+    this.gl = this.renderer.gl;
+    this.container.appendChild(this.gl.canvas);
+
+    this.camera = new Camera(this.gl);
+    this.camera.position.z = 20;
+    this.scene = new Transform();
+
+    this.onResize();
+    window.addEventListener('resize', () => this.onResize());
+
+    this.medias = this.items.map((item, index) => new Media({
+      gl: this.gl,
+      scene: this.scene,
+      image: item.image,
+      index,
+      length: this.items.length,
+      bend: this.bend,
+      textColor: this.textColor,
+      borderRadius: this.borderRadius,
+      viewport: this.viewport
+    }));
+
+    this.addListeners();
+    this.update();
+  }
+
+  addListeners() {
+    let isDown = false;
+    let startX = 0;
+    this.container.addEventListener('mousedown', e => { isDown = true; startX = e.clientX; });
+    this.container.addEventListener('mousemove', e => {
+      if(!isDown) return;
+      const delta = startX - e.clientX;
+      this.scroll.target += delta * 0.01;
+      startX = e.clientX;
+    });
+    this.container.addEventListener('mouseup', () => isDown = false);
+    this.container.addEventListener('mouseleave', () => isDown = false);
+    this.container.addEventListener('wheel', e => this.scroll.target += e.deltaY * 0.01);
+  }
+
+  onResize() {
+    this.viewport = {
+      width: this.container.clientWidth,
+      height: this.container.clientHeight
+    };
+    this.renderer.setSize(this.viewport.width, this.viewport.height);
+    this.camera.perspective({ aspect: this.viewport.width / this.viewport.height });
+    if(this.medias) this.medias.forEach(m => m.onResize(this.viewport));
+  }
+
+  update() {
+    this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
+    const direction = this.scroll.current > this.scroll.last ? 'right' : 'left';
+    this.medias.forEach(m => m.update(this.scroll, direction));
+    this.renderer.render({ scene: this.scene, camera: this.camera });
+    this.scroll.last = this.scroll.current;
+    requestAnimationFrame(() => this.update());
+  }
+}
+
