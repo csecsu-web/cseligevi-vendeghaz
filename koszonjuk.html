@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
@@ -18,23 +20,24 @@
   <div data-include="hero-background.html"></div> 
   <div class="hero-overlay glass">
     <h1>✅ Köszönjük!</h1>
-    <p>Foglalási igényed megkaptuk</p>
+    <p>Hamarosan jelentkezünk</p>
   </div>
 </section>
 
-<main class="container glass" style="text-align: center; padding: 80px 24px;">
-  <h2>Hamarosan jelentkezünk!</h2>
-  <p>Köszönjük a foglalási igényedet. 24 órán belül felvesszük veled a kapcsolatot emailen vagy telefonon.</p>
-  <p>Ha sürgős a kérdésed, hívj minket bizalommal:</p>
-  <div class="actions" style="margin-top: 30px;">
+<main class="container glass clip" style="text-align: center; padding: 80px 24px;">
+  <h2>Köszönjük az érdeklődést!</h2>
+  <p style="font-size: 1.1rem; margin: 30px 0;">Hamarosan felvesszük veled a kapcsolatot.</p>
+  
+  <div class="actions" style="margin-top: 40px;">
     <a class="btn" href="index.html">Vissza a főoldalra</a>
-    <a class="btn btn-outline" href="tel:+36708844779">📞 +36 70 884 4779</a>
+    <a class="btn btn-outline" href="tel:+36708844779">Hívj minket</a>
   </div>
 </main>
 
 <div id="footer-container" data-include="footer.html"></div>
 
 <script src="include.js"></script>
+<script src="animation.js"></script>
 <script src="nav.js"></script>
 
 </body>
