@@ -253,4 +253,51 @@
     { src: 'images/rolunk1.jpg', alt: 'Természet közelsége' },
     { src: 'images/rolunk2.jpg', alt: 'Borvidék látvány' },
     { src: 'images/rolunk3.jpg', alt: 'Pihenés' },
-    { src: 'images/rolunk4.
+    { src: 'images/rolunk4.jpg', alt: 'Nyugalom' }
+  ];
+
+  let currentImageIndex = 0;
+
+  function openLightbox(index) {
+    currentImageIndex = index;
+    const lightbox = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
+    img.src = images[index].src;
+    img.alt = images[index].alt;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function changeImage(direction) {
+    currentImageIndex += direction;
+    if (currentImageIndex < 0) currentImageIndex = images.length - 1;
+    if (currentImageIndex >= images.length) currentImageIndex = 0;
+    
+    const img = document.getElementById('lightbox-img');
+    img.src = images[currentImageIndex].src;
+    img.alt = images[currentImageIndex].alt;
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox.classList.contains('active')) {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') changeImage(-1);
+      if (e.key === 'ArrowRight') changeImage(1);
+    }
+  });
+</script>
+
+<script src="include.js"></script>
+<script src="animation.js"></script>
+<script src="nav.js"></script>
+
+</body>
+</html>
