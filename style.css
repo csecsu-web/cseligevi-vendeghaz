@@ -162,18 +162,9 @@ section {
     margin: 0 auto;
 }
 
-.logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--color-accent);
-    /* Logo kép és szöveg igazítása */
-    display: flex;
-    align-items: center;
-}
-
 .logo img {
-    margin-right: 10px;
-    height: 30px; /* Megfelelő méret beállítása */
+    margin-right: 30px;
+    height: 50px; /* Megfelelő méret beállítása */
 }
 
 .menu {
