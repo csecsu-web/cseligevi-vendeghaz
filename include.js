@@ -1,5 +1,7 @@
-// include.js - Optimized version
+// include.js - FIXED VERSION
 document.addEventListener('DOMContentLoaded', async () => {
+    console.log('Include.js started loading...');
+    
     const includes = document.querySelectorAll('#navbar-container, #footer-container, [data-include]');
     
     const fetchPromises = Array.from(includes).map(async (element) => {
@@ -16,9 +18,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!file) return;
         
         try {
-            const response = await fetch(file, { 
-                cache: process.env.NODE_ENV === 'production' ? 'default' : 'no-store'
-            });
+            console.log(`Loading ${file}...`);
+            const response = await fetch(file, { cache: 'no-store' });
             
             if (!response.ok) {
                 throw new Error(`Failed to load ${file}: ${response.status}`);
@@ -26,15 +27,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             
             const html = await response.text();
             element.innerHTML = html;
+            console.log(`${file} loaded successfully!`);
             
         } catch (error) {
             console.error(`Error loading ${file}:`, error);
-            element.innerHTML = `<p style="color: #ff6b6b;">Error loading ${file}</p>`;
+            element.innerHTML = `<p style="color: red;">Error: Could not load ${file}</p>`;
         }
     });
     
     await Promise.all(fetchPromises);
+    console.log('All includes loaded!');
     
-    // Dispatch custom event when includes are loaded
+    // Trigger event for nav.js to initialize
     document.dispatchEvent(new CustomEvent('includesLoaded'));
 });
