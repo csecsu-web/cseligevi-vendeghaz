@@ -101,9 +101,8 @@ section {
 
 /* GÖRGŐS ANIMÁCIÓ HELYFOGLALÓ */
 .clip {
-    /* Kezdetben eltakarva a GSAP animációhoz */
-    clip-path: inset(100% 0 0 0); 
-    opacity: 0;
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
 }
 
 /* GOMBOK */
