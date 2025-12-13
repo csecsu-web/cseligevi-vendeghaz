@@ -4,69 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Cseligevi Vendégház – természet és nyugalom | Szekszárd</title>
-<meta name="description" content="Cseligevi Vendégház a Szekszárdi borvidéken. Természet, nyugalom, benti szauna, családbarát környezet. Közvetlen foglalás, lélegzetelállító panoráma.">
-
+<meta name="description" content="Cseligevi Vendégház a Szekszárdi borvidéken. Természet, nyugalom, benti szauna, családbarát környezet.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
-
 <link rel="canonical" href="https://cseligevivendeghaz.com/">
-<meta name="keywords" content="vendégház Szekszárd, szállás Szekszárd, borvidék szállás, családbarát vendégház, szauna Szekszárd">
-
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://cseligevivendeghaz.com/">
-<meta property="og:title" content="Cseligevi Vendégház – természet és nyugalom">
-<meta property="og:description" content="Családbarát vendégház a Szekszárdi borvidéken panorámával és benti szaunával.">
-<meta property="og:image" content="https://cseligevivendeghaz.com/images/kulteri.jpg">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LodgingBusiness",
-  "name": "Cseligevi Vendégház",
-  "description": "Családbarát vendégház a Szekszárdi borvidéken, benti szaunával és lélegzetelállító panorámával",
-  "image": "https://cseligevivendeghaz.com/images/kulteri.jpg",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "8MRP+C4",
-    "addressLocality": "Szekszárd",
-    "addressRegion": "Tolna",
-    "postalCode": "7100",
-    "addressCountry": "HU"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "46.3313",
-    "longitude": "18.6856"
-  },
-  "url": "https://cseligevivendeghaz.com",
-  "telephone": "+36708844779",
-  "email": "cseligevi5@gmail.com",
-  "priceRange": "45000-115000 HUF",
-  "amenityFeature": [
-    {
-      "@type": "LocationFeatureSpecification",
-      "name": "Sauna",
-      "value": true
-    },
-    {
-      "@type": "LocationFeatureSpecification",
-      "name": "Free Parking",
-      "value": true
-    },
-    {
-      "@type": "LocationFeatureSpecification",
-      "name": "Garden",
-      "value": true
-    }
-  ]
-}
-</script>
-
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -78,13 +25,11 @@
 
   <div class="hero-overlay glass">
     <div class="brand-svg">
-      <svg viewBox="0 0 200 60" aria-hidden="true">
-        <path id="brand-path" d="M10,30 C40,5 80,55 110,25 C130,10 160,20 190,30" fill="transparent" stroke="var(--color-accent)" stroke-width="2"/>
-      </svg>
+      <svg viewBox="0 0 200 60"><path id="brand-path" d="M10,30 C40,5 80,55 110,25 C130,10 160,20 190,30" fill="transparent" stroke="var(--color-accent)" stroke-width="2"/></svg>
     </div>
     <h1 class="clip">Cseligevi – A természet ritmusában</h1>
     <p class="clip">A nyugalom otthona</p>
-    <a class="btn clip" href="foglalas.html">Foglalj most</a>
+    <a class="btn clip" href="arak.html">Foglalj most</a>
   </div>
 </section>
 
@@ -98,13 +43,13 @@
   <div>
     <h2>Itt minden pillanat számít</h2>
     <p>Itt a dombok, a szőlősorok és a természet állandó jelenléte teszi különlegessé minden pillanatod. Reggel friss levegő és madárdal; napközben játék, pihenés; este a naplemente arany fényei.</p>
-    <a class="btn" href="foglalas.html">Foglalj most</a>
+    <a class="btn" href="arak.html">Foglalj most</a>
   </div>
-  <img src="images/kulteri.jpg" alt="Cseligevi Vendégház tágas zöld udvara játszótérrel és panorámás kilátással" loading="lazy" width="800" height="600">
+  <img src="images/kulteri.jpg" alt="Tágas zöld telek">
 </section>
 
 <section class="container feature reverse clip">
-  <img src="images/szauna1.jpg" alt="Modern benti szauna fából, wellness élmény" loading="lazy" width="800" height="600">
+  <img src="images/szauna1.jpg" alt="Benti szauna">
   <div>
     <h2>Pároknak és családoknak</h2>
     <p>Ideális meghitt pihenéshez és családi kikapcsolódáshoz. A benti szauna gondoskodik a feltöltődésről, a gyerekek pedig szabadon játszhatnak a zöld udvaron.</p>
@@ -128,14 +73,14 @@
 
 <section class="container clip">
   <h2>Hangulatképek</h2>
-  <div class="strip" role="region" aria-label="Képgaléria">
-    <img class="tile" src="images/nappali1.jpg" alt="Tágas nappali modern bútorokkal" loading="lazy" width="300" height="200">
-    <img class="tile" src="images/konyha1.jpg" alt="Felszerelt konyha" loading="lazy" width="300" height="200">
-    <img class="tile" src="images/halo1.jpg" alt="Otthonos hálószoba" loading="lazy" width="300" height="200">
-    <img class="tile" src="images/terasz1.jpg" alt="Fedett terasz" loading="lazy" width="300" height="200">
-    <img class="tile" src="images/kert1.jpg" alt="Zöld kert" loading="lazy" width="300" height="200">
-    <img class="tile" src="images/panorama1.jpg" alt="Panoráma" loading="lazy" width="300" height="200">
-    <img class="tile" src="images/szauna1.jpg" alt="Szauna" loading="lazy" width="300" height="200">
+  <div class="strip" aria-label="Képszalag">
+    <img class="tile" src="images/nappali1.jpg" alt="Nappali">
+    <img class="tile" src="images/konyha1.jpg" alt="Konyha">
+    <img class="tile" src="images/halo1.jpg" alt="Hálószoba">
+    <img class="tile" src="images/terasz1.jpg" alt="Terasz">
+    <img class="tile" src="images/kert1.jpg" alt="Kert">
+    <img class="tile" src="images/panorama1.jpg" alt="Panoráma">
+    <img class="tile" src="images/szauna1.jpg" alt="Szauna">
   </div>
 </section>
 
@@ -144,8 +89,6 @@
 <script src="include.js"></script>
 <script src="animation.js"></script>
 <script src="nav.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
 
 </body>
 </html>
