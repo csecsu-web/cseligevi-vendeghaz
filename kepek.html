@@ -13,6 +13,46 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  
+  <style>
+    .dome-gallery-container {
+      width: 100%;
+      height: 70vh;
+      min-height: 500px;
+      position: relative;
+      margin: 40px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      background: radial-gradient(circle at center, rgba(16, 24, 16, 0.8) 0%, var(--color-bg-base) 100%);
+    }
+
+    #dome-gallery {
+      width: 100%;
+      height: 100%;
+    }
+
+    .gallery-info {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: rgba(129, 178, 154, 0.1);
+      border-radius: 12px;
+      border: 1px solid rgba(129, 178, 154, 0.3);
+    }
+
+    .gallery-info p {
+      color: var(--color-accent);
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .dome-gallery-container {
+        height: 60vh;
+        min-height: 400px;
+      }
+    }
+  </style>
 </head>
 <body>
   
@@ -23,7 +63,7 @@
   <div class="hero-overlay glass">
     <h1 class="clip">Képek</h1>
     <p class="clip">Válogatás a vendégházból és a környékről</p>
-    <a class="btn clip" href="arak.html">Foglalj most</a>
+    <a class="btn clip" href="foglalas.html">Foglalj most</a>
   </div>
 </section>
 
@@ -34,22 +74,80 @@
     <div class="value-card"><h3>Wellness</h3><p>Benti szauna és pihenés</p></div>
   </section>
 
-  <section class="container clip">
-    <h2>Galéria</h2>
-    <div class="strip" aria-label="Képgaléria">
-      <img class="tile" src="images/nappali1.jpg" alt="Nappali">
-      <img class="tile" src="images/konyha1.jpg" alt="Konyha">
-      <img class="tile" src="images/halo1.jpg" alt="Hálószoba">
-      <img class="tile" src="images/terasz1.jpg" alt="Terasz">
-      <img class="tile" src="images/kert1.jpg" alt="Kert">
-      <img class="tile" src="images/panorama1.jpg" alt="Panoráma">
-      <img class="tile" src="images/szauna1.jpg" alt="Szauna">
-      <img class="tile" src="images/kulteri.jpg" alt="Kültéri">
+  <section class="clip">
+    <div class="gallery-info">
+      <p>🖱️ Húzd az egeret vagy húzd ujjaiddal a képek böngészéséhez • Kattints a képekre a nagyításhoz</p>
+    </div>
+    <div class="dome-gallery-container">
+      <div id="dome-gallery"></div>
     </div>
   </section>
 </main>
 
 <div id="footer-container" data-include="footer.html"></div>
+
+<script type="module">
+  import DomeGallery3D from 'https://cdn.jsdelivr.net/npm/dome-gallery-3d@latest/dist/dome-gallery-3d.module.js';
+
+  // Wait for DOM to be ready
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('dome-gallery');
+    
+    if (container) {
+      try {
+        const gallery = new DomeGallery3D(container, {
+          images: [
+            { src: 'images/nappali1.jpg', alt: 'Tágas nappali modern bútorokkal' },
+            { src: 'images/konyha1.jpg', alt: 'Felszerelt konyha főzéshez' },
+            { src: 'images/halo1.jpg', alt: 'Otthonos hálószoba kényelmes ággyal' },
+            { src: 'images/terasz1.jpg', alt: 'Fedett terasz kültéri étkezéshez' },
+            { src: 'images/kert1.jpg', alt: 'Zöld kert pihenéshez és játékhoz' },
+            { src: 'images/panorama1.jpg', alt: 'Lélegzetelállító panoráma' },
+            { src: 'images/szauna1.jpg', alt: 'Benti szauna relaxációhoz' },
+            { src: 'images/kulteri.jpg', alt: 'Kültéri játszótér' },
+            { src: 'images/rolunk1.jpg', alt: 'Természet közelsége' },
+            { src: 'images/rolunk2.jpg', alt: 'Borvidék látvány' },
+            { src: 'images/rolunk3.jpg', alt: 'Kert és pihenés' },
+            { src: 'images/rolunk4.jpg', alt: 'Nyugalom és kikapcsolódás' }
+          ],
+          fit: 0.6,
+          fitBasis: 'auto',
+          minRadius: 500,
+          maxRadius: 1200,
+          padFactor: 0.3,
+          overlayBlurColor: '#101810',
+          maxVerticalRotationDeg: 8,
+          dragSensitivity: 15,
+          enlargeTransitionMs: 400,
+          segments: 40,
+          dragDampening: 1.5,
+          openedImageWidth: '90vw',
+          openedImageHeight: '80vh',
+          imageBorderRadius: '20px',
+          openedImageBorderRadius: '12px',
+          grayscale: false
+        });
+        
+        console.log('Dome Gallery initialized successfully!');
+      } catch (error) {
+        console.error('Error initializing Dome Gallery:', error);
+        // Fallback to simple grid if dome fails
+        container.innerHTML = `
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px;">
+            <img src="images/nappali1.jpg" alt="Nappali" style="width: 100%; border-radius: 12px;">
+            <img src="images/konyha1.jpg" alt="Konyha" style="width: 100%; border-radius: 12px;">
+            <img src="images/halo1.jpg" alt="Hálószoba" style="width: 100%; border-radius: 12px;">
+            <img src="images/terasz1.jpg" alt="Terasz" style="width: 100%; border-radius: 12px;">
+            <img src="images/kert1.jpg" alt="Kert" style="width: 100%; border-radius: 12px;">
+            <img src="images/panorama1.jpg" alt="Panoráma" style="width: 100%; border-radius: 12px;">
+            <img src="images/szauna1.jpg" alt="Szauna" style="width: 100%; border-radius: 12px;">
+            <img src="images/kulteri.jpg" alt="Kültéri" style="width: 100%; border-radius: 12px;">
+          </div>
+        `;
+      }
+    }
+  });
+</script>
 
 <script src="include.js"></script>
 <script src="animation.js"></script>
