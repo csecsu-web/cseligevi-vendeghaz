@@ -7,20 +7,12 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="canonical" href="https://cseligevivendeghaz.com/kepek.html">
-  <meta name="description" content="Képek a Cseligevi Vendégházból és környékéről.">
-  
+  <meta name="description" content="Képek – válogatás a Cseligevi Vendégház belső tereiből, kültéri élményekből és a benti szaunából.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://cseligevivendeghaz.com/kepek.html">
-  <meta property="og:title" content="Képek – Cseligevi Vendégház">
-  <meta property="og:description" content="Válogatás a vendégházból">
-  <meta property="og:image" content="https://cseligevivendeghaz.com/images/nappali1.jpg">
-
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
   
@@ -30,8 +22,8 @@
   <div data-include="hero-background.html"></div> 
   <div class="hero-overlay glass">
     <h1 class="clip">Képek</h1>
-    <p class="clip">Válogatás a vendégházból</p>
-    <a class="btn clip" href="foglalas.html">Foglalj most</a>
+    <p class="clip">Válogatás a vendégházból és a környékről</p>
+    <a class="btn clip" href="arak.html">Foglalj most</a>
   </div>
 </section>
 
@@ -39,27 +31,25 @@
   <section class="values clip">
     <div class="value-card"><h3>Belső terek</h3><p>Nappali, konyha, hálószobák</p></div>
     <div class="value-card"><h3>Kültéri élmények</h3><p>Terasz, kert, panoráma</p></div>
-    <div class="value-card"><h3>Wellness</h3><p>Benti szauna</p></div>
+    <div class="value-card"><h3>Wellness</h3><p>Benti szauna és pihenés</p></div>
   </section>
 
-  <section class="circular-gallery-container" style="height:600px; position:relative;">
-    <div id="circular-gallery"></div>
+  <section class="container clip">
+    <h2>Galéria</h2>
+    <div class="strip" aria-label="Képgaléria">
+      <img class="tile" src="images/nappali1.jpg" alt="Nappali">
+      <img class="tile" src="images/konyha1.jpg" alt="Konyha">
+      <img class="tile" src="images/halo1.jpg" alt="Hálószoba">
+      <img class="tile" src="images/terasz1.jpg" alt="Terasz">
+      <img class="tile" src="images/kert1.jpg" alt="Kert">
+      <img class="tile" src="images/panorama1.jpg" alt="Panoráma">
+      <img class="tile" src="images/szauna1.jpg" alt="Szauna">
+      <img class="tile" src="images/kulteri.jpg" alt="Kültéri">
+    </div>
   </section>
 </main>
 
 <div id="footer-container" data-include="footer.html"></div>
-
-<script type="module">
-  import CircularGallery from './CircularGallery.js';
-  const galleryContainer = document.getElementById('circular-gallery');
-  new CircularGallery({
-    container: galleryContainer,
-    bend: 3,
-    textColor: '#ffffff',
-    borderRadius: 0.05,
-    scrollEase: 0.02
-  });
-</script>
 
 <script src="include.js"></script>
 <script src="animation.js"></script>
