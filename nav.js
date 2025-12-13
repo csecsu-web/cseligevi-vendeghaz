@@ -1,8 +1,7 @@
-// nav.js - FIXED VERSION
+// nav.js - Mobile-Friendly Version
 document.addEventListener("DOMContentLoaded", () => {
-    console.log('Nav.js waiting for includes...');
-    // Wait for includes to load
-    setTimeout(initNavbar, 500);
+    console.log('Nav.js loaded');
+    setTimeout(initNavbar, 300);
 });
 
 function initNavbar() {
@@ -14,20 +13,34 @@ function initNavbar() {
     const menuLinks = document.querySelectorAll('.menu a');
 
     if (!navbar || !hamburger || !menu) {
-        console.error("Navbar elements not found! Retrying in 500ms...");
-        setTimeout(initNavbar, 500);
+        console.error("Navbar elements not found, retrying...");
+        setTimeout(initNavbar, 300);
         return;
     }
 
-    console.log('Navbar elements found! Setting up...');
+    console.log('Navbar elements found!');
 
-    // 1. HAMBURGER MENU
-    hamburger.addEventListener('click', toggleMenu);
+    // HAMBURGER MENU TOGGLE
+    hamburger.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Hamburger clicked!');
+        toggleMenu();
+    });
 
-    // Close menu when clicking on a link
+    // Also make it work on touch
+    hamburger.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Hamburger touched!');
+        toggleMenu();
+    });
+
+    // Close menu when clicking links
     menuLinks.forEach(link => {
         link.addEventListener('click', () => {
             if (menu.classList.contains('open')) {
+                console.log('Menu link clicked, closing menu');
                 toggleMenu();
             }
         });
@@ -47,9 +60,11 @@ function initNavbar() {
         
         hamburger.setAttribute('aria-expanded', isOpen);
         hamburger.setAttribute('aria-label', isOpen ? 'Menü bezárása' : 'Menü megnyitása');
+        
+        console.log('Menu is now:', isOpen ? 'OPEN' : 'CLOSED');
     }
 
-    // 2. DESKTOP SCROLL BEHAVIOR
+    // DESKTOP SCROLL BEHAVIOR
     let lastScrollTop = 0;
     let ticking = false;
 
@@ -66,7 +81,7 @@ function initNavbar() {
     function handleScroll() {
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-        // Only desktop
+        // Only on desktop (wider than 768px)
         if (window.innerWidth > 768) {
             // Background color change
             if (currentScroll > 100) {
@@ -82,7 +97,7 @@ function initNavbar() {
                 navbar.style.transform = 'translateY(0)';
             }
         } else {
-            // Mobile: always visible
+            // Mobile: always visible with background
             navbar.style.backgroundColor = 'var(--color-bg-base)';
             navbar.style.transform = 'translateY(0)';
         }
