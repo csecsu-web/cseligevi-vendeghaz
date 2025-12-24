@@ -1,10 +1,7 @@
 <div class="hero-background-new">
-    <!-- Animated nature elements -->
     <div class="nature-layer layer-1"></div>
     <div class="nature-layer layer-2"></div>
     <div class="nature-layer layer-3"></div>
-    
-    <!-- Floating particles -->
     <div class="particles">
         <span class="particle"></span>
         <span class="particle"></span>
@@ -28,7 +25,6 @@
     z-index: 1;
 }
 
-/* Nature-themed gradient layers with depth */
 .nature-layer {
     position: absolute;
     width: 100%;
@@ -54,7 +50,6 @@
     animation: float3 30s ease-in-out infinite;
 }
 
-/* Floating particles (like pollen or dust in sunlight) */
 .particles {
     position: absolute;
     width: 100%;
@@ -127,7 +122,6 @@
     animation-duration: 24s;
 }
 
-/* Smooth 3D movement animations */
 @keyframes float1 {
     0%, 100% {
         transform: translate(0, 0) scale(1);
@@ -178,7 +172,6 @@
     }
 }
 
-/* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
     .nature-layer,
     .particle {
