@@ -1,539 +1,538 @@
-import React, { useState, useEffect } from 'react';
-import { Calendar, User, Mail, Phone, Check, X, Settings, Baby } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foglalás - Cseligevi Vendégház</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(to bottom right, #d1fae5, #a7f3d0, #99f6e4);
+            min-height: 100vh;
+            padding: 1rem;
+        }
+        .container { max-width: 64rem; margin: 0 auto; }
+        .container-sm { max-width: 28rem; margin: 0 auto; }
+        .container-lg { max-width: 80rem; margin: 0 auto; }
+        .card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #d1fae5;
+        }
+        .header { display: flex; justify-content: space-between; align-items: center; }
+        h1 { font-size: 2.25rem; font-weight: bold; color: #1f2937; }
+        h2 { font-size: 1.875rem; font-weight: bold; color: #1f2937; margin-bottom: 2rem; }
+        h3 { font-size: 1.25rem; font-weight: bold; color: #1f2937; margin-bottom: 1rem; }
+        .subtitle { color: #6b7280; margin-top: 0.5rem; font-size: 1.125rem; }
+        .grid { display: grid; gap: 1.5rem; }
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        .input-group { margin-bottom: 1.5rem; }
+        label { display: block; font-size: 0.875rem; font-weight: 600; color: #374151; margin-bottom: 0.75rem; }
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #d1d5db;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        textarea { resize: vertical; font-family: inherit; }
+        .btn {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background: linear-gradient(to right, #059669, #10b981);
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+        .btn-primary:hover { background: linear-gradient(to right, #047857, #059669); transform: translateY(-2px); }
+        .btn-secondary { background: #6b7280; color: white; }
+        .btn-secondary:hover { background: #4b5563; }
+        .btn-text { background: none; color: #6b7280; padding: 0.5rem; }
+        .btn-text:hover { color: #1f2937; }
+        .btn-icon { background: none; border: none; color: #9ca3af; cursor: pointer; font-size: 1.5rem; }
+        .btn-icon:hover { color: #10b981; }
+        .alert {
+            padding: 1rem 1.5rem;
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            border: 2px solid;
+        }
+        .alert-success {
+            background: #d1fae5;
+            border-color: #34d399;
+            color: #065f46;
+        }
+        .alert strong { font-weight: 600; }
+        .info-box {
+            background: #dbeafe;
+            border: 2px solid #93c5fd;
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+        .price-box {
+            background: linear-gradient(to bottom right, #d1fae5, #a7f3d0);
+            border: 2px solid #6ee7b7;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .guest-box {
+            background: #d1fae5;
+            border: 2px solid #6ee7b7;
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+        .warning-box {
+            background: #fef3c7;
+            border: 1px solid #fbbf24;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            margin-top: 0.75rem;
+            color: #92400e;
+            font-size: 0.875rem;
+        }
+        .price-row { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
+        .price-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.25rem;
+            font-weight: bold;
+            padding-top: 1rem;
+            border-top: 2px solid #6ee7b7;
+        }
+        .price-total .amount { color: #059669; }
+        table { width: 100%; border-collapse: collapse; }
+        thead tr { background: #f9fafb; border-bottom: 2px solid #e5e7eb; }
+        th { text-align: left; padding: 1rem; font-weight: 600; }
+        td { padding: 1rem; border-bottom: 1px solid #f3f4f6; }
+        tbody tr:hover { background: #f0fdf4; }
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .status-pending { background: #fef3c7; color: #92400e; }
+        .status-confirmed { background: #d1fae5; color: #065f46; }
+        .status-cancelled { background: #fee2e2; color: #991b1b; }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .checkbox-label input { width: 1.25rem; height: 1.25rem; margin-right: 0.75rem; }
+        .divider { border-top: 2px solid #6ee7b7; padding-top: 1rem; margin-top: 1rem; }
+        .text-sm { font-size: 0.875rem; color: #6b7280; margin-top: 0.25rem; }
+        .text-xs { font-size: 0.75rem; color: #9ca3af; margin-top: 0.25rem; }
+        .font-semibold { font-weight: 600; }
+        .italic { font-style: italic; }
+        .overflow-auto { overflow-x: auto; }
+        .space-y-2 > * + * { margin-top: 0.5rem; }
+        .ml-8 { margin-left: 2rem; }
+        .mt-20 { margin-top: 5rem; }
+        .text-center { text-align: center; }
+        .text-emerald { color: #059669; }
+        .text-gray { color: #6b7280; }
+        .text-red { color: #dc2626; }
+        .btn-delete {
+            background: none;
+            border: none;
+            color: #dc2626;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-delete:hover { background: #fee2e2; }
+        .empty-state { text-align: center; padding: 3rem 0; color: #9ca3af; }
+        @media (max-width: 768px) {
+            h1 { font-size: 1.75rem; }
+            .card { padding: 1.5rem; }
+            table { font-size: 0.875rem; }
+            th, td { padding: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
 
-const BookingSystem = () => {
-  const [view, setView] = useState('booking');
-  const [adminPassword, setAdminPassword] = useState('');
-  const [isAdminAuth, setIsAdminAuth] = useState(false);
-  
-  const [checkIn, setCheckIn] = useState('');
-  const [checkOut, setCheckOut] = useState('');
-  const [hasChildren, setHasChildren] = useState(false);
-  const [childrenCount, setChildrenCount] = useState(1);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [message, setMessage] = useState('');
-  const [bookings, setBookings] = useState([]);
-  const [showSuccess, setShowSuccess] = useState(false);
-  
-  const pricing = {
-    1: 45000,
-    2: 85000,
-    3: 115000
-  };
+    <script>
+        const state = {
+            view: 'booking',
+            isAdmin: false,
+            checkIn: '',
+            checkOut: '',
+            hasKids: false,
+            kidsNum: 1,
+            name: '',
+            email: '',
+            phone: '',
+            msg: '',
+            bookings: [],
+            success: false,
+            prices: { 1: 45000, 2: 85000, 3: 115000 }
+        };
 
-  useEffect(() => {
-    loadBookings();
-  }, []);
+        function init() {
+            loadBookings();
+            render();
+        }
 
-  const loadBookings = async () => {
-    try {
-      const result = await window.storage.list('booking:', true);
-      if (result && result.keys) {
-        const loadedBookings = await Promise.all(
-          result.keys.map(async (key) => {
-            try {
-              const data = await window.storage.get(key, true);
-              return data ? JSON.parse(data.value) : null;
-            } catch (err) {
-              return null;
+        function loadBookings() {
+            const keys = JSON.parse(localStorage.getItem('bookingKeys') || '[]');
+            state.bookings = keys.map(k => JSON.parse(localStorage.getItem(k) || 'null')).filter(Boolean);
+        }
+
+        function nights(start = state.checkIn, end = state.checkOut) {
+            if (!start || !end) return 0;
+            const n = Math.ceil((new Date(end) - new Date(start)) / 86400000);
+            return n > 0 ? n : 0;
+        }
+
+        function total() {
+            const n = nights();
+            return n === 0 ? 0 : n <= 3 ? state.prices[n] : state.prices[3] + (n - 3) * 38333;
+        }
+
+        function fmt(num) {
+            return new Intl.NumberFormat('hu-HU').format(num) + ' Ft';
+        }
+
+        function fmtDate(d) {
+            return new Date(d).toLocaleDateString('hu-HU');
+        }
+
+        function submitBooking() {
+            if (!state.checkIn || !state.checkOut || !state.name || !state.email || !state.phone) {
+                alert('Kérjük, töltse ki az összes kötelező mezőt!');
+                return;
             }
-          })
-        );
-        setBookings(loadedBookings.filter(b => b !== null));
-      }
-    } catch (error) {
-      setBookings([]);
-    }
-  };
 
-  const calculateNights = (start = checkIn, end = checkOut) => {
-    if (!start || !end) return 0;
-    const startDate = new Date(start);
-    const endDate = new Date(end);
-    const nights = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
-    return nights > 0 ? nights : 0;
-  };
+            const s = new Date(state.checkIn), e = new Date(state.checkOut);
+            const overlap = state.bookings.some(b => {
+                const bs = new Date(b.checkIn), be = new Date(b.checkOut);
+                return s < be && e > bs;
+            });
 
-  const calculateTotal = () => {
-    const nights = calculateNights();
-    if (nights === 0) return 0;
-    if (nights <= 3) return pricing[nights];
-    return pricing[3] + (nights - 3) * 38333;
-  };
+            if (overlap) {
+                alert('Sajnáljuk, a kiválasztott időszak nem elérhető!');
+                return;
+            }
 
-  const sendBookingEmail = async (booking) => {
-    const emailBody = `
-Új foglalás érkezett a Cseligevi Vendégház weboldalról!
+            const booking = {
+                id: Date.now().toString(),
+                checkIn: state.checkIn,
+                checkOut: state.checkOut,
+                hasKids: state.hasKids,
+                kidsNum: state.hasKids ? state.kidsNum : 0,
+                name: state.name,
+                email: state.email,
+                phone: state.phone,
+                msg: state.msg,
+                total: total(),
+                status: 'pending',
+                created: new Date().toISOString()
+            };
 
-VENDÉG ADATOK:
-Név: ${booking.name}
-Email: ${booking.email}
-Telefon: ${booking.phone}
+            const key = `booking:${booking.id}`;
+            localStorage.setItem(key, JSON.stringify(booking));
+            const keys = JSON.parse(localStorage.getItem('bookingKeys') || '[]');
+            keys.push(key);
+            localStorage.setItem('bookingKeys', JSON.stringify(keys));
 
-FOGLALÁS RÉSZLETEI:
-Érkezés: ${new Date(booking.checkIn).toLocaleDateString('hu-HU')}
-Távozás: ${new Date(booking.checkOut).toLocaleDateString('hu-HU')}
-Éjszakák száma: ${calculateNights(booking.checkIn, booking.checkOut)}
-Felnőttek: 2 fő
-${booking.hasChildren ? `Gyerekek: ${booking.childrenCount} fő` : 'Gyerekek: Nincs'}
+            console.log('Email to cseligevi5@gmail.com:', booking);
 
-Teljes összeg: ${formatCurrency(booking.total)}
+            state.checkIn = state.checkOut = state.name = state.email = state.phone = state.msg = '';
+            state.hasKids = false;
+            state.kidsNum = 1;
+            state.success = true;
+            loadBookings();
+            render();
+            setTimeout(() => { state.success = false; render(); }, 8000);
+        }
 
-${booking.message ? `Üzenet a vendégtől:\n${booking.message}` : ''}
+        function updateStatus(id, status) {
+            const b = state.bookings.find(x => x.id === id);
+            if (b) {
+                b.status = status;
+                localStorage.setItem(`booking:${id}`, JSON.stringify(b));
+                loadBookings();
+                render();
+            }
+        }
 
----
-Automatikus üzenet a Cseligevi foglalási rendszerből
-    `.trim();
+        function deleteBooking(id) {
+            if (!confirm('Biztosan törli ezt a foglalást?')) return;
+            localStorage.removeItem(`booking:${id}`);
+            const keys = JSON.parse(localStorage.getItem('bookingKeys') || '[]');
+            localStorage.setItem('bookingKeys', JSON.stringify(keys.filter(k => k !== `booking:${id}`)));
+            loadBookings();
+            render();
+        }
 
-    console.log('Email sent:', emailBody);
-  };
-
-  const handleSubmitBooking = async () => {
-    if (!checkIn || !checkOut || !name || !email || !phone) {
-      alert('Kérjük, töltse ki az összes kötelező mezőt!');
-      return;
-    }
-
-    const start = new Date(checkIn);
-    const end = new Date(checkOut);
-    
-    const hasOverlap = bookings.some(booking => {
-      const bookingStart = new Date(booking.checkIn);
-      const bookingEnd = new Date(booking.checkOut);
-      return (start < bookingEnd && end > bookingStart);
-    });
-
-    if (hasOverlap) {
-      alert('Sajnáljuk, a kiválasztott időszak nem elérhető!');
-      return;
-    }
-
-    const newBooking = {
-      id: Date.now().toString(),
-      checkIn,
-      checkOut,
-      hasChildren,
-      childrenCount: hasChildren ? childrenCount : 0,
-      name,
-      email,
-      phone,
-      message,
-      total: calculateTotal(),
-      status: 'pending',
-      createdAt: new Date().toISOString()
-    };
-
-    try {
-      await window.storage.set(`booking:${newBooking.id}`, JSON.stringify(newBooking), true);
-      await sendBookingEmail(newBooking);
-      await loadBookings();
-      setShowSuccess(true);
-      
-      setCheckIn('');
-      setCheckOut('');
-      setHasChildren(false);
-      setChildrenCount(1);
-      setName('');
-      setEmail('');
-      setPhone('');
-      setMessage('');
-      
-      setTimeout(() => setShowSuccess(false), 8000);
-    } catch (error) {
-      alert('Hiba történt a foglalás mentésekor!');
-    }
-  };
-
-  const handleAdminLogin = () => {
-    if (adminPassword === 'cseligevi2025') {
-      setIsAdminAuth(true);
-    } else {
-      alert('Helytelen jelszó!');
-    }
-  };
-
-  const updateBookingStatus = async (bookingId, newStatus) => {
-    const booking = bookings.find(b => b.id === bookingId);
-    if (booking) {
-      const updatedBooking = { ...booking, status: newStatus };
-      await window.storage.set(`booking:${bookingId}`, JSON.stringify(updatedBooking), true);
-      await loadBookings();
-    }
-  };
-
-  const deleteBooking = async (bookingId) => {
-    if (confirm('Biztosan törli ezt a foglalást?')) {
-      await window.storage.delete(`booking:${bookingId}`, true);
-      await loadBookings();
-    }
-  };
-
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString('hu-HU');
-  };
-
-  const formatCurrency = (amount) => {
-    return new Intl.NumberFormat('hu-HU').format(amount) + ' Ft';
-  };
-
-  if (view === 'admin' && !isAdminAuth) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 p-4">
-        <div className="max-w-md mx-auto mt-20">
-          <div className="bg-white rounded-2xl shadow-xl p-8 border border-green-100">
-            <div className="flex items-center justify-center mb-6">
-              <Settings className="w-12 h-12 text-emerald-600" />
-            </div>
-            <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Admin Bejelentkezés</h2>
-            <input
-              type="password"
-              placeholder="Jelszó"
-              value={adminPassword}
-              onChange={(e) => setAdminPassword(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && handleAdminLogin()}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl mb-4 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-            />
-            <button
-              onClick={handleAdminLogin}
-              className="w-full bg-emerald-600 text-white py-3 rounded-xl font-semibold hover:bg-emerald-700 transition-all shadow-md"
-            >
-              Bejelentkezés
-            </button>
-            <button
-              onClick={() => setView('booking')}
-              className="w-full mt-3 text-gray-600 hover:text-gray-800 py-2"
-            >
-              Vissza a foglaláshoz
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (view === 'admin' && isAdminAuth) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 p-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-xl p-6 mb-6 border border-green-100">
-            <div className="flex justify-between items-center">
-              <div>
-                <h1 className="text-3xl font-bold text-gray-800">Admin Panel</h1>
-                <p className="text-gray-600 mt-1">Cseligevi Vendégház</p>
-              </div>
-              <button
-                onClick={() => { setView('booking'); setIsAdminAuth(false); }}
-                className="px-6 py-2 bg-gray-500 text-white rounded-xl hover:bg-gray-600 transition-all shadow-md"
-              >
-                Kilépés
-              </button>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-2xl shadow-xl p-6 border border-green-100">
-            <h2 className="text-2xl font-bold mb-6 text-gray-800">Foglalások ({bookings.length})</h2>
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b-2 border-gray-200 bg-gray-50">
-                    <th className="text-left p-4 font-semibold">Név</th>
-                    <th className="text-left p-4 font-semibold">Időszak</th>
-                    <th className="text-left p-4 font-semibold">Vendégek</th>
-                    <th className="text-left p-4 font-semibold">Kapcsolat</th>
-                    <th className="text-left p-4 font-semibold">Összeg</th>
-                    <th className="text-left p-4 font-semibold">Státusz</th>
-                    <th className="text-left p-4 font-semibold">Műveletek</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {bookings.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map(booking => (
-                    <tr key={booking.id} className="border-b border-gray-100 hover:bg-green-50 transition-colors">
-                      <td className="p-4">
-                        <div className="font-semibold text-gray-800">{booking.name}</div>
-                        {booking.message && (
-                          <div className="text-sm text-gray-600 mt-1 italic">{booking.message}</div>
-                        )}
-                      </td>
-                      <td className="p-4">
-                        <div className="text-sm font-medium text-gray-800">
-                          {formatDate(booking.checkIn)} - {formatDate(booking.checkOut)}
-                        </div>
-                        <div className="text-xs text-gray-500 mt-1">
-                          {calculateNights(booking.checkIn, booking.checkOut)} éjszaka
-                        </div>
-                      </td>
-                      <td className="p-4">
-                        <div className="text-sm">2 felnőtt</div>
-                        {booking.hasChildren && (
-                          <div className="text-sm text-emerald-700">{booking.childrenCount} gyerek</div>
-                        )}
-                      </td>
-                      <td className="p-4">
-                        <div className="text-sm text-gray-700">{booking.email}</div>
-                        <div className="text-sm text-gray-700">{booking.phone}</div>
-                      </td>
-                      <td className="p-4 font-bold text-emerald-700">{formatCurrency(booking.total)}</td>
-                      <td className="p-4">
-                        <select
-                          value={booking.status}
-                          onChange={(e) => updateBookingStatus(booking.id, e.target.value)}
-                          className={`px-4 py-2 rounded-full text-sm font-medium cursor-pointer transition-all ${
-                            booking.status === 'confirmed' ? 'bg-emerald-100 text-emerald-800' :
-                            booking.status === 'cancelled' ? 'bg-red-100 text-red-800' :
-                            'bg-amber-100 text-amber-800'
-                          }`}
-                        >
-                          <option value="pending">Függőben</option>
-                          <option value="confirmed">Megerősítve</option>
-                          <option value="cancelled">Lemondva</option>
-                        </select>
-                      </td>
-                      <td className="p-4">
-                        <button
-                          onClick={() => deleteBooking(booking.id)}
-                          className="text-red-600 hover:text-red-800 hover:bg-red-50 p-2 rounded-lg transition-all"
-                        >
-                          <X className="w-5 h-5" />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              {bookings.length === 0 && (
-                <div className="text-center py-12 text-gray-500">
-                  <Calendar className="w-12 h-12 mx-auto mb-3 opacity-30" />
-                  <p>Még nincsenek foglalások</p>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 p-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-6 border border-green-100">
-          <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-4xl font-bold text-gray-800">Cseligevi Vendégház</h1>
-              <p className="text-gray-600 mt-2 text-lg">A természet ritmusában</p>
-            </div>
-            <button
-              onClick={() => setView('admin')}
-              className="text-gray-400 hover:text-emerald-600 transition-colors"
-            >
-              <Settings className="w-7 h-7" />
-            </button>
-          </div>
-        </div>
-
-        {showSuccess && (
-          <div className="bg-emerald-50 border-2 border-emerald-400 text-emerald-800 px-6 py-4 rounded-2xl mb-6 flex items-start shadow-lg">
-            <Check className="w-6 h-6 mr-3 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="font-semibold mb-1">Foglalása sikeresen elküldve!</p>
-              <p className="text-sm">Hamarosan felvesszük Önnel a kapcsolatot a <strong>cseligevi5@gmail.com</strong> címről. Kérjük, ellenőrizze emailjeit!</p>
-            </div>
-          </div>
-        )}
-
-        <div className="bg-white rounded-2xl shadow-xl p-8 border border-green-100">
-          <h2 className="text-3xl font-bold mb-8 text-gray-800">Foglalás</h2>
-          
-          <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <div>
-              <label className="block text-sm font-bold mb-3 text-gray-700">
-                <Calendar className="w-4 h-4 inline mr-2" />
-                Érkezés
-              </label>
-              <input
-                type="date"
-                value={checkIn}
-                onChange={(e) => setCheckIn(e.target.value)}
-                min={new Date().toISOString().split('T')[0]}
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-bold mb-3 text-gray-700">
-                <Calendar className="w-4 h-4 inline mr-2" />
-                Távozás
-              </label>
-              <input
-                type="date"
-                value={checkOut}
-                onChange={(e) => setCheckOut(e.target.value)}
-                min={checkIn || new Date().toISOString().split('T')[0]}
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-              />
-            </div>
-          </div>
-
-          <div className="mb-6 bg-emerald-50 border-2 border-emerald-200 rounded-xl p-5">
-            <div className="flex items-start mb-4">
-              <User className="w-5 h-5 text-emerald-700 mr-2 mt-1" />
-              <div>
-                <p className="font-bold text-gray-800">Felnőttek: 2 fő (standard)</p>
-                <p className="text-sm text-gray-600 mt-1">A vendégház 2 felnőtt részére biztosít szállást</p>
-              </div>
-            </div>
+        function render() {
+            const app = document.getElementById('app');
             
-            <div className="border-t-2 border-emerald-200 pt-4 mt-4">
-              <label className="flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={hasChildren}
-                  onChange={(e) => setHasChildren(e.target.checked)}
-                  className="w-5 h-5 text-emerald-600 rounded focus:ring-2 focus:ring-emerald-500"
-                />
-                <Baby className="w-5 h-5 ml-3 mr-2 text-emerald-700" />
-                <span className="font-bold text-gray-800">Gyerekekkel érkezünk (max. 2 gyerek)</span>
-              </label>
-              
-              {hasChildren && (
-                <div className="mt-4 ml-10">
-                  <label className="block text-sm font-semibold mb-2 text-gray-700">Gyerekek száma</label>
-                  <select
-                    value={childrenCount}
-                    onChange={(e) => setChildrenCount(Number(e.target.value))}
-                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                  >
-                    <option value={1}>1 gyerek</option>
-                    <option value={2}>2 gyerek</option>
-                  </select>
-                  <p className="text-sm text-amber-700 mt-3 bg-amber-50 border border-amber-200 rounded-lg p-3">
-                    <strong>Fontos:</strong> Gyerekekkel való érkezés esetén kérjük, vegye fel velünk a kapcsolatot emailben a részletek egyeztetéséhez!
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
+            if (state.view === 'admin' && !state.isAdmin) {
+                app.innerHTML = `
+                    <div class="container-sm mt-20">
+                        <div class="card">
+                            <h2 class="text-center">Admin Bejelentkezés</h2>
+                            <div class="input-group">
+                                <input type="password" id="adminPwd" placeholder="Jelszó" />
+                            </div>
+                            <button onclick="login()" class="btn btn-primary">Bejelentkezés</button>
+                            <button onclick="state.view='booking'; render();" class="btn btn-text" style="margin-top: 0.75rem;">
+                                Vissza a foglaláshoz
+                            </button>
+                        </div>
+                    </div>
+                `;
+            } else if (state.view === 'admin') {
+                app.innerHTML = `
+                    <div class="container-lg">
+                        <div class="card">
+                            <div class="header">
+                                <div>
+                                    <h1>Admin Panel</h1>
+                                    <div class="subtitle">Cseligevi Vendégház</div>
+                                </div>
+                                <button onclick="state.view='booking'; state.isAdmin=false; render();" class="btn btn-secondary" style="width: auto; padding: 0.5rem 1.5rem;">
+                                    Kilépés
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h2>Foglalások (${state.bookings.length})</h2>
+                            <div class="overflow-auto">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Név</th>
+                                            <th>Időszak</th>
+                                            <th>Vendégek</th>
+                                            <th>Kapcsolat</th>
+                                            <th>Összeg</th>
+                                            <th>Státusz</th>
+                                            <th>Műveletek</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${state.bookings.length === 0 ? 
+                                            '<tr><td colspan="7" class="empty-state">Még nincsenek foglalások</td></tr>' :
+                                            state.bookings.sort((a,b) => new Date(b.created) - new Date(a.created)).map(b => `
+                                            <tr>
+                                                <td>
+                                                    <div class="font-semibold">${b.name}</div>
+                                                    ${b.msg ? `<div class="text-sm italic">${b.msg}</div>` : ''}
+                                                </td>
+                                                <td>
+                                                    <div class="font-semibold">${fmtDate(b.checkIn)} - ${fmtDate(b.checkOut)}</div>
+                                                    <div class="text-xs">${nights(b.checkIn, b.checkOut)} éjszaka</div>
+                                                </td>
+                                                <td>
+                                                    <div>2 felnőtt</div>
+                                                    ${b.hasKids ? `<div class="text-emerald">${b.kidsNum} gyerek</div>` : ''}
+                                                </td>
+                                                <td>
+                                                    <div class="text-sm">${b.email}</div>
+                                                    <div class="text-sm">${b.phone}</div>
+                                                </td>
+                                                <td><strong class="text-emerald">${fmt(b.total)}</strong></td>
+                                                <td>
+                                                    <select onchange="updateStatus('${b.id}', this.value)" 
+                                                        class="status-badge status-${b.status}" style="border: none; cursor: pointer;">
+                                                        <option value="pending" ${b.status === 'pending' ? 'selected' : ''}>Függőben</option>
+                                                        <option value="confirmed" ${b.status === 'confirmed' ? 'selected' : ''}>Megerősítve</option>
+                                                        <option value="cancelled" ${b.status === 'cancelled' ? 'selected' : ''}>Lemondva</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <button onclick="deleteBooking('${b.id}')" class="btn-delete">✕</button>
+                                                </td>
+                                            </tr>
+                                        `).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                const n = nights();
+                const t = total();
+                app.innerHTML = `
+                    <div class="container">
+                        <div class="card">
+                            <div class="header">
+                                <div>
+                                    <h1>Cseligevi Vendégház</h1>
+                                    <div class="subtitle">A természet ritmusában</div>
+                                </div>
+                                <button onclick="state.view='admin'; render();" class="btn-icon">⚙️</button>
+                            </div>
+                        </div>
 
-          {checkIn && checkOut && calculateNights() > 0 && (
-            <div className="bg-gradient-to-br from-emerald-50 to-green-50 border-2 border-emerald-300 rounded-2xl p-6 mb-6 shadow-md">
-              <h3 className="font-bold text-lg mb-4 text-gray-800">Ár kalkuláció</h3>
-              {calculateNights() <= 3 ? (
-                <div className="space-y-2 mb-4">
-                  <div className="flex justify-between items-center text-gray-700">
-                    <span>{calculateNights()} éjszaka</span>
-                    <span className="font-semibold">{formatCurrency(pricing[calculateNights()])}</span>
-                  </div>
-                </div>
-              ) : (
-                <div className="space-y-2 mb-4">
-                  <div className="flex justify-between items-center text-gray-700">
-                    <span>Első 3 éjszaka</span>
-                    <span className="font-semibold">{formatCurrency(pricing[3])}</span>
-                  </div>
-                  <div className="flex justify-between items-center text-gray-700">
-                    <span>{calculateNights() - 3} további éjszaka</span>
-                    <span className="font-semibold">{formatCurrency((calculateNights() - 3) * 38333)}</span>
-                  </div>
-                </div>
-              )}
-              <div className="flex justify-between items-center text-xl font-bold border-t-2 border-emerald-400 pt-4">
-                <span className="text-gray-800">Összesen</span>
-                <span className="text-emerald-700">{formatCurrency(calculateTotal())}</span>
-              </div>
-            </div>
-          )}
+                        ${state.success ? `
+                        <div class="alert alert-success">
+                            <div>
+                                <div><strong>✓ Foglalása sikeresen elküldve!</strong></div>
+                                <div style="font-size: 0.875rem; margin-top: 0.25rem;">
+                                    Hamarosan felvesszük Önnel a kapcsolatot a <strong>cseligevi5@gmail.com</strong> címről.
+                                </div>
+                            </div>
+                        </div>
+                        ` : ''}
 
-          <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <div>
-              <label className="block text-sm font-bold mb-3 text-gray-700">
-                <User className="w-4 h-4 inline mr-2" />
-                Név *
-              </label>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Teljes név"
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-              />
-            </div>
+                        <div class="card">
+                            <h2>Foglalás</h2>
+                            
+                            <div class="grid grid-2">
+                                <div class="input-group">
+                                    <label>📅 Érkezés</label>
+                                    <input type="date" value="${state.checkIn}" 
+                                        min="${new Date().toISOString().split('T')[0]}"
+                                        onchange="state.checkIn=this.value; render();" />
+                                </div>
+                                <div class="input-group">
+                                    <label>📅 Távozás</label>
+                                    <input type="date" value="${state.checkOut}"
+                                        min="${state.checkIn || new Date().toISOString().split('T')[0]}"
+                                        onchange="state.checkOut=this.value; render();" />
+                                </div>
+                            </div>
 
-            <div>
-              <label className="block text-sm font-bold mb-3 text-gray-700">
-                <Mail className="w-4 h-4 inline mr-2" />
-                Email *
-              </label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="pelda@email.com"
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-              />
-            </div>
-          </div>
+                            <div class="guest-box">
+                                <div style="margin-bottom: 1rem;">
+                                    <div class="font-semibold">👤 Felnőttek: 2 fő (standard)</div>
+                                    <div class="text-sm">A vendégház 2 felnőtt részére biztosít szállást</div>
+                                </div>
+                                <div class="divider">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" ${state.hasKids ? 'checked' : ''}
+                                            onchange="state.hasKids=this.checked; render();" />
+                                        <span>👶 Gyerekekkel érkezünk (max. 2 gyerek)</span>
+                                    </label>
+                                    ${state.hasKids ? `
+                                    <div class="ml-8" style="margin-top: 1rem;">
+                                        <label style="font-size: 0.875rem;">Gyerekek száma</label>
+                                        <select onchange="state.kidsNum=parseInt(this.value); render();" style="margin-top: 0.5rem;">
+                                            <option value="1" ${state.kidsNum === 1 ? 'selected' : ''}>1 gyerek</option>
+                                            <option value="2" ${state.kidsNum === 2 ? 'selected' : ''}>2 gyerek</option>
+                                        </select>
+                                        <div class="warning-box">
+                                            <strong>Fontos:</strong> Gyerekekkel való érkezés esetén kérjük, vegye fel velünk a kapcsolatot emailben!
+                                        </div>
+                                    </div>
+                                    ` : ''}
+                                </div>
+                            </div>
 
-          <div className="mb-6">
-            <label className="block text-sm font-bold mb-3 text-gray-700">
-              <Phone className="w-4 h-4 inline mr-2" />
-              Telefonszám *
-            </label>
-            <input
-              type="tel"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="+36 30 123 4567"
-              className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-            />
-          </div>
+                            ${n > 0 ? `
+                            <div class="price-box">
+                                <h3>Ár kalkuláció</h3>
+                                <div style="margin-bottom: 1rem;">
+                                    ${n <= 3 ? `
+                                    <div class="price-row">
+                                        <span>${n} éjszaka</span>
+                                        <span class="font-semibold">${fmt(state.prices[n])}</span>
+                                    </div>
+                                    ` : `
+                                    <div class="space-y-2">
+                                        <div class="price-row">
+                                            <span>Első 3 éjszaka</span>
+                                            <span class="font-semibold">${fmt(state.prices[3])}</span>
+                                        </div>
+                                        <div class="price-row">
+                                            <span>${n - 3} további éjszaka</span>
+                                            <span class="font-semibold">${fmt((n - 3) * 38333)}</span>
+                                        </div>
+                                    </div>
+                                    `}
+                                </div>
+                                <div class="price-total">
+                                    <span>Összesen</span>
+                                    <span class="amount">${fmt(t)}</span>
+                                </div>
+                            </div>
+                            ` : ''}
 
-          <div className="mb-6">
-            <label className="block text-sm font-bold mb-3 text-gray-700">
-              Üzenet (opcionális)
-            </label>
-            <textarea
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              rows={4}
-              placeholder="Különleges kérések, megjegyzések..."
-              className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none"
-            />
-          </div>
+                            <div class="grid grid-2">
+                                <div class="input-group">
+                                    <label>Név *</label>
+                                    <input type="text" value="${state.name}" placeholder="Teljes név"
+                                        onchange="state.name=this.value" />
+                                </div>
+                                <div class="input-group">
+                                    <label>Email *</label>
+                                    <input type="email" value="${state.email}" placeholder="pelda@email.com"
+                                        onchange="state.email=this.value" />
+                                </div>
+                            </div>
 
-          <button
-            onClick={handleSubmitBooking}
-            className="w-full bg-gradient-to-r from-emerald-600 to-green-600 text-white py-4 rounded-xl font-bold text-lg hover:from-emerald-700 hover:to-green-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-          >
-            Foglalás elküldése
-          </button>
-        </div>
+                            <div class="input-group">
+                                <label>Telefonszám *</label>
+                                <input type="tel" value="${state.phone}" placeholder="+36 30 123 4567"
+                                    onchange="state.phone=this.value" />
+                            </div>
 
-        <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl p-6 mt-6 shadow-md">
-          <h3 className="font-bold text-lg mb-3 text-gray-800">Fontos információk</h3>
-          <ul className="space-y-2 text-sm text-gray-700">
-            <li className="flex items-start">
-              <span className="text-emerald-600 mr-2">•</span>
-              <span>A foglalás elküldése után e-mailben kapja meg a megerősítést a <strong>cseligevi5@gmail.com</strong> címről</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-emerald-600 mr-2">•</span>
-              <span>Gyerekekkel való érkezés esetén mindenképpen vegye fel velünk a kapcsolatot!</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-emerald-600 mr-2">•</span>
-              <span>Fizetési információkat a visszaigazoló emailben küldjük meg</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-emerald-600 mr-2">•</span>
-              <span>Kérdés esetén írjon nekünk: <strong>cseligevi5@gmail.com</strong></span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
-};
+                            <div class="input-group">
+                                <label>Üzenet (opcionális)</label>
+                                <textarea rows="4" placeholder="Különleges kérések..."
+                                    onchange="state.msg=this.value">${state.msg}</textarea>
+                            </div>
 
-export default BookingSystem;
+                            <button onclick="submitBooking()" class="btn btn-primary">
+                                Foglalás elküldése
+                            </button>
+                        </div>
+
+                        <div class="info-box">
+                            <h3>Fontos információk</h3>
+                            <ul class="space-y-2" style="font-size: 0.875rem; margin-left: 1.25rem;">
+                                <li>A foglalás után emailben kapja meg a megerősítést a <strong>cseligevi5@gmail.com</strong> címről</li>
+                                <li>Gyerekekkel való érkezés esetén mindenképpen vegye fel velünk a kapcsolatot!</li>
+                                <li>Fizetési információkat a visszaigazoló emailben küldjük meg</li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function login() {
+            const pwd = document.getElementById('adminPwd').value;
+            if (pwd === 'cseligevi2025') {
+                state.isAdmin = true;
+                render();
+            } else {
+                alert('Helytelen jelszó!');
+            }
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
