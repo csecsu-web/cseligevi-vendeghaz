@@ -1,226 +1,91 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foglalás - Cseligevi Vendégház</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(to bottom right, #d1fae5, #a7f3d0, #99f6e4);
-            min-height: 100vh;
-            padding: 1rem;
-        }
-        .container { max-width: 64rem; margin: 0 auto; }
-        .card {
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid #d1fae5;
-        }
-        .header { display: flex; justify-content: space-between; align-items: center; }
-        h1 { font-size: 2.25rem; font-weight: bold; color: #1f2937; }
-        h2 { font-size: 1.875rem; font-weight: bold; color: #1f2937; margin-bottom: 2rem; }
-        h3 { font-size: 1.25rem; font-weight: bold; color: #1f2937; margin-bottom: 1rem; }
-        .subtitle { color: #6b7280; margin-top: 0.5rem; font-size: 1.125rem; }
-        .grid { display: grid; gap: 1.5rem; }
-        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-        .btn {
-            width: 100%;
-            padding: 1rem;
-            border: none;
-            border-radius: 0.75rem;
-            font-weight: 600;
-            font-size: 1.125rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
-        .btn-primary {
-            background: linear-gradient(to right, #059669, #10b981);
-            color: white;
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
-        }
-        .btn-primary:hover { background: linear-gradient(to right, #047857, #059669); transform: translateY(-2px); }
-        .btn-secondary { background: #6b7280; color: white; }
-        .btn-secondary:hover { background: #4b5563; }
-        .info-box {
-            background: #dbeafe;
-            border: 2px solid #93c5fd;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        .contact-card {
-            background: #f0fdf4;
-            border: 2px solid #6ee7b7;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            text-align: center;
-        }
-        .contact-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        .contact-number {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #059669;
-            margin-bottom: 0.5rem;
-        }
-        .contact-email {
-            font-size: 1rem;
-            color: #374151;
-            font-weight: 500;
-        }
-        .feature-list {
-            list-style: none;
-            padding: 0;
-        }
-        .feature-list li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-        .feature-list li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #10b981;
-            font-weight: bold;
-        }
-        .highlight-box {
-            background: linear-gradient(to bottom right, #d1fae5, #a7f3d0);
-            border: 2px solid #6ee7b7;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            margin: 2rem 0;
-        }
-        .text-center { text-align: center; }
-        .text-emerald { color: #059669; }
-        .text-gray { color: #6b7280; }
-        .font-semibold { font-weight: 600; }
-        .italic { font-style: italic; }
-        .space-y-2 > * + * { margin-top: 0.5rem; }
-        .mt-20 { margin-top: 5rem; }
-        @media (max-width: 768px) {
-            h1 { font-size: 1.75rem; }
-            .card { padding: 1.25rem; }
-            .contact-grid { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 480px) {
-            .container { padding: 0; }
-            .header { flex-direction: column; gap: .5rem; }
-            .btn { font-size: 1rem; }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Foglalás – Cseligevi Vendégház</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta name="description" content="Foglalás – Cseligevi Vendégház Szekszárdon.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
-    <div data-include="navbar.html"></div>
-    <div id="app"></div>
 
-    <script>
-        function render() {
-            const app = document.getElementById('app');
-            app.innerHTML = `
-                <div class="container mt-20">
-                    <div class="card">
-                        <div class="header">
-                            <div>
-                                <h1>🏡 Foglalás – Cseligevi Vendégház</h1>
-                                <div class="subtitle">Közvetlen foglalás Szekszárdon</div>
-                            </div>
-                        </div>
-                        
-                        <div style="margin: 2rem 0;">
-                            <p style="font-size: 1.125rem; line-height: 1.7; color: #374151; margin-bottom: 1.5rem;">
-                                Ha szeretnél megszállni a Cseligevi Vendégházban Szekszárdon, foglalásodat egyszerűen és közvetlenül az alábbi elérhetőségeken keresztül tudod leadni. Vendégházunk természetközeli környezettel, nyugodt pihenési lehetőséggel és családias hangulattal várja vendégeit.
-                            </p>
-                        </div>
+<div id="navbar-container"></div>
 
-                        <div class="contact-grid">
-                            <div class="contact-card">
-                                <div class="contact-icon">📞</div>
-                                <h3>Telefonos foglalás</h3>
-                                <div class="contact-number">+36 70 884 4779</div>
-                                <div class="contact-number">vagy +36 70 334 6060</div>
-                                <div class="contact-email">cseligevivendeghaz.com</div>
-                            </div>
-                            
-                            <div class="contact-card">
-                                <div class="contact-icon">📧</div>
-                                <h3>E-mailes foglalás</h3>
-                                <div class="contact-email" style="margin-bottom: 0.5rem;">cseligevi5@gmail.com</div>
-                                <div class="contact-email">cseligevivendeghaz.com</div>
-                            </div>
-                        </div>
+<section class="hero">
+  <div data-include="hero-background.html"></div> 
+  <div class="hero-overlay glass">
+    <h1 class="clip">Foglalás</h1>
+    <p class="clip">Közvetlen foglalás Szekszárdon</p>
+  </div>
+</section>
 
-                        <div class="highlight-box">
-                            <h3>💬 Hogyan foglalhatsz?</h3>
-                            <p style="margin-bottom: 1rem;">
-                                A foglalást telefonon vagy e-mailben tudod egyeztetni velünk. Írj nekünk bátran, vagy hívj fel minket — szívesen segítünk a legjobb időpont és szoba kiválasztásában!
-                            </p>
-                            <ul class="feature-list">
-                                <li>✔️ Megerősítjük a foglalást és válaszolunk minden felmerülő kérdésre</li>
-                                <li>✔️ Rugalmasan egyeztetjük az érkezés és távozás időpontját</li>
-                                <li>✔️ Személyre szabott ajánlatot is készítünk, ha speciális igényeid vannak</li>
-                            </ul>
-                        </div>
+<main class="container glass clip">
+  <h2>Kapcsolat és Foglalás</h2>
+  <p>Ha szeretnél megszállni a Cseligevi Vendégházban Szekszárdon, foglalásodat egyszerűen és közvetlenül az alábbi elérhetőségeken keresztül tudod leadni. Vendégházunk természetközeli környezettel, nyugodt pihenési lehetőséggel és családias hangulattal várja vendégeit.</p>
 
-                        <div class="info-box">
-                            <h3>📍 Miért foglalj nálunk?</h3>
-                            <p style="margin-bottom: 1rem;">
-                                Cseligevi Vendégház ideális választás, ha:
-                            </p>
-                            <ul class="feature-list">
-                                <li>pihenésre, feltöltődésre vágysz a természet közelében,</li>
-                                <li>családdal vagy barátokkal érkezel,</li>
-                                <li>szereted a csendet és a szőlődombok látványát Szekszárdon.</li>
-                            </ul>
-                            <p style="margin-top: 1rem; font-style: italic; color: #6b7280;">
-                                cseligevivendeghaz.com
-                            </p>
-                        </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 3rem 0;">
+    
+    <!-- Phone Card -->
+    <div style="background: rgba(129, 178, 154, 0.1); padding: 2rem; border-radius: 12px; border: 1px solid var(--color-accent); text-align: center;">
+      <div style="font-size: 2.5rem; margin-bottom: 1rem;">📞</div>
+      <h3 style="color: var(--color-accent); margin-bottom: 1rem;">Telefonos foglalás</h3>
+      <p style="font-size: 1.2rem; font-weight: bold; color: var(--color-primary); margin-bottom: 0.5rem;">+36 70 884 4779</p>
+      <p style="font-size: 1.2rem; font-weight: bold; color: var(--color-primary); margin-bottom: 0.5rem;">+36 70 334 6060</p>
+      <p style="margin-top: 0.5rem; opacity: 0.8;">cseligevivendeghaz.com</p>
+    </div>
 
-                        <div class="highlight-box">
-                            <h3>📌 Fontos tudnivalók</h3>
-                            <p>
-                                A foglalás a fenti elérhetőségeken történő egyeztetés után válik véglegessé. Kérjük, add meg az érkezés és távozás időpontját, vendégek számát és bármilyen egyedi kérésedet a foglalási e-mailben vagy telefonbeszélgetésben.
-                            </p>
-                        </div>
+    <!-- Email Card -->
+    <div style="background: rgba(129, 178, 154, 0.1); padding: 2rem; border-radius: 12px; border: 1px solid var(--color-accent); text-align: center;">
+      <div style="font-size: 2.5rem; margin-bottom: 1rem;">📧</div>
+      <h3 style="color: var(--color-accent); margin-bottom: 1rem;">E-mailes foglalás</h3>
+      <p style="font-size: 1.2rem; font-weight: bold; color: var(--color-primary); margin-bottom: 0.5rem;">cseligevi5@gmail.com</p>
+      <p style="margin-top: 0.5rem; opacity: 0.8;">cseligevivendeghaz.com</p>
+    </div>
 
-                        <div class="text-center" style="margin-top: 2rem;">
-                            <p style="font-size: 1.125rem; font-weight: 600; color: #059669;">
-                                👉 Ne habozz felvenni velünk a kapcsolatot — várunk szeretettel Szekszárdon!
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
+  </div>
 
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load navbar
-            if (typeof includeHTML === 'function') {
-                includeHTML();
-            }
-            render();
-        });
-    </script>
-    <script src="include.js"></script>
-    <script src="nav.js"></script>
+  <div style="margin: 3rem 0;">
+    <h3 style="color: var(--color-accent); margin-bottom: 1rem;">💬 Hogyan foglalhatsz?</h3>
+    <p>A foglalást telefonon vagy e-mailben tudod egyeztetni velünk. Írj nekünk bátran, vagy hívj fel minket — szívesen segítünk a legjobb időpont és szoba kiválasztásában!</p>
+    <ul style="list-style: none; padding: 0; line-height: 1.8; margin-top: 1rem;">
+      <li style="margin-bottom: 0.5rem;">✔️ Megerősítjük a foglalást és válaszolunk minden felmerülő kérdésre</li>
+      <li style="margin-bottom: 0.5rem;">✔️ Rugalmasan egyeztetjük az érkezés és távozás időpontját</li>
+      <li style="margin-bottom: 0.5rem;">✔️ Személyre szabott ajánlatot is készítünk, ha speciális igényeid vannak</li>
+    </ul>
+  </div>
+
+  <div style="margin: 3rem 0; background: rgba(255, 255, 255, 0.5); padding: 2rem; border-radius: 12px;">
+    <h3 style="color: var(--color-accent); margin-bottom: 1rem;">📍 Miért foglalj nálunk?</h3>
+    <p style="margin-bottom: 1rem;">Cseligevi Vendégház ideális választás, ha:</p>
+    <ul style="list-style: none; padding: 0; line-height: 1.8;">
+      <li style="margin-bottom: 0.5rem;">• pihenésre, feltöltődésre vágysz a természet közelében,</li>
+      <li style="margin-bottom: 0.5rem;">• családdal vagy barátokkal érkezel,</li>
+      <li style="margin-bottom: 0.5rem;">• szereted a csendet és a szőlődombok látványát Szekszárdon.</li>
+    </ul>
+  </div>
+
+  <div style="margin: 3rem 0;">
+    <h3 style="color: var(--color-accent); margin-bottom: 1rem;">📌 Fontos tudnivalók</h3>
+    <p>A foglalás a fenti elérhetőségeken történő egyeztetés után válik véglegessé. Kérjük, add meg az érkezés és távozás időpontját, vendégek számát és bármilyen egyedi kérésedet a foglalási e-mailben vagy telefonbeszélgetésben.</p>
+  </div>
+
+  <p style="text-align: center; font-size: 1.2rem; font-weight: bold; margin-top: 3rem; color: var(--color-primary);">
+    👉 Ne habozz felvenni velünk a kapcsolatot — várunk szeretettel Szekszárdon!
+  </p>
+
+</main>
+
+<div id="footer-container" data-include="footer.html"></div>
+
+<script src="include.js"></script>
+<script src="animation.js"></script>
+<script src="nav.js"></script>
+
 </body>
 </html>
