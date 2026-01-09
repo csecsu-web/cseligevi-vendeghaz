@@ -279,26 +279,8 @@ section {
 /* 4. HERO SZEKCIÓ ÉS 3D HÁTTÉR (Aurora) */
 /* ========================================= */
 
-<div class="hero-background-new">
-    <!-- Animated nature elements -->
-    <div class="nature-layer layer-1"></div>
-    <div class="nature-layer layer-2"></div>
-    <div class="nature-layer layer-3"></div>
-    
-    <!-- Floating particles -->
-    <div class="particles">
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-    </div>
-</div>
+/* Hero background styles moved to hero-background.html */
 
-<style>
 .hero-background-new {
     position: absolute;
     top: 0;
@@ -466,7 +448,7 @@ section {
         animation: none;
     }
 }
-</style>
+
 /* ========================================= */
 /* 5. TARTALOM SZEKCIÓK */
 /* ========================================= */
@@ -494,25 +476,23 @@ section {
 }
 
 .values {
-    display: flex;
-    gap: 20px;
-    padding: 60px 24px;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
 }
 
 .value-card {
     background: var(--color-bg-glass);
     padding: 30px;
     border-radius: 12px;
-    flex: 1;
-    min-width: 280px;
-    max-width: 350px;
+    border: 1px solid var(--color-bg-glass-light);
     text-align: center;
 }
 
 .value-card h3 {
     color: var(--color-accent);
+    margin-bottom: 15px;
 }
 
 /* Képszalag */
@@ -565,7 +545,174 @@ section {
 
 
 /* ========================================= */
-/* 6. LÁBLÉC (FOOTER) */
+/* 6. GALÉRIA ÉS LIGHTBOX (kepek.html) */
+/* ========================================= */
+
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    aspect-ratio: 4/3;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(129, 178, 154, 0.3);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(16, 24, 16, 0.9), transparent);
+    padding: 20px 15px 15px;
+    color: var(--color-primary);
+    font-weight: 600;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .caption {
+    transform: translateY(0);
+}
+
+/* Lightbox */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background: var(--color-accent);
+    color: var(--color-bg-base);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    z-index: 10001;
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--color-accent);
+    color: var(--color-bg-base);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.lightbox-prev {
+    left: -70px;
+}
+
+.lightbox-next {
+    right: -70px;
+}
+
+@media (max-width: 768px) {
+    .image-gallery {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+        gap: 10px;
+    }
+
+    .gallery-item .caption {
+        transform: translateY(0); /* Always show caption on mobile */
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .lightbox-nav {
+        display: flex; /* Show navigation arrows on mobile */
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        background: rgba(129, 178, 154, 0.8);
+    }
+    
+    .lightbox-prev {
+        left: 10px;
+        position: fixed;
+    }
+    
+    .lightbox-next {
+        right: 10px;
+        position: fixed;
+    }
+
+    .lightbox-close {
+        top: 10px;
+        right: 10px;
+        position: fixed;
+    }
+}
+
+/* ========================================= */
+/* 7. LÁBLÉC (FOOTER) */
 /* ========================================= */
 
 .footer {
@@ -615,830 +762,10 @@ section {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0,0,0,0.3);
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    z-index: 5;
-}
-
-.map-placeholder .overlay p {
-    color: var(--color-primary);
-    margin-bottom: 15px;
-}
-
-.map-placeholder iframe {
-    /* A JS tölti be, de a stílus itt is legyen meg */
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-
-
-/* ========================================= */
-/* 7. MÉDIA LEKÉRDEZÉSEK (RESPONZIVITÁS) */
-/* ========================================= */
-
-@media (max-width: 900px) {
-    h1 { font-size: 2.5rem; }
-    h2 { font-size: 1.8rem; }
-    
-    .feature {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .feature.reverse {
-        flex-direction: column; /* Ugyanaz, mint a normál sorrend */
-    }
-
-    .feature img {
-        margin-top: 20px;
-    }
-
-    .values {
-        gap: 15px;
-    }
-
-    .container {
-        padding: 40px 16px;
-    }
-    
-    /* Program kártyák reszponzivitása */
-    .program-cards {
-        grid-template-columns: 1fr; /* Mobilon egy oszlop */
-    }
-}
-
-@media (max-width: 480px) {
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.6rem; }
-
-    .hero-overlay {
-        padding: 20px;
-    }
-
-    .footer .actions {
-        flex-direction: column;
-    }
-
-    .footer .actions a {
-        width: 100%;
-        text-align: center;
-    }
-}
-/* ========================================= */
-/* BOOKING FORM STYLES - ADD TO END */
-/* ========================================= */
-
-.booking-section {
-    max-width: 900px;
-    margin: 4rem auto;
-    padding: 3rem;
-}
-
-.booking-section h2 {
-    color: var(--color-accent);
-    margin-bottom: 1rem;
-}
-
-.booking-section > p {
-    color: var(--color-secondary);
-    margin-bottom: 2.5rem;
-}
-
-.booking-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.form-group label {
-    color: var(--color-primary);
-    font-weight: 600;
-    font-size: 0.95rem;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    padding: 0.875rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    color: var(--color-primary);
-    font-family: inherit;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-    color: var(--color-secondary);
-    opacity: 0.6;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--color-accent);
-    box-shadow: 0 0 0 3px rgba(129, 178, 154, 0.1);
-    background: rgba(255, 255, 255, 0.08);
-}
-
-.btn-large {
-    padding: 16px 40px;
-    font-size: 1.1rem;
-    margin-top: 1rem;
-}
-
-.form-note {
-    font-size: 0.875rem;
-    color: var(--color-secondary);
-    text-align: center;
-    margin-top: 1.5rem;
-}
-
-.hidden {
-    display: none;
-}
-
-.pricing-info {
-    margin-top: 3rem;
-    padding: 2rem;
-    background: rgba(129, 178, 154, 0.1);
-    border: 1px solid var(--color-accent);
-    border-radius: 12px;
-}
-
-.pricing-info h3 {
-    color: var(--color-accent);
-    margin-bottom: 1rem;
-}
-
-.pricing-info ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 1rem;
-}
-
-.pricing-info li {
-    padding: 0.5rem 0;
-    color: var(--color-primary);
-    font-size: 1.05rem;
-}
-
-.pricing-info .small {
-    font-size: 0.9rem;
-    color: var(--color-secondary);
-}
-
-.contact-alternatives {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 3rem;
-    text-align: center;
-}
-
-.contact-alternatives .actions {
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-}
-
-@media (max-width: 768px) {
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-    
-    .booking-section {
-        padding: 2rem 1.5rem;
-    }
-
-    .contact-alternatives .actions {
-        flex-direction: column;
-    }
-
-    .contact-alternatives .actions a {
-        width: 100%;
-    }
-}
-
-/* Accessibility improvements */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-
-*:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
-}
-/* ========================================= */
-/* MOBILE FIXES - ADD TO END OF style.css */
-/* ========================================= */
-
-/* Fix logo being cut off */
-.logo img {
-    height: 40px !important;
-    width: auto;
-    display: block;
-}
-
-/* Fix hamburger button z-index and clickability */
-.hamburger {
-    z-index: 1000 !important;
-    position: relative;
-    cursor: pointer;
-}
-
-/* Fix mobile menu */
-@media (max-width: 768px) {
-    .navbar {
-        background-color: var(--color-bg-base) !important;
-        padding: 10px 20px;
-    }
-
-    .nav-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .logo img {
-        height: 35px !important;
-    }
-
-    .hamburger {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        width: 30px;
-        height: 25px;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        z-index: 1000;
-    }
-
-    .hamburger span {
-        width: 30px;
-        height: 3px;
-        background: var(--color-primary);
-        border-radius: 2px;
-        transition: all 0.3s ease;
-        position: relative;
-    }
-
-    .menu {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: var(--color-bg-base);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transform: translateX(100%);
-        opacity: 0;
-        transition: transform 0.4s ease, opacity 0.4s ease;
-        z-index: 999;
-    }
-
-    .menu.open {
-        transform: translateX(0);
-        opacity: 1;
-    }
-
-    .menu a {
-        font-size: 1.8rem;
-        margin: 15px 0;
-        color: var(--color-primary);
-    }
-
-    .menu a.btn {
-        background-color: var(--color-accent);
-        color: var(--color-bg-base);
-        padding: 12px 30px;
-        border-radius: 50px;
-        margin-top: 20px;
-    }
-
-    /* Hamburger animation when active */
-    .hamburger.active span:nth-child(1) {
-        transform: translateY(11px) rotate(45deg);
-    }
-
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-        transform: translateY(-11px) rotate(-45deg);
-    }
-
-    /* Prevent body scroll when menu open */
-    body.no-scroll {
-        overflow: hidden;
-    }
-}
-
-/* Fix images on mobile */
-@media (max-width: 900px) {
-    .feature img {
-        width: 100%;
-        height: auto;
-        min-width: auto;
-        max-width: 100%;
-    }
-
-    .strip .tile {
-        flex: 0 0 250px;
-        height: 180px;
-    }
-
-    .value-card {
-        min-width: 100%;
-    }
-
-    /* Make sure containers don't overflow */
-    .container {
-        padding: 40px 20px;
-        overflow-x: hidden;
-    }
-
-    /* Fix hero text being cut off */
-    .hero-overlay h1 {
-        font-size: 2rem;
-        line-height: 1.3;
-    }
-
-    .hero-overlay p {
-        font-size: 1rem;
-    }
-
-    /* Make program cards single column on mobile */
-    .program-cards {
-        grid-template-columns: 1fr !important;
-        gap: 15px;
-    }
-
-    /* Fix strip horizontal scroll */
-    .strip {
-        padding: 10px 0;
-        -webkit-overflow-scrolling: touch;
-    }
-}
-
-/* Extra small phones */
-@media (max-width: 480px) {
-    .hero-overlay h1 {
-        font-size: 1.8rem;
-    }
-
-    .menu a {
-        font-size: 1.5rem;
-    }
-
-    .logo img {
-        height: 30px !important;
-    }
-
-    .hamburger {
-        width: 25px;
-        height: 20px;
-    }
-
-    .hamburger span {
-        width: 25px;
-        height: 2px;
-    }
-}
-
-/* Ensure buttons are clickable on mobile */
-@media (max-width: 768px) {
-    .btn,
-    .hamburger,
-    .menu a {
-        -webkit-tap-highlight-color: rgba(129, 178, 154, 0.3);
-        touch-action: manipulation;
-    }
-
-    /* Increase touch target size */
-    .hamburger {
-        padding: 10px;
-        margin: -10px;
-    }
-}
-/* ========================================= */
-/* COMPLETE MOBILE RESPONSIVE FIXES */
-/* ADD THIS TO THE VERY END OF style.css */
-/* ========================================= */
-
-/* Fix all images to be responsive */
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Feature sections - make images responsive */
-.feature {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    padding: 60px 24px;
-}
-
-.feature img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 12px;
-}
-
-/* Mobile responsive layout */
-@media (max-width: 900px) {
-    .feature {
-        flex-direction: column !important;
-        text-align: center;
-        gap: 30px;
-        padding: 40px 20px;
-    }
-
-    .feature.reverse {
-        flex-direction: column !important;
-    }
-
-    .feature div {
-        width: 100%;
-    }
-
-    .feature img {
-        width: 100%;
-        max-width: 100%;
-        min-width: auto;
-        margin: 0;
-    }
-
-    /* Container padding */
-    .container {
-        padding: 40px 20px;
-        overflow-x: hidden;
-    }
-
-    /* Value cards full width on mobile */
-    .values {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .value-card {
-        min-width: 100%;
-        max-width: 100%;
-    }
-
-    /* Program cards single column */
-    .program-cards {
-        grid-template-columns: 1fr !important;
-        gap: 15px;
-    }
-
-    /* Image strip */
-    .strip {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .strip .tile {
-        flex: 0 0 280px;
-        height: 200px;
-    }
-
-    /* Hero text sizing */
-    h1 {
-        font-size: 2rem;
-        line-height: 1.3;
-    }
-
-    h2 {
-        font-size: 1.6rem;
-    }
-
-    h3 {
-        font-size: 1.3rem;
-    }
-
-    /* Actions buttons stack on mobile */
-    .actions {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .actions a {
-        width: 100%;
-        text-align: center;
-    }
-}
-
-/* Extra small phones */
-@media (max-width: 480px) {
-    h1 {
-        font-size: 1.8rem;
-    }
-
-    h2 {
-        font-size: 1.4rem;
-    }
-
-    .container {
-        padding: 30px 15px;
-    }
-
-    .feature {
-        padding: 30px 15px;
-    }
-
-    .strip .tile {
-        flex: 0 0 250px;
-        height: 180px;
-    }
-}
-
-/* Footer Mobile Fixes */
-.footer {
-    background-color: var(--color-dark-green);
-    padding: 40px 20px;
-    margin-top: 40px;
-}
-
-.footer .container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.footer h3 {
-    color: var(--color-primary);
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.footer .actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    margin-bottom: 30px;
-}
-
-.footer-map {
-    margin: 40px 0;
-}
-
-.footer-map h3 {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.footer-map iframe {
-    width: 100%;
-    height: 300px;
-    border: 0;
-    border-radius: 12px;
-}
-
-.footer .social {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin: 30px 0 20px 0;
-}
-
-.footer .social a {
-    color: var(--color-accent);
-    font-weight: 600;
-    transition: color 0.3s ease;
-}
-
-.footer .social a:hover {
-    color: var(--color-primary);
-}
-
-.footer .contact {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.footer .contact p {
-    color: var(--color-secondary);
-    margin: 8px 0;
-}
-
-.footer .contact a {
-    color: var(--color-accent);
-}
-
-/* Footer mobile responsive */
-@media (max-width: 768px) {
-    .footer {
-        padding: 30px 15px;
-    }
-
-    .footer .actions {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .footer .actions a {
-        width: 100%;
-        text-align: center;
-        display: block;
-    }
-
-    .footer-map {
-        margin: 30px 0;
-    }
-
-    .footer-map iframe {
-        height: 250px;
-    }
-
-    .footer .social {
-        flex-direction: column;
-        gap: 10px;
-        align-items: center;
-    }
-}
-
-/* Ensure no horizontal overflow anywhere */
-body {
-    overflow-x: hidden;
-}
-
-.hero,
-.container,
-section {
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-/* Make sure text doesn't overflow */
-p, h1, h2, h3, h4, h5, h6 {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-}
-
-/* Improve touch targets on mobile */
-@media (max-width: 768px) {
-    .btn,
-    a,
-    button {
-        min-height: 44px;
-        min-width: 44px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    /* Better spacing for touch */
-    .menu a {
-        padding: 15px 20px;
-    }
-}
-/* ========================================= */
-/* HERO SECTION IMPROVEMENTS */
-/* ADD THIS TO style.css (replace old hero styles) */
-/* ========================================= */
-
-/* Make hero smaller so users see content below */
-.hero {
-    position: relative;
-    width: 100%;
-    height: 85vh; /* Changed from 100vh to 85vh */
-    min-height: 600px;
-    max-height: 900px; /* Prevent it from being too tall on large screens */
-    overflow: hidden;
-    background-color: var(--color-bg-base);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-}
-
-/* Scroll indicator at bottom of hero */
-.scroll-indicator {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    animation: bounce 2s infinite;
-    cursor: pointer;
-}
-
-.scroll-indicator svg {
-    width: 30px;
-    height: 30px;
-    color: var(--color-accent);
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateX(-50%) translateY(0);
-    }
-    40% {
-        transform: translateX(-50%) translateY(-10px);
-    }
-    60% {
-        transform: translateX(-50%) translateY(-5px);
-    }
-}
-
-/* Improve hero overlay visibility */
-.hero-overlay {
-    z-index: 2;
-    text-align: center;
-    padding: 40px;
-    max-width: 900px;
-    background: rgba(16, 24, 16, 0.3); /* Slightly darker for better readability */
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-}
-
-/* Better text shadows for readability */
-.hero-overlay h1 {
-    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
-}
-
-.hero-overlay p {
-    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-    .hero {
-        height: 70vh; /* Even smaller on mobile */
-        min-height: 500px;
-        max-height: 700px;
-    }
-
-    .scroll-indicator {
-        bottom: 20px;
-    }
-
-    .hero-overlay {
-        padding: 30px 20px;
-        background: rgba(16, 24, 16, 0.5); /* More visible on mobile */
-    }
-}
-
-@media (max-width: 480px) {
-    .hero {
-        height: 65vh;
-        min-height: 450px;
-    }
-}
-
-/* Smooth scroll behavior */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Add subtle peek of content below hero */
-.hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
-    background: linear-gradient(to bottom, transparent, var(--color-bg-base));
-    pointer-events: none;
-    z-index: 5;
+    color: #fff;
+    font-size: 1.2rem;
 }
