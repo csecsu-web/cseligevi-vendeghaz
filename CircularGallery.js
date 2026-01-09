@@ -154,6 +154,8 @@ export default class CircularGallery {
   addListeners() {
     let isDown = false;
     let startX = 0;
+    
+    // Mouse events
     this.container.addEventListener('mousedown', e => { isDown = true; startX = e.clientX; });
     this.container.addEventListener('mousemove', e => {
       if(!isDown) return;
@@ -163,6 +165,18 @@ export default class CircularGallery {
     });
     this.container.addEventListener('mouseup', () => isDown = false);
     this.container.addEventListener('mouseleave', () => isDown = false);
+    
+    // Touch events for mobile
+    this.container.addEventListener('touchstart', e => { isDown = true; startX = e.touches[0].clientX; }, {passive: true});
+    this.container.addEventListener('touchmove', e => {
+      if(!isDown) return;
+      const x = e.touches[0].clientX;
+      const delta = startX - x;
+      this.scroll.target += delta * 0.03; // Higher sensitivity for touch
+      startX = x;
+    }, {passive: true});
+    this.container.addEventListener('touchend', () => isDown = false);
+
     this.container.addEventListener('wheel', e => this.scroll.target += e.deltaY * 0.01);
   }
 
