@@ -125,7 +125,7 @@ export default class CircularGallery {
   }
 
   init() {
-    this.renderer = new Renderer({ alpha: true, antialias: true });
+    this.renderer = new Renderer({ alpha: true, antialias: true, dpr: Math.min(window.devicePixelRatio, 2) });
     this.gl = this.renderer.gl;
     this.container.appendChild(this.gl.canvas);
 
