@@ -36,183 +36,78 @@
 
   <section class="clip">
     <h2 style="text-align: center; margin-bottom: 30px;">Galéria</h2>
-    <div class="image-gallery">
-      <div class="gallery-item" onclick="openLightbox(0)">
-        <img src="images/nappali1.jpg" alt="Tágas nappali modern bútorokkal" loading="lazy">
-        <div class="caption">Nappali</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(1)">
-        <img src="images/alsoszint2.webp" alt="Tágas közösségitér" loading="lazy">
-        <div class="caption">Alsószint</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(2)">
-        <img src="images/konyha1.jpg" alt="Felszerelt konyha" loading="lazy">
-        <div class="caption">Konyha</div>
-      </div>
-       <div class="gallery-item" onclick="openLightbox(3)">
-        <img src="images/alsoszint.webp" alt="Alsószint" loading="lazy">
-        <div class="caption">Alsószint</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(4)">
-        <img src="images/halo1.jpg" alt="Otthonos hálószoba" loading="lazy">
-        <div class="caption">Hálószoba</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(5)">
-        <img src="images/emelet.webp" alt="Tágas emelet" loading="lazy">
-        <div class="caption">Emelet</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(6)">
-        <img src="images/terasz1.jpg" alt="Fedett terasz" loading="lazy">
-        <div class="caption">Terasz</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(7)">
-        <img src="images/kert1.jpg" alt="Zöld kert" loading="lazy">
-        <div class="caption">Kert</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(8)">
-        <img src="images/panorama1.jpg" alt="Halastó" loading="lazy">
-        <div class="caption">Halastó</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(9)">
-        <img src="images/szauna1.jpg" alt="Benti szauna" loading="lazy">
-        <div class="caption">Szauna</div>
-      </div>
-       <div class="gallery-item" onclick="openLightbox(10)">
-        <img src="images/zuhanyzo.webp" alt="Zuhanyzó" loading="lazy">
-        <div class="caption">Zuhanyzó</div>
-      </div>
-       <div class="gallery-item" onclick="openLightbox(11)">
-        <img src="images/furdo1.webp" alt="Fürdő" loading="lazy">
-        <div class="caption">Fürdő</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(12)">
-        <img src="images/szauna2.webp" alt="Benti szauna" loading="lazy">
-        <div class="caption">Szauna</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(13)">
-        <img src="images/kulteri1.webp" alt="Tágas telek" loading="lazy">
-        <div class="caption">Kültéri</div>
-      </div>
-       <div class="gallery-item" onclick="openLightbox(14)">
-        <img src="images/külteri2.webp" alt="Tágas telek" loading="lazy">
-        <div class="caption">Kültéri</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(15)">
-        <img src="images/kint.webp" alt="Természet közelsége" loading="lazy">
-        <div class="caption">Természet</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(16)">
-        <img src="images/rolunk2.jpg" alt="Borvidék látvány" loading="lazy">
-        <div class="caption">Borvidék</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(17)">
-        <img src="images/rolunk3.jpg" alt="Pihenés" loading="lazy">
-        <div class="caption">Pihenés</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(18)">
-        <img src="images/rolunk4.jpg" alt="Nyugalom" loading="lazy">
-        <div class="caption">Nyugalom</div>
-      </div>
+    <div id="gallery-wrapper" style="position: relative; width: 100%; height: 60vh; min-height: 400px; background: #000; border-radius: 12px; overflow: hidden;">
+        <div id="gallery-container" style="width: 100%; height: 100%; cursor: grab;"></div>
     </div>
+    <p style="text-align: center; margin-top: 15px; opacity: 0.7; font-size: 0.9rem;">
+        <span class="desktop-hint">Húzd az egeret a lapozáshoz</span>
+        <span class="mobile-hint" style="display:none;">Húzd az ujjad a lapozáshoz</span>
+    </p>
   </section>
 </main>
 
-<!-- Lightbox -->
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
-  <div class="lightbox-content" onclick="event.stopPropagation()">
-    <button class="lightbox-close" onclick="closeLightbox()">✕ Bezár</button>
-    <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">‹</button>
-    <img id="lightbox-img" src="" alt="">
-    <button class="lightbox-nav lightbox-next" onclick="changeImage(1)">›</button>
-  </div>
-</div>
-
 <div id="footer-container" data-include="footer.html"></div>
-
-<script>
-  const images = [
-    { src: 'images/nappali1.jpg', alt: 'Tágas nappali modern bútorokkal' },
-    { src: 'images/alsoszint2.webp', alt: 'Tágas közösségitér' },
-    { src: 'images/konyha1.jpg', alt: 'Felszerelt konyha' },
-    { src: 'images/alsoszint.webp', alt: 'Alsószint' },
-    { src: 'images/halo1.jpg', alt: 'Otthonos hálószoba' },
-    { src: 'images/emelet.webp', alt: 'Tágas emelet' },
-    { src: 'images/terasz1.jpg', alt: 'Fedett terasz' },
-    { src: 'images/kert1.jpg', alt: 'Zöld kert' },
-    { src: 'images/panorama1.jpg', alt: 'Halastó' },
-    { src: 'images/szauna1.jpg', alt: 'Benti szauna' },
-    { src: 'images/zuhanyzo.webp', alt: 'Zuhanyzó' },
-    { src: 'images/furdo1.webp', alt: 'Fürdő' },
-    { src: 'images/szauna2.webp', alt: 'Benti szauna' },
-    { src: 'images/kulteri1.webp', alt: 'Tágas telek' },
-    { src: 'images/külteri2.webp', alt: 'Tágas telek' },
-    { src: 'images/kint.webp', alt: 'Természet közelsége' },
-    { src: 'images/rolunk2.jpg', alt: 'Borvidék látvány' },
-    { src: 'images/rolunk3.jpg', alt: 'Pihenés' },
-    { src: 'images/rolunk4.jpg', alt: 'Nyugalom' }
-  ];
-
-  let currentImageIndex = 0;
-
-  function openLightbox(index) {
-    currentImageIndex = index;
-    const lightbox = document.getElementById('lightbox');
-    const img = document.getElementById('lightbox-img');
-    
-    if (images[index]) {
-      img.src = images[index].src;
-      img.alt = images[index].alt;
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-  }
-
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('active');
-    document.body.style.overflow = 'auto';
-  }
-
-  function changeImage(direction) {
-    currentImageIndex += direction;
-    if (currentImageIndex < 0) {
-      currentImageIndex = images.length - 1;
-    } else if (currentImageIndex >= images.length) {
-      currentImageIndex = 0;
-    }
-    openLightbox(currentImageIndex);
-  }
-
-  // Swipe support for mobile
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  const lightboxEl = document.getElementById('lightbox');
-
-  lightboxEl.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
-  }, {passive: true});
-
-  lightboxEl.addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  }, {passive: true});
-
-  function handleSwipe() {
-    if (touchEndX < touchStartX - 50) changeImage(1); // Swipe left -> Next
-    if (touchEndX > touchStartX + 50) changeImage(-1); // Swipe right -> Prev
-  }
-
-  // Keyboard navigation
-  document.addEventListener('keydown', function(e) {
-      if (!document.getElementById('lightbox').classList.contains('active')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') changeImage(-1);
-      if (e.key === 'ArrowRight') changeImage(1);
-  });
-</script>
 
 <script src="include.js"></script>
 <script src="nav.js"></script>
+
+<!-- Import Map for OGL -->
+<script type="importmap">
+{
+    "imports": {
+        "ogl": "https://esm.sh/ogl"
+    }
+}
+</script>
+
+<!-- Initialize Circular Gallery -->
+<script type="module">
+    import CircularGallery from './CircularGallery.js';
+
+    // Image list
+    const items = [
+        { image: 'images/nappali1.jpg', text: 'Nappali' },
+        { image: 'images/alsoszint2.webp', text: 'Alsószint' },
+        { image: 'images/konyha1.jpg', text: 'Konyha' },
+        { image: 'images/alsoszint.webp', text: 'Alsószint' },
+        { image: 'images/halo1.jpg', text: 'Hálószoba' },
+        { image: 'images/emelet.webp', text: 'Emelet' },
+        { image: 'images/terasz1.jpg', text: 'Terasz' },
+        { image: 'images/kert1.jpg', text: 'Kert' },
+        { image: 'images/panorama1.jpg', text: 'Panoráma' },
+        { image: 'images/szauna1.jpg', text: 'Szauna' },
+        { image: 'images/zuhanyzo.webp', text: 'Zuhanyzó' },
+        { image: 'images/furdo1.webp', text: 'Fürdő' },
+        { image: 'images/szauna2.webp', text: 'Szauna' },
+        { image: 'images/kulteri1.webp', text: 'Kültéri' },
+        { image: 'images/külteri2.webp', text: 'Kültéri' },
+        { image: 'images/kint.webp', text: 'Természet' },
+        { image: 'images/rolunk2.jpg', text: 'Borvidék' },
+        { image: 'images/rolunk3.jpg', text: 'Pihenés' },
+        { image: 'images/rolunk4.jpg', text: 'Nyugalom' }
+    ];
+
+    // Initialize
+    const container = document.getElementById('gallery-container');
+    
+    // Check if container exists
+    if (container) {
+        new CircularGallery({
+            container: container,
+            items: items,
+            bend: 4,
+            textColor: '#ffffff',
+            borderRadius: 0.05
+        });
+    }
+
+    // Mobile hint detection
+    if ('ontouchstart' in window) {
+        document.querySelector('.mobile-hint').style.display = 'inline';
+        document.querySelector('.desktop-hint').style.display = 'none';
+    }
+</script>
+
 <script>
     // Animation triggers
     gsap.registerPlugin(ScrollTrigger);
