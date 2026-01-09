@@ -102,7 +102,8 @@ class Media {
 
   onResize(viewport) {
     this.viewport = viewport;
-    const scale = viewport.height / 1500;
+    // Increased scale factor (smaller divisor = larger images)
+    const scale = viewport.height / 800; 
     this.plane.scale.set(scale * 2, scale * 1.5, 1);
   }
 }
