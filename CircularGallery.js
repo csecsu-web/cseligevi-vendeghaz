@@ -90,7 +90,7 @@ class Media {
   }
 
   update(scroll, direction) {
-    const x = this.index * 2 - scroll.current;
+    const x = this.index * 2.5 - scroll.current;
     this.plane.position.x = x;
     const H = this.viewport.width / 2;
     const R = (H*H + this.bend*this.bend)/(2*this.bend);
@@ -103,7 +103,7 @@ class Media {
   onResize(viewport) {
     this.viewport = viewport;
     // Increased scale factor (smaller divisor = larger images)
-    const scale = viewport.height / 800; 
+    const scale = viewport.height / 600; 
     this.plane.scale.set(scale * 2, scale * 1.5, 1);
   }
 }
@@ -130,7 +130,7 @@ export default class CircularGallery {
     this.container.appendChild(this.gl.canvas);
 
     this.camera = new Camera(this.gl);
-    this.camera.position.z = 20;
+    this.camera.position.z = 15;
     this.scene = new Transform();
 
     this.onResize();
