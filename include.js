@@ -40,4 +40,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Trigger event for nav.js to initialize
     document.dispatchEvent(new CustomEvent('includesLoaded'));
+
+    // Image fallback: try JPG if WEBP fails, then favicon
+    const imgs = document.querySelectorAll('img');
+    imgs.forEach(img => {
+        img.addEventListener('error', function handler() {
+            const src = img.getAttribute('src') || '';
+            if (src.endsWith('.webp')) {
+                const jpg = src.replace('.webp', '.jpg');
+                img.removeEventListener('error', handler);
+                img.addEventListener('error', function secondHandler() {
+                    img.setAttribute('src', 'favicon.png');
+                    img.removeEventListener('error', secondHandler);
+                });
+                img.setAttribute('src', jpg);
+            } else {
+                img.setAttribute('src', 'favicon.png');
+            }
+        }, { once: true });
+    });
 });
