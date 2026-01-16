@@ -1,71 +1,197 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Árak és Foglalás – Cseligevi Vendégház</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="favicon.png">
-  <meta name="description" content="Árak és foglalás – Szekszárdi vendégház a természet ritmusában.">
-  <meta property="og:type" content="article">
-  <meta property="og:title" content="Árak és Foglalás – Cseligevi Vendégház">
-  <meta property="og:description" content="Árak, csomagok, foglalási elérhetőségek.">
-  <meta property="og:image" content="favicon.png">
-  <meta property="og:url" content="https://cseligevivendeghaz.com/arak.html">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Árak és Foglalás – Cseligevi Vendégház">
-  <meta name="twitter:description" content="Átlátható árak és közvetlen foglalás.">
-  <meta name="twitter:image" content="favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cseligevi Vendégház árak - 1 éjszaka 45.000 Ft, 2 éjszaka 85.000 Ft, 3+ éjszaka 115.000 Ft. Átlátható árazás 2 fő részére.">
+    <title>Árak - Cseligevi Vendégház | Szállás árak Szekszárdon</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Cseligevi Vendégház</a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Főoldal</a>
+                <a href="vendeghaz.html" class="nav-link">A vendégház</a>
+                <a href="arak.html" class="nav-link active">Árak</a>
+                <a href="kepek.html" class="nav-link">Galéria</a>
+                <a href="programok.html" class="nav-link">Programok</a>
+                <a href="foglalas.html" class="nav-link nav-cta">Foglalás</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-<div id="navbar-container"></div>
+    <section style="padding: 4rem 1rem; background: var(--bg-light);">
+        <div class="container">
+            <h1 class="section-title">Áraink</h1>
+            <p class="section-subtitle">Egyszerű, átlátható árazás - 2 felnőtt részére</p>
 
-<section class="hero">
-  <div data-include="hero-background.html"></div> 
-  <div class="hero-overlay glass">
-    <h1 class="clip">Árak és Foglalás</h1>
-    <p class="clip">Lépj kapcsolatba velünk, foglalj kényelmesen</p>
-  </div>
-</section>
+            <div class="pricing-grid" style="margin-bottom: 3rem;">
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>1 éjszaka</h3>
+                        <div class="price">45.000 Ft</div>
+                    </div>
+                    <ul class="price-features">
+                        <li>✓ 2 fő számára</li>
+                        <li>✓ Teljes felszereltség</li>
+                        <li>✓ Szauna használat</li>
+                        <li>✓ Ingyenes parkolás</li>
+                        <li>✓ Wifi</li>
+                        <li>✓ Kert használat</li>
+                    </ul>
+                    <a href="foglalas.html" class="btn btn-secondary" style="width: 100%; text-align: center; margin-top: 1rem;">Foglalás</a>
+                </div>
 
-<main class="container glass clip">
-  <h2>Ár és foglalás</h2>
-  <p>Szállásaink árait úgy alakítottuk ki, hogy minden vendég számára átlátható és kedvező legyen.</p>
-  
-  <div class="price-box">
-    <h3 class="price-title">Áraink</h3>
-    <ul class="price-list">
-      <li><strong>1 éjszaka:</strong> 45 000 Ft</li>
-      <li><strong>2 éjszaka:</strong> 85 000 Ft</li>
-      <li><strong>3 éjszaka:</strong> 115 000 Ft</li>
-    </ul>
-  </div>
+                <div class="price-card featured">
+                    <div class="badge">Legnépszerűbb</div>
+                    <div class="price-header">
+                        <h3>2 éjszaka</h3>
+                        <div class="price">85.000 Ft</div>
+                        <div class="price-note">42.500 Ft / éjszaka</div>
+                    </div>
+                    <ul class="price-features">
+                        <li>✓ 2 fő számára</li>
+                        <li>✓ Teljes felszereltség</li>
+                        <li>✓ Szauna használat</li>
+                        <li>✓ Ingyenes parkolás</li>
+                        <li>✓ Wifi</li>
+                        <li>✓ Kert használat</li>
+                    </ul>
+                    <a href="foglalas.html" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;">Foglalás</a>
+                </div>
 
-  <p>Az árak 2 fő részére értendők, és tartalmazzák az adót. Gyermekek esetén (max. 1–2 fő) egyedi egyeztetés szükséges. Foglalás legfeljebb 1 hét időtartamra lehetséges.</p>
-  <p>Kérjük, minden további megjegyzést vagy különleges igényt előre jelezzen, hogy biztosítani tudjuk a kényelmes és zavartalan pihenést.</p>
-  
-  <h3 class="booking-section-title">Foglalás</h3>
-  <p>Foglalni emailen vagy telefonon lehet:</p>
-  
-  <div class="actions actions-margin">
-    <a class="btn" href="mailto:cseligevi5@gmail.com">Foglalás emailben</a>
-    <a class="btn btn-outline" href="tel:+36708844779">+36 70 884 4779</a>
-    <a class="btn btn-outline" href="tel:+36703346060">+36 70 334 6060</a>
-    <a class="btn btn-outline" href="foglalas.html">Online foglalás</a>
-  </div>
-</main>
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>3+ éjszaka</h3>
+                        <div class="price">115.000 Ft</div>
+                        <div class="price-note">3 éjszakára, további éjszakák kedvezménnyel</div>
+                    </div>
+                    <ul class="price-features">
+                        <li>✓ 2 fő számára</li>
+                        <li>✓ Teljes felszereltség</li>
+                        <li>✓ Szauna használat</li>
+                        <li>✓ Ingyenes parkolás</li>
+                        <li>✓ Wifi</li>
+                        <li>✓ Kert használat</li>
+                    </ul>
+                    <a href="foglalas.html" class="btn btn-secondary" style="width: 100%; text-align: center; margin-top: 1rem;">Foglalás</a>
+                </div>
+            </div>
 
-<div id="footer-container" data-include="footer.html"></div>
+            <div style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: var(--shadow); margin-bottom: 2rem;">
+                <h2 style="color: var(--primary-color); margin-bottom: 1.5rem;">Fontos információk</h2>
+                
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="color: var(--text-dark); margin-bottom: 1rem;">🛏️ Foglalás részletei</h3>
+                    <ul style="list-style: none; color: var(--text-gray); line-height: 2;">
+                        <li><strong>Kapacitás:</strong> 2 felnőtt (standard)</li>
+                        <li><strong>Gyerekek:</strong> Maximum 2 gyermek fogadható - kérjük, vegye fel velünk a kapcsolatot!</li>
+                        <li><strong>Check-in:</strong> 14:00-tól</li>
+                        <li><strong>Check-out:</strong> 11:00-ig</li>
+                        <li><strong>Minimum foglalás:</strong> 1 éjszaka</li>
+                    </ul>
+                </div>
 
-<script src="include.js"></script>
-<script src="animation.js"></script>
-<script src="nav.js"></script>
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="color: var(--text-dark); margin-bottom: 1rem;">💳 Fizetési információk</h3>
+                    <ul style="list-style: none; color: var(--text-gray); line-height: 2;">
+                        <li><strong>Fizetési mód:</strong> Banki átutalás</li>
+                        <li><strong>Foglalás megerősítése:</strong> Email útján</li>
+                        <li><strong>Lemondási feltételek:</strong> 7 nappal az érkezés előtt ingyenes</li>
+                    </ul>
+                </div>
 
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="color: var(--text-dark); margin-bottom: 1rem;">🏠 Mit tartalmaz az ár?</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                        <div style="background: var(--bg-light); padding: 1rem; border-radius: 0.5rem;">
+                            <strong style="color: var(--primary-color);">✓ Teljes konyha</strong>
+                            <p style="font-size: 0.875rem; color: var(--text-gray); margin-top: 0.5rem;">Hűtő, tűzhely, edények</p>
+                        </div>
+                        <div style="background: var(--bg-light); padding: 1rem; border-radius: 0.5rem;">
+                            <strong style="color: var(--primary-color);">✓ Benti szauna</strong>
+                            <p style="font-size: 0.875rem; color: var(--text-gray); margin-top: 0.5rem;">Korlátlan használat</p>
+                        </div>
+                        <div style="background: var(--bg-light); padding: 1rem; border-radius: 0.5rem;">
+                            <strong style="color: var(--primary-color);">✓ Wifi internet</strong>
+                            <p style="font-size: 0.875rem; color: var(--text-gray); margin-top: 0.5rem;">Ingyenes, korlátlan</p>
+                        </div>
+                        <div style="background: var(--bg-light); padding: 1rem; border-radius: 0.5rem;">
+                            <strong style="color: var(--primary-color);">✓ Parkolás</strong>
+                            <p style="font-size: 0.875rem; color: var(--text-gray); margin-top: 0.5rem;">Ingyenes, zárt udvar</p>
+                        </div>
+                        <div style="background: var(--bg-light); padding: 1rem; border-radius: 0.5rem;">
+                            <strong style="color: var(--primary-color);">✓ Ágynemű, törölköző</strong>
+                            <p style="font-size: 0.875rem; color: var(--text-gray); margin-top: 0.5rem;">Minden biztosított</p>
+                        </div>
+                        <div style="background: var(--bg-light); padding: 1rem; border-radius: 0.5rem;">
+                            <strong style="color: var(--primary-color);">✓ Kert használat</strong>
+                            <p style="font-size: 0.875rem; color: var(--text-gray); margin-top: 0.5rem;">Panorámás terasz</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: var(--bg-green); padding: 1.5rem; border-radius: 0.75rem; border: 2px solid var(--secondary-color);">
+                    <h3 style="color: var(--primary-dark); margin-bottom: 0.5rem;">👶 Gyerekekkel érkezik?</h3>
+                    <p style="color: var(--text-gray);">Maximum 2 gyermek fogadására van lehetőség. Kérjük, a foglaláskor jelezze a gyerekek számát és életkorát, hogy egyeztethessük a részleteket és az esetleges pótágyakat!</p>
+                    <p style="color: var(--text-gray); margin-top: 0.5rem;"><strong>Email:</strong> cseligevi5@gmail.com</p>
+                </div>
+            </div>
+
+            <div class="cta-center">
+                <h2 style="margin-bottom: 1rem;">Készen állsz a foglalásra?</h2>
+                <p style="color: var(--text-gray); margin-bottom: 2rem;">Válaszd ki a dátumokat és indítsd el a foglalást most!</p>
+                <a href="foglalas.html" class="btn btn-primary btn-large">Foglalás indítása</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Cseligevi Vendégház</h3>
+                    <p>A természet ritmusában</p>
+                    <p>Szekszárd, Tolna megye</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Gyors linkek</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Főoldal</a></li>
+                        <li><a href="vendeghaz.html">A vendégház</a></li>
+                        <li><a href="arak.html">Árak</a></li>
+                        <li><a href="foglalas.html">Foglalás</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Információk</h3>
+                    <ul class="footer-links">
+                        <li><a href="programok.html">Programok</a></li>
+                        <li><a href="kepek.html">Galéria</a></li>
+                        <li><a href="rolunk.html">Rólunk</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Kapcsolat</h3>
+                    <p>Email: cseligevi5@gmail.com</p>
+                    <p><a href="foglalas.html" class="footer-cta">Foglalj most →</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cseligevi Vendégház. Minden jog fenntartva.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="nav.js"></script>
 </body>
 </html>
