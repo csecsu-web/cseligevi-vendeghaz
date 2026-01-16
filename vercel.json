@@ -1,4 +1,5 @@
 {
+  "version": 2,
   "rewrites": [
     {
       "source": "/((?!.*\\.(?:html|css|js|png|jpg|jpeg|svg|webp|ico|xml|mp4|webm)).*)",
