@@ -112,9 +112,9 @@ export default class CircularGallery {
   constructor({ container, items = [], bend = 3, textColor = '#fff', borderRadius = 0.05, scrollEase = 0.05 }) {
     this.container = container;
     this.items = items.length ? items : [
-      { image: 'https://picsum.photos/seed/1/800/600?grayscale', text: 'Bridge' },
-      { image: 'https://picsum.photos/seed/2/800/600?grayscale', text: 'Desk' },
-      { image: 'https://picsum.photos/seed/3/800/600?grayscale', text: 'Waterfall' }
+      { image: 'images/nappali.webp', text: 'Nappali' },
+      { image: 'images/konyha.webp', text: 'Konyha' },
+      { image: 'images/haloszoba.webp', text: 'Hálószoba' }
     ];
     this.scroll = { current: 0, target: 0, last: 0, ease: scrollEase };
     this.bend = bend;
@@ -200,4 +200,3 @@ export default class CircularGallery {
     requestAnimationFrame(() => this.update());
   }
 }
-
