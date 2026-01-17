@@ -1,197 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cseligevi Vendégház árak - 1 éjszaka 45.000 Ft, 2 éjszaka 85.000 Ft, 3+ éjszaka 115.000 Ft. Átlátható árazás 2 fő részére.">
-    <title>Árak - Cseligevi Vendégház | Szállás árak Szekszárdon</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Árak – Cseligevi Vendégház</title>
+  <meta name="description" content="Árak és foglalás. Átlátható árazás, kedvező csomagok.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="canonical" href="https://cseligevivendeghaz.com/arak.html">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html">Cseligevi Vendégház</a>
-            </div>
-            <div class="nav-menu" id="navMenu">
-                <a href="index.html" class="nav-link">Főoldal</a>
-                <a href="vendeghaz.html" class="nav-link">A vendégház</a>
-                <a href="arak.html" class="nav-link active">Árak</a>
-                <a href="kepek.html" class="nav-link">Galéria</a>
-                <a href="programok.html" class="nav-link">Programok</a>
-                <a href="foglalas.html" class="nav-link nav-cta">Foglalás</a>
-            </div>
-            <div class="nav-toggle" id="navToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
 
-    <section style="padding: 4rem 1rem; background: var(--bg-light);">
-        <div class="container">
-            <h1 class="section-title">Áraink</h1>
-            <p class="section-subtitle">Egyszerű, átlátható árazás - 2 felnőtt részére</p>
+<div id="navbar-container"></div>
 
-            <div class="pricing-grid" style="margin-bottom: 3rem;">
-                <div class="price-card">
-                    <div class="price-header">
-                        <h3>1 éjszaka</h3>
-                        <div class="price">45.000 Ft</div>
-                    </div>
-                    <ul class="price-features">
-                        <li>✓ 2 fő számára</li>
-                        <li>✓ Teljes felszereltség</li>
-                        <li>✓ Szauna használat</li>
-                        <li>✓ Ingyenes parkolás</li>
-                        <li>✓ Wifi</li>
-                        <li>✓ Kert használat</li>
-                    </ul>
-                    <a href="foglalas.html" class="btn btn-secondary" style="width: 100%; text-align: center; margin-top: 1rem;">Foglalás</a>
-                </div>
+<section class="hero">
+  <div data-include="hero-background.html"></div>
+  <div class="hero-overlay">
+    <h1>Árak</h1>
+    <p>Átlátható és kedvező árazás</p>
+    <a class="btn" href="foglalas.html">Foglalj most</a>
+  </div>
+  <div class="scroll-indicator" onclick="document.querySelector('.container').scrollIntoView({behavior: 'smooth'})">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </div>
+</section>
 
-                <div class="price-card featured">
-                    <div class="badge">Legnépszerűbb</div>
-                    <div class="price-header">
-                        <h3>2 éjszaka</h3>
-                        <div class="price">85.000 Ft</div>
-                        <div class="price-note">42.500 Ft / éjszaka</div>
-                    </div>
-                    <ul class="price-features">
-                        <li>✓ 2 fő számára</li>
-                        <li>✓ Teljes felszereltség</li>
-                        <li>✓ Szauna használat</li>
-                        <li>✓ Ingyenes parkolás</li>
-                        <li>✓ Wifi</li>
-                        <li>✓ Kert használat</li>
-                    </ul>
-                    <a href="foglalas.html" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;">Foglalás</a>
-                </div>
+<section class="container glass">
+  <h2>Árak és foglalás</h2>
+  <p>Szállásaink árait úgy alakítottuk ki, hogy minden vendég számára átlátható és kedvező legyen.</p>
 
-                <div class="price-card">
-                    <div class="price-header">
-                        <h3>3+ éjszaka</h3>
-                        <div class="price">115.000 Ft</div>
-                        <div class="price-note">3 éjszakára, további éjszakák kedvezménnyel</div>
-                    </div>
-                    <ul class="price-features">
-                        <li>✓ 2 fő számára</li>
-                        <li>✓ Teljes felszereltség</li>
-                        <li>✓ Szauna használat</li>
-                        <li>✓ Ingyenes parkolás</li>
-                        <li>✓ Wifi</li>
-                        <li>✓ Kert használat</li>
-                    </ul>
-                    <a href="foglalas.html" class="btn btn-secondary" style="width: 100%; text-align: center; margin-top: 1rem;">Foglalás</a>
-                </div>
-            </div>
+  <div class="values" style="margin-top: 3rem;">
+    <div class="value-card">
+      <h3>1 éjszaka</h3>
+      <p style="font-size: 2rem; font-weight: 700; color: var(--color-accent-light); margin: 1rem 0;">45 000 Ft</p>
+      <p>2 fő részére, adóval együtt</p>
+    </div>
+    <div class="value-card">
+      <h3>2 éjszaka</h3>
+      <p style="font-size: 2rem; font-weight: 700; color: var(--color-accent-light); margin: 1rem 0;">85 000 Ft</p>
+      <p>2 fő részére, adóval együtt</p>
+    </div>
+    <div class="value-card">
+      <h3>3 éjszaka</h3>
+      <p style="font-size: 2rem; font-weight: 700; color: var(--color-accent-light); margin: 1rem 0;">115 000 Ft</p>
+      <p>2 fő részére, adóval együtt</p>
+    </div>
+  </div>
 
-            <div style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: var(--shadow); margin-bottom: 2rem;">
-                <h2 style="color: var(--primary-color); margin-bottom: 1.5rem;">Fontos információk</h2>
-                
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="color: var(--text-dark); margin-bottom: 1rem;">🛏️ Foglalás részletei</h3>
-                    <ul style="list-style: none; color: var(--text-gray); line-height: 2;">
-                        <li><strong>Kapacitás:</strong> 2 felnőtt (standard)</li>
-                        <li><strong>Gyerekek:</strong> Maximum 2 gyermek fogadható - kérjük, vegye fel velünk a kapcsolatot!</li>
-                        <li><strong>Check-in:</strong> 14:00-tól</li>
-                        <li><strong>Check-out:</strong> 11:00-ig</li>
-                        <li><strong>Minimum foglalás:</strong> 1 éjszaka</li>
-                    </ul>
-                </div>
+  <div style="margin-top: 3rem; padding: 2rem; background: rgba(90, 125, 90, 0.1); border-radius: 12px; border: 1px solid var(--color-border);">
+    <h3 style="color: var(--color-accent-light); margin-bottom: 1rem;">Fontos információk</h3>
+    <ul style="list-style: none; padding: 0; line-height: 2;">
+      <li>✓ Gyermekek esetén egyedi egyeztetés szükséges</li>
+      <li>✓ Foglalás maximum 1 hét időtartamra lehetséges</li>
+      <li>✓ Különleges igények előzetes jelzése szükséges</li>
+      <li>✓ Az árak változtatásának jogát fenntartjuk</li>
+    </ul>
+  </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="color: var(--text-dark); margin-bottom: 1rem;">💳 Fizetési információk</h3>
-                    <ul style="list-style: none; color: var(--text-gray); line-height: 2;">
-                        <li><strong>Fizetési mód:</strong> Banki átutalás</li>
-                        <li><strong>Foglalás megerősítése:</strong> Email útján</li>
-                        <li><strong>Lemondási feltételek:</strong> 7 nappal az érkezés előtt ingyenes</li>
-                    </ul>
-                </div>
+  <div class="actions" style="margin-top: 3rem; justify-content: center;">
+    <a class="btn" href="foglalas.html">Online foglalás</a>
+    <a class="btn btn-outline" href="mailto:cseligevi5@gmail.com">Email</a>
+    <a class="btn btn-outline" href="tel:+36708844779">Telefon</a>
+  </div>
+</section>
 
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="color: var(--text-dark); margin-bottom: 1rem;">🏠 Mit tartalmaz az ár?</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
-                        <div style="background: var(--bg-light); padding: 1rem; border-radius: 0.5rem;">
-                            <strong style="color: var(--primary-color);">✓ Teljes konyha</strong>
-                            <p style="font-size: 0.875rem; color: var(--text-gray); margin-top: 0.5rem;">Hűtő, tűzhely, edények</p>
-                        </div>
-                        <div style="background: var(--bg-light); padding: 1rem; border-radius: 0.5rem;">
-                            <strong style="color: var(--primary-color);">✓ Benti szauna</strong>
-                            <p style="font-size: 0.875rem; color: var(--text-gray); margin-top: 0.5rem;">Korlátlan használat</p>
-                        </div>
-                        <div style="background: var(--bg-light); padding: 1rem; border-radius: 0.5rem;">
-                            <strong style="color: var(--primary-color);">✓ Wifi internet</strong>
-                            <p style="font-size: 0.875rem; color: var(--text-gray); margin-top: 0.5rem;">Ingyenes, korlátlan</p>
-                        </div>
-                        <div style="background: var(--bg-light); padding: 1rem; border-radius: 0.5rem;">
-                            <strong style="color: var(--primary-color);">✓ Parkolás</strong>
-                            <p style="font-size: 0.875rem; color: var(--text-gray); margin-top: 0.5rem;">Ingyenes, zárt udvar</p>
-                        </div>
-                        <div style="background: var(--bg-light); padding: 1rem; border-radius: 0.5rem;">
-                            <strong style="color: var(--primary-color);">✓ Ágynemű, törölköző</strong>
-                            <p style="font-size: 0.875rem; color: var(--text-gray); margin-top: 0.5rem;">Minden biztosított</p>
-                        </div>
-                        <div style="background: var(--bg-light); padding: 1rem; border-radius: 0.5rem;">
-                            <strong style="color: var(--primary-color);">✓ Kert használat</strong>
-                            <p style="font-size: 0.875rem; color: var(--text-gray); margin-top: 0.5rem;">Panorámás terasz</p>
-                        </div>
-                    </div>
-                </div>
+<div id="footer-container" data-include="footer.html"></div>
 
-                <div style="background: var(--bg-green); padding: 1.5rem; border-radius: 0.75rem; border: 2px solid var(--secondary-color);">
-                    <h3 style="color: var(--primary-dark); margin-bottom: 0.5rem;">👶 Gyerekekkel érkezik?</h3>
-                    <p style="color: var(--text-gray);">Maximum 2 gyermek fogadására van lehetőség. Kérjük, a foglaláskor jelezze a gyerekek számát és életkorát, hogy egyeztethessük a részleteket és az esetleges pótágyakat!</p>
-                    <p style="color: var(--text-gray); margin-top: 0.5rem;"><strong>Email:</strong> cseligevi5@gmail.com</p>
-                </div>
-            </div>
+<script src="include.js"></script>
+<script src="animation.js"></script>
+<script src="nav.js"></script>
 
-            <div class="cta-center">
-                <h2 style="margin-bottom: 1rem;">Készen állsz a foglalásra?</h2>
-                <p style="color: var(--text-gray); margin-bottom: 2rem;">Válaszd ki a dátumokat és indítsd el a foglalást most!</p>
-                <a href="foglalas.html" class="btn btn-primary btn-large">Foglalás indítása</a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>Cseligevi Vendégház</h3>
-                    <p>A természet ritmusában</p>
-                    <p>Szekszárd, Tolna megye</p>
-                </div>
-                <div class="footer-col">
-                    <h3>Gyors linkek</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Főoldal</a></li>
-                        <li><a href="vendeghaz.html">A vendégház</a></li>
-                        <li><a href="arak.html">Árak</a></li>
-                        <li><a href="foglalas.html">Foglalás</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Információk</h3>
-                    <ul class="footer-links">
-                        <li><a href="programok.html">Programok</a></li>
-                        <li><a href="kepek.html">Galéria</a></li>
-                        <li><a href="rolunk.html">Rólunk</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Kapcsolat</h3>
-                    <p>Email: cseligevi5@gmail.com</p>
-                    <p><a href="foglalas.html" class="footer-cta">Foglalj most →</a></p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Cseligevi Vendégház. Minden jog fenntartva.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="nav.js"></script>
 </body>
 </html>
