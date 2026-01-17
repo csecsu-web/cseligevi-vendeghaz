@@ -1,329 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Foglalj szállást a Cseligevi Vendégházban. Vedd fel velünk a kapcsolatot emailben, telefonon vagy SMS-ben.">
-    <title>Foglalás - Cseligevi Vendégház | Kapcsolat és Időpontfoglalás</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .booking-page {
-            padding: 4rem 1rem;
-            background: linear-gradient(to bottom, var(--bg-light), var(--white));
-        }
-        .booking-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .contact-methods {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-        .contact-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 2px solid transparent;
-        }
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-color);
-        }
-        .contact-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--bg-green);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2.5rem;
-        }
-        .contact-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-        .contact-info {
-            font-size: 1.125rem;
-            color: var(--text-dark);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        .contact-btn {
-            display: inline-block;
-            padding: 0.75rem 2rem;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            margin-top: 0.5rem;
-        }
-        .contact-btn:hover {
-            background: var(--primary-dark);
-            transform: scale(1.05);
-        }
-        .info-box {
-            background: var(--bg-green);
-            border: 2px solid var(--secondary-color);
-            padding: 2rem;
-            border-radius: 1rem;
-            margin: 2rem 0;
-        }
-        .info-box h3 {
-            color: var(--primary-dark);
-            margin-bottom: 1rem;
-        }
-        .info-list {
-            list-style: none;
-            color: var(--text-gray);
-            line-height: 2;
-        }
-        .info-list li {
-            padding-left: 1.5rem;
-            position: relative;
-        }
-        .info-list li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-            font-weight: bold;
-        }
-        .steps-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: var(--shadow);
-            margin: 2rem 0;
-        }
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .step {
-            text-align: center;
-        }
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        .step h4 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-        .calendar-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: var(--shadow);
-            margin: 2rem 0;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Foglalás – Cseligevi Vendégház</title>
+  <meta name="description" content="Foglaljon most egyszerűen és gyorsan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="canonical" href="https://cseligevivendeghaz.com/foglalas.html">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html">Cseligevi Vendégház</a>
-            </div>
-            <div class="nav-menu" id="navMenu">
-                <a href="index.html" class="nav-link">Főoldal</a>
-                <a href="vendeghaz.html" class="nav-link">A vendégház</a>
-                <a href="arak.html" class="nav-link">Árak</a>
-                <a href="kepek.html" class="nav-link">Galéria</a>
-                <a href="programok.html" class="nav-link">Programok</a>
-                <a href="foglalas.html" class="nav-link nav-cta active">Foglalás</a>
-            </div>
-            <div class="nav-toggle" id="navToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
 
-    <section class="booking-page">
-        <div class="booking-container">
-            <h1 class="section-title">Foglalás</h1>
-            <p class="section-subtitle">Vedd fel velünk a kapcsolatot az alábbi módok egyikén</p>
+<div id="navbar-container"></div>
 
-            <!-- Contact Methods -->
-            <div class="contact-methods">
-                <div class="contact-card">
-                    <div class="contact-icon">📧</div>
-                    <h3>Email</h3>
-                    <p class="contact-info">cseligevi5@gmail.com</p>
-                    <p style="color: var(--text-gray); margin-bottom: 1rem;">Válaszolunk 24 órán belül</p>
-                    <a href="mailto:cseligevi5@gmail.com?subject=Foglalás%20-%20Cseligevi%20Vendégház" class="contact-btn">Email küldése</a>
-                </div>
+<section class="hero">
+  <div data-include="hero-background.html"></div>
+  <div class="hero-overlay">
+    <h1>Foglalás</h1>
+    <p>Lépj velünk kapcsolatba</p>
+  </div>
+  <div class="scroll-indicator" onclick="document.querySelector('.container').scrollIntoView({behavior: 'smooth'})">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </div>
+</section>
 
-                <div class="contact-card">
-                    <div class="contact-icon">📱</div>
-                    <h3>SMS</h3>
-                    <p class="contact-info">+36 XX XXX XXXX</p>
-                    <p style="color: var(--text-gray); margin-bottom: 1rem;">Gyors válasz garantált</p>
-                    <a href="sms:+36XXXXXXXXX?body=Szia!%20Szeretnék%20foglalni%20a%20Cseligevi%20Vendégházban." class="contact-btn">SMS küldése</a>
-                </div>
+<section class="container glass">
+  <h2>Vedd fel velünk a kapcsolatot</h2>
+  <p>Kérjük, válassz az alábbi elérhetőségek közül a foglaláshoz vagy további információkért.</p>
 
-                <div class="contact-card">
-                    <div class="contact-icon">📞</div>
-                    <h3>Telefon</h3>
-                    <p class="contact-info">+36 XX XXX XXXX</p>
-                    <p style="color: var(--text-gray); margin-bottom: 1rem;">Hétfő-Vasárnap 9:00-20:00</p>
-                    <a href="tel:+36XXXXXXXXX" class="contact-btn">Hívás indítása</a>
-                </div>
-            </div>
+  <div class="values" style="margin-top: 3rem;">
+    <div class="value-card">
+      <h3>📧 Email</h3>
+      <p><a href="mailto:cseligevi5@gmail.com" style="font-size: 1.1rem; color: var(--color-accent-light);">cseligevi5@gmail.com</a></p>
+      <p style="margin-top: 1rem;">24 órán belül válaszolunk</p>
+    </div>
+    <div class="value-card">
+      <h3>📞 Telefon</h3>
+      <p><a href="tel:+36708844779" style="font-size: 1.1rem; color: var(--color-accent-light);">+36 70 884 4779</a></p>
+      <p><a href="tel:+36703346060" style="font-size: 1.1rem; color: var(--color-accent-light);">+36 70 334 6060</a></p>
+      <p style="margin-top: 1rem;">9:00 - 20:00 között</p>
+    </div>
+  </div>
 
-            <!-- Steps -->
-            <div class="steps-section">
-                <h2 style="text-align: center; color: var(--primary-color); margin-bottom: 1rem;">Hogyan működik a foglalás?</h2>
-                <p style="text-align: center; color: var(--text-gray); margin-bottom: 2rem;">3 egyszerű lépésben foglalhatsz nálunk</p>
-                
-                <div class="steps-grid">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <h4>Vedd fel a kapcsolatot</h4>
-                        <p style="color: var(--text-gray); font-size: 0.9rem;">Küldj emailt, SMS-t vagy hívj minket</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <h4>Egyeztessünk</h4>
-                        <p style="color: var(--text-gray); font-size: 0.9rem;">Megbeszéljük a dátumokat és részleteket</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <h4>Foglalás megerősítése</h4>
-                        <p style="color: var(--text-gray); font-size: 0.9rem;">Visszaigazolást kapsz és kész vagy!</p>
-                    </div>
-                </div>
-            </div>
+  <div style="margin-top: 4rem; padding: 2.5rem; background: rgba(90, 125, 90, 0.1); border-radius: 16px; border: 1px solid var(--color-border);">
+    <h3 style="color: var(--color-accent-light); margin-bottom: 1.5rem; font-size: 1.75rem;">Áraink</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+      <div>
+        <p style="font-weight: 600; color: var(--color-primary); font-size: 1.1rem;">1 éjszaka</p>
+        <p style="font-size: 1.75rem; font-weight: 700; color: var(--color-accent-light);">45 000 Ft</p>
+      </div>
+      <div>
+        <p style="font-weight: 600; color: var(--color-primary); font-size: 1.1rem;">2 éjszaka</p>
+        <p style="font-size: 1.75rem; font-weight: 700; color: var(--color-accent-light);">85 000 Ft</p>
+      </div>
+      <div>
+        <p style="font-weight: 600; color: var(--color-primary); font-size: 1.1rem;">3 éjszaka</p>
+        <p style="font-size: 1.75rem; font-weight: 700; color: var(--color-accent-light);">115 000 Ft</p>
+      </div>
+    </div>
+    <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--color-secondary);">Az árak 2 fő részére értendők, tartalmazzák az adót.</p>
+  </div>
 
-            <!-- What to Include -->
-            <div class="info-box">
-                <h3>📝 Mit írj a foglalási kérésedben?</h3>
-                <ul class="info-list">
-                    <li><strong>Érkezés dátuma:</strong> pl. 2026. március 15.</li>
-                    <li><strong>Távozás dátuma:</strong> pl. 2026. március 17.</li>
-                    <li><strong>Vendégek száma:</strong> 2 felnőtt (+ gyerekek száma, ha van)</li>
-                    <li><strong>Neved:</strong> hogy megszólíthassunk</li>
-                    <li><strong>Telefonszámod:</strong> gyors kapcsolatfelvételhez</li>
-                    <li><strong>Különleges kérések:</strong> ha van (opcionális)</li>
-                </ul>
-            </div>
+  <div class="actions" style="margin-top: 3rem; justify-content: center;">
+    <a class="btn" href="mailto:cseligevi5@gmail.com">Foglalás emailben</a>
+    <a class="btn btn-outline" href="tel:+36708844779">Hívás</a>
+  </div>
+</section>
 
-            <!-- Pricing Reminder -->
-            <div class="calendar-section">
-                <h2 style="color: var(--primary-color); margin-bottom: 1.5rem; text-align: center;">Áraink (2 fő részére)</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
-                    <div style="background: var(--bg-light); padding: 1.5rem; border-radius: 0.75rem; text-align: center;">
-                        <div style="font-size: 0.875rem; color: var(--text-gray); margin-bottom: 0.5rem;">1 éjszaka</div>
-                        <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">45.000 Ft</div>
-                    </div>
-                    <div style="background: var(--bg-green); padding: 1.5rem; border-radius: 0.75rem; text-align: center; border: 2px solid var(--secondary-color);">
-                        <div style="font-size: 0.875rem; color: var(--text-gray); margin-bottom: 0.5rem;">2 éjszaka</div>
-                        <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">85.000 Ft</div>
-                    </div>
-                    <div style="background: var(--bg-light); padding: 1.5rem; border-radius: 0.75rem; text-align: center;">
-                        <div style="font-size: 0.875rem; color: var(--text-gray); margin-bottom: 0.5rem;">3+ éjszaka</div>
-                        <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">115.000 Ft</div>
-                        <div style="font-size: 0.75rem; color: var(--text-gray); margin-top: 0.25rem;">3 éjszakára</div>
-                    </div>
-                </div>
-                <p style="text-align: center; color: var(--text-gray); margin-top: 1.5rem;">
-                    <strong>Gyerekekkel érkezel?</strong> Max. 2 gyermek - jelezd a foglaláskor!
-                </p>
-            </div>
+<div id="footer-container" data-include="footer.html"></div>
 
-            <!-- Important Info -->
-            <div style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: var(--shadow);">
-                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">ℹ️ Fontos információk</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; color: var(--text-gray);">
-                    <div>
-                        <strong style="color: var(--text-dark);">Check-in:</strong><br>
-                        14:00-tól
-                    </div>
-                    <div>
-                        <strong style="color: var(--text-dark);">Check-out:</strong><br>
-                        11:00-ig
-                    </div>
-                    <div>
-                        <strong style="color: var(--text-dark);">Kapacitás:</strong><br>
-                        2 felnőtt + max. 2 gyerek
-                    </div>
-                    <div>
-                        <strong style="color: var(--text-dark);">Lemondás:</strong><br>
-                        7 nappal az érkezés előtt ingyenes
-                    </div>
-                </div>
-            </div>
+<script src="include.js"></script>
+<script src="animation.js"></script>
+<script src="nav.js"></script>
 
-            <!-- CTA -->
-            <div style="text-align: center; margin-top: 3rem;">
-                <h2 style="margin-bottom: 1rem;">Készen állsz a foglalásra?</h2>
-                <p style="color: var(--text-gray); margin-bottom: 2rem;">Válaszd ki a számodra legkényelmesebb módot és vedd fel velünk a kapcsolatot!</p>
-                <a href="mailto:cseligevi5@gmail.com?subject=Foglalás%20-%20Cseligevi%20Vendégház" class="btn btn-primary btn-large">Email küldése most</a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>Cseligevi Vendégház</h3>
-                    <p>A természet ritmusában</p>
-                    <p>Szekszárd, Tolna megye</p>
-                </div>
-                <div class="footer-col">
-                    <h3>Gyors linkek</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Főoldal</a></li>
-                        <li><a href="vendeghaz.html">A vendégház</a></li>
-                        <li><a href="arak.html">Árak</a></li>
-                        <li><a href="foglalas.html">Foglalás</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Információk</h3>
-                    <ul class="footer-links">
-                        <li><a href="programok.html">Programok</a></li>
-                        <li><a href="kepek.html">Galéria</a></li>
-                        <li><a href="rolunk.html">Rólunk</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Kapcsolat</h3>
-                    <p>Email: cseligevi5@gmail.com</p>
-                    <p>Telefon: +36 XX XXX XXXX</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Cseligevi Vendégház. Minden jog fenntartva.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="nav.js"></script>
 </body>
 </html>
