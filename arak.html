@@ -1,171 +1,281 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cseligevi Vendégház árak - Valentine's Day akció! 20% kedvezmény február 14-ig.">
-    <title>Árak - Valentine's Akció 💝 | Cseligevi Vendégház</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Árak – Cseligevi Vendégház | Foglalás</title>
+  <meta name="description" content="Árak: 1 éjszaka 45.000 Ft, 2 éjszaka 85.000 Ft, 3 éjszaka 115.000 Ft. Foglaljon most!">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="canonical" href="https://cseligevivendeghaz.com/arak.html">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+  
+  <style>
+    .pricing-hero {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto 4rem;
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .pricing-card {
+      background: linear-gradient(135deg, rgba(90, 125, 90, 0.1) 0%, rgba(26, 37, 26, 0.4) 100%);
+      padding: 3rem 2rem;
+      border-radius: 16px;
+      border: 2px solid var(--color-border);
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--color-accent);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 60px rgba(90, 125, 90, 0.2);
+      border-color: var(--color-accent);
+    }
+
+    .pricing-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .pricing-card.featured {
+      border-color: var(--color-accent);
+      background: linear-gradient(135deg, rgba(90, 125, 90, 0.15) 0%, rgba(26, 37, 26, 0.5) 100%);
+    }
+
+    .pricing-card.featured::before {
+      transform: scaleX(1);
+    }
+
+    .pricing-badge {
+      display: inline-block;
+      background: var(--color-accent);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-nights {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-amount {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--color-accent-light);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-amount span {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    .pricing-per {
+      color: var(--color-secondary);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0;
+      text-align: left;
+    }
+
+    .pricing-features li {
+      padding: 0.75rem 0;
+      color: var(--color-secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .pricing-features li::before {
+      content: '✓';
+      color: var(--color-accent);
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .info-box {
+      background: rgba(90, 125, 90, 0.1);
+      padding: 2.5rem;
+      border-radius: 16px;
+      border: 1px solid var(--color-accent);
+      margin: 4rem 0;
+    }
+
+    .info-box h3 {
+      color: var(--color-accent-light);
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+
+    .info-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .info-list li {
+      padding-left: 2rem;
+      position: relative;
+      color: var(--color-secondary);
+      line-height: 1.7;
+    }
+
+    .info-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--color-accent);
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    @media (max-width: 768px) {
+      .pricing-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-amount {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div include-html="navbar.html"></div>
 
-    <main>
-        <!-- Valentine's Banner -->
-        <section style="background: linear-gradient(135deg, #ff6b9d 0%, #c9184a 100%); color: white; padding: 3rem 1rem; text-align: center; margin-top: 2rem; border-radius: 12px; max-width: 1200px; margin-left: auto; margin-right: auto;">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">💝</div>
-            <h2 style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 600;">Valentine's Day Akció</h2>
-            <p style="font-size: 1.25rem; opacity: 0.95;">20% kedvezmény minden foglalásra • Február 14-ig érvényes</p>
-        </section>
+<div id="navbar-container"></div>
 
-        <section class="pricing-section">
-            <h1>Áraink</h1>
-            <p style="text-align: center; font-size: 1.125rem; color: #666; margin-bottom: 3rem;">Egyszerű, átlátható árazás 2 felnőtt részére</p>
+<section class="hero">
+  <div data-include="hero-background.html"></div>
+  <div class="hero-overlay">
+    <h1>Árak és foglalás</h1>
+    <p>Átlátható árazás, kedvező csomagok</p>
+    <a class="btn" href="foglalas.html">Foglalj most</a>
+  </div>
+  <div class="scroll-indicator" onclick="document.querySelector('.container').scrollIntoView({behavior: 'smooth'})">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </div>
+</section>
 
-            <div class="pricing-container">
-                <!-- 1 Night -->
-                <div class="pricing-card">
-                    <div style="background: #ff6b9d; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600; display: inline-block; margin-bottom: 1rem;">-20% AKCIÓ 💝</div>
-                    <h3>1 éjszaka</h3>
-                    <div style="text-decoration: line-through; color: #999; font-size: 1.5rem; margin: 0.5rem 0;">45.000 Ft</div>
-                    <div class="price">36.000 Ft</div>
-                    <div style="background: #fff3f8; color: #c9184a; padding: 0.75rem; border-radius: 8px; font-weight: 600; margin: 1rem 0;">💰 Megtakarítás: 9.000 Ft</div>
-                    <ul class="features">
-                        <li>2 fő részére</li>
-                        <li>Teljes felszereltség</li>
-                        <li>Szauna használat</li>
-                        <li>Ingyenes parkolás</li>
-                        <li>Wifi internet</li>
-                        <li>Kert használat</li>
-                    </ul>
-                    <a href="foglalas.html" class="cta-button">Foglalás</a>
-                </div>
+<section class="container">
+  <div class="pricing-hero">
+    <h2>Válassz a csomagjaink közül</h2>
+    <p>Minden ár 2 fő részére értendő, tartalmazza az adót és a szolgáltatásokat.</p>
+  </div>
 
-                <!-- 2 Nights - FEATURED -->
-                <div class="pricing-card featured">
-                    <div class="popular-badge">🔥 LEGJOBB AJÁNLAT</div>
-                    <div style="background: #ff6b9d; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600; display: inline-block; margin-bottom: 1rem;">-20% AKCIÓ 💝</div>
-                    <h3>2 éjszaka</h3>
-                    <div style="text-decoration: line-through; color: #999; font-size: 1.5rem; margin: 0.5rem 0;">85.000 Ft</div>
-                    <div class="price">68.000 Ft</div>
-                    <div style="font-size: 0.875rem; color: #666; margin-bottom: 0.5rem;">34.000 Ft / éjszaka</div>
-                    <div style="background: #fff3f8; color: #c9184a; padding: 0.75rem; border-radius: 8px; font-weight: 600; margin: 1rem 0;">💰 Megtakarítás: 17.000 Ft</div>
-                    <ul class="features">
-                        <li>2 fő részére</li>
-                        <li>Teljes felszereltség</li>
-                        <li>Szauna használat</li>
-                        <li>Ingyenes parkolás</li>
-                        <li>Wifi internet</li>
-                        <li>Kert használat</li>
-                        <li><strong>🎁 Valentine's ajándék</strong></li>
-                    </ul>
-                    <a href="foglalas.html" class="cta-button">Foglalás most</a>
-                </div>
+  <div class="pricing-cards">
+    <div class="pricing-card">
+      <div class="pricing-nights">1 éjszaka</div>
+      <div class="pricing-amount">45.000 <span>Ft</span></div>
+      <div class="pricing-per">2 fő részére</div>
+      <ul class="pricing-features">
+        <li>Teljes vendégház</li>
+        <li>Benti szauna</li>
+        <li>Tágas zöld udvar</li>
+        <li>Panorámás kilátás</li>
+        <li>Ingyenes parkolás</li>
+      </ul>
+      <a href="foglalas.html" class="btn btn-outline" style="width: 100%;">Foglalás</a>
+    </div>
 
-                <!-- 3+ Nights -->
-                <div class="pricing-card">
-                    <div style="background: #ff6b9d; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600; display: inline-block; margin-bottom: 1rem;">-20% AKCIÓ 💝</div>
-                    <h3>3+ éjszaka</h3>
-                    <div style="text-decoration: line-through; color: #999; font-size: 1.5rem; margin: 0.5rem 0;">115.000 Ft</div>
-                    <div class="price">92.000 Ft</div>
-                    <div style="font-size: 0.875rem; color: #666; margin-bottom: 0.5rem;">3 éjszakára</div>
-                    <div style="background: #fff3f8; color: #c9184a; padding: 0.75rem; border-radius: 8px; font-weight: 600; margin: 1rem 0;">💰 Megtakarítás: 23.000 Ft</div>
-                    <ul class="features">
-                        <li>2 fő részére</li>
-                        <li>Teljes felszereltség</li>
-                        <li>Szauna használat</li>
-                        <li>Ingyenes parkolás</li>
-                        <li>Wifi internet</li>
-                        <li>Kert használat</li>
-                    </ul>
-                    <a href="foglalas.html" class="cta-button">Foglalás</a>
-                </div>
-            </div>
+    <div class="pricing-card featured">
+      <div class="pricing-badge">Népszerű</div>
+      <div class="pricing-nights">2 éjszaka</div>
+      <div class="pricing-amount">85.000 <span>Ft</span></div>
+      <div class="pricing-per">2 fő részére</div>
+      <ul class="pricing-features">
+        <li>Teljes vendégház</li>
+        <li>Benti szauna</li>
+        <li>Tágas zöld udvar</li>
+        <li>Panorámás kilátás</li>
+        <li>Ingyenes parkolás</li>
+        <li><strong>Legjobb ár/érték arány</strong></li>
+      </ul>
+      <a href="foglalas.html" class="btn" style="width: 100%;">Foglalás</a>
+    </div>
 
-            <!-- Price Comparison Table -->
-            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 3rem auto; max-width: 800px;">
-                <h3 style="text-align: center; margin-bottom: 1.5rem;">💡 Árak összehasonlítása</h3>
-                <table style="width: 100%; border-collapse: collapse;">
-                    <thead>
-                        <tr style="background: #f5f5f5;">
-                            <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #ddd;">Időszak</th>
-                            <th style="padding: 1rem; text-align: center; border-bottom: 2px solid #ddd;">Normál ár</th>
-                            <th style="padding: 1rem; text-align: center; border-bottom: 2px solid #ddd;">Valentine's ár</th>
-                            <th style="padding: 1rem; text-align: center; border-bottom: 2px solid #ddd;">Megtakarítás</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="padding: 1rem; border-bottom: 1px solid #eee;">1 éjszaka</td>
-                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid #eee; text-decoration: line-through; color: #999;">45.000 Ft</td>
-                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid #eee; font-weight: 700; color: #c9184a;">36.000 Ft</td>
-                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid #eee; font-weight: 600; color: #059669;">9.000 Ft</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 1rem; border-bottom: 1px solid #eee;">2 éjszaka</td>
-                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid #eee; text-decoration: line-through; color: #999;">85.000 Ft</td>
-                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid #eee; font-weight: 700; color: #c9184a;">68.000 Ft</td>
-                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid #eee; font-weight: 600; color: #059669;">17.000 Ft</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 1rem;">3 éjszaka</td>
-                            <td style="padding: 1rem; text-align: center; text-decoration: line-through; color: #999;">115.000 Ft</td>
-                            <td style="padding: 1rem; text-align: center; font-weight: 700; color: #c9184a;">92.000 Ft</td>
-                            <td style="padding: 1rem; text-align: center; font-weight: 600; color: #059669;">23.000 Ft</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    <div class="pricing-card">
+      <div class="pricing-nights">3 éjszaka</div>
+      <div class="pricing-amount">115.000 <span>Ft</span></div>
+      <div class="pricing-per">2 fő részére</div>
+      <ul class="pricing-features">
+        <li>Teljes vendégház</li>
+        <li>Benti szauna</li>
+        <li>Tágas zöld udvar</li>
+        <li>Panorámás kilátás</li>
+        <li>Ingyenes parkolás</li>
+        <li><strong>Még több idő pihenni</strong></li>
+      </ul>
+      <a href="foglalas.html" class="btn btn-outline" style="width: 100%;">Foglalás</a>
+    </div>
+  </div>
 
-            <!-- Important Info -->
-            <div class="info-box">
-                <h3>📋 Fontos információk</h3>
-                
-                <div style="margin: 1.5rem 0;">
-                    <h4 style="color: #c9184a; margin-bottom: 0.5rem;">💝 Valentine's Day Akció</h4>
-                    <ul style="list-style: none; padding-left: 0;">
-                        <li>✓ <strong>Érvényesség:</strong> Február 14-ig</li>
-                        <li>✓ <strong>Kedvezmény:</strong> 20% minden éjszakára</li>
-                        <li>✓ <strong>Ajándék:</strong> 2+ éjszakás foglaláshoz romantikus meglepetés</li>
-                        <li>✓ <strong>Foglalás:</strong> Email vagy telefon útján</li>
-                    </ul>
-                </div>
+  <div class="info-box">
+    <h3>Fontos információk</h3>
+    <ul class="info-list">
+      <li><strong>Check-in:</strong> 15:00-tól • <strong>Check-out:</strong> 10:00-ig</li>
+      <li>Gyermekek esetén (maximum 1-2 fő) egyedi egyeztetés szükséges</li>
+      <li>Foglalás maximum 1 hét időtartamra lehetséges</li>
+      <li>Különleges igények előzetes jelzése szükséges</li>
+      <li>Lemondás 48 órán belül az érkezés előtt ingyenes</li>
+      <li>Kisállatok előzetes egyeztetés alapján fogadhatók</li>
+    </ul>
+  </div>
 
-                <div style="margin: 1.5rem 0;">
-                    <h4>🛏️ Foglalás részletei</h4>
-                    <ul>
-                        <li><strong>Kapacitás:</strong> 2 felnőtt (standard)</li>
-                        <li><strong>Gyerekek:</strong> Maximum 2 gyermek (egyeztetéssel)</li>
-                        <li><strong>Check-in:</strong> 14:00-tól</li>
-                        <li><strong>Check-out:</strong> 11:00-ig</li>
-                        <li><strong>Minimum foglalás:</strong> 1 éjszaka</li>
-                    </ul>
-                </div>
+  <div class="glass" style="padding: 3rem; text-align: center; margin: 3rem 0;">
+    <h3 style="color: var(--color-accent-light); margin-bottom: 1.5rem;">Kérdésed van az árakkal kapcsolatban?</h3>
+    <p style="margin-bottom: 2rem;">Hívj minket bizalommal, vagy írj emailt!</p>
+    <div class="actions" style="justify-content: center;">
+      <a class="btn" href="foglalas.html">Online foglalás</a>
+      <a class="btn btn-outline" href="mailto:cseligevi5@gmail.com">Email</a>
+      <a class="btn btn-outline" href="tel:+36708844779">Telefon</a>
+    </div>
+  </div>
+</section>
 
-                <div style="margin: 1.5rem 0;">
-                    <h4>💳 Fizetési információk</h4>
-                    <ul>
-                        <li><strong>Fizetési mód:</strong> Banki átutalás</li>
-                        <li><strong>Foglalás megerősítése:</strong> Email útján</li>
-                        <li><strong>Lemondási feltételek:</strong> 7 nappal az érkezés előtt ingyenes</li>
-                    </ul>
-                </div>
+<div id="footer-container" data-include="footer.html"></div>
 
-                <div style="background: #fff3f8; padding: 1.5rem; border-radius: 8px; border: 2px solid #ff6b9d; margin-top: 2rem;">
-                    <h4 style="color: #c9184a; margin-bottom: 0.75rem;">👶 Gyerekekkel érkezik?</h4>
-                    <p>Maximum 2 gyermek fogadására van lehetőség. Kérjük, a foglaláskor jelezze a gyerekek számát és életkorát!</p>
-                    <p style="margin-top: 0.5rem;"><strong>Email:</strong> cseligevi5@gmail.com</p>
-                </div>
-            </div>
+<script src="include.js"></script>
+<script src="animation.js"></script>
+<script src="nav.js"></script>
 
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="foglalas.html" class="cta-button" style="font-size: 1.25rem; padding: 1rem 3rem;">Foglalás indítása</a>
-            </div>
-        </section>
-    </main>
-
-    <div include-html="footer.html"></div>
-
-    <script src="include.js"></script>
 </body>
 </html>
