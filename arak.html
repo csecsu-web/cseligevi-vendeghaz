@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Árak – Cseligevi Vendégház | Foglalás</title>
-  <meta name="description" content="Árak: 1 éjszaka 45.000 Ft, 2 éjszaka 85.000 Ft, 3 éjszaka 115.000 Ft. Foglaljon most!">
+  <title>Árak – Cseligevi Vendégház | Valentin-napi Akció 20%</title>
+  <meta name="description" content="Valentin-napi akció: 20% kedvezmény! 1 éjszaka 36.000 Ft, 2 éjszaka 68.000 Ft, 3 éjszaka 92.000 Ft. Foglalj ezen a héten!">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,6 +15,70 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
   
   <style>
+    .valentines-banner {
+      background: linear-gradient(135deg, #c41e3a 0%, #8b1632 100%);
+      color: white;
+      padding: 2rem;
+      border-radius: 16px;
+      text-align: center;
+      margin: 2rem 0 3rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(196, 30, 58, 0.3);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 10px 40px rgba(196, 30, 58, 0.3); }
+      50% { box-shadow: 0 10px 60px rgba(196, 30, 58, 0.5); }
+    }
+
+    .valentines-banner::before {
+      content: '❤️';
+      position: absolute;
+      font-size: 8rem;
+      opacity: 0.1;
+      top: 50%;
+      left: 10%;
+      transform: translateY(-50%) rotate(-15deg);
+    }
+
+    .valentines-banner::after {
+      content: '❤️';
+      position: absolute;
+      font-size: 6rem;
+      opacity: 0.1;
+      top: 50%;
+      right: 10%;
+      transform: translateY(-50%) rotate(15deg);
+    }
+
+    .valentines-banner h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .valentines-banner .discount-badge {
+      display: inline-block;
+      background: white;
+      color: #c41e3a;
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0.5rem 0;
+    }
+
+    .valentines-banner p {
+      position: relative;
+      z-index: 1;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+      color: rgba(255, 255, 255, 0.95);
+    }
+
     .pricing-hero {
       text-align: center;
       max-width: 900px;
@@ -62,11 +126,13 @@
     }
 
     .pricing-card.featured {
-      border-color: var(--color-accent);
-      background: linear-gradient(135deg, rgba(90, 125, 90, 0.15) 0%, rgba(26, 37, 26, 0.5) 100%);
+      border-color: #c41e3a;
+      background: linear-gradient(135deg, rgba(196, 30, 58, 0.1) 0%, rgba(26, 37, 26, 0.5) 100%);
+      box-shadow: 0 10px 40px rgba(196, 30, 58, 0.2);
     }
 
     .pricing-card.featured::before {
+      background: #c41e3a;
       transform: scaleX(1);
     }
 
@@ -81,6 +147,24 @@
       margin-bottom: 1rem;
     }
 
+    .valentines-badge {
+      background: #c41e3a;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: inline-block;
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      10%, 30% { transform: scale(1.1); }
+      20%, 40% { transform: scale(1); }
+    }
+
     .pricing-nights {
       font-size: 1.5rem;
       font-weight: 600;
@@ -88,10 +172,22 @@
       margin-bottom: 1.5rem;
     }
 
+    .price-wrapper {
+      margin-bottom: 2rem;
+    }
+
+    .old-price {
+      font-size: 1.25rem;
+      color: var(--color-secondary);
+      text-decoration: line-through;
+      opacity: 0.7;
+      margin-bottom: 0.5rem;
+    }
+
     .pricing-amount {
       font-size: 3rem;
       font-weight: 700;
-      color: var(--color-accent-light);
+      color: #c41e3a;
       line-height: 1;
       margin-bottom: 0.5rem;
     }
@@ -104,7 +200,14 @@
     .pricing-per {
       color: var(--color-secondary);
       font-size: 1rem;
-      margin-bottom: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .savings {
+      color: #c41e3a;
+      font-weight: 600;
+      font-size: 1.125rem;
+      margin-top: 0.5rem;
     }
 
     .pricing-features {
@@ -174,6 +277,14 @@
       .pricing-amount {
         font-size: 2.5rem;
       }
+
+      .valentines-banner h2 {
+        font-size: 1.5rem;
+      }
+
+      .valentines-banner .discount-badge {
+        font-size: 1.25rem;
+      }
     }
   </style>
 </head>
@@ -184,8 +295,8 @@
 <section class="hero">
   <div data-include="hero-background.html"></div>
   <div class="hero-overlay">
-    <h1>Árak és foglalás</h1>
-    <p>Átlátható árazás, kedvező csomagok</p>
+    <h1>Valentin-napi Akció!</h1>
+    <p>20% kedvezmény minden foglalásra ezen a héten</p>
     <a class="btn" href="foglalas.html">Foglalj most</a>
   </div>
   <div class="scroll-indicator" onclick="document.querySelector('.container').scrollIntoView({behavior: 'smooth'})">
@@ -196,16 +307,28 @@
 </section>
 
 <section class="container">
+  <div class="valentines-banner">
+    <h2>❤️ Valentin-napi Különleges Ajánlat ❤️</h2>
+    <div class="discount-badge">-20% KEDVEZMÉNY</div>
+    <p><strong>Csak ezen a héten!</strong> Foglalj most és spórolj a romantikus pihenéssel!</p>
+    <p style="font-size: 0.95rem; margin-top: 1rem;">Az akció <strong>2025. február 2-8.</strong> között érvényes</p>
+  </div>
+
   <div class="pricing-hero">
     <h2>Válassz a csomagjaink közül</h2>
-    <p>Minden ár 2 fő részére értendő, tartalmazza az adót és a szolgáltatásokat.</p>
+    <p>Akciós árak 2 fő részére, tartalmazza az adót és a szolgáltatásokat.</p>
   </div>
 
   <div class="pricing-cards">
     <div class="pricing-card">
+      <div class="valentines-badge">❤️ Valentin-napi ár</div>
       <div class="pricing-nights">1 éjszaka</div>
-      <div class="pricing-amount">45.000 <span>Ft</span></div>
-      <div class="pricing-per">2 fő részére</div>
+      <div class="price-wrapper">
+        <div class="old-price">45.000 Ft</div>
+        <div class="pricing-amount">36.000 <span>Ft</span></div>
+        <div class="pricing-per">2 fő részére</div>
+        <div class="savings">Megtakarítás: 9.000 Ft</div>
+      </div>
       <ul class="pricing-features">
         <li>Teljes vendégház</li>
         <li>Benti szauna</li>
@@ -217,10 +340,14 @@
     </div>
 
     <div class="pricing-card featured">
-      <div class="pricing-badge">Népszerű</div>
+      <div class="valentines-badge">❤️ Legjobb ajánlat</div>
       <div class="pricing-nights">2 éjszaka</div>
-      <div class="pricing-amount">85.000 <span>Ft</span></div>
-      <div class="pricing-per">2 fő részére</div>
+      <div class="price-wrapper">
+        <div class="old-price">85.000 Ft</div>
+        <div class="pricing-amount">68.000 <span>Ft</span></div>
+        <div class="pricing-per">2 fő részére</div>
+        <div class="savings">Megtakarítás: 17.000 Ft ❤️</div>
+      </div>
       <ul class="pricing-features">
         <li>Teljes vendégház</li>
         <li>Benti szauna</li>
@@ -228,21 +355,28 @@
         <li>Panorámás kilátás</li>
         <li>Ingyenes parkolás</li>
         <li><strong>Legjobb ár/érték arány</strong></li>
+        <li><strong>Tökéletes romantikus hétvége</strong></li>
       </ul>
-      <a href="foglalas.html" class="btn" style="width: 100%;">Foglalás</a>
+      <a href="foglalas.html" class="btn" style="width: 100%; background: #c41e3a; border-color: #c41e3a;">Foglalás most</a>
     </div>
 
     <div class="pricing-card">
+      <div class="valentines-badge">❤️ Valentin-napi ár</div>
       <div class="pricing-nights">3 éjszaka</div>
-      <div class="pricing-amount">115.000 <span>Ft</span></div>
-      <div class="pricing-per">2 fő részére</div>
+      <div class="price-wrapper">
+        <div class="old-price">115.000 Ft</div>
+        <div class="pricing-amount">92.000 <span>Ft</span></div>
+        <div class="pricing-per">2 fő részére</div>
+        <div class="savings">Megtakarítás: 23.000 Ft</div>
+      </div>
       <ul class="pricing-features">
         <li>Teljes vendégház</li>
         <li>Benti szauna</li>
         <li>Tágas zöld udvar</li>
         <li>Panorámás kilátás</li>
         <li>Ingyenes parkolás</li>
-        <li><strong>Még több idő pihenni</strong></li>
+        <li><strong>Hosszabb pihenés</strong></li>
+        <li><strong>Maximális relaxáció</strong></li>
       </ul>
       <a href="foglalas.html" class="btn btn-outline" style="width: 100%;">Foglalás</a>
     </div>
@@ -251,6 +385,7 @@
   <div class="info-box">
     <h3>Fontos információk</h3>
     <ul class="info-list">
+      <li><strong>Valentin-napi akció:</strong> A 20% kedvezmény 2025. február 2-8. között leadott foglalásokra érvényes</li>
       <li><strong>Check-in:</strong> 15:00-tól • <strong>Check-out:</strong> 10:00-ig</li>
       <li>Gyermekek esetén (maximum 1-2 fő) egyedi egyeztetés szükséges</li>
       <li>Foglalás maximum 1 hét időtartamra lehetséges</li>
@@ -261,10 +396,10 @@
   </div>
 
   <div class="glass" style="padding: 3rem; text-align: center; margin: 3rem 0;">
-    <h3 style="color: var(--color-accent-light); margin-bottom: 1.5rem;">Kérdésed van az árakkal kapcsolatban?</h3>
-    <p style="margin-bottom: 2rem;">Hívj minket bizalommal, vagy írj emailt!</p>
+    <h3 style="color: var(--color-accent-light); margin-bottom: 1.5rem;">Ne hagyd ki a Valentin-napi akciót!</h3>
+    <p style="margin-bottom: 2rem;">Romantikus hétvége a természetben, 20% kedvezménnyel. Csak ezen a héten!</p>
     <div class="actions" style="justify-content: center;">
-      <a class="btn" href="foglalas.html">Online foglalás</a>
+      <a class="btn" href="foglalas.html" style="background: #c41e3a; border-color: #c41e3a;">❤️ Foglalás most</a>
       <a class="btn btn-outline" href="mailto:cseligevi5@gmail.com">Email</a>
       <a class="btn btn-outline" href="tel:+36708844779">Telefon</a>
     </div>
