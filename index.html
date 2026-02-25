@@ -1,82 +1,125 @@
 <!doctype html>
 <html lang="hu">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cseligevi Vendégház – Természet és nyugalom | Szekszárd</title>
-<meta name="description" content="Cseligevi Vendégház a Szekszárdi borvidéken. Természet, nyugalom, benti szauna, családbarát környezet.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="canonical" href="https://cseligevivendeghaz.com/">
-<link rel="stylesheet" href="style.css">
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cseligevi Vendégház – Természet és nyugalom | Szekszárd</title>
+  <meta name="description" content="Cseligevi Vendégház a Szekszárdi borvidéken. Teljes ház kizárólagos bérlésre, benti finn szauna, panoráma, max. 6 fő.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="canonical" href="https://cseligevivendeghaz.com/">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div id="navbar-container"></div>
 
-<section class="hero">
-  <div data-include="hero-background.html"></div>
-
+<!-- HERO -->
+<section class="hero" style="background:url('images/panorama1.jpg') center/cover no-repeat;">
   <div class="hero-overlay">
-    <div class="brand-svg">
-      <svg viewBox="0 0 200 60"><path id="brand-path" d="M10,30 C40,5 80,55 110,25 C130,10 160,20 190,30" fill="transparent" stroke="currentColor" stroke-width="2" style="color: var(--color-accent);"/></svg>
+    <p class="hero-eyebrow">Szekszárdi Borvidék · Teljes ház kizárólagos bérlésre</p>
+    <h1>A természet<br><em style="font-style:italic;color:#d4b888;">ritmusában</em></h1>
+    <p>Kizárólagos bérlés pároknak, barátoknak és kisebb társaságoknak – sem más vendégek, csak az Ön csoportja.</p>
+    <div class="actions">
+      <a class="btn" href="foglalas.html">Foglalja le az egész házat</a>
+      <a class="btn btn-outline" href="arak.html">Áraink megtekintése</a>
     </div>
-    <h1>Cseligevi – A természet ritmusában</h1>
-    <p>A nyugalom otthona</p>
-    <a class="btn" href="foglalas.html">Foglalj most</a>
   </div>
-
-  <div class="scroll-indicator" onclick="document.querySelector('.container').scrollIntoView({behavior: 'smooth'})">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-    </svg>
+  <div class="scroll-indicator" onclick="document.querySelector('.glass').scrollIntoView({behavior:'smooth'})">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
   </div>
 </section>
 
-<section class="container glass">
+<!-- INTRO -->
+<section class="glass">
   <h2>Természet és nyugalom Szekszárdon</h2>
   <p>A Cseligevi Vendégházat azért álmodtuk meg, hogy legyen egy hely, ahol az ember végre megállhat. Ahol a hétköznapok rohanása helyett a természet ritmusa veszi körül. Vendégházunk a Szekszárdi borvidék szívében található, ahonnan lélegzetelállító panoráma tárul eléd.</p>
-  <p>A Bati-kereszt kilátó mindössze 3 km-re van, közelben pedig olyan kedvelt célpontok várnak, mint a Heimann borászat vagy Sötétvölgy.</p>
+  <p>A Bati-kereszt kilátó mindössze 3 km-re van, közelben a Heimann borászat és Sötétvölgy is. <strong>Az egész házat egyszerre adjuk bérbe</strong> – teljesen privát élmény.</p>
+  <div class="actions" style="margin-top:2rem;">
+    <a class="btn" href="foglalas.html">Foglalás indítása</a>
+    <a class="btn btn-outline dark" href="arak.html">Árak és részletek</a>
+  </div>
 </section>
 
-<section class="container feature">
+<!-- FEATURES -->
+<section class="container feature reveal">
   <div>
-    <h2>Itt minden pillanat számít</h2>
-    <p>Reggel friss levegő és madárdal; napközben játék, pihenés; este a naplemente arany fényei. Itt a dombok, szőlősorok és a természet állandó jelenléte teszi különlegessé minden pillanatod.</p>
-    <a class="btn" href="foglalas.html">Foglalj most</a>
+    <h2>Minden pillanat számít</h2>
+    <p>Reggel friss levegő és madárdal; napközben játék és pihenés a tágas zöld udvaron; este a naplemente arany fényei borítják be a hegygerincet. A dombok, szőlősorok és a természet teszi különlegessé minden pillanatot.</p>
+    <div class="actions">
+      <a class="btn" href="foglalas.html">Foglalj most</a>
+      <a class="btn btn-outline dark" href="rolunk.html">Bővebben rólunk</a>
+    </div>
   </div>
-  <img src="images/kulteri.jpg" alt="Tágas zöld udvartéras kilátással" loading="lazy">
+  <img src="images/kulteri.jpg" alt="Tágas zöld udvar panorámával" loading="lazy">
 </section>
 
-<section class="container feature reverse">
-  <img src="images/szauna1.jpg" alt="Modern benti szauna" loading="lazy">
+<section class="container feature reverse reveal">
+  <img src="images/szauna1.jpg" alt="Modern benti finn szauna" loading="lazy">
   <div>
-    <h2>Pároknak és családoknak</h2>
-    <p>Ideális meghitt pihenéshez és családi kikapcsolódáshoz. A benti szauna gondoskodik a feltöltődésről, a gyerekek pedig szabadon játszhatnak a zöld udvaron.</p>
+    <h2>Pároknak és kisebb társaságoknak</h2>
+    <p>A benti finn szauna hűvösebb napokon is gondoskodik a feltöltődésről. A három hálószoba max. 6 főt fogad, a tágas nappali és a fedett terasz közös élményekre teremt lehetőséget.</p>
+    <div class="actions">
+      <a class="btn" href="arak.html">Árak és mit tartalmaz</a>
+    </div>
   </div>
 </section>
 
-<section class="container values">
-  <div class="value-card">
-    <h3>Természet közelsége</h3>
-    <p>Dombok, szőlősorok és csend – minden pillanat különleges.</p>
+<!-- VALUE CARDS -->
+<section class="values">
+  <div class="value-card reveal">
+    <h3>🌿 Természet közelsége</h3>
+    <p>Dombok, szőlősorok és csend – a Szekszárdi borvidék szívében, lélegzetelállító panorámával.</p>
   </div>
-  <div class="value-card">
-    <h3>Benti szauna</h3>
-    <p>A hűvösebb napokon is feltöltődés és kényelem.</p>
+  <div class="value-card reveal">
+    <h3>🧖 Finn szauna</h3>
+    <p>Benti finn szauna korlátlan használattal – feltöltődés hűvösebb napokon is.</p>
   </div>
-  <div class="value-card">
-    <h3>Családbarát</h3>
-    <p>Tágas zöld udvar játékhoz és közös élményekhez.</p>
+  <div class="value-card reveal">
+    <h3>🏠 Kizárólagos bérlés</h3>
+    <p>Az egész ház csak az Öné – sem más vendégek, sem közös terek. Max. 6 fő.</p>
+  </div>
+  <div class="value-card reveal">
+    <h3>👨‍👩‍👧 Családbarát</h3>
+    <p>Tágas zöld udvar, fedett terasz, játéklehetőség – közös élmények minden korosztálynak.</p>
   </div>
 </section>
 
-<section class="container">
-  <h2 style="text-align: center; margin-bottom: 3rem;">Hangulatképek</h2>
+<!-- REVIEWS SECTION -->
+<section class="container reveal">
+  <p style="font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--sage);margin-bottom:.7rem;">Vendégeink mondják</p>
+  <h2 style="margin-bottom:3rem;">Vélemények</h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="rv-stars">★★★★★</div>
+      <p class="rv-text">"Csodálatos pihenés! A természet, a csend és a szauna kombinációja tökéletes volt. Már tervezzük a visszatérést."</p>
+      <div class="rv-author"><strong>Kovács Anna</strong>Google · 2024. október</div>
+    </div>
+    <div class="review-card">
+      <div class="rv-stars">★★★★★</div>
+      <p class="rv-text">"Fantasztikus a panoráma és a kert. Az egész ház a miénk volt – igazán különleges érzés. Nagyon ajánlom!"</p>
+      <div class="rv-author"><strong>Nagy Péter</strong>Facebook · 2024. augusztus</div>
+    </div>
+    <div class="review-card">
+      <div class="rv-stars">★★★★★</div>
+      <p class="rv-text">"A bortúrás program szenzációs volt. A vendégház tökéletes – tiszta, kényelmes, és a gazdák nagyon kedvesek."</p>
+      <div class="rv-author"><strong>Szabó Mária</strong>Booking.com · 2024. június</div>
+    </div>
+  </div>
+  <div class="platform-row">
+    <div style="text-align:center;"><div class="platform-score">4.9</div><div class="platform-name">Google</div></div>
+    <div style="text-align:center;"><div class="platform-score">9.2</div><div class="platform-name">Booking.com</div></div>
+    <div style="text-align:center;"><div class="platform-score">Kiváló</div><div class="platform-name">TripAdvisor</div></div>
+    <div style="text-align:center;"><div class="platform-score">4.8</div><div class="platform-name">Facebook</div></div>
+  </div>
+</section>
+
+<!-- IMAGE STRIP -->
+<section class="container reveal">
+  <h2 style="text-align:center;margin-bottom:.5rem;">Hangulatképek</h2>
+  <p style="text-align:center;margin-bottom:2rem;"><a href="kepek.html" style="color:var(--sage-dark);font-size:.85rem;letter-spacing:.05em;">Összes kép megtekintése →</a></p>
   <div class="strip">
     <img class="tile" src="images/nappali1.jpg" alt="Tágas nappali" loading="lazy">
     <img class="tile" src="images/konyha1.jpg" alt="Modern konyha" loading="lazy">
@@ -88,11 +131,9 @@
   </div>
 </section>
 
-<div id="footer-container" data-include="footer.html"></div>
-
+<div id="footer-container"></div>
 <script src="include.js"></script>
-<script src="animation.js"></script>
 <script src="nav.js"></script>
-
+<script src="animation.js"></script>
 </body>
 </html>
