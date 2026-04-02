@@ -4,411 +4,122 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Képek – Cseligevi Vendégház | Galéria</title>
-  <meta name="description" content="Képgaléria a Cseligevi Vendégházról. Belső terek, kültéri élmények, wellness.">
+  <meta name="description" content="Képgaléria a Cseligevi Vendégházról. Belső terek, kültéri élmények, finn szauna, panoráma.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="canonical" href="https://cseligevivendeghaz.com/kepek.html">
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
-  
   <style>
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-      padding: 2rem 0;
+    .gallery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.2rem; padding:2rem 0; }
+    .gallery-item { position:relative; aspect-ratio:4/3; border-radius:4px; overflow:hidden; cursor:pointer; box-shadow:var(--shadow-md); transition:transform .35s, box-shadow .35s; }
+    .gallery-item:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); }
+    .gallery-item img { width:100%; height:100%; object-fit:cover; transition:transform .55s; display:block; }
+    .gallery-item:hover img { transform:scale(1.08); }
+    .gallery-caption { position:absolute; bottom:0; left:0; right:0; padding:2rem 1.4rem 1.2rem; background:linear-gradient(to top,rgba(20,12,5,.9),transparent); color:white; font-weight:500; font-size:1rem; transform:translateY(100%); transition:transform .35s; }
+    .gallery-item:hover .gallery-caption { transform:translateY(0); }
+    .lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,.96); z-index:10000; padding:2rem; backdrop-filter:blur(10px); }
+    .lightbox.active { display:flex; align-items:center; justify-content:center; }
+    .lightbox-content { position:relative; max-width:95%; max-height:95vh; animation:lbIn .3s ease; }
+    @keyframes lbIn { from{opacity:0;transform:scale(.95)} to{opacity:1;transform:scale(1)} }
+    .lightbox img { max-width:100%; max-height:90vh; object-fit:contain; border-radius:4px; box-shadow:0 25px 80px rgba(0,0,0,.6); display:block; }
+    .lightbox-close { position:absolute; top:-56px; right:0; background:var(--sage-dark); color:white; border:none; padding:.8rem 1.6rem; border-radius:2px; cursor:pointer; font-weight:500; font-size:.9rem; font-family:'DM Sans',sans-serif; display:flex; align-items:center; gap:.4rem; transition:background .2s; }
+    .lightbox-close:hover { background:var(--sage); }
+    .lightbox-nav { position:absolute; top:50%; transform:translateY(-50%); background:rgba(90,114,72,.85); color:white; border:none; cursor:pointer; font-size:1.5rem; border-radius:50%; width:52px; height:52px; display:flex; align-items:center; justify-content:center; transition:all .2s; font-weight:700; }
+    .lightbox-nav:hover { background:var(--sage-dark); transform:translateY(-50%) scale(1.1); }
+    .lightbox-prev { left:-70px; }
+    .lightbox-next { right:-70px; }
+    .lightbox-counter { position:absolute; bottom:-44px; left:50%; transform:translateX(-50%); color:white; font-size:.88rem; background:rgba(90,114,72,.5); padding:.4rem .9rem; border-radius:20px; backdrop-filter:blur(8px); white-space:nowrap; }
+    @media(max-width:900px){
+      .lightbox-nav{width:44px;height:44px;font-size:1.2rem;}
+      .lightbox-prev{left:8px;top:auto;bottom:74px;}
+      .lightbox-next{right:8px;top:auto;bottom:74px;}
+      .lightbox-close{top:8px;right:8px;}
+      .lightbox-counter{bottom:18px;}
     }
-
-    .gallery-item {
-      position: relative;
-      aspect-ratio: 4/3;
-      border-radius: 12px;
-      overflow: hidden;
-      cursor: pointer;
-      box-shadow: var(--shadow-md);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .gallery-item:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.1);
-    }
-
-    .gallery-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 2rem 1.5rem 1.5rem;
-      background: linear-gradient(to top, rgba(15, 24, 16, 0.95), transparent);
-      color: var(--color-primary);
-      font-weight: 600;
-      font-size: 1.125rem;
-      transform: translateY(100%);
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .gallery-item:hover .gallery-caption {
-      transform: translateY(0);
-    }
-
-    .lightbox {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.96);
-      z-index: 10000;
-      padding: 2rem;
-      backdrop-filter: blur(10px);
-    }
-
-    .lightbox.active {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .lightbox-content {
-      position: relative;
-      max-width: 95%;
-      max-height: 95vh;
-      animation: lightboxFadeIn 0.3s ease;
-    }
-
-    @keyframes lightboxFadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.95);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .lightbox img {
-      max-width: 100%;
-      max-height: 90vh;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: -60px;
-      right: 0;
-      background: var(--color-accent);
-      color: white;
-      border: none;
-      padding: 0.875rem 1.75rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .lightbox-close:hover {
-      background: var(--color-accent-light);
-      transform: translateY(-2px);
-    }
-
-    .lightbox-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(90, 125, 90, 0.9);
-      backdrop-filter: blur(10px);
-      color: white;
-      border: none;
-      padding: 1.25rem;
-      cursor: pointer;
-      font-size: 1.5rem;
-      border-radius: 50%;
-      width: 56px;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      font-weight: 700;
-    }
-
-    .lightbox-nav:hover {
-      background: var(--color-accent);
-      transform: translateY(-50%) scale(1.1);
-    }
-
-    .lightbox-prev {
-      left: -80px;
-    }
-
-    .lightbox-next {
-      right: -80px;
-    }
-
-    .lightbox-counter {
-      position: absolute;
-      bottom: -50px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: white;
-      font-size: 1rem;
-      font-weight: 500;
-      background: rgba(90, 125, 90, 0.5);
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-    }
-
-    @media (max-width: 900px) {
-      .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 1rem;
-      }
-
-      .lightbox-nav {
-        width: 48px;
-        height: 48px;
-        font-size: 1.25rem;
-      }
-
-      .lightbox-prev {
-        left: 10px;
-        top: auto;
-        bottom: 80px;
-      }
-
-      .lightbox-next {
-        right: 10px;
-        top: auto;
-        bottom: 80px;
-      }
-
-      .lightbox-close {
-        top: 10px;
-        right: 10px;
-      }
-
-      .lightbox-counter {
-        bottom: 20px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+    @media(max-width:480px){.gallery-grid{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
-
 <div id="navbar-container"></div>
 
-<section class="hero">
-  <div data-include="hero-background.html"></div>
+<section class="hero" style="background:url('images/nappali1.jpg') center/cover no-repeat;">
   <div class="hero-overlay">
-    <h1>Képgaléria</h1>
-    <p>Fedezd fel a Cseligevi Vendégházat</p>
+    <p class="hero-eyebrow">Képgaléria</p>
+    <h1>Hangulatképek</h1>
+    <p>Fedezze fel a Cseligevi Vendégházat képeken</p>
     <a class="btn" href="foglalas.html">Foglalj most</a>
   </div>
-  <div class="scroll-indicator" onclick="document.querySelector('.container').scrollIntoView({behavior: 'smooth'})">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-    </svg>
+  <div class="scroll-indicator" onclick="document.querySelector('.values').scrollIntoView({behavior:'smooth'})">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
   </div>
 </section>
 
-<section class="container values">
-  <div class="value-card">
-    <h3>Belső terek</h3>
-    <p>Nappali, konyha, hálószobák</p>
-  </div>
-  <div class="value-card">
-    <h3>Kültéri élmények</h3>
-    <p>Terasz, kert, panoráma</p>
-  </div>
-  <div class="value-card">
-    <h3>Wellness</h3>
-    <p>Benti szauna és pihenés</p>
-  </div>
+<section class="values">
+  <div class="value-card"><h3>Belső terek</h3><p>Nappali, konyha, hálószobák</p></div>
+  <div class="value-card"><h3>Kültéri élmények</h3><p>Terasz, kert, panoráma</p></div>
+  <div class="value-card"><h3>Wellness</h3><p>Benti finn szauna és pihenés</p></div>
 </section>
 
 <section class="container">
-  <h2 style="text-align: center; margin-bottom: 3rem;">Hangulatképek</h2>
-  <p style="text-align: center; color: var(--color-secondary); margin-bottom: 3rem;">Kattints a képekre a nagyításhoz</p>
-  
-  <div class="gallery-grid">
-    <div class="gallery-item" onclick="openLightbox(0)">
-      <img src="images/nappali1.jpg" alt="Tágas nappali modern bútorokkal és panorámás kilátással" loading="lazy">
-      <div class="gallery-caption">Nappali</div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(1)">
-      <img src="images/konyha1.jpg" alt="Felszerelt konyha minden eszközzel" loading="lazy">
-      <div class="gallery-caption">Konyha</div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(2)">
-      <img src="images/halo1.jpg" alt="Otthonos hálószoba kényelmes ággyal" loading="lazy">
-      <div class="gallery-caption">Hálószoba</div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(3)">
-      <img src="images/terasz1.jpg" alt="Fedett terasz kültéri étkezéshez" loading="lazy">
-      <div class="gallery-caption">Terasz</div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(4)">
-      <img src="images/kert1.jpg" alt="Zöld kert pihenéshez és játékhoz" loading="lazy">
-      <div class="gallery-caption">Kert</div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(5)">
-      <img src="images/panorama1.jpg" alt="Lélegzetelállító panoráma a borvidékre" loading="lazy">
-      <div class="gallery-caption">Panoráma</div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(6)">
-      <img src="images/szauna1.jpg" alt="Benti szauna relaxációhoz" loading="lazy">
-      <div class="gallery-caption">Szauna</div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(7)">
-      <img src="images/kulteri.jpg" alt="Kültéri játszótér gyerekeknek" loading="lazy">
-      <div class="gallery-caption">Játszótér</div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(8)">
-      <img src="images/rolunk1.jpg" alt="Természet közelsége" loading="lazy">
-      <div class="gallery-caption">Természet</div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(9)">
-      <img src="images/rolunk2.jpg" alt="Szekszárdi borvidék látvány" loading="lazy">
-      <div class="gallery-caption">Borvidék</div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(10)">
-      <img src="images/rolunk3.jpg" alt="Pihenés a kertben" loading="lazy">
-      <div class="gallery-caption">Pihenés</div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(11)">
-      <img src="images/rolunk4.jpg" alt="Nyugalom és béke" loading="lazy">
-      <div class="gallery-caption">Nyugalom</div>
-    </div>
+  <h2 style="text-align:center;margin-bottom:.5rem;">Hangulatképek</h2>
+  <p style="text-align:center;color:var(--text-light);margin-bottom:2.5rem;font-size:.88rem;">Kattintson a képekre a nagyításhoz</p>
+  <!-- Belső terek -->
+  <h3 style="font-size:1rem;letter-spacing:.15em;text-transform:uppercase;color:var(--sage);margin-bottom:1.2rem;">Belső terek</h3>
+  <div class="gallery-grid" style="margin-bottom:3rem;">
+    <div class="gallery-item" onclick="openLightbox(0)"><img src="images/nappali1.jpg" alt="Tágas nappali" loading="lazy"><div class="gallery-caption">Nappali</div></div>
+    <div class="gallery-item" onclick="openLightbox(1)"><img src="images/konyha1.jpg" alt="Felszerelt konyha" loading="lazy"><div class="gallery-caption">Konyha</div></div>
+    <div class="gallery-item" onclick="openLightbox(2)"><img src="images/halo1.jpg" alt="Hálószoba" loading="lazy"><div class="gallery-caption">Hálószoba</div></div>
+    <div class="gallery-item" onclick="openLightbox(6)"><img src="images/szauna1.jpg" alt="Benti szauna" loading="lazy"><div class="gallery-caption">Szauna</div></div>
   </div>
+
+  <!-- Kültér és panoráma -->
+  <h3 style="font-size:1rem;letter-spacing:.15em;text-transform:uppercase;color:var(--sage);margin-bottom:1.2rem;">Kültér & Panoráma</h3>
+  <div class="gallery-grid" style="margin-bottom:3rem;">
+    <div class="gallery-item" onclick="openLightbox(3)"><img src="images/terasz1.jpg" alt="Fedett terasz" loading="lazy"><div class="gallery-caption">Terasz</div></div>
+    <div class="gallery-item" onclick="openLightbox(4)"><img src="images/kert1.jpg" alt="Zöld kert" loading="lazy"><div class="gallery-caption">Kert</div></div>
+    <div class="gallery-item" onclick="openLightbox(5)"><img src="images/panorama1.jpg" alt="Panoráma" loading="lazy"><div class="gallery-caption">Panoráma</div></div>
+    <div class="gallery-item" onclick="openLightbox(7)"><img src="images/kulteri.jpg" alt="Kültéri terület" loading="lazy"><div class="gallery-caption">Udvar</div></div>
+  </div>
+
+  <!-- Borvidék és környék – Fix #9 -->
+  <h3 style="font-size:1rem;letter-spacing:.15em;text-transform:uppercase;color:var(--sage);margin-bottom:1.2rem;">Borvidék & Környék</h3>
+  <div class="gallery-grid">
+    <div class="gallery-item" onclick="openLightbox(9)"><img src="images/rolunk2.jpg" alt="Szekszárdi borvidék szőlősorok" loading="lazy"><div class="gallery-caption">Szőlősorok</div></div>
+    <div class="gallery-item" onclick="openLightbox(8)"><img src="images/rolunk1.jpg" alt="Természet közelsége" loading="lazy"><div class="gallery-caption">Természet</div></div>
+    <div class="gallery-item" onclick="openLightbox(10)"><img src="images/rolunk3.jpg" alt="Napkelte a dombokon" loading="lazy"><div class="gallery-caption">Napkelte</div></div>
+    <div class="gallery-item" onclick="openLightbox(11)"><img src="images/rolunk4.jpg" alt="Naplemente panoráma" loading="lazy"><div class="gallery-caption">Naplemente</div></div>
+  </div>
+  <p style="text-align:center;font-size:.82rem;color:var(--text-light);margin-top:1.5rem;">📸 Saját fotóit szívesen fogadjuk! Írjon nekünk: <a href="mailto:cseligevi5@gmail.com" style="color:var(--sage-dark);">cseligevi5@gmail.com</a></p>
 </section>
 
-<!-- Lightbox -->
 <div id="lightbox" class="lightbox" onclick="closeLightbox()">
   <div class="lightbox-content" onclick="event.stopPropagation()">
-    <button class="lightbox-close" onclick="closeLightbox()">
-      <span>✕</span>
-      <span>Bezár</span>
-    </button>
-    <button class="lightbox-prev" onclick="changeImage(-1)">‹</button>
+    <button class="lightbox-close" onclick="closeLightbox()"><span>✕</span><span>Bezár</span></button>
+    <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">‹</button>
     <img id="lightbox-img" src="" alt="">
-    <button class="lightbox-next" onclick="changeImage(1)">›</button>
-    <div class="lightbox-counter">
-      <span id="current-image">1</span> / <span id="total-images">12</span>
-    </div>
+    <button class="lightbox-nav lightbox-next" onclick="changeImage(1)">›</button>
+    <div class="lightbox-counter"><span id="cur">1</span> / <span id="tot">12</span></div>
   </div>
 </div>
 
-<div id="footer-container" data-include="footer.html"></div>
-
+<div id="footer-container"></div>
 <script>
-  const images = [
-    { src: 'images/nappali1.jpg', alt: 'Tágas nappali' },
-    { src: 'images/konyha1.jpg', alt: 'Modern konyha' },
-    { src: 'images/halo1.jpg', alt: 'Hálószoba' },
-    { src: 'images/terasz1.jpg', alt: 'Terasz' },
-    { src: 'images/kert1.jpg', alt: 'Kert' },
-    { src: 'images/panorama1.jpg', alt: 'Panoráma' },
-    { src: 'images/szauna1.jpg', alt: 'Szauna' },
-    { src: 'images/kulteri.jpg', alt: 'Játszótér' },
-    { src: 'images/rolunk1.jpg', alt: 'Természet' },
-    { src: 'images/rolunk2.jpg', alt: 'Borvidék' },
-    { src: 'images/rolunk3.jpg', alt: 'Pihenés' },
-    { src: 'images/rolunk4.jpg', alt: 'Nyugalom' }
-  ];
-
-  let currentImageIndex = 0;
-
-  // Set total images
-  document.getElementById('total-images').textContent = images.length;
-
-  function openLightbox(index) {
-    currentImageIndex = index;
-    updateLightboxImage();
-    document.getElementById('lightbox').classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  function changeImage(direction) {
-    currentImageIndex += direction;
-    if (currentImageIndex < 0) currentImageIndex = images.length - 1;
-    if (currentImageIndex >= images.length) currentImageIndex = 0;
-    updateLightboxImage();
-  }
-
-  function updateLightboxImage() {
-    const img = document.getElementById('lightbox-img');
-    img.src = images[currentImageIndex].src;
-    img.alt = images[currentImageIndex].alt;
-    document.getElementById('current-image').textContent = currentImageIndex + 1;
-  }
-
-  // Keyboard navigation
-  document.addEventListener('keydown', (e) => {
-    const lightbox = document.getElementById('lightbox');
-    if (lightbox.classList.contains('active')) {
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') changeImage(-1);
-      if (e.key === 'ArrowRight') changeImage(1);
-    }
-  });
-
-  // Touch swipe support for mobile
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  document.getElementById('lightbox').addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
-  });
-
-  document.getElementById('lightbox').addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  });
-
-  function handleSwipe() {
-    if (touchEndX < touchStartX - 50) changeImage(1);  // Swipe left
-    if (touchEndX > touchStartX + 50) changeImage(-1); // Swipe right
-  }
+  const imgs=[{src:'images/nappali1.jpg',alt:'Nappali'},{src:'images/konyha1.jpg',alt:'Konyha'},{src:'images/halo1.jpg',alt:'Hálószoba'},{src:'images/terasz1.jpg',alt:'Terasz'},{src:'images/kert1.jpg',alt:'Kert'},{src:'images/panorama1.jpg',alt:'Panoráma'},{src:'images/szauna1.jpg',alt:'Szauna'},{src:'images/kulteri.jpg',alt:'Játszótér'},{src:'images/rolunk1.jpg',alt:'Természet'},{src:'images/rolunk2.jpg',alt:'Borvidék'},{src:'images/rolunk3.jpg',alt:'Pihenés'},{src:'images/rolunk4.jpg',alt:'Nyugalom'}];
+  let idx=0;
+  document.getElementById('tot').textContent=imgs.length;
+  function openLightbox(i){idx=i;update();document.getElementById('lightbox').classList.add('active');document.body.style.overflow='hidden';}
+  function closeLightbox(){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow='';}
+  function changeImage(d){idx=(idx+d+imgs.length)%imgs.length;update();}
+  function update(){const img=document.getElementById('lightbox-img');img.src=imgs[idx].src;img.alt=imgs[idx].alt;document.getElementById('cur').textContent=idx+1;}
+  document.addEventListener('keydown',e=>{const lb=document.getElementById('lightbox');if(lb.classList.contains('active')){if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')changeImage(-1);if(e.key==='ArrowRight')changeImage(1);}});
+  let tx=0,te=0;
+  document.getElementById('lightbox').addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX;});
+  document.getElementById('lightbox').addEventListener('touchend',e=>{te=e.changedTouches[0].screenX;if(te<tx-50)changeImage(1);if(te>tx+50)changeImage(-1);});
 </script>
-
 <script src="include.js"></script>
-<script src="animation.js"></script>
 <script src="nav.js"></script>
-
+<script src="animation.js"></script>
 </body>
 </html>
