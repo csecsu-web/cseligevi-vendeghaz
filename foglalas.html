@@ -4,81 +4,245 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Foglalás – Cseligevi Vendégház</title>
-  <meta name="description" content="Foglaljon most egyszerűen és gyorsan.">
+  <meta name="description" content="Foglalja le a Cseligevi Vendégházat. Nézze meg a szabad dátumokat, írjon WhatsApp-on vagy töltse ki az űrlapot.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="canonical" href="https://cseligevivendeghaz.com/foglalas.html">
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+  <style>
+    .booking-layout {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: 4rem; align-items: start;
+      max-width: 1100px; margin: 2.5rem auto 0;
+    }
+    .booking-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-note { font-size:.82rem; color:var(--text-mid); line-height:1.65; padding:1rem 1.1rem; background:var(--sand); border-left:3px solid var(--sage-light); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+    .fg { display: flex; flex-direction: column; gap: .38rem; }
+    .fg label { font-size:.63rem; letter-spacing:.14em; text-transform:uppercase; color:var(--text-light); }
+    .fg input,.fg textarea,.fg select {
+      background:var(--off-white); border:1px solid var(--border);
+      padding:.75rem .95rem; font-family:'DM Sans',sans-serif;
+      font-size:.9rem; font-weight:300; color:var(--text);
+      outline:none; transition:border-color .2s; border-radius:2px; width:100%;
+    }
+    .fg input:focus,.fg textarea:focus,.fg select:focus { border-color:var(--sage); background:white; }
+    .fg textarea { resize:vertical; min-height:100px; }
+    .contact-details { display: flex; flex-direction: column; gap: 1.6rem; }
+    .cd-label { font-size:.63rem; letter-spacing:.18em; text-transform:uppercase; color:var(--sage); margin-bottom:.38rem; }
+    .cd-value { font-size:.9rem; color:var(--text-mid); line-height:1.7; }
+    .cd-value a { color:var(--sage-dark); text-decoration:none; }
+    .cd-value a:hover { color:var(--brown-dark); }
+
+    /* WhatsApp button */
+    .whatsapp-btn {
+      display: flex; align-items: center; gap: .75rem;
+      background: #25D366; color: white;
+      padding: .85rem 1.6rem; border-radius: 2px;
+      font-family: 'DM Sans', sans-serif; font-size: .85rem;
+      font-weight: 500; text-decoration: none;
+      transition: background .2s, transform .2s;
+      width: fit-content;
+    }
+    .whatsapp-btn:hover { background: #1ebe5d; transform: translateY(-2px); }
+    .whatsapp-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
+
+    /* Calendar section */
+    .calendar-section {
+      max-width: 1100px; margin: 3rem auto 0;
+      padding: 2.5rem;
+      background: var(--off-white);
+      border: 1px solid var(--border);
+    }
+    .calendar-section h3 { font-size: 1.3rem; margin-bottom: .5rem; color: var(--brown-dark); }
+    .calendar-section p { font-size: .88rem; color: var(--text-mid); margin-bottom: 1.5rem; line-height: 1.65; }
+    .calendar-wrapper {
+      position: relative; padding-bottom: 75%; height: 0;
+      overflow: hidden; border: 1px solid var(--border);
+    }
+    .calendar-wrapper iframe {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; border: 0;
+    }
+    @media(min-width:600px) {
+      .calendar-wrapper { padding-bottom: 55%; }
+    }
+    @media(min-width:900px) {
+      .calendar-wrapper { padding-bottom: 45%; }
+    }
+
+    @media(max-width:860px){
+      .booking-layout { grid-template-columns:1fr; gap:2.5rem; }
+      .form-row { grid-template-columns:1fr; }
+    }
+  </style>
 </head>
 <body>
-
 <div id="navbar-container"></div>
 
-<section class="hero">
-  <div data-include="hero-background.html"></div>
+<section class="hero" style="background:url('images/panorama1.jpg') center/cover no-repeat;">
   <div class="hero-overlay">
+    <p class="hero-eyebrow">Kapcsolat & Foglalás</p>
     <h1>Foglalás</h1>
-    <p>Lépj velünk kapcsolatba</p>
+    <p>Nézze meg a szabad dátumokat, írjon WhatsApp-on vagy töltse ki az űrlapot – 24 órán belül visszajelzünk!</p>
   </div>
-  <div class="scroll-indicator" onclick="document.querySelector('.container').scrollIntoView({behavior: 'smooth'})">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-    </svg>
+  <div class="scroll-indicator" onclick="document.querySelector('.glass').scrollIntoView({behavior:'smooth'})">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
   </div>
 </section>
 
-<section class="container glass">
-  <h2>Vedd fel velünk a kapcsolatot</h2>
-  <p>Kérjük, válassz az alábbi elérhetőségek közül a foglaláshoz vagy további információkért.</p>
+<section class="glass">
+  <h2>Vegye fel velünk a kapcsolatot</h2>
+  <p>Az egész házat egyszerre adjuk bérbe (2 felnőtt + max. 2 gyermek, 5 000 Ft/gyermek/éjszaka). Töltse ki az alábbi űrlapot, írjon WhatsApp-on, vagy keressen minket telefonon.</p>
+</section>
 
-  <div class="values" style="margin-top: 3rem;">
-    <div class="value-card">
-      <h3>📧 Email</h3>
-      <p><a href="mailto:cseligevi5@gmail.com" style="font-size: 1.1rem; color: var(--color-accent-light);">cseligevi5@gmail.com</a></p>
-      <p style="margin-top: 1rem;">24 órán belül válaszolunk</p>
-    </div>
-    <div class="value-card">
-      <h3>📞 Telefon</h3>
-      <p><a href="tel:+36708844779" style="font-size: 1.1rem; color: var(--color-accent-light);">+36 70 884 4779</a></p>
-      <p><a href="tel:+36703346060" style="font-size: 1.1rem; color: var(--color-accent-light);">+36 70 334 6060</a></p>
-      <p style="margin-top: 1rem;">9:00 - 20:00 között</p>
-    </div>
+<!-- WHATSAPP + CONTACT BUTTONS – Fix #8 -->
+<div style="background:var(--sand);padding:2rem 5%;">
+  <div style="max-width:1100px;margin:0 auto;display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
+    <a href="https://wa.me/36708844779?text=Helló!%20Érdeklődnék%20a%20Cseligevi%20Vendégház%20foglalásával%20kapcsolatban."
+       target="_blank" rel="noopener" class="whatsapp-btn">
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.127 1.533 5.862L.054 23.25a.75.75 0 00.916.932l5.63-1.474A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.714 9.714 0 01-4.898-1.32l-.351-.208-3.644.955.972-3.546-.228-.364A9.712 9.712 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/>
+      </svg>
+      Írj nekünk WhatsApp-on!
+    </a>
+    <a href="tel:+36708844779" class="btn" style="background:var(--brown-dark);">📞 +36 70 884 4779</a>
+    <a href="tel:+36703346060" class="btn btn-outline dark">📞 +36 70 334 6060</a>
+    <a href="mailto:cseligevi5@gmail.com" class="btn btn-outline dark">✉ Email küldése</a>
   </div>
+</div>
 
-  <div style="margin-top: 4rem; padding: 2.5rem; background: rgba(90, 125, 90, 0.1); border-radius: 16px; border: 1px solid var(--color-border);">
-    <h3 style="color: var(--color-accent-light); margin-bottom: 1.5rem; font-size: 1.75rem;">Áraink</h3>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+<!-- AVAILABILITY CALENDAR – Fix #7 -->
+<div style="padding:0 5%;max-width:1180px;margin:3rem auto 0;" class="reveal">
+  <div class="calendar-section">
+    <h3>📅 Szabad dátumok naptára</h3>
+    <p>Az alábbi naptárban láthatja a foglalt és szabad időpontokat. Zöld = szabad, piros/szürke = foglalt. Kérdés esetén hívjon minket vagy írjon WhatsApp-on!</p>
+    <!-- Replace the src below with your actual Google Calendar embed URL from:
+         Google Calendar → Settings → your calendar → "Integrate calendar" → Embed code
+         Keep ?ctz=Europe/Budapest&bgcolor=%23f9f7f3 at the end for best appearance -->
+    <div class="calendar-wrapper">
+      <iframe
+        src="https://calendar.google.com/calendar/embed?src=cseligevi5%40gmail.com&ctz=Europe%2FBudapest&bgcolor=%23f9f7f3&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0&mode=MONTH"
+        frameborder="0" scrolling="no" loading="lazy"
+        title="Cseligevi Vendégház – Szabad dátumok">
+      </iframe>
+    </div>
+    <p style="margin-top:1rem;font-size:.78rem;color:var(--text-light);">Ha a naptár nem tölt be, kérjük vegye fel velünk a kapcsolatot telefonon vagy WhatsApp-on a szabad dátumok egyeztetéséhez.</p>
+  </div>
+</div>
+
+<!-- BOOKING FORM -->
+<section class="container">
+  <div class="booking-layout">
+    <div class="contact-details reveal">
       <div>
-        <p style="font-weight: 600; color: var(--color-primary); font-size: 1.1rem;">1 éjszaka</p>
-        <p style="font-size: 1.75rem; font-weight: 700; color: var(--color-accent-light);">45 000 Ft</p>
+        <div class="cd-label">Telefon / WhatsApp</div>
+        <div class="cd-value">
+          <a href="tel:+36708844779">+36 70 884 4779</a><br>
+          <a href="tel:+36703346060">+36 70 334 6060</a><br>
+          <small style="color:var(--text-light);">9:00–20:00 között</small>
+        </div>
       </div>
       <div>
-        <p style="font-weight: 600; color: var(--color-primary); font-size: 1.1rem;">2 éjszaka</p>
-        <p style="font-size: 1.75rem; font-weight: 700; color: var(--color-accent-light);">85 000 Ft</p>
+        <div class="cd-label">E-mail</div>
+        <div class="cd-value">
+          <a href="mailto:cseligevi5@gmail.com">cseligevi5@gmail.com</a><br>
+          <small style="color:var(--text-light);">24 órán belül válaszolunk</small>
+        </div>
       </div>
       <div>
-        <p style="font-weight: 600; color: var(--color-primary); font-size: 1.1rem;">3 éjszaka</p>
-        <p style="font-size: 1.75rem; font-weight: 700; color: var(--color-accent-light);">115 000 Ft</p>
+        <div class="cd-label">Check-in / Check-out</div>
+        <div class="cd-value">Bejelentkezés: 14:00-tól<br>Kijelentkezés: 11:00-ig</div>
+      </div>
+      <div>
+        <div class="cd-label">Kapacitás</div>
+        <div class="cd-value">2 felnőtt (alap ár)<br>+ max. 2 gyermek (5 000 Ft/gyermek/éjszaka)</div>
+      </div>
+      <div style="background:var(--sand);padding:1.3rem;border-left:3px solid var(--sage);">
+        <div class="cd-label" style="margin-bottom:.7rem;">Gyors ártáblázat</div>
+        <div style="display:flex;flex-direction:column;gap:.45rem;">
+          <div style="display:flex;justify-content:space-between;font-size:.86rem;"><span style="color:var(--text-mid);">1 éjszaka (2 felnőtt)</span><strong style="color:var(--brown-dark);">45 000 Ft</strong></div>
+          <div style="display:flex;justify-content:space-between;font-size:.86rem;"><span style="color:var(--text-mid);">2 éjszaka (2 felnőtt)</span><strong style="color:var(--brown-dark);">85 000 Ft</strong></div>
+          <div style="display:flex;justify-content:space-between;font-size:.86rem;"><span style="color:var(--text-mid);">3 éjszaka (2 felnőtt)</span><strong style="color:var(--brown-dark);">115 000 Ft</strong></div>
+          <div style="display:flex;justify-content:space-between;font-size:.82rem;border-top:1px solid var(--border);padding-top:.45rem;margin-top:.2rem;"><span style="color:var(--text-light);">+gyermek / éjszaka</span><strong style="color:var(--brown);">+5 000 Ft</strong></div>
+        </div>
+        <a href="arak.html" style="display:inline-block;margin-top:.9rem;font-size:.75rem;color:var(--sage-dark);letter-spacing:.05em;">Részletes árak →</a>
       </div>
     </div>
-    <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--color-secondary);">Az árak 2 fő részére értendők, tartalmazzák az adót.</p>
-  </div>
 
-  <div class="actions" style="margin-top: 3rem; justify-content: center;">
-    <a class="btn" href="mailto:cseligevi5@gmail.com">Foglalás emailben</a>
-    <a class="btn btn-outline" href="tel:+36708844779">Hívás</a>
+    <form class="booking-form reveal" onsubmit="submitBooking(event)">
+      <div class="form-note">Töltse ki az alábbi űrlapot – 24 órán belül visszajelzünk az elérhetőséggel és az árral. Ha gyermekekkel érkezik, kérjük jelezze a számot és életkort.</div>
+      <div class="form-row">
+        <div class="fg"><label>Teljes név</label><input type="text" placeholder="Kovács Anna" required></div>
+        <div class="fg"><label>Telefon / WhatsApp</label><input type="tel" placeholder="+36 XX XXX XXXX"></div>
+      </div>
+      <div class="fg"><label>E-mail cím</label><input type="email" placeholder="nev@email.hu" required></div>
+      <div class="form-row">
+        <div class="fg"><label>Érkezés dátuma</label><input type="date" id="form-arr"></div>
+        <div class="fg"><label>Távozás dátuma</label><input type="date" id="form-dep"></div>
+      </div>
+      <div class="form-row">
+        <div class="fg">
+          <label>Felnőttek száma</label>
+          <select>
+            <option>1 felnőtt</option>
+            <option selected>2 felnőtt</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Gyermekek száma</label>
+          <select>
+            <option>Nincs gyermek</option>
+            <option>1 gyermek (+5 000 Ft/éj)</option>
+            <option>2 gyermek (+10 000 Ft/éj)</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg">
+        <label>Alkalom</label>
+        <select>
+          <option>Pihenés, nyaralás</option>
+          <option>Romantikus hétvége csomag</option>
+          <option>Születésnap / ünneplés</option>
+          <option>Barátok társasága</option>
+          <option>Egyéb</option>
+        </select>
+      </div>
+      <div class="fg"><label>Üzenet / különleges kérés</label><textarea placeholder="Pl. gyerekek életkora, borkörutazás érdeklődés, egyéb kívánság…"></textarea></div>
+      <button type="submit" class="btn" style="align-self:flex-start;">Foglalási igény küldése →</button>
+    </form>
   </div>
 </section>
 
-<div id="footer-container" data-include="footer.html"></div>
-
+<div id="footer-container"></div>
 <script src="include.js"></script>
-<script src="animation.js"></script>
 <script src="nav.js"></script>
+<script src="animation.js"></script>
+<script>
+  const pad = n => String(n).padStart(2,'0');
+  const fmt = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+  const t = new Date(), arr = new Date(t), dep = new Date(t);
+  arr.setDate(arr.getDate()+1); dep.setDate(dep.getDate()+4);
+  document.getElementById('form-arr').value = fmt(arr);
+  document.getElementById('form-dep').value = fmt(dep);
 
+  function submitBooking(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type=submit]');
+    btn.textContent = '✓ Elküldve! Hamarosan jelentkezünk.';
+    btn.style.background = 'var(--sage)';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Foglalási igény küldése →';
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 5000);
+  }
+</script>
 </body>
 </html>
