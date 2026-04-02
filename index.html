@@ -4,13 +4,80 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Cseligevi Vendégház – Természet és nyugalom | Szekszárd</title>
-  <meta name="description" content="Cseligevi Vendégház a Szekszárdi borvidéken. Teljes ház kizárólagos bérlésre, benti finn szauna, panoráma, max. 6 fő.">
+  <meta name="description" content="Cseligevi Vendégház a Szekszárdi borvidéken. Teljes ház kizárólagos bérlésre, benti finn szauna, panoráma. Max. 2 felnőtt + 2 gyerek.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="canonical" href="https://cseligevivendeghaz.com/">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Price strip ── */
+    .price-strip {
+      background: var(--brown-dark);
+      padding: 1.4rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .price-strip .ps-label {
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--sage-light);
+    }
+    .price-strip .ps-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: white;
+      font-weight: 400;
+      line-height: 1;
+    }
+    .price-strip .ps-note {
+      font-size: .78rem;
+      color: rgba(255,255,255,.55);
+    }
+    .price-strip .ps-divider {
+      width: 1px; height: 40px;
+      background: rgba(255,255,255,.15);
+    }
+    @media(max-width:600px){
+      .price-strip { gap: 1rem; }
+      .price-strip .ps-divider { display: none; }
+    }
+
+    /* ── Wine block ── */
+    .wine-block {
+      background: var(--off-white);
+      border-left: 4px solid var(--sage);
+      padding: 2.5rem;
+      margin: 0;
+    }
+    .wine-block .wb-eyebrow {
+      font-size: .68rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: .6rem;
+    }
+    .wine-block blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 3vw, 1.7rem);
+      font-style: italic;
+      line-height: 1.55;
+      color: var(--brown-dark);
+      margin-bottom: 1rem;
+    }
+    .wine-block p {
+      font-size: .88rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      max-width: 560px;
+    }
+  </style>
 </head>
 <body>
 
@@ -21,16 +88,35 @@
   <div class="hero-overlay">
     <p class="hero-eyebrow">Szekszárdi Borvidék · Teljes ház kizárólagos bérlésre</p>
     <h1>A természet<br><em style="font-style:italic;color:#d4b888;">ritmusában</em></h1>
-    <p>Kizárólagos bérlés pároknak, barátoknak és kisebb társaságoknak – sem más vendégek, csak az Ön csoportja.</p>
+    <p>Kizárólagos bérlés – sem más vendégek, csak az Ön kis csoportja és a csend.</p>
     <div class="actions">
       <a class="btn" href="foglalas.html">Foglalja le az egész házat</a>
       <a class="btn btn-outline" href="arak.html">Áraink megtekintése</a>
     </div>
   </div>
-  <div class="scroll-indicator" onclick="document.querySelector('.glass').scrollIntoView({behavior:'smooth'})">
+  <div class="scroll-indicator" onclick="document.querySelector('.price-strip').scrollIntoView({behavior:'smooth'})">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
   </div>
 </section>
+
+<!-- PRICE STRIP -->
+<div class="price-strip">
+  <div>
+    <div class="ps-label">Ártól</div>
+    <div class="ps-amount">45 000 Ft</div>
+    <div class="ps-note">/ éjszaka · teljes ház</div>
+  </div>
+  <div class="ps-divider"></div>
+  <div>
+    <div class="ps-label">Kapacitás</div>
+    <div class="ps-amount" style="font-size:1.3rem;">2 felnőtt + 2 gyerek</div>
+    <div class="ps-note">kizárólagos bérlés</div>
+  </div>
+  <div class="ps-divider"></div>
+  <div>
+    <a href="foglalas.html" class="btn" style="white-space:nowrap;">Foglalj most →</a>
+  </div>
+</div>
 
 <!-- INTRO -->
 <section class="glass">
@@ -42,6 +128,16 @@
     <a class="btn btn-outline dark" href="arak.html">Árak és részletek</a>
   </div>
 </section>
+
+<!-- WINE BLOCK -->
+<div class="wine-block reveal">
+  <p class="wb-eyebrow">🍷 Szekszárdi borvidék</p>
+  <blockquote>"Szőlőtőkék között ébredni, este egy pohár szekszárdi vörös a teraszon — ez a Cseligevi élmény."</blockquote>
+  <p>A Szekszárdi borvidék Magyarország egyik legkiválóbb vörösbortermelő vidéke. A vendégháztól 5 percre a Heimann borászat, ahol kóstolóra is van lehetőség. Kérésre szívesen ajánlunk helyi pincészetlátogatásokat a tartózkodás alatt.</p>
+  <div class="actions" style="margin-top:1.5rem;">
+    <a class="btn btn-outline dark" href="programok.html">Programok a környéken →</a>
+  </div>
+</div>
 
 <!-- FEATURES -->
 <section class="container feature reveal">
@@ -59,8 +155,8 @@
 <section class="container feature reverse reveal">
   <img src="images/szauna1.jpg" alt="Modern benti finn szauna" loading="lazy">
   <div>
-    <h2>Pároknak és kisebb társaságoknak</h2>
-    <p>A benti finn szauna hűvösebb napokon is gondoskodik a feltöltődésről. A három hálószoba max. 6 főt fogad, a tágas nappali és a fedett terasz közös élményekre teremt lehetőséget.</p>
+    <h2>Pároknak és kis családoknak</h2>
+    <p>A benti finn szauna hűvösebb napokon is gondoskodik a feltöltődésről. A ház max. 2 felnőttet és 2 gyermeket fogad, a tágas nappali és a fedett terasz közös élményekre teremt lehetőséget.</p>
     <div class="actions">
       <a class="btn" href="arak.html">Árak és mit tartalmaz</a>
     </div>
@@ -79,18 +175,18 @@
   </div>
   <div class="value-card reveal">
     <h3>🏠 Kizárólagos bérlés</h3>
-    <p>Az egész ház csak az Öné – sem más vendégek, sem közös terek. Max. 6 fő.</p>
+    <p>Az egész ház csak az Öné – sem más vendégek, sem közös terek.</p>
   </div>
   <div class="value-card reveal">
     <h3>👨‍👩‍👧 Családbarát</h3>
-    <p>Tágas zöld udvar, fedett terasz, játéklehetőség – közös élmények minden korosztálynak.</p>
+    <p>Tágas zöld udvar, fedett terasz, játéklehetőség – max. 2 felnőtt + 2 gyerek.</p>
   </div>
 </section>
 
-<!-- REVIEWS SECTION -->
+<!-- REVIEWS -->
 <section class="container reveal">
   <p style="font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--sage);margin-bottom:.7rem;">Vendégeink mondják</p>
-  <h2 style="margin-bottom:3rem;">Vélemények</h2>
+  <h2 style="margin-bottom:2.5rem;">Vélemények</h2>
   <div class="reviews-grid">
     <div class="review-card">
       <div class="rv-stars">★★★★★</div>
