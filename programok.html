@@ -3,107 +3,94 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Programok – Cseligevi Vendégház</title>
-  <meta name="description" content="Programok Szekszárdon: múzeumok, kilátók, természet, aktív kikapcsolódás.">
+  <title>Programok – Cseligevi Vendégház | Szekszárd</title>
+  <meta name="description" content="Programok Szekszárdon és környékén: borvidék, kilátók, természet, aktív kikapcsolódás.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="canonical" href="https://cseligevivendeghaz.com/programok.html">
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
 </head>
 <body>
-
 <div id="navbar-container"></div>
 
-<section class="hero">
-  <div data-include="hero-background.html"></div>
+<section class="hero" style="background:url('images/rolunk2.jpg') center/cover no-repeat;">
   <div class="hero-overlay">
+    <p class="hero-eyebrow">Szekszárd és környéke</p>
     <h1>Programok</h1>
-    <p>Szekszárd és a környék élményei</p>
+    <p>Fedezze fel a vendégház közelében lévő látnivalókat és élményeket</p>
     <a class="btn" href="foglalas.html">Foglalj most</a>
   </div>
-  <div class="scroll-indicator" onclick="document.querySelector('.container').scrollIntoView({behavior: 'smooth'})">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-    </svg>
+  <div class="scroll-indicator" onclick="document.querySelector('.glass').scrollIntoView({behavior:'smooth'})">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
   </div>
 </section>
 
-<section class="container glass">
-  <h2>Programok és környék</h2>
-  <p>Szekszárdon számos program és látnivaló várja a látogatókat – múzeumok, kilátók, tanösvények, fürdők és aktív kikapcsolódási lehetőségek. Fedezze fel a Szekszárdi dombság csodáit!</p>
+<section class="glass">
+  <h2>Szekszárd és környéke</h2>
+  <p>A Cseligevi Vendégház tökéletes kiindulópontja a Szekszárdi borvidék és a környező természeti csodák felfedezésének. Múzeumok, kilátók, tanösvények, pincészetek és aktív kikapcsolódási lehetőségek várják a látogatókat.</p>
 </section>
 
 <section class="container">
-  <h2 style="margin-bottom: 2rem;">Kulturális látnivalók</h2>
-  <div class="program-cards">
-    <div class="card">
-      <h3>Babits Mihály Emlékház</h3>
-      <p>A híres költő szülőháza irodalmi kiállítással. Remek célpont irodalomkedvelőknek.</p>
+  <p style="font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--sage);margin-bottom:.8rem;">Legközelebbi látnivalók</p>
+  <h2 style="margin-bottom:2.5rem;">A vendégháztól közel</h2>
+  <div class="att-list reveal">
+    <div class="att-item">
+      <div class="att-n">01</div>
+      <div><div class="att-name">Bati-kereszt Kilátó</div><div class="att-desc">280 m magas dombon lélegzetelállító panorámával a szekszárdi dombságra és a Duna-síkságra. Különösen szép napkeltekor.</div><div class="att-km">📍 3 km · ~10 perc autóval</div></div>
     </div>
-    <div class="card">
-      <h3>Mézeskalács Múzeum</h3>
-      <p>Interaktív kiállítás a mézeskalács-készítésről és hagyományos mesterségekről.</p>
+    <div class="att-item">
+      <div class="att-n">02</div>
+      <div><div class="att-name">Heimann Borászat</div><div class="att-desc">Díjnyertes pincészet kóstolókkal és vendégfogadással. Egyedülálló szekszárdi vörösborok – Kékfrankos, Merlot, Cabernet Sauvignon.</div><div class="att-km">📍 5 km · ~12 perc autóval</div></div>
     </div>
-    <div class="card">
-      <h3>BeSweet Csokoládémanufaktúra</h3>
-      <p>Kézműves csokoládék, kóstolók és workshopok.</p>
+    <div class="att-item">
+      <div class="att-n">03</div>
+      <div><div class="att-name">Sötétvölgy</div><div class="att-desc">Festői völgy túraútvonalakkal és természeti tanösvényekkel – ideális kiránduláshoz bármely évszakban.</div><div class="att-km">📍 8 km · ~15 perc autóval</div></div>
     </div>
-    <div class="card">
-      <h3>Bogár-Tanya Néprajzi Gyűjtemény</h3>
-      <p>Ritka néprajzi tárgyak és helytörténeti gyűjtemény.</p>
+    <div class="att-item">
+      <div class="att-n">04</div>
+      <div><div class="att-name">Kálvária Kilátó</div><div class="att-desc">Panoráma a Bartina hegyről, könnyen megközelíthető, remek fotózási és pihenési pont.</div><div class="att-km">📍 6 km · ~12 perc autóval</div></div>
+    </div>
+    <div class="att-item">
+      <div class="att-n">05</div>
+      <div><div class="att-name">Szekszárd belváros</div><div class="att-desc">Történelmi belváros múzeumokkal, éttermekkel, a Béri Balogh Ádám Múzeummal és a Babits Mihály Emlékházzal.</div><div class="att-km">📍 7 km · ~14 perc autóval</div></div>
     </div>
   </div>
 </section>
 
-<section class="container">
-  <h2 style="margin-bottom: 2rem;">Természet és kilátók</h2>
-  <div class="program-cards">
-    <div class="card">
-      <h3>Bati-kereszt Kilátó</h3>
-      <p>280 m magas dombon, fantasztikus panorámával a Szekszárdi dombságra.</p>
-    </div>
-    <div class="card">
-      <h3>Kálvária Kilátó</h3>
-      <p>Panoráma a Bartina hegyről, könnyen megközelíthető, remek fotózási pont.</p>
-    </div>
-    <div class="card">
-      <h3>Lösz-szurdik tanösvények</h3>
-      <p>Természetvédelmi sétautak, madármegfigyelés, családi túrák.</p>
-    </div>
+<section class="container" style="background:var(--off-white);padding-top:4rem;padding-bottom:4rem;">
+  <p style="font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--sage);margin-bottom:.8rem;">Kulturális látnivalók</p>
+  <h2 style="margin-bottom:2.5rem;">Múzeumok & kultúra</h2>
+  <div class="program-cards reveal">
+    <div class="card"><h3>Babits Mihály Emlékház</h3><p>A neves költő szülőháza irodalmi kiállítással. Irodalomkedvelőknek kötelező program.</p></div>
+    <div class="card"><h3>Mézeskalács Múzeum</h3><p>Interaktív kiállítás a mézeskalács-készítésről és hagyományos mesterségekről. Gyerekeknek különösen ajánlott.</p></div>
+    <div class="card"><h3>BeSweet Csokoládémanufaktúra</h3><p>Kézműves csokoládék, kóstolók és workshopok. Egyedi ajándék és felejthetetlen élmény.</p></div>
+    <div class="card"><h3>Bogár-Tanya Néprajzi Gyűjtemény</h3><p>Ritka néprajzi tárgyak és helytörténeti gyűjtemény a régió múltjáról.</p></div>
   </div>
 </section>
 
 <section class="container">
-  <h2 style="margin-bottom: 2rem;">Aktív kikapcsolódás</h2>
-  <div class="program-cards">
-    <div class="card">
-      <h3>Szekszárdi Strand és Élményfürdő</h3>
-      <p>Medencék, csúszdák és termálvíz. Egész éves kikapcsolódás.</p>
-    </div>
-    <div class="card">
-      <h3>E-BIKE kölcsönzés</h3>
-      <p>Elektromos kerékpárok túrákhoz. Fedezze fel a vidéket fáradtság nélkül!</p>
-    </div>
-    <div class="card">
-      <h3>Terepjáró túrák</h3>
-      <p>Off-road élmények a dombokon. Izgalmas és felejthetetlen program.</p>
-    </div>
-    <div class="card">
-      <h3>Műjégpálya / Airsoft</h3>
-      <p>Télen korcsolyázás, melegben airsoft. Szórakozás minden évszakban.</p>
-    </div>
+  <p style="font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--sage);margin-bottom:.8rem;">Aktív kikapcsolódás</p>
+  <h2 style="margin-bottom:2.5rem;">Sport & Élmény</h2>
+  <div class="program-cards reveal">
+    <div class="card"><h3>Szekszárdi Élményfürdő</h3><p>Medencék, csúszdák és termálvíz. Egész éves kikapcsolódás a városban.</p></div>
+    <div class="card"><h3>E-BIKE kölcsönzés</h3><p>Elektromos kerékpárok túrákhoz – fedezze fel a vidéket fáradtság nélkül!</p></div>
+    <div class="card"><h3>Terepjáró túrák</h3><p>Off-road élmények a dombokon. Izgalmas és felejthetetlen program csoportoknak.</p></div>
+    <div class="card"><h3>Lösz-szurdik tanösvények</h3><p>Természetvédelmi sétautak és madármegfigyelési pontok az erdőkben.</p></div>
+    <div class="card"><h3>Műjégpálya / Airsoft</h3><p>Télen korcsolyázás, melegben airsoft. Szórakozás minden évszakban.</p></div>
   </div>
 </section>
 
-<div id="footer-container" data-include="footer.html"></div>
+<section class="values">
+  <div class="value-card reveal"><h3>🍷 Borkörutazás</h3><p>Kérésre szívesen ajánlunk pincészetlátogatásokat és borkóstolókat a környéken.</p></div>
+  <div class="value-card reveal"><h3>🚶 Túraútvonalak</h3><p>Gyalogos és kerékpáros túraútvonalak a vendégháztól induló közelségben.</p></div>
+  <div class="value-card reveal"><h3>📸 Fotóhelyszínek</h3><p>Lélegzetelállító panorámák és festői tájak – minden fotós álma.</p></div>
+</section>
 
+<div id="footer-container"></div>
 <script src="include.js"></script>
-<script src="animation.js"></script>
 <script src="nav.js"></script>
-
+<script src="animation.js"></script>
 </body>
 </html>
