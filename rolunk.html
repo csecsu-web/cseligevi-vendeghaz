@@ -4,76 +4,82 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Rólunk – Cseligevi Vendégház</title>
-  <meta name="description" content="Ismerje meg a Cseligevi Vendégházat. Szekszárdi borvidék, természet, családbarát pihenés.">
+  <meta name="description" content="Ismerje meg a Cseligevi Vendégházat. Szekszárdi borvidék, természet, teljes ház kizárólagos bérlésre pároknak és kisebb társaságoknak.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="canonical" href="https://cseligevivendeghaz.com/rolunk.html">
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
 </head>
 <body>
-
 <div id="navbar-container"></div>
 
-<section class="hero">
-  <div data-include="hero-background.html"></div>
+<section class="hero" style="background:url('images/rolunk1.jpg') center/cover no-repeat;">
   <div class="hero-overlay">
+    <p class="hero-eyebrow">A vendégházról</p>
     <h1>Rólunk</h1>
     <p>A nyugalom otthona a természet ritmusában</p>
     <a class="btn" href="foglalas.html">Foglalj most</a>
   </div>
-  <div class="scroll-indicator" onclick="document.querySelector('.container').scrollIntoView({behavior: 'smooth'})">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-    </svg>
+  <div class="scroll-indicator" onclick="document.querySelector('.glass').scrollIntoView({behavior:'smooth'})">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
   </div>
 </section>
 
-<section class="container feature">
+<section class="glass">
+  <h2>Ahol az ember végre megállhat</h2>
+  <p>A Cseligevi Vendégházat azért álmodtuk meg, hogy legyen egy hely, ahol az ember végre megállhat. Ahol a hétköznapok rohanása helyett a természet ritmusa veszi körül. Idő jut magadra, a szeretteidre, és arra, hogy újraélj minden apró, mégis fontos pillanatot.</p>
+  <p><strong>Az egész házat egyszerre adjuk bérbe</strong> – sem más vendégek, sem közös terek. Teljesen privát, kizárólagos élmény.</p>
+</section>
+
+<section class="container feature reveal">
   <div>
     <h2>Kapcsolódás a természethez</h2>
-    <p>A Cseligevi Vendégházat azért álmodtuk meg, hogy legyen egy hely, ahol az ember végre megállhat. Ahol a hétköznapok rohanása helyett a természet ritmusa veszi körül.</p>
-    <p>Idő jut magadra, a szeretteidre, és arra, hogy újraélj minden apró, mégis fontos pillanatot.</p>
+    <p>Vendégházunk a Szekszárdi borvidék szívében található, ahonnan lélegzetelállító panoráma tárul eléd. A Bati-kereszt kilátó mindössze 3 km-re van, közelben a Heimann borászat és Sötétvölgy is.</p>
+    <p>Reggel friss levegő és madárdal fogad, este pedig a naplemente arany fényei borítják be a hegygerincet.</p>
   </div>
   <img src="images/rolunk1.jpg" alt="Természet közelsége" loading="lazy">
 </section>
 
-<section class="container feature reverse">
+<section class="container feature reverse reveal">
   <img src="images/rolunk2.jpg" alt="Szekszárdi borvidék" loading="lazy">
   <div>
-    <h2>Szekszárdi borvidék</h2>
-    <p>Vendégházunk a Szekszárdi borvidék szívében található, ahonnan lélegzetelállító panoráma tárul eléd. A Bati-kereszt kilátó mindössze 3 km, közel a Heimann borászat és Sötétvölgy is.</p>
+    <h2>Szekszárdi borvidék szívében</h2>
+    <p>Szekszárd az egyik legismertebb magyar borvidék – Kékfrankos, Merlot és Cabernet Sauvignon szőlőfajták teremnek a napsütötte domboldalain. Kérésre szívesen ajánlunk borturisztikai programokat és pincészetlátogatásokat.</p>
   </div>
 </section>
 
-<section class="container feature">
+<section class="container feature reveal">
   <div>
     <h2>Élmények egész nap</h2>
-    <p>Reggel friss levegő és madárdal; napközben a tágas zöld telek teret ad játékhoz és pihenéshez; este a naplemente arany fényei borítják be a hegygerincet.</p>
+    <p>Reggel friss levegő és madárdal; napközben a tágas zöld telek teret ad játékhoz és pihenéshez; este a naplemente arany fényei borítják be a hegygerincet. Benti finn szaunánk hűvösebb napokon is gondoskodik a feltöltődésről.</p>
   </div>
   <img src="images/rolunk3.jpg" alt="Kert és pihenés" loading="lazy">
 </section>
 
-<section class="container feature reverse">
-  <img src="images/rolunk4.jpg" alt="Családbarát környezet" loading="lazy">
+<section class="container feature reverse reveal">
+  <img src="images/rolunk4.jpg" alt="Pároknak és családoknak" loading="lazy">
   <div>
     <h2>Pároknak és családoknak</h2>
-    <p>A házat úgy alakítottuk ki, hogy ideális legyen pároknak és családoknak. A benti szauna a hűvösebb napokon is feltölt, a gyerekek pedig szabadon játszhatnak a zöld udvaron.</p>
+    <p>1 hálószoba (max. 4 fő), tágas nappali, teljesen felszerelt konyha, fedett panorámás terasz, finn szauna és tágas kert – minden, amire szükség lehet a tökéletes kikapcsolódáshoz.</p>
     <div class="actions">
       <a class="btn" href="foglalas.html">Foglalj most</a>
-      <a class="btn btn-outline" href="kepek.html">Képek</a>
+      <a class="btn btn-outline dark" href="kepek.html">Képek megtekintése</a>
     </div>
   </div>
 </section>
 
-<div id="footer-container" data-include="footer.html"></div>
+<section class="values">
+  <div class="value-card reveal"><h3>1 hálószoba</h3><p>Max. 2 felnött és 2 gyerek elhelyezése kényelmes, jól felszerelt hálószobákban.</p></div>
+  <div class="value-card reveal"><h3>Finn szauna</h3><p>Benti finn szauna korlátlan használattal minden vendégnek.</p></div>
+  <div class="value-card reveal"><h3>Fedett terasz</h3><p>Panorámás fedett terasz kültéri étkezéshez és pihenéshez.</p></div>
+  <div class="value-card reveal"><h3>Teljesen felszerelt</h3><p>Konyha, ágynemű, törölköző, WiFi, ingyenes parkoló – minden biztosított.</p></div>
+</section>
 
+<div id="footer-container"></div>
 <script src="include.js"></script>
-<script src="animation.js"></script>
 <script src="nav.js"></script>
-
+<script src="animation.js"></script>
 </body>
 </html>
